@@ -31,6 +31,50 @@ class DatabaseSeeder extends Seeder
 
         // Seed default LLM provider (OpenRouter)
         $this->seedDefaultLlmProvider();
+
+        // Seed demo owner and tenant
+        $this->seedDemoOwner();
+    }
+
+    private function seedDemoOwner(): void
+    {
+        if (\App\Models\Central\Owner::where('email', 'owner@marilms.com')->exists()) {
+            return;
+        }
+
+        $owner = \App\Models\Central\Owner::create([
+            'name' => 'Demo Owner',
+            'email' => 'owner@marilms.com',
+            'password' => Hash::make('password'),
+            'organization_name' => 'MariLMS Academy',
+            'slug' => 'academy',
+            'status' => 'active',
+            'type' => 'regular',
+        ]);
+
+        $tenant = \App\Models\Central\Tenant::create([
+            'id' => 'academy',
+            'slug' => 'academy',
+            'name' => 'MariLMS Academy',
+            'owner_id' => $owner->id,
+            'is_active' => true,
+        ]);
+
+        \App\Models\Central\OwnerTokenBalance::create([
+            'owner_id' => $owner->id,
+            'balance' => 150,
+            'is_unlimited' => false,
+        ]);
+
+        \App\Models\Central\TokenTransaction::create([
+            'owner_id' => $owner->id,
+            'type' => 'credit',
+            'amount' => 150,
+            'source' => 'register',
+            'reference_id' => (string) $owner->id,
+            'note' => 'Token awal seeder demo (150 token)',
+            'created_at' => now(),
+        ]);
     }
 
     private function createRoles(): void

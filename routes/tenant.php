@@ -48,9 +48,9 @@ Route::middleware([
             ->name('dashboard');
 
         // Quiz Management
-        Route::resource('quizzes', \App\Http\Controllers\Owner\QuizController::class);
         Route::post('/quizzes/generate', [\App\Http\Controllers\Owner\QuizController::class, 'generate'])
             ->name('quizzes.generate');
+        Route::resource('quizzes', \App\Http\Controllers\Owner\QuizController::class);
 
         // Participant Management
         Route::resource('participants', \App\Http\Controllers\Owner\ParticipantController::class);
@@ -72,6 +72,10 @@ Route::middleware([
             ->name('tokens');
         Route::post('/tokens/purchase', [\App\Http\Controllers\Owner\TokenController::class, 'purchase'])
             ->name('tokens.purchase');
+        Route::get('/tokens/simulate/{order}', [\App\Http\Controllers\Owner\TokenController::class, 'simulatePayment'])
+            ->name('tokens.simulate');
+        Route::post('/tokens/simulate/{order}', [\App\Http\Controllers\Owner\TokenController::class, 'processSimulation'])
+            ->name('tokens.simulate.process');
 
         // Settings
         Route::get('/settings', [\App\Http\Controllers\Owner\SettingsController::class, 'index'])

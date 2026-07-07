@@ -56,7 +56,7 @@ class QuizAttempt extends Model
             return 0;
         }
 
-        $elapsed = now()->diffInSeconds($this->started_at);
+        $elapsed = abs($this->started_at->diffInSeconds(now()));
         $remaining = $this->total_duration_seconds - $elapsed;
 
         return max(0, (int) $remaining);

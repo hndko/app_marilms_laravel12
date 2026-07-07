@@ -11,8 +11,9 @@ use Illuminate\Support\Facades\Auth;
 
 class DashboardController extends Controller
 {
-    public function index($tenant)
+    public function index()
     {
+        $tenant = tenant('slug') ?? tenant('id') ?? request()->segment(1);
         $owner = Auth::guard('owner')->user();
 
         $stats = [

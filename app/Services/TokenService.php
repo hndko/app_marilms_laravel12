@@ -22,6 +22,14 @@ class TokenService
     }
 
     /**
+     * Calculate token cost based on number of questions.
+     */
+    public function calculateCost(int $questionCount, int $costPerQuestion = 5): int
+    {
+        return $questionCount * $costPerQuestion;
+    }
+
+    /**
      * Deduct tokens from owner's balance.
      *
      * @throws \Exception if insufficient balance
