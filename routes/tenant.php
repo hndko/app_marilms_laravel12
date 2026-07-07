@@ -19,6 +19,7 @@ use Stancl\Tenancy\Middleware\PreventAccessFromCentralDomains;
 Route::middleware([
     'web',
     InitializeTenancyByPath::class,
+    \App\Http\Middleware\SetTenantUrlDefaults::class,
 ])->prefix('/{tenant}')->group(function () {
 
     // -------------------------------------------------------
