@@ -19,6 +19,15 @@ Route::get('/', function () {
     return view('welcome', compact('packages'));
 })->name('landing');
 
+// Default Auth Redirects
+Route::get('/login', function () {
+    return redirect()->route('owner.login');
+})->name('login');
+
+Route::get('/register', function () {
+    return redirect()->route('owner.register');
+})->name('register');
+
 // -------------------------------------------------------
 // SuperAdmin Routes
 // -------------------------------------------------------
