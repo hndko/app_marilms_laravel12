@@ -15,55 +15,8 @@
         href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
         rel="stylesheet">
 
-    <!-- Alpine.js -->
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-
-    <!-- Tailwind CSS (Play CDN for standalone Rich Aesthetics & Glassmorphism support) -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Plus Jakarta Sans', 'sans-serif'],
-                        display: ['Outfit', 'sans-serif'],
-                    },
-                    colors: {
-                        brand: {
-                            50: '#f0f4ff',
-                            100: '#e0e8ff',
-                            500: '#6366f1',
-                            600: '#4f46e5',
-                            700: '#4338ca',
-                            900: '#312e81',
-                        },
-                        cyber: {
-                            cyan: '#06b6d4',
-                            purple: '#a855f7',
-                            pink: '#ec4899',
-                            emerald: '#10b981',
-                        }
-                    },
-                    animation: {
-                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-                        'float': 'float 6s ease-in-out infinite',
-                        'glow': 'glow 3s ease-in-out infinite alternate',
-                    },
-                    keyframes: {
-                        float: {
-                            '0%, 100%': { transform: 'translateY(0px)' },
-                            '50%': { transform: 'translateY(-15px)' },
-                        },
-                        glow: {
-                            '0%': { boxShadow: '0 0 20px -5px rgba(99, 102, 241, 0.4)' },
-                            '100%': { boxShadow: '0 0 35px 5px rgba(168, 85, 247, 0.6)' },
-                        }
-                    }
-                }
-            }
-        }
-    </script>
+    <!-- Vite (Tailwind CSS & Alpine.js) -->
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 
     <style>
         body {
@@ -668,8 +621,8 @@
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
                 @forelse($packages as $package)
                 <div
-                    class="glass-card rounded-2xl p-8 flex flex-col justify-between relative {{ $package->is_popular ? 'border-2 border-brand-500 shadow-2xl shadow-brand-500/20 md:-translate-y-4' : 'border-white/10' }}">
-                    @if($package->is_popular)
+                    class="glass-card rounded-2xl p-8 flex flex-col justify-between relative {{ $loop->iteration === 2 ? 'border-2 border-brand-500 shadow-2xl shadow-brand-500/20 md:-translate-y-4' : 'border-white/10' }}">
+                    @if($loop->iteration === 2)
                     <div
                         class="absolute -top-4 left-1/2 -translate-x-1/2 bg-gradient-to-r from-brand-600 to-cyber-purple text-white text-xs font-bold px-4 py-1.5 rounded-full shadow-lg">
                         ⭐ Paling Populer
@@ -685,7 +638,7 @@
                         <!-- Price -->
                         <div class="mt-6 pb-6 border-b border-white/10">
                             <span class="text-4xl font-display font-extrabold text-white">Rp {{
-                                number_format($package->price, 0, ',', '.') }}</span>
+                                number_format($package->price_idr, 0, ',', '.') }}</span>
                             <span class="text-xs text-gray-400 block mt-1">Bayar sekali beli (One-time purchase)</span>
                         </div>
 
@@ -694,13 +647,13 @@
                             <li class="flex items-center space-x-3">
                                 <span
                                     class="w-5 h-5 rounded-full bg-brand-500/20 text-brand-400 flex items-center justify-center font-bold text-xs">✓</span>
-                                <span><strong class="text-white">{{ number_format($package->tokens) }} Token AI</strong>
+                                <span><strong class="text-white">{{ number_format($package->token_amount) }} Token AI</strong>
                                     Saldo Aktif</span>
                             </li>
                             <li class="flex items-center space-x-3">
                                 <span
                                     class="w-5 h-5 rounded-full bg-brand-500/20 text-brand-400 flex items-center justify-center font-bold text-xs">✓</span>
-                                <span>~{{ number_format(floor($package->tokens / 5)) }} Butir Soal AI Generated</span>
+                                <span>~{{ number_format(floor($package->token_amount / 5)) }} Butir Soal AI Generated</span>
                             </li>
                             <li class="flex items-center space-x-3">
                                 <span
@@ -723,7 +676,7 @@
                     <!-- CTA Button -->
                     <div class="mt-8">
                         <a href="{{ route('owner.register') }}"
-                            class="w-full py-3.5 px-4 rounded-xl font-bold text-sm text-center block transition-all {{ $package->is_popular ? 'bg-gradient-to-r from-brand-600 to-cyber-purple text-white shadow-lg shadow-brand-500/30 hover:scale-[1.02]' : 'glass-panel text-gray-200 hover:text-white hover:border-brand-500/50' }}">
+                            class="w-full py-3.5 px-4 rounded-xl font-bold text-sm text-center block transition-all {{ $loop->iteration === 2 ? 'bg-gradient-to-r from-brand-600 to-cyber-purple text-white shadow-lg shadow-brand-500/30 hover:scale-[1.02]' : 'glass-panel text-gray-200 hover:text-white hover:border-brand-500/50' }}">
                             Beli Paket Sekarang 🚀
                         </a>
                     </div>
