@@ -225,6 +225,11 @@ Kami sangat menyambut kontribusi dari pengembang luar untuk memperkaya fitur dan
    ```
 7. Buat **Pull Request (PR)** menuju branch `main` di repositori utama beserta deskripsi lengkap mengenai perubahan yang Anda buat.
 
+### 🤖 Aturan Otomatisasi Proyek (Agent Rules)
+Proyek ini mengadopsi otomatisasi alur kerja pengembangan dengan aturan yang tercatat secara transparan di dalam berkas `.agents/AGENTS.md`:
+* **Otomatisasi Commit & Push**: Setiap tugas atau fase fitur yang selesai dikerjakan akan langsung melalui proses staging, commit, dan push (`git add .`, `git commit -m "..."`, `git push`) secara otomatis ke repositori remote.
+* **Sinkronisasi Dokumentasi**: Setiap kali terdapat perubahan aturan atau kebijakan baru proyek dari pengguna, aturan tersebut wajib langsung dicatat ke dalam berkas `.agents/AGENTS.md` dan secara otomatis memperbarui dokumen `README.md` ini agar selalu sinkron.
+
 ---
 
 ## ⚖️ Lisensi
