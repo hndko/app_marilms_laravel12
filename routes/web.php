@@ -15,7 +15,8 @@ use Illuminate\Support\Facades\Route;
 
 // Landing Page
 Route::get('/', function () {
-    return view('welcome');
+    $packages = \App\Models\Central\TokenPackage::where('is_active', true)->orderBy('price')->get();
+    return view('welcome', compact('packages'));
 })->name('landing');
 
 // -------------------------------------------------------
