@@ -225,10 +225,32 @@ Kami sangat menyambut kontribusi dari pengembang luar untuk memperkaya fitur dan
    ```
 7. Buat **Pull Request (PR)** menuju branch `main` di repositori utama beserta deskripsi lengkap mengenai perubahan yang Anda buat.
 
-### 🤖 Aturan Otomatisasi Proyek (Agent Rules)
-Proyek ini mengadopsi otomatisasi alur kerja pengembangan dengan aturan yang tercatat secara transparan di dalam berkas `.agents/AGENTS.md`:
-* **Otomatisasi Commit & Push**: Setiap tugas atau fase fitur yang selesai dikerjakan akan langsung melalui proses staging, commit, dan push (`git add .`, `git commit -m "..."`, `git push`) secara otomatis ke repositori remote.
-* **Sinkronisasi Dokumentasi**: Setiap kali terdapat perubahan aturan atau kebijakan baru proyek dari pengguna, aturan tersebut wajib langsung dicatat ke dalam berkas `.agents/AGENTS.md` dan secara otomatis memperbarui dokumen `README.md` ini agar selalu sinkron.
+### 🤖 Aturan Kerja Agent & Konvensi Proyek
+Proyek ini memiliki aturan kerja komprehensif yang tercatat secara transparan di dalam berkas `.agents/AGENTS.md`. Seluruh AI Agent dan developer **wajib mematuhi** aturan berikut:
+
+#### 📝 Aturan Bahasa
+* Seluruh elemen antarmuka yang dibaca pengguna (*user-facing text*) seperti alert, notifikasi, pesan error, label form, dan placeholder **WAJIB menggunakan Bahasa Indonesia** yang formal dan baku.
+* Penamaan variabel, function, controller, model, migrasi, dan komentar kode teknis menggunakan **Bahasa Inggris** sesuai standar ekosistem Laravel.
+
+#### 🎨 Aturan UI/UX Design Philosophy
+* **Konsep Visual:** Modern Enterprise, Flat Design, Professional, Clean, Minimal (sekelas Stripe, GitHub, Notion, Linear).
+* **Pantangan Keras:**
+  - ❌ Dilarang: *Glassmorphism, Neon UI, Heavy Gradients, Blur Background, Skeuomorphism*.
+  - ❌ Dilarang: Animasi berlebihan (*bounce, zoom, rotate, pulse, floating*). Gunakan transisi halus maks 150ms ease.
+  - ❌ Dilarang: Ilustrasi AI stereotipikal (robot, otak bercahaya, sirkuit).
+  - ❌ Dilarang: *Speedometer, Gauge, Pie Chart* untuk indikator skor.
+* **Palet Warna:** Primary Blue 600 (`#2563EB`), Background `#F8FAFC`, Surface White, Text `#0F172A`.
+
+#### 🏗️ Aturan Arsitektur & Kode
+* **Multi-Tenancy:** `stancl/tenancy` path-based dengan database terisolasi per tenant.
+* **Token Service:** Wajib menggunakan `lockForUpdate()` untuk mencegah race condition.
+* **LLM Service:** Fallback chain pattern — konfigurasi di database, bukan hardcoded di `.env`.
+* **Quiz Timer:** Server-authoritative timer murni, anti-cheat tab switch detection wajib aktif.
+* **Frontend Stack:** Tailwind CSS v4 + Alpine.js wajib diinstall via NPM (bukan CDN), dibundle lewat Vite.
+
+#### ⚙️ Otomatisasi
+* **Otomatisasi Commit & Push:** Setiap tugas selesai → otomatis `git add .`, `git commit`, `git push`.
+* **Sinkronisasi Dokumentasi:** Perubahan aturan baru → catat di `.agents/AGENTS.md` → update `README.md` otomatis.
 
 ---
 
