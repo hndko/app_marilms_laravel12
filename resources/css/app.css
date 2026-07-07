@@ -8,21 +8,25 @@
 @theme {
     --font-sans: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
     --font-display: 'Outfit', ui-sans-serif, system-ui, sans-serif;
-    
-    --color-brand-50: #f0f4ff;
-    --color-brand-100: #e0e8ff;
-    --color-brand-300: #a5b4fc;
-    --color-brand-400: #818cf8;
-    --color-brand-500: #6366f1;
-    --color-brand-600: #4f46e5;
-    --color-brand-700: #4338ca;
-    --color-brand-800: #3730a3;
-    --color-brand-900: #312e81;
-    
-    --color-cyber-cyan: #06b6d4;
-    --color-cyber-purple: #a855f7;
-    --color-cyber-pink: #ec4899;
-    --color-cyber-emerald: #10b981;
-    
-    --animate-pulse-slow: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+
+    /* Primary — Blue 600 system */
+    --color-primary-50: #eff6ff;
+    --color-primary-100: #dbeafe;
+    --color-primary-200: #bfdbfe;
+    --color-primary-500: #3b82f6;
+    --color-primary-600: #2563eb;
+    --color-primary-700: #1d4ed8;
+    --color-primary-800: #1e40af;
+    --color-primary-900: #1e3a5f;
+
+    /* Neutrals */
+    --color-surface: #ffffff;
+    --color-background: #f8fafc;
+    --color-muted: #64748b;
+
+    /* Status */
+    --color-success: #16a34a;
+    --color-warning: #d97706;
+    --color-danger: #dc2626;
+    --color-info: #0284c7;
 }
