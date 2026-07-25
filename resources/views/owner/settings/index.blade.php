@@ -8,7 +8,7 @@
 @endsection
 
 @section('content')
-<form method="POST" action="{{ route('tenant.owner.settings.update') }}" style="display: flex; flex-direction: column; gap: 28px; max-width: 900px; margin: 0 auto;">
+<form method="POST" action="{{ route('tenant.owner.settings.update', ['tenant' => $tenant]) }}" style="display: flex; flex-direction: column; gap: 28px; max-width: 900px; margin: 0 auto;">
     @csrf
     @method('PUT')
 

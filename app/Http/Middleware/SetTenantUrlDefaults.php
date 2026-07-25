@@ -15,8 +15,17 @@ class SetTenantUrlDefaults
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if ($tenant = $request->route('tenant')) {
-            URL::defaults(['tenant' => $tenant]);
+        $tenantParam = $request->route('tenant')
+            ?? (function_exists('tenancy') && tenancy()->initialized ? tenancy()->tenant->getTenantKey() : null)
+            ?? auth('owner')->user()?->tenant?->slug
+            ?? request()->segment(1);
+
+        if ($tenantParam) {
+            $tenantSlug = is_object($tenantParam)
+                ? ($tenantParam->slug ?? $tenantParam->getTenantKey())
+                : (string) $tenantParam;
+
+            URL::defaults(['tenant' => $tenantSlug]);
         }
 
         return $next($request);
