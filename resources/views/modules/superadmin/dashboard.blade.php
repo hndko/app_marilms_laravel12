@@ -47,85 +47,87 @@
         </div>
     </div>
 
-    <!-- TailAdmin Perfect Modal Component (Exact Header, Scroll Body & Fixed Footer) -->
-    <div x-show="showInfoModal" x-cloak
-        @keydown.escape.window="showInfoModal = false"
-        x-transition:enter="transition ease-out duration-200"
-        x-transition:enter-start="opacity-0"
-        x-transition:enter-end="opacity-100"
-        x-transition:leave="transition ease-in duration-150"
-        x-transition:leave-start="opacity-100"
-        x-transition:leave-end="opacity-0"
-        class="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-gray-900/50 backdrop-blur-xs overflow-y-auto"
-        style="display: none;">
-        
-        <!-- Backdrop Click to Close -->
-        <div @click="showInfoModal = false" class="fixed inset-0 h-full w-full"></div>
-
-        <!-- Modal Dialog Box -->
-        <div class="relative w-full max-w-[580px] rounded-3xl bg-white p-6 sm:p-8 shadow-2xl border border-gray-200 z-10 flex flex-col max-h-[85vh] animate-in fade-in zoom-in duration-150">
+    <!-- Teleport Modal to Body to bypass stacking contexts -->
+    <template x-teleport="body">
+        <div x-show="showInfoModal" x-cloak
+            @keydown.escape.window="showInfoModal = false"
+            x-transition:enter="transition ease-out duration-200"
+            x-transition:enter-start="opacity-0"
+            x-transition:enter-end="opacity-100"
+            x-transition:leave="transition ease-in duration-150"
+            x-transition:leave-start="opacity-100"
+            x-transition:leave-end="opacity-0"
+            class="fixed inset-0 z-[99999] flex items-center justify-center p-4 sm:p-6 bg-gray-900/60 backdrop-blur-md overflow-y-auto"
+            style="display: none;">
             
-            <!-- Modal Header (Fixed Top) -->
-            <div class="flex items-center justify-between pb-4 border-b border-gray-100 shrink-0">
-                <div class="flex items-center gap-3">
-                    <div class="w-10 h-10 rounded-xl bg-purple-50 text-purple-600 border border-purple-200 flex items-center justify-center font-bold shrink-0">
-                        <i class="fas fa-user-shield text-base"></i>
-                    </div>
-                    <div>
-                        <h3 class="text-base font-bold text-gray-900">Panduan SuperAdmin Central</h3>
-                        <p class="text-xs text-gray-500">Transparansi fitur, alur kerja, dan kontrol platform central.</p>
-                    </div>
-                </div>
-                <button @click="showInfoModal = false" class="w-9 h-9 flex items-center justify-center rounded-full bg-gray-100 text-gray-400 hover:bg-gray-200 hover:text-gray-700 transition">
-                    <i class="fas fa-times text-sm"></i>
-                </button>
-            </div>
+            <!-- Backdrop Click to Close -->
+            <div @click="showInfoModal = false" class="fixed inset-0 h-full w-full"></div>
 
-            <!-- Modal Body (Dedicated Scrollable Container with Bottom Padding) -->
-            <div class="flex-1 overflow-y-auto py-4 space-y-4 text-xs text-gray-600 leading-relaxed pr-2">
-                <!-- 1. Tujuan Modul -->
-                <div class="space-y-1.5 bg-gray-50 p-4 rounded-2xl border border-gray-200/80">
-                    <h4 class="font-bold text-gray-900 flex items-center gap-2">
-                        <i class="fas fa-bullseye text-purple-600"></i>
-                        Fungsi & Tujuan Modul Central
-                    </h4>
-                    <p>
-                        Portal SuperAdmin Central digunakan untuk mengelola seluruh ekosistem MariLMS AI: mendaftarkan Owner Lembaga baru, mengelola paket token AI yang dijual, mengatur API Key OpenRouter LLM, serta memantau log transaksi payment gateway.
-                    </p>
+            <!-- Modal Dialog Box -->
+            <div class="relative w-full max-w-[580px] rounded-3xl bg-white p-6 sm:p-8 shadow-2xl border border-gray-200 z-10 flex flex-col max-h-[85vh] animate-in fade-in zoom-in duration-150">
+                
+                <!-- Modal Header (Fixed Top) -->
+                <div class="flex items-center justify-between pb-4 border-b border-gray-100 shrink-0">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-purple-50 text-purple-600 border border-purple-200 flex items-center justify-center font-bold shrink-0">
+                            <i class="fas fa-user-shield text-base"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-base font-bold text-gray-900">Panduan SuperAdmin Central</h3>
+                            <p class="text-xs text-gray-500">Transparansi fitur, alur kerja, dan kontrol platform central.</p>
+                        </div>
+                    </div>
+                    <button @click="showInfoModal = false" class="w-9 h-9 flex items-center justify-center rounded-full bg-gray-100 text-gray-400 hover:bg-gray-200 hover:text-gray-700 transition">
+                        <i class="fas fa-times text-sm"></i>
+                    </button>
                 </div>
 
-                <!-- 2. Panduan Tombol Utama -->
-                <div class="space-y-2">
-                    <h4 class="font-bold text-gray-900 flex items-center gap-2">
-                        <i class="fas fa-border-all text-brand-500"></i>
-                        Fitur & Modul Utama
-                    </h4>
+                <!-- Modal Body (Dedicated Scrollable Container with Bottom Padding) -->
+                <div class="flex-1 overflow-y-auto py-4 space-y-4 text-xs text-gray-600 leading-relaxed pr-2">
+                    <!-- 1. Tujuan Modul -->
+                    <div class="space-y-1.5 bg-gray-50 p-4 rounded-2xl border border-gray-200/80">
+                        <h4 class="font-bold text-gray-900 flex items-center gap-2">
+                            <i class="fas fa-bullseye text-purple-600"></i>
+                            Fungsi & Tujuan Modul Central
+                        </h4>
+                        <p>
+                            Portal SuperAdmin Central digunakan untuk mengelola seluruh ekosistem MariLMS AI: mendaftarkan Owner Lembaga baru, mengelola paket token AI yang dijual, mengatur API Key OpenRouter LLM, serta memantau log transaksi payment gateway.
+                        </p>
+                    </div>
+
+                    <!-- 2. Panduan Tombol Utama -->
                     <div class="space-y-2">
-                        <div class="flex flex-col sm:flex-row sm:items-center gap-2 p-3 rounded-2xl bg-white border border-gray-200">
-                            <span class="px-2.5 py-1 rounded-lg bg-purple-600 text-white text-[10px] font-bold shrink-0 self-start sm:self-auto">Owner Lembaga</span>
-                            <span>Menambah, menonaktifkan, atau memberikan status saldo token Unlimited pada Owner Lembaga.</span>
-                        </div>
-                        <div class="flex flex-col sm:flex-row sm:items-center gap-2 p-3 rounded-2xl bg-white border border-gray-200">
-                            <span class="px-2.5 py-1 rounded-lg bg-indigo-600 text-white text-[10px] font-bold shrink-0 self-start sm:self-auto">Provider LLM</span>
-                            <span>Mengonfigurasi API Key OpenRouter, memilih model AI (OpenAI GPT-4o/Claude/Llama), dan menguji koneksi LLM.</span>
-                        </div>
-                        <div class="flex flex-col sm:flex-row sm:items-center gap-2 p-3 rounded-2xl bg-white border border-gray-200">
-                            <span class="px-2.5 py-1 rounded-lg bg-emerald-600 text-white text-[10px] font-bold shrink-0 self-start sm:self-auto">Payment Gateways</span>
-                            <span>Mengatur kunci API Midtrans, Xendit, Ipaymu, Doku, Duitku untuk otomatisasi transaksi token.</span>
+                        <h4 class="font-bold text-gray-900 flex items-center gap-2">
+                            <i class="fas fa-border-all text-brand-500"></i>
+                            Fitur & Modul Utama
+                        </h4>
+                        <div class="space-y-2">
+                            <div class="flex flex-col sm:flex-row sm:items-center gap-2 p-3 rounded-2xl bg-white border border-gray-200">
+                                <span class="px-2.5 py-1 rounded-lg bg-purple-600 text-white text-[10px] font-bold shrink-0 self-start sm:self-auto">Owner Lembaga</span>
+                                <span>Menambah, menonaktifkan, atau memberikan status saldo token Unlimited pada Owner Lembaga.</span>
+                            </div>
+                            <div class="flex flex-col sm:flex-row sm:items-center gap-2 p-3 rounded-2xl bg-white border border-gray-200">
+                                <span class="px-2.5 py-1 rounded-lg bg-indigo-600 text-white text-[10px] font-bold shrink-0 self-start sm:self-auto">Provider LLM</span>
+                                <span>Mengonfigurasi API Key OpenRouter, memilih model AI (OpenAI GPT-4o/Claude/Llama), dan menguji koneksi LLM.</span>
+                            </div>
+                            <div class="flex flex-col sm:flex-row sm:items-center gap-2 p-3 rounded-2xl bg-white border border-gray-200">
+                                <span class="px-2.5 py-1 rounded-lg bg-emerald-600 text-white text-[10px] font-bold shrink-0 self-start sm:self-auto">Payment Gateways</span>
+                                <span>Mengatur kunci API Midtrans, Xendit, Ipaymu, Doku, Duitku untuk otomatisasi transaksi token.</span>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- Modal Footer (Fixed Bottom outside Body Scroll Container) -->
-            <div class="pt-4 border-t border-gray-100 flex justify-end shrink-0">
-                <button @click="showInfoModal = false" 
-                    class="px-6 py-2.5 rounded-xl bg-purple-600 hover:bg-purple-700 text-white font-bold text-xs shadow-theme-xs transition">
-                    Saya Mengerti
-                </button>
+                <!-- Modal Footer (Fixed Bottom outside Body Scroll Container) -->
+                <div class="pt-4 border-t border-gray-100 flex justify-end shrink-0">
+                    <button @click="showInfoModal = false" 
+                        class="px-6 py-2.5 rounded-xl bg-purple-600 hover:bg-purple-700 text-white font-bold text-xs shadow-theme-xs transition">
+                        Saya Mengerti
+                    </button>
+                </div>
             </div>
         </div>
-    </div>
+    </template>
 
     <!-- TailAdmin Metrics Grid -->
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
