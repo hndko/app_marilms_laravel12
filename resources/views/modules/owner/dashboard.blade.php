@@ -3,8 +3,8 @@
 @section('title', 'Dashboard Owner')
 
 @section('content')
-<!-- TailAdmin Top Header Page Title & Global Period Filter -->
-<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+<!-- TailAdmin Top Header Card Wrapper (Fix Image 3: Clear Card border & contrast) -->
+<div class="p-5 md:p-6 rounded-2xl bg-white border border-gray-200 shadow-theme-xs flex flex-col sm:flex-row sm:items-center justify-between gap-4">
     <div>
         <h2 class="text-xl font-bold text-gray-800 tracking-tight">Dashboard Owner & Analytical Center</h2>
         <p class="text-xs text-gray-500">Monitoring real-time aktivitas kuis, peserta, dan saldo token AI.</p>
@@ -20,7 +20,7 @@
         }" class="flex items-center gap-2">
         <label for="period" class="text-xs font-bold text-gray-600 whitespace-nowrap">Filter Periode:</label>
         <select name="period" id="period" x-model="period" @change="submitForm()" 
-            class="px-3.5 py-2 pr-8 rounded-xl bg-white border border-gray-200 text-xs font-bold text-gray-800 shadow-theme-xs focus:outline-none focus:border-brand-500 transition">
+            class="px-4 py-2.5 rounded-xl bg-gray-50/50 border border-gray-200 text-xs font-bold text-gray-800 shadow-2xs focus:outline-none focus:border-brand-500 focus:bg-white transition">
             <option value="hari_ini">Hari Ini</option>
             <option value="7_hari">7 Hari Terakhir</option>
             <option value="bulan_ini">Bulan Ini</option>
@@ -30,28 +30,42 @@
     </form>
 </div>
 
-<!-- Mandatory Information Card (Rule 5.E GEMINI.md) -->
+<!-- TailAdmin Redesigned Information Card (Fix Image 2: Clean Card contrast & icon styling) -->
 <div x-data="{ showInfoCard: true }" class="space-y-4">
     <div x-show="showInfoCard" x-transition 
-        class="p-5 rounded-2xl bg-brand-50/60 border border-brand-200/80 shadow-theme-xs relative">
-        <button @click="showInfoCard = false" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 text-sm">
+        class="p-5 md:p-6 rounded-2xl bg-white border border-gray-200 shadow-theme-xs relative">
+        <button @click="showInfoCard = false" class="absolute top-5 right-5 text-gray-400 hover:text-gray-600 text-sm">
             <i class="fas fa-times"></i>
         </button>
         <div class="flex items-start gap-4">
-            <div class="w-10 h-10 rounded-xl bg-brand-500 text-white flex items-center justify-center font-bold shrink-0 shadow-theme-xs">
+            <div class="w-11 h-11 rounded-xl bg-brand-50 text-brand-500 border border-brand-200 flex items-center justify-center font-bold shrink-0">
                 <i class="fas fa-chalkboard-user text-lg"></i>
             </div>
-            <div class="space-y-1.5 text-xs text-gray-600 leading-relaxed pr-6">
-                <h4 class="font-bold text-gray-900 text-sm">
-                    Fungsi & Panduan Modul Owner Lembaga
-                </h4>
-                <p>
+            <div class="space-y-2 text-xs text-gray-600 leading-relaxed pr-6 flex-1">
+                <div class="flex items-center gap-2">
+                    <span class="px-2 py-0.5 rounded-md text-[10px] font-extrabold uppercase tracking-wider bg-brand-50 text-brand-600 border border-brand-200">
+                        PANDUAN MODUL
+                    </span>
+                    <h4 class="font-bold text-gray-900 text-sm">
+                        Fungsi & Panduan Modul Owner Lembaga
+                    </h4>
+                </div>
+                <p class="text-gray-600">
                     Portal Pengajar/Owner digunakan untuk mengelola kuis AI otomatis, mendaftarkan peserta ujian, memantau pengerjaan ujian real-time dengan proteksi anti-cheat, serta melakukan isi ulang (*top up*) saldo token AI.
                 </p>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-2 pt-1 font-medium text-gray-700">
-                    <div class="flex items-center gap-2"><i class="fas fa-magic text-brand-500"></i> Generator Kuis AI Instant</div>
-                    <div class="flex items-center gap-2"><i class="fas fa-user-gear text-success-600"></i> Impor Peserta & Password</div>
-                    <div class="flex items-center gap-2"><i class="fab fa-whatsapp text-success-500"></i> Notifikasi WhatsApp</div>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5 pt-2">
+                    <div class="flex items-center gap-2 px-3 py-2 rounded-xl bg-gray-50 border border-gray-200 text-gray-700 font-semibold text-xs">
+                        <i class="fas fa-magic text-brand-500"></i>
+                        <span>Generator Kuis AI Instant</span>
+                    </div>
+                    <div class="flex items-center gap-2 px-3 py-2 rounded-xl bg-gray-50 border border-gray-200 text-gray-700 font-semibold text-xs">
+                        <i class="fas fa-user-gear text-success-600"></i>
+                        <span>Impor Peserta & Password</span>
+                    </div>
+                    <div class="flex items-center gap-2 px-3 py-2 rounded-xl bg-gray-50 border border-gray-200 text-gray-700 font-semibold text-xs">
+                        <i class="fab fa-whatsapp text-success-500"></i>
+                        <span>Notifikasi WhatsApp</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -159,10 +173,10 @@
     </div>
 </div>
 
-<!-- Charts & Status Distribution Section -->
-<div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
-    <!-- Trend Chart (8 Cols) -->
-    <div class="lg:col-span-8 rounded-2xl border border-gray-200 bg-white p-5 md:p-6 shadow-theme-xs space-y-4">
+<!-- Charts & Status Distribution Section (Fix Image 1: Fully Responsive Grid & Responsive Charts) -->
+<div class="grid grid-cols-1 xl:grid-cols-12 gap-6">
+    <!-- Trend Chart (8 Cols on XL+) -->
+    <div class="xl:col-span-8 rounded-2xl border border-gray-200 bg-white p-5 md:p-6 shadow-theme-xs space-y-4 min-w-0 overflow-hidden">
         <div class="flex items-center justify-between">
             <div>
                 <h3 class="text-base font-bold text-gray-900">Grafik Tren Sesi Ujian & Performa</h3>
@@ -174,8 +188,8 @@
         <div id="examTrendChart" class="w-full h-72"></div>
     </div>
 
-    <!-- Status & Pass Rate Distribution (4 Cols) -->
-    <div class="lg:col-span-4 rounded-2xl border border-gray-200 bg-white p-5 md:p-6 shadow-theme-xs space-y-6">
+    <!-- Status & Pass Rate Distribution (4 Cols on XL+) -->
+    <div class="xl:col-span-4 rounded-2xl border border-gray-200 bg-white p-5 md:p-6 shadow-theme-xs space-y-6 min-w-0 overflow-hidden">
         <div>
             <h3 class="text-base font-bold text-gray-900">Distribusi Status Ujian</h3>
             <p class="text-xs text-gray-500">Persentase kelulusan dan status pengerjaan.</p>
@@ -184,7 +198,7 @@
         <!-- Pass vs Fail Donut -->
         <div class="space-y-3">
             <h4 class="text-xs font-bold text-gray-700 uppercase tracking-wider">Tingkat Kelulusan Ujian</h4>
-            <div id="passFailDonutChart" class="w-full h-44 flex items-center justify-center"></div>
+            <div id="passFailDonutChart" class="w-full min-h-[180px] flex items-center justify-center"></div>
         </div>
 
         <!-- Status Breakdown Progress Bars -->
@@ -308,7 +322,7 @@
 @push('scripts')
 <script>
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. ApexTrendChart
+    // 1. ApexTrendChart Responsive Configuration
     const trendOptions = {
         series: [{
             name: 'Jumlah Sesi Ujian',
@@ -328,16 +342,35 @@ document.addEventListener('DOMContentLoaded', () => {
         stroke: { width: [0, 3], curve: 'smooth' },
         plotOptions: { bar: { columnWidth: '40%', borderRadius: 6 } },
         labels: @json($data['chart']['labels']),
-        yaxis: [{ title: { text: 'Sesi Ujian' } }, { opposite: true, title: { text: 'Skor (%)' }, max: 100 }],
-        legend: { position: 'top' }
+        xaxis: {
+            labels: {
+                rotate: 0,
+                style: { fontSize: '11px' }
+            }
+        },
+        yaxis: [
+            { 
+                labels: { formatter: (val) => Math.round(val) },
+                title: { text: 'Sesi Ujian', style: { fontSize: '11px' } }
+            }, 
+            { 
+                opposite: true, 
+                title: { text: 'Skor (%)', style: { fontSize: '11px' } }, 
+                max: 100,
+                min: 0,
+                labels: { formatter: (val) => Math.round(val) + '%' }
+            }
+        ],
+        legend: { position: 'top', horizontalAlign: 'center' },
+        grid: { padding: { left: 10, right: 10 } }
     };
     new ApexCharts(document.querySelector("#examTrendChart"), trendOptions).render();
 
-    // 2. Pass/Fail Donut
+    // 2. Pass/Fail Donut Chart Responsive Configuration
     const donutOptions = {
         series: [{{ $data['pass_fail_distribution']['passed'] }}, {{ $data['pass_fail_distribution']['failed'] }}],
         labels: ['Lulus', 'Tidak Lulus'],
-        chart: { type: 'donut', height: 180 },
+        chart: { type: 'donut', height: 220, width: '100%' },
         colors: ['#10b981', '#f43f5e'],
         legend: { position: 'bottom' },
         dataLabels: { enabled: true }

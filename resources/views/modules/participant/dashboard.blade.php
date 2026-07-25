@@ -3,8 +3,8 @@
 @section('title', 'Beranda Kuis & Ujian')
 
 @section('content')
-<!-- TailAdmin Top Header Page Title & Global Period Filter -->
-<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+<!-- TailAdmin Top Header Card Wrapper (Fix Image 3: Clear Card border & contrast) -->
+<div class="p-5 md:p-6 rounded-2xl bg-white border border-gray-200 shadow-theme-xs flex flex-col sm:flex-row sm:items-center justify-between gap-4">
     <div>
         <h2 class="text-xl font-bold text-gray-800 tracking-tight">Beranda Ujian & Evaluasi Peserta</h2>
         <p class="text-xs text-gray-500">Pantau perkembangan nilai, kuis yang ditugaskan, dan riwayat pengerjaan.</p>
@@ -20,7 +20,7 @@
         }" class="flex items-center gap-2">
         <label for="period" class="text-xs font-bold text-gray-600 whitespace-nowrap">Filter Periode:</label>
         <select name="period" id="period" x-model="period" @change="submitForm()" 
-            class="px-3.5 py-2 pr-8 rounded-xl bg-white border border-gray-200 text-xs font-bold text-gray-800 shadow-theme-xs focus:outline-none focus:border-success-600 transition">
+            class="px-4 py-2.5 rounded-xl bg-gray-50/50 border border-gray-200 text-xs font-bold text-gray-800 shadow-2xs focus:outline-none focus:border-success-600 focus:bg-white transition">
             <option value="7_hari">7 Hari Terakhir</option>
             <option value="bulan_ini">Bulan Ini</option>
             <option value="tahun_ini">Tahun Ini</option>
@@ -32,25 +32,39 @@
 <!-- Mandatory Information Card (Rule 5.E GEMINI.md) -->
 <div x-data="{ showInfoCard: true }" class="space-y-4">
     <div x-show="showInfoCard" x-transition 
-        class="p-5 rounded-2xl bg-brand-50/60 border border-brand-200/80 shadow-theme-xs relative">
-        <button @click="showInfoCard = false" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 text-sm">
+        class="p-5 md:p-6 rounded-2xl bg-white border border-gray-200 shadow-theme-xs relative">
+        <button @click="showInfoCard = false" class="absolute top-5 right-5 text-gray-400 hover:text-gray-600 text-sm">
             <i class="fas fa-times"></i>
         </button>
         <div class="flex items-start gap-4">
-            <div class="w-10 h-10 rounded-xl bg-success-600 text-white flex items-center justify-center font-bold shrink-0 shadow-theme-xs">
+            <div class="w-11 h-11 rounded-xl bg-success-50 text-success-600 border border-success-200 flex items-center justify-center font-bold shrink-0">
                 <i class="fas fa-user-graduate text-lg"></i>
             </div>
-            <div class="space-y-1.5 text-xs text-gray-600 leading-relaxed pr-6">
-                <h4 class="font-bold text-gray-900 text-sm">
-                    Fungsi & Panduan Portal Peserta Ujian
-                </h4>
-                <p>
+            <div class="space-y-2 text-xs text-gray-600 leading-relaxed pr-6 flex-1">
+                <div class="flex items-center gap-2">
+                    <span class="px-2 py-0.5 rounded-md text-[10px] font-extrabold uppercase tracking-wider bg-success-50 text-success-700 border border-success-200">
+                        PANDUAN PESERTA
+                    </span>
+                    <h4 class="font-bold text-gray-900 text-sm">
+                        Fungsi & Panduan Portal Peserta Ujian
+                    </h4>
+                </div>
+                <p class="text-gray-600">
                     Portal Peserta Ujian digunakan untuk memilih kuis yang ditugaskan, memulai sesi pengerjaan ujian dengan proteksi anti-kecurangan (server timer & deteksi tab-switch), serta melihat hasil skor dan evaluasi pengerjaan.
                 </p>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-2 pt-1 font-medium text-gray-700">
-                    <div class="flex items-center gap-2"><i class="fas fa-play text-brand-500"></i> Kerjakan Ujian Real-time</div>
-                    <div class="flex items-center gap-2"><i class="fas fa-shield-halved text-amber-500"></i> Proteksi Anti Cheat</div>
-                    <div class="flex items-center gap-2"><i class="fas fa-square-poll-vertical text-success-600"></i> Hasil Nilai Otomatis</div>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5 pt-2">
+                    <div class="flex items-center gap-2 px-3 py-2 rounded-xl bg-gray-50 border border-gray-200 text-gray-700 font-semibold text-xs">
+                        <i class="fas fa-play text-brand-500"></i>
+                        <span>Kerjakan Ujian Real-time</span>
+                    </div>
+                    <div class="flex items-center gap-2 px-3 py-2 rounded-xl bg-gray-50 border border-gray-200 text-gray-700 font-semibold text-xs">
+                        <i class="fas fa-shield-halved text-amber-500"></i>
+                        <span>Proteksi Anti Cheat</span>
+                    </div>
+                    <div class="flex items-center gap-2 px-3 py-2 rounded-xl bg-gray-50 border border-gray-200 text-gray-700 font-semibold text-xs">
+                        <i class="fas fa-square-poll-vertical text-success-600"></i>
+                        <span>Hasil Nilai Otomatis</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -126,7 +140,7 @@
 
 <!-- Score Progression Chart -->
 @if(count($data['chart']['scores'] ?? []) > 0)
-    <div class="rounded-2xl border border-gray-200 bg-white p-5 md:p-6 shadow-theme-xs space-y-4">
+    <div class="rounded-2xl border border-gray-200 bg-white p-5 md:p-6 shadow-theme-xs space-y-4 min-w-0 overflow-hidden">
         <div class="flex items-center justify-between">
             <div>
                 <h3 class="text-base font-bold text-gray-900">Grafik Perkembangan Nilai Ujian</h3>

@@ -3,8 +3,8 @@
 @section('title', 'Dashboard SuperAdmin')
 
 @section('content')
-<!-- TailAdmin Top Header Page Title & Global Period Filter -->
-<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+<!-- TailAdmin Top Header Card Wrapper (Fix Image 3: Clear Card border & contrast) -->
+<div class="p-5 md:p-6 rounded-2xl bg-white border border-gray-200 shadow-theme-xs flex flex-col sm:flex-row sm:items-center justify-between gap-4">
     <div>
         <h2 class="text-xl font-bold text-gray-800 tracking-tight">Dashboard SuperAdmin Central</h2>
         <p class="text-xs text-gray-500">Monitoring platform MariLMS AI central, pendapatan token sales, dan status gateway.</p>
@@ -20,7 +20,7 @@
         }" class="flex items-center gap-2">
         <label for="period" class="text-xs font-bold text-gray-600 whitespace-nowrap">Filter Periode:</label>
         <select name="period" id="period" x-model="period" @change="submitForm()" 
-            class="px-3.5 py-2 pr-8 rounded-xl bg-white border border-gray-200 text-xs font-bold text-gray-800 shadow-theme-xs focus:outline-none focus:border-purple-600 transition">
+            class="px-4 py-2.5 rounded-xl bg-gray-50/50 border border-gray-200 text-xs font-bold text-gray-800 shadow-2xs focus:outline-none focus:border-purple-600 focus:bg-white transition">
             <option value="hari_ini">Hari Ini</option>
             <option value="7_hari">7 Hari Terakhir</option>
             <option value="bulan_ini">Bulan Ini</option>
@@ -33,25 +33,39 @@
 <!-- Mandatory Information Card (Rule 5.E GEMINI.md) -->
 <div x-data="{ showInfoCard: true }" class="space-y-4">
     <div x-show="showInfoCard" x-transition 
-        class="p-5 rounded-2xl bg-brand-50/60 border border-brand-200/80 shadow-theme-xs relative">
-        <button @click="showInfoCard = false" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 text-sm">
+        class="p-5 md:p-6 rounded-2xl bg-white border border-gray-200 shadow-theme-xs relative">
+        <button @click="showInfoCard = false" class="absolute top-5 right-5 text-gray-400 hover:text-gray-600 text-sm">
             <i class="fas fa-times"></i>
         </button>
         <div class="flex items-start gap-4">
-            <div class="w-10 h-10 rounded-xl bg-purple-600 text-white flex items-center justify-center font-bold shrink-0 shadow-theme-xs">
+            <div class="w-11 h-11 rounded-xl bg-purple-50 text-purple-600 border border-purple-200 flex items-center justify-center font-bold shrink-0">
                 <i class="fas fa-user-shield text-lg"></i>
             </div>
-            <div class="space-y-1.5 text-xs text-gray-600 leading-relaxed pr-6">
-                <h4 class="font-bold text-gray-900 text-sm">
-                    Fungsi & Panduan Modul SuperAdmin Central
-                </h4>
-                <p>
+            <div class="space-y-2 text-xs text-gray-600 leading-relaxed pr-6 flex-1">
+                <div class="flex items-center gap-2">
+                    <span class="px-2 py-0.5 rounded-md text-[10px] font-extrabold uppercase tracking-wider bg-purple-50 text-purple-700 border border-purple-200">
+                        PANDUAN CENTRAL
+                    </span>
+                    <h4 class="font-bold text-gray-900 text-sm">
+                        Fungsi & Panduan Modul SuperAdmin Central
+                    </h4>
+                </div>
+                <p class="text-gray-600">
                     Portal Pengelola Utama MariLMS AI digunakan untuk memantau performa platform, mengelola pendaftaran Owner Lembaga, mengatur katalog Paket Token, mengkonfigurasi Provider AI LLM (OpenRouter), serta memantau log transaksi & aktivitas sistem.
                 </p>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-2 pt-1 font-medium text-gray-700">
-                    <div class="flex items-center gap-2"><i class="fas fa-building text-brand-500"></i> Kelola Owner & Tenant</div>
-                    <div class="flex items-center gap-2"><i class="fas fa-box text-purple-600"></i> Katalog Paket Token</div>
-                    <div class="flex items-center gap-2"><i class="fas fa-robot text-indigo-600"></i> Provider AI OpenRouter</div>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5 pt-2">
+                    <div class="flex items-center gap-2 px-3 py-2 rounded-xl bg-gray-50 border border-gray-200 text-gray-700 font-semibold text-xs">
+                        <i class="fas fa-building text-brand-500"></i>
+                        <span>Kelola Owner & Tenant</span>
+                    </div>
+                    <div class="flex items-center gap-2 px-3 py-2 rounded-xl bg-gray-50 border border-gray-200 text-gray-700 font-semibold text-xs">
+                        <i class="fas fa-box text-purple-600"></i>
+                        <span>Katalog Paket Token</span>
+                    </div>
+                    <div class="flex items-center gap-2 px-3 py-2 rounded-xl bg-gray-50 border border-gray-200 text-gray-700 font-semibold text-xs">
+                        <i class="fas fa-robot text-indigo-600"></i>
+                        <span>Provider AI OpenRouter</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -128,9 +142,9 @@
 </div>
 
 <!-- Charts & Status Distribution Section -->
-<div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+<div class="grid grid-cols-1 xl:grid-cols-12 gap-6">
     <!-- Revenue Trend Chart (8 Cols) -->
-    <div class="lg:col-span-8 rounded-2xl border border-gray-200 bg-white p-5 md:p-6 shadow-theme-xs space-y-4">
+    <div class="xl:col-span-8 rounded-2xl border border-gray-200 bg-white p-5 md:p-6 shadow-theme-xs space-y-4 min-w-0 overflow-hidden">
         <div class="flex items-center justify-between">
             <div>
                 <h3 class="text-base font-bold text-gray-900">Grafik Tren Pendapatan Token Sales</h3>
@@ -143,13 +157,13 @@
     </div>
 
     <!-- Payment Order Status Distribution (4 Cols) -->
-    <div class="lg:col-span-4 rounded-2xl border border-gray-200 bg-white p-5 md:p-6 shadow-theme-xs space-y-6">
+    <div class="xl:col-span-4 rounded-2xl border border-gray-200 bg-white p-5 md:p-6 shadow-theme-xs space-y-6 min-w-0 overflow-hidden">
         <div>
             <h3 class="text-base font-bold text-gray-900">Distribusi Status Order</h3>
             <p class="text-xs text-gray-500">Status transaksi payment gateway.</p>
         </div>
 
-        <div id="orderStatusDonutChart" class="w-full h-44 flex items-center justify-center"></div>
+        <div id="orderStatusDonutChart" class="w-full min-h-[180px] flex items-center justify-center"></div>
 
         <div class="space-y-2 pt-3 border-t border-gray-100 text-xs">
             <div class="flex justify-between font-bold text-gray-700">
@@ -253,7 +267,7 @@ document.addEventListener('DOMContentLoaded', () => {
         fill: { type: 'gradient', gradient: { opacityFrom: 0.4, opacityTo: 0.05 } },
         stroke: { width: 3, curve: 'smooth' },
         labels: @json($data['chart']['labels']),
-        yaxis: { labels: { formatter: (val) => 'Rp ' + val.toLocaleString('id-ID') } },
+        yaxis: { labels: { formatter: (val) => 'Rp ' + Math.round(val).toLocaleString('id-ID') } },
         dataLabels: { enabled: false }
     };
     new ApexCharts(document.querySelector("#revenueTrendChart"), revenueOptions).render();
@@ -266,7 +280,7 @@ document.addEventListener('DOMContentLoaded', () => {
             {{ $data['status_distribution']['failed'] + $data['status_distribution']['expired'] }}
         ],
         labels: ['Success', 'Pending', 'Failed/Expired'],
-        chart: { type: 'donut', height: 180 },
+        chart: { type: 'donut', height: 220, width: '100%' },
         colors: ['#10b981', '#f59e0b', '#f43f5e'],
         legend: { position: 'bottom' }
     };

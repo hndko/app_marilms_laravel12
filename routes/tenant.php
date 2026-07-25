@@ -46,6 +46,12 @@ Route::middleware([
         Route::get('/', [\App\Http\Controllers\Modules\Owner\DashboardController::class, 'index'])
             ->name('dashboard');
 
+        // Profile Editing for Owner
+        Route::get('/profile', [\App\Http\Controllers\ProfileController::class, 'edit'])
+            ->name('profile.edit');
+        Route::put('/profile', [\App\Http\Controllers\ProfileController::class, 'update'])
+            ->name('profile.update');
+
         // Quiz Management
         Route::post('/quizzes/generate', [\App\Http\Controllers\Modules\Owner\QuizController::class, 'generate'])
             ->name('quizzes.generate');
@@ -86,39 +92,36 @@ Route::middleware([
     });
 
     // -------------------------------------------------------
-    // Participant Quiz Routes (within tenant context)
+    // Participant Routes (within tenant context)
     // -------------------------------------------------------
     Route::middleware('auth:participant')->name('tenant.participant.')->group(function () {
-        Route::get('/home', [\App\Http\Controllers\Modules\Participant\DashboardController::class, 'index'])
+        Route::get('/participant/dashboard', [\App\Http\Controllers\Modules\Participant\DashboardController::class, 'index'])
             ->name('dashboard');
 
-        // Quiz taking
-        Route::get('/quiz/{quiz}', [\App\Http\Controllers\Modules\Participant\QuizController::class, 'show'])
+        // Profile Editing for Participant
+        Route::get('/participant/profile', [\App\Http\Controllers\ProfileController::class, 'edit'])
+            ->name('profile.edit');
+        Route::put('/participant/profile', [\App\Http\Controllers\ProfileController::class, 'update'])
+            ->name('profile.update');
+
+        // Quiz Execution Engine
+        Route::get('/quiz/{quiz}', [\App\Http\Controllers\Modules\Participant\QuizExecutionController::class, 'show'])
             ->name('quiz.show');
-        Route::post('/quiz/{quiz}/attempt/start', [\App\Http\Controllers\Modules\Participant\QuizController::class, 'startAttempt'])
-            ->name('quiz.attempt.start');
-        Route::get('/quiz/attempt/{attempt}', [\App\Http\Controllers\Modules\Participant\QuizController::class, 'takeQuiz'])
-            ->name('quiz.attempt.take');
-        Route::post('/quiz/attempt/{attempt}/answer', [\App\Http\Controllers\Modules\Participant\QuizController::class, 'saveAnswer'])
-            ->name('quiz.attempt.answer');
-        Route::post('/quiz/attempt/{attempt}/submit', [\App\Http\Controllers\Modules\Participant\QuizController::class, 'submitAttempt'])
-            ->name('quiz.attempt.submit');
-        Route::get('/quiz/attempt/{attempt}/result', [\App\Http\Controllers\Modules\Participant\QuizController::class, 'showResult'])
-            ->name('quiz.attempt.result');
+        Route::post('/quiz/{quiz}/start', [\App\Http\Controllers\Modules\Participant\QuizExecutionController::class, 'start'])
+            ->name('quiz.start');
+        Route::get('/attempt/{attempt}', [\App\Http\Controllers\Modules\Participant\QuizExecutionController::class, 'attempt'])
+            ->name('attempt.show');
+        Route::post('/attempt/{attempt}/answer', [\App\Http\Controllers\Modules\Participant\QuizExecutionController::class, 'saveAnswer'])
+            ->name('attempt.answer');
+        Route::post('/attempt/{attempt}/submit', [\App\Http\Controllers\Modules\Participant\QuizExecutionController::class, 'submit'])
+            ->name('attempt.submit');
+        Route::post('/attempt/{attempt}/flag', [\App\Http\Controllers\Modules\Participant\QuizExecutionController::class, 'flagCheat'])
+            ->name('attempt.flag');
+        Route::get('/attempt/{attempt}/result', [\App\Http\Controllers\Modules\Participant\QuizExecutionController::class, 'result'])
+            ->name('attempt.result');
 
-        // Timer sync endpoint
-        Route::get('/quiz/attempt/{attempt}/remaining', [\App\Http\Controllers\Modules\Participant\QuizController::class, 'getRemainingTime'])
-            ->name('quiz.attempt.remaining');
-
-        // Quiz history
-        Route::get('/history', [\App\Http\Controllers\Modules\Participant\QuizController::class, 'history'])
+        // History
+        Route::get('/history', [\App\Http\Controllers\Modules\Participant\QuizExecutionController::class, 'history'])
             ->name('history');
     });
-
-    // -------------------------------------------------------
-    // Force Submit (no auth — uses sendBeacon with signed token)
-    // -------------------------------------------------------
-    Route::post('/quiz/attempt/{attempt}/force-submit', [\App\Http\Controllers\Modules\Participant\QuizForceSubmitController::class, 'forceSubmit'])
-        ->name('tenant.quiz.attempt.force-submit')
-        ->withoutMiddleware([\Illuminate\Foundation\Http\Middleware\VerifyCsrfToken::class]);
 });

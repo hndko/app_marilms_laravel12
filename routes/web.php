@@ -48,6 +48,10 @@ Route::prefix('superadmin')->name('superadmin.')->group(function () {
         Route::get('/dashboard', [\App\Http\Controllers\Modules\SuperAdmin\DashboardController::class, 'index'])
             ->name('dashboard');
 
+        // Profile Editing
+        Route::get('/profile', [\App\Http\Controllers\ProfileController::class, 'edit'])->name('profile.edit');
+        Route::put('/profile', [\App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');
+
         // Owner Management
         Route::resource('owners', \App\Http\Controllers\Modules\SuperAdmin\OwnerController::class);
         Route::post('/owners/{owner}/toggle-unlimited', [\App\Http\Controllers\Modules\SuperAdmin\OwnerController::class, 'toggleUnlimited'])
@@ -59,59 +63,38 @@ Route::prefix('superadmin')->name('superadmin.')->group(function () {
         Route::post('/owners/{owner}/impersonate', [\App\Http\Controllers\Modules\SuperAdmin\OwnerController::class, 'impersonate'])
             ->name('owners.impersonate');
 
-        // Token Packages
+        // Token Package Catalog Management
         Route::resource('token-packages', \App\Http\Controllers\Modules\SuperAdmin\TokenPackageController::class);
+        Route::post('/token-packages/{token_package}/toggle-active', [\App\Http\Controllers\Modules\SuperAdmin\TokenPackageController::class, 'toggleActive'])
+            ->name('token-packages.toggle-active');
 
-        // System Settings
-        Route::get('/settings', [\App\Http\Controllers\Modules\SuperAdmin\SettingsController::class, 'index'])
-            ->name('settings.index');
-        Route::put('/settings', [\App\Http\Controllers\Modules\SuperAdmin\SettingsController::class, 'update'])
-            ->name('settings.update');
+        // LLM Provider Settings
+        Route::get('/llm', [\App\Http\Controllers\Modules\SuperAdmin\LlmProviderController::class, 'index'])->name('llm.index');
+        Route::post('/llm', [\App\Http\Controllers\Modules\SuperAdmin\LlmProviderController::class, 'store'])->name('llm.store');
+        Route::put('/llm/{llmProvider}', [\App\Http\Controllers\Modules\SuperAdmin\LlmProviderController::class, 'update'])->name('llm.update');
+        Route::post('/llm/{llmProvider}/toggle-active', [\App\Http\Controllers\Modules\SuperAdmin\LlmProviderController::class, 'toggleActive'])->name('llm.toggle-active');
+        Route::post('/llm/test-connection', [\App\Http\Controllers\Modules\SuperAdmin\LlmProviderController::class, 'testConnection'])->name('llm.test-connection');
 
-        // LLM Provider
-        Route::resource('llm', \App\Http\Controllers\Modules\SuperAdmin\LlmProviderController::class);
-        Route::post('/llm/{llm}/test', [\App\Http\Controllers\Modules\SuperAdmin\LlmProviderController::class, 'testConnection'])
-            ->name('llm.test');
+        // Gateway Settings (Payment, Email, WhatsApp)
+        Route::get('/gateways', [\App\Http\Controllers\Modules\SuperAdmin\GatewaySettingController::class, 'index'])->name('gateways.index');
+        Route::put('/gateways/payment/{id}', [\App\Http\Controllers\Modules\SuperAdmin\GatewaySettingController::class, 'updatePayment'])->name('gateways.payment.update');
+        Route::put('/gateways/email', [\App\Http\Controllers\Modules\SuperAdmin\GatewaySettingController::class, 'updateEmail'])->name('gateways.email.update');
+        Route::put('/gateways/whatsapp', [\App\Http\Controllers\Modules\SuperAdmin\GatewaySettingController::class, 'updateWhatsApp'])->name('gateways.whatsapp.update');
 
-        // Gateways (Payment, Email, WhatsApp)
-        Route::get('/gateways', [\App\Http\Controllers\Modules\SuperAdmin\GatewayController::class, 'index'])
-            ->name('gateways.index');
-        Route::put('/gateways/payment/{gateway}', [\App\Http\Controllers\Modules\SuperAdmin\GatewayController::class, 'updatePayment'])
-            ->name('gateways.payment.update');
-        Route::put('/gateways/email', [\App\Http\Controllers\Modules\SuperAdmin\GatewayController::class, 'updateEmail'])
-            ->name('gateways.email.update');
-        Route::put('/gateways/whatsapp/{id}', [\App\Http\Controllers\Modules\SuperAdmin\GatewayController::class, 'updateWhatsapp'])
-            ->name('gateways.whatsapp.update');
-        Route::post('/gateways/email/test', [\App\Http\Controllers\Modules\SuperAdmin\GatewayController::class, 'testEmail'])
-            ->name('gateways.email.test');
-        Route::post('/gateways/whatsapp/{id}/test', [\App\Http\Controllers\Modules\SuperAdmin\GatewayController::class, 'testWhatsapp'])
-            ->name('gateways.whatsapp.test');
-
-        // Activity Logs
-        Route::get('/logs', [\App\Http\Controllers\Modules\SuperAdmin\LogController::class, 'index'])
-            ->name('logs.index');
+        // System Settings & Activity Logs
+        Route::get('/logs', [\App\Http\Controllers\Modules\SuperAdmin\SystemSettingController::class, 'logs'])->name('logs.index');
+        Route::get('/settings', [\App\Http\Controllers\Modules\SuperAdmin\SystemSettingController::class, 'settings'])->name('settings.index');
+        Route::put('/settings', [\App\Http\Controllers\Modules\SuperAdmin\SystemSettingController::class, 'updateSettings'])->name('settings.update');
     });
 });
 
 // -------------------------------------------------------
-// Owner Auth Routes (Central - not tenant-scoped)
+// Webhook Routes (Public / Unauthenticated)
 // -------------------------------------------------------
-Route::prefix('owner')->name('owner.')->group(function () {
-    Route::middleware('auth:owner')->group(function () {
-        Route::post('/logout', [\App\Http\Controllers\Auth\AuthController::class, 'logout'])->name('logout');
-    });
+Route::prefix('webhooks')->name('webhooks.')->group(function () {
+    Route::post('/midtrans', [\App\Http\Controllers\WebhookController::class, 'midtrans'])->name('midtrans');
+    Route::post('/xendit', [\App\Http\Controllers\WebhookController::class, 'xendit'])->name('xendit');
+    Route::post('/ipaymu', [\App\Http\Controllers\WebhookController::class, 'ipaymu'])->name('ipaymu');
+    Route::post('/doku', [\App\Http\Controllers\WebhookController::class, 'doku'])->name('doku');
+    Route::post('/duitku', [\App\Http\Controllers\WebhookController::class, 'duitku'])->name('duitku');
 });
-
-// -------------------------------------------------------
-// Payment Webhooks (no auth, verified by signature)
-// -------------------------------------------------------
-Route::prefix('webhook')
-    ->name('webhook.')
-    ->withoutMiddleware([\Illuminate\Foundation\Http\Middleware\VerifyCsrfToken::class])
-    ->group(function () {
-        Route::post('/midtrans', [\App\Http\Controllers\Webhook\PaymentWebhookController::class, 'midtrans'])->name('midtrans');
-        Route::post('/xendit', [\App\Http\Controllers\Webhook\PaymentWebhookController::class, 'xendit'])->name('xendit');
-        Route::post('/ipaymu', [\App\Http\Controllers\Webhook\PaymentWebhookController::class, 'ipaymu'])->name('ipaymu');
-        Route::post('/doku', [\App\Http\Controllers\Webhook\PaymentWebhookController::class, 'doku'])->name('doku');
-        Route::post('/duitku', [\App\Http\Controllers\Webhook\PaymentWebhookController::class, 'duitku'])->name('duitku');
-    });

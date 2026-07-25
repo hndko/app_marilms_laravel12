@@ -68,6 +68,12 @@
 
         $roleLabel = $isSuperAdmin ? 'SuperAdmin Central' : ($isOwner ? 'Owner Lembaga' : 'Peserta Ujian');
         $roleBadgeColor = $isSuperAdmin ? 'bg-purple-50 text-purple-700 border-purple-200' : ($isOwner ? 'bg-brand-50 text-brand-600 border-brand-200' : 'bg-success-50 text-success-700 border-success-200');
+
+        $profileRoute = $isSuperAdmin 
+            ? route('superadmin.profile.edit') 
+            : ($isOwner 
+                ? route('tenant.owner.profile.edit', ['tenant' => $tenantSlug]) 
+                : route('tenant.participant.profile.edit', ['tenant' => $tenantSlug]));
     @endphp
 
     <!-- App Wrapper -->
@@ -374,11 +380,12 @@
                             </a>
                         @endif
 
-                        <!-- TailAdmin Exact Bell Icon with Orange Ping Badge (Image 2) -->
-                        <div class="relative" x-data="{ open: false }">
-                            <button class="relative flex items-center justify-center text-gray-500 transition-colors bg-white border border-gray-200 rounded-full hover:text-gray-700 h-11 w-11 hover:bg-gray-100">
+                        <!-- TailAdmin Interactive Notification Bell Dropdown -->
+                        <div class="relative" x-data="{ notifOpen: false, hasUnread: true }">
+                            <button @click="notifOpen = !notifOpen"
+                                class="relative flex items-center justify-center text-gray-500 transition-colors bg-white border border-gray-200 rounded-full hover:text-gray-700 h-11 w-11 hover:bg-gray-100 focus:outline-none">
                                 <!-- Orange Badge Dot -->
-                                <span class="absolute right-0.5 top-0.5 z-10 flex h-2.5 w-2.5">
+                                <span x-show="hasUnread" class="absolute right-0.5 top-0.5 z-10 flex h-2.5 w-2.5">
                                     <span class="absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75 animate-ping"></span>
                                     <span class="relative inline-flex h-2.5 w-2.5 rounded-full bg-orange-500 border border-white"></span>
                                 </span>
@@ -388,11 +395,58 @@
                                     <path fill-rule="evenodd" clip-rule="evenodd" d="M10.75 2.29248C10.75 1.87827 10.4143 1.54248 10 1.54248C9.58583 1.54248 9.25004 1.87827 9.25004 2.29248V2.83613C6.08266 3.20733 3.62504 5.9004 3.62504 9.16748V14.4591H3.33337C2.91916 14.4591 2.58337 14.7949 2.58337 15.2091C2.58337 15.6234 2.91916 15.9591 3.33337 15.9591H4.37504H15.625H16.6667C17.0809 15.9591 17.4167 15.6234 17.4167 15.2091C17.4167 14.7949 17.0809 14.4591 16.6667 14.4591H16.375V9.16748C16.375 5.9004 13.9174 3.20733 10.75 2.83613V2.29248ZM14.875 14.4591V9.16748C14.875 6.47509 12.6924 4.29248 10 4.29248C7.30765 4.29248 5.12504 6.47509 5.12504 9.16748V14.4591H14.875ZM8.00004 17.7085C8.00004 18.1228 8.33583 18.4585 8.75004 18.4585H11.25C11.6643 18.4585 12 18.1228 12 17.7085C12 17.2943 11.6643 16.9585 11.25 16.9585H8.75004C8.33583 16.9585 8.00004 17.2943 8.00004 17.7085Z" fill="currentColor" />
                                 </svg>
                             </button>
+
+                            <!-- Notification Dropdown Menu -->
+                            <div x-show="notifOpen"
+                                @click.outside="notifOpen = false"
+                                x-transition:enter="transition ease-out duration-100"
+                                x-transition:enter-start="transform opacity-0 scale-95"
+                                x-transition:enter-end="transform opacity-100 scale-100"
+                                x-transition:leave="transition ease-in duration-75"
+                                x-transition:leave-start="transform opacity-100 scale-100"
+                                x-transition:leave-end="transform opacity-0 scale-95"
+                                class="absolute right-0 mt-3 w-80 sm:w-96 bg-white rounded-2xl shadow-xl border border-gray-200 py-3 z-50">
+                                
+                                <div class="px-4 pb-2.5 border-b border-gray-100 flex items-center justify-between">
+                                    <h4 class="text-xs font-bold text-gray-900">Notifikasi Platform</h4>
+                                    <button @click="hasUnread = false" class="text-[11px] font-semibold text-brand-500 hover:text-brand-600">
+                                        Tandai Dibaca
+                                    </button>
+                                </div>
+
+                                <div class="divide-y divide-gray-100 max-h-64 overflow-y-auto">
+                                    <a href="#" class="flex items-start gap-3 p-3.5 hover:bg-gray-50 transition">
+                                        <div class="w-8 h-8 rounded-full bg-brand-50 text-brand-600 flex items-center justify-center shrink-0 font-bold text-xs">
+                                            <i class="fas fa-magic"></i>
+                                        </div>
+                                        <div class="space-y-0.5 min-w-0 flex-1 text-xs">
+                                            <p class="font-bold text-gray-800 truncate">Kuis AI Berhasil Dibuat</p>
+                                            <p class="text-gray-500 text-[11px]">Soal kuis otomatis telah di-generate oleh AI OpenRouter.</p>
+                                            <span class="text-[10px] text-gray-400 block pt-0.5">Baru saja</span>
+                                        </div>
+                                    </a>
+
+                                    <a href="#" class="flex items-start gap-3 p-3.5 hover:bg-gray-50 transition">
+                                        <div class="w-8 h-8 rounded-full bg-success-50 text-success-600 flex items-center justify-center shrink-0 font-bold text-xs">
+                                            <i class="fas fa-coins"></i>
+                                        </div>
+                                        <div class="space-y-0.5 min-w-0 flex-1 text-xs">
+                                            <p class="font-bold text-gray-800 truncate">Sistem Tenancy & Token Ready</p>
+                                            <p class="text-gray-500 text-[11px]">Saldo token dan guard multi-tenancy aktif.</p>
+                                            <span class="text-[10px] text-gray-400 block pt-0.5">10 menit yang lalu</span>
+                                        </div>
+                                    </a>
+                                </div>
+
+                                <div class="px-4 pt-2.5 border-t border-gray-100 text-center">
+                                    <span class="text-[11px] font-bold text-gray-500">MariLMS AI Real-time Engine</span>
+                                </div>
+                            </div>
                         </div>
 
                         <!-- TailAdmin Exact User Profile Component (Image 2) -->
-                        <div x-data="{ open: false }" class="relative">
-                            <button @click="open = !open"
+                        <div x-data="{ profileOpen: false }" class="relative">
+                            <button @click="profileOpen = !profileOpen"
                                 class="flex items-center text-gray-700 focus:outline-none">
                                 <span class="mr-3 overflow-hidden rounded-full h-11 w-11 shrink-0 bg-brand-500 text-white font-bold flex items-center justify-center text-sm shadow-xs">
                                     {{ strtoupper(substr($user->name ?? 'U', 0, 1)) }}
@@ -400,13 +454,13 @@
                                 <span class="hidden sm:block mr-1.5 font-medium text-theme-sm text-gray-800">
                                     {{ $user->name ?? 'User' }}
                                 </span>
-                                <svg class="w-5 h-5 text-gray-500 transition-transform duration-200" :class="{ 'rotate-180': open }" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <svg class="w-5 h-5 text-gray-500 transition-transform duration-200" :class="{ 'rotate-180': profileOpen }" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                                 </svg>
                             </button>
 
-                            <div x-show="open"
-                                @click.outside="open = false"
+                            <div x-show="profileOpen"
+                                @click.outside="profileOpen = false"
                                 x-transition
                                 class="absolute right-0 mt-[17px] w-[260px] flex flex-col rounded-2xl border border-gray-200 bg-white p-3 shadow-theme-lg z-50">
                                 
@@ -418,6 +472,16 @@
                                     </span>
                                 </div>
 
+                                <div class="py-2 border-b border-gray-100 space-y-1">
+                                    <a href="{{ $profileRoute }}"
+                                        class="flex items-center gap-3 px-3 py-2 font-medium text-gray-700 rounded-lg group text-theme-sm hover:bg-gray-100 transition">
+                                        <span class="text-gray-500 group-hover:text-brand-500">
+                                            <i class="fas fa-user-gear text-sm"></i>
+                                        </span>
+                                        <span>Edit Profile</span>
+                                    </a>
+                                </div>
+
                                 @php
                                     $logoutAction = $isParticipant
                                         ? route('tenant.logout', ['tenant' => $tenantSlug])
@@ -427,7 +491,7 @@
                                 <form method="POST" action="{{ $logoutAction }}">
                                     @csrf
                                     <button type="submit"
-                                        class="flex items-center w-full gap-3 px-3 py-2 mt-3 font-medium text-gray-700 rounded-lg group text-theme-sm hover:bg-gray-100 transition">
+                                        class="flex items-center w-full gap-3 px-3 py-2 mt-2 font-medium text-gray-700 rounded-lg group text-theme-sm hover:bg-gray-100 transition">
                                         <span class="text-gray-500 group-hover:text-error-600">
                                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path>
