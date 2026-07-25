@@ -19,31 +19,34 @@ Route::get('/', function () {
     return view('welcome', compact('packages'));
 })->name('landing');
 
-// Default Auth Redirects
-Route::get('/login', function () {
-    return redirect()->route('owner.login');
-})->name('login');
+// -------------------------------------------------------
+// Unified Central Authentication Routes
+// -------------------------------------------------------
+Route::middleware('guest:web,owner')->group(function () {
+    Route::get('/login', [\App\Http\Controllers\Auth\LoginController::class, 'showLogin'])->name('login');
+    Route::post('/login', [\App\Http\Controllers\Auth\LoginController::class, 'login'])->name('login.submit');
 
-Route::get('/register', function () {
-    return redirect()->route('owner.register');
-})->name('register');
+    Route::get('/register', [\App\Http\Controllers\Auth\OwnerAuthController::class, 'showRegister'])->name('register');
+    Route::post('/register', [\App\Http\Controllers\Auth\OwnerAuthController::class, 'register'])->name('register.submit');
+
+    // Legacy/Aliased Auth Redirects
+    Route::get('/superadmin/login', fn() => redirect()->route('login'))->name('superadmin.login');
+    Route::post('/superadmin/login', [\App\Http\Controllers\Auth\LoginController::class, 'login'])->name('superadmin.login.submit');
+    Route::get('/owner/login', fn() => redirect()->route('login'))->name('owner.login');
+    Route::post('/owner/login', [\App\Http\Controllers\Auth\LoginController::class, 'login'])->name('owner.login.submit');
+    Route::get('/owner/register', fn() => redirect()->route('register'))->name('owner.register');
+    Route::post('/owner/register', [\App\Http\Controllers\Auth\OwnerAuthController::class, 'register'])->name('owner.register.submit');
+});
+
+Route::post('/logout', [\App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('logout');
 
 // -------------------------------------------------------
 // SuperAdmin Routes
 // -------------------------------------------------------
 Route::prefix('superadmin')->name('superadmin.')->group(function () {
-    // Guest routes
-    Route::middleware('guest:web')->group(function () {
-        Route::get('/login', [\App\Http\Controllers\Auth\SuperAdminAuthController::class, 'showLogin'])
-            ->name('login');
-        Route::post('/login', [\App\Http\Controllers\Auth\SuperAdminAuthController::class, 'login'])
-            ->name('login.submit');
-    });
-
     // Authenticated SuperAdmin routes
     Route::middleware('auth:web')->group(function () {
-        Route::post('/logout', [\App\Http\Controllers\Auth\SuperAdminAuthController::class, 'logout'])
-            ->name('logout');
+        Route::post('/logout', [\App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('logout');
         Route::get('/dashboard', [\App\Http\Controllers\SuperAdmin\DashboardController::class, 'index'])
             ->name('dashboard');
 
@@ -96,20 +99,8 @@ Route::prefix('superadmin')->name('superadmin.')->group(function () {
 // Owner Auth Routes (Central - not tenant-scoped)
 // -------------------------------------------------------
 Route::prefix('owner')->name('owner.')->group(function () {
-    Route::middleware('guest:owner')->group(function () {
-        Route::get('/login', [\App\Http\Controllers\Auth\OwnerAuthController::class, 'showLogin'])
-            ->name('login');
-        Route::post('/login', [\App\Http\Controllers\Auth\OwnerAuthController::class, 'login'])
-            ->name('login.submit');
-        Route::get('/register', [\App\Http\Controllers\Auth\OwnerAuthController::class, 'showRegister'])
-            ->name('register');
-        Route::post('/register', [\App\Http\Controllers\Auth\OwnerAuthController::class, 'register'])
-            ->name('register.submit');
-    });
-
     Route::middleware('auth:owner')->group(function () {
-        Route::post('/logout', [\App\Http\Controllers\Auth\OwnerAuthController::class, 'logout'])
-            ->name('logout');
+        Route::post('/logout', [\App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('logout');
     });
 });
 

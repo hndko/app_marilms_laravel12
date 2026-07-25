@@ -94,6 +94,10 @@ Dokumen ini berisi panduan teknis, aturan pengodean (*coding standards*), arsite
   2. **Panduan Tombol:** Fungsi dari setiap tombol yang ada pada modul.
   3. **Logika Bisnis:** Cara kerja alur data, validasi, dan keamanan di balik layar.
 
+### F. Standar Autentikasi Terpadu Central (Unified Central Login)
+* **Single Unified Login Page:** Halaman login central (`/login`) HANYA ada SATU untuk seluruh peran di tingkat Central (SuperAdmin & Owner). Dilarang memisah halaman login per peran (seperti `/superadmin/login` atau `/owner/login`) dan dilarang meminta input/pilihan role pada form login.
+* **Autodeteksi Peran (Role Auto-Detection):** Controller login (`LoginController`) secara otomatis mencoba autentikasi ke guard `web` (SuperAdmin) terlebih dahulu, kemudian ke guard `owner` (Owner). Pengguna akan langsung diarahkan ke dashboard masing-masing (`/superadmin/dashboard` atau `/{tenant}/dashboard`) secara transparan tanpa perlu memilih role.
+
 ---
 
 ## 💻 6. Perintah Verifikasi Standar
