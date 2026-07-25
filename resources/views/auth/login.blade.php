@@ -1,11 +1,11 @@
 @extends('layouts.app-auth')
 
 @section('content')
-<div class="relative z-1 bg-white p-4 sm:p-0 min-h-screen flex items-center justify-center">
-    <div class="relative flex min-h-screen w-full flex-col justify-center sm:p-0 lg:flex-row bg-white">
+<div class="relative z-1 bg-white min-h-screen w-full flex">
+    <div class="relative flex min-h-screen w-full flex-col lg:flex-row items-stretch bg-white">
         
         <!-- Left Form Section (TailAdmin Form Styling) -->
-        <div class="flex w-full flex-1 flex-col justify-between p-6 sm:p-8 lg:w-1/2 xl:p-12 bg-white">
+        <div class="flex w-full flex-1 flex-col justify-between p-6 sm:p-8 lg:w-1/2 xl:p-12 bg-white min-h-screen">
             <!-- Back to Home -->
             <div class="w-full max-w-md mx-auto">
                 <a href="{{ route('landing') }}"
@@ -319,8 +319,8 @@
             </div>
         </div>
 
-        <!-- Right Side Panel (TailAdmin bg-brand-950 Theme Panel) -->
-        <div class="bg-brand-950 relative hidden h-full w-full items-center justify-center lg:flex lg:w-1/2 p-12 overflow-hidden">
+        <!-- Right Side Panel (TailAdmin bg-brand-950 Full Viewport Height Panel) -->
+        <div class="bg-brand-950 relative hidden min-h-screen w-full items-center justify-center lg:flex lg:w-1/2 p-12 overflow-hidden">
             <!-- TailAdmin Grid Shape Background -->
             <div class="absolute right-0 top-0 -z-1 w-full max-w-[250px] xl:max-w-[450px] opacity-40">
                 <img src="{{ asset('images/shape/grid-01.svg') }}" alt="grid shape" />
