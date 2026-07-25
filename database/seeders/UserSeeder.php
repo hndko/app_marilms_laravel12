@@ -78,16 +78,23 @@ class UserSeeder extends Seeder
         // -------------------------------------------------------
         // 3. Demo Participant User (Guard: participant)
         // -------------------------------------------------------
-        if (!ParticipantUser::where('email', 'participant@example.com')->exists()) {
-            ParticipantUser::create([
-                'tenant_id' => 'academy',
-                'name' => 'Budi Santoso (Peserta Demo)',
-                'email' => 'participant@example.com',
-                'phone' => '081234567890',
-                'password' => Hash::make('password'),
-                'status' => 'active',
-                'email_verified_at' => now(),
-            ]);
+        $tenantModel = Tenant::find('academy');
+        if ($tenantModel) {
+            tenancy()->initialize($tenantModel);
+
+            if (!ParticipantUser::where('email', 'participant@example.com')->exists()) {
+                ParticipantUser::create([
+                    'tenant_id' => 'academy',
+                    'name' => 'Budi Santoso (Peserta Demo)',
+                    'email' => 'participant@example.com',
+                    'phone' => '081234567890',
+                    'password' => Hash::make('password'),
+                    'status' => 'active',
+                    'email_verified_at' => now(),
+                ]);
+            }
+
+            tenancy()->end();
         }
     }
 }
