@@ -6,7 +6,7 @@ Dokumen ini berisi panduan teknis, aturan pengodean (*coding standards*), arsite
 
 ## 🏢 1. Ringkasan Proyek
 
-* **Nama Proyek:** MariLMS — AI-Powered Multi-Tenant Learning Management System (Single-Database Tenancy)
+* **Nama Proyek:** MariLMS — AI-Powered Multi-Tenant Learning Management System (Single-Database Tenancy) (v1.4.2)
 * **Deskripsi:** Platform LMS multi-tenant cerdas berbasis AI untuk pembuatan kuis otomatis (via LLM OpenRouter/OpenAI), pengelolaan peserta, pelaksanaan ujian real-time dengan pengawasan tab-switch & timer ketat, serta monetisasi berbasis sistem token & Payment Gateway.
 * **Tujuan:** Efisiensi pembuatan kuis dengan AI, isolasi data multi-tenant berbasis single-database (`tenant_id` + `TenantScope`), pengawasan ujian anti-kecurangan, pengelolaan token owner, dan transaksi pembayaran otomatis.
 
