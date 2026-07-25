@@ -1,171 +1,99 @@
 @extends('layouts.app-backend')
 
-@section('title', 'Beranda Ujian Peserta')
-@section('page-title', 'Beranda Ujian')
+@section('title', 'Beranda Kuis & Ujian')
+@section('page-title', 'Beranda Ujian Peserta')
 
 @section('content')
 <!-- Mandatory Information Card (Rule 5.E GEMINI.md) -->
 <div x-data="{ showInfoCard: true }" class="space-y-4">
     <div x-show="showInfoCard" x-transition 
-        class="p-5 rounded-2xl bg-gradient-to-r from-blue-50 via-indigo-50 to-slate-50 border border-blue-200/80 shadow-xs relative">
-        <button @click="showInfoCard = false" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 text-sm">
+        class="p-5 rounded-2xl bg-brand-50/60 border border-brand-200/80 shadow-theme-xs relative">
+        <button @click="showInfoCard = false" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 text-sm">
             <i class="fas fa-times"></i>
         </button>
         <div class="flex items-start gap-4">
-            <div class="w-10 h-10 rounded-xl bg-brand-500 text-white flex items-center justify-center font-bold shrink-0 shadow-md shadow-brand-500/20">
-                <i class="fas fa-user-graduate text-lg"></i>
+            <div class="w-12 h-12 rounded-xl bg-success-600 text-white flex items-center justify-center font-bold shrink-0 shadow-theme-xs">
+                <i class="fas fa-user-graduate text-xl"></i>
             </div>
-            <div class="space-y-2 text-xs text-slate-600 leading-relaxed pr-6">
-                <h4 class="font-bold text-slate-900 text-sm">
-                    Fungsi & Tata Cara Pengerjaan Ujian
+            <div class="space-y-2 text-xs text-gray-600 leading-relaxed pr-6">
+                <h4 class="font-bold text-gray-900 text-sm">
+                    Fungsi & Panduan Portal Peserta Ujian
                 </h4>
                 <p>
-                    Portal Peserta digunakan untuk mengerjakan kuis/ujian online dari lembaga Anda. Pastikan koneksi internet Anda stabil. Ujian dilengkapi dengan sistem pengawasan anti-cheat server (*authoritative timer & tab switch detection*).
+                    Portal Peserta Ujian digunakan untuk memilih kuis yang ditugaskan, memulai sesi pengerjaan ujian dengan proteksi anti-kecurangan (server timer & deteksi tab-switch), serta melihat hasil skor dan evaluasi pengerjaan.
                 </p>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-2 pt-1 font-medium text-slate-700">
-                    <div class="flex items-center gap-2"><i class="fas fa-shield-halved text-amber-600"></i> Dilarang Pindah Tab Browser</div>
-                    <div class="flex items-center gap-2"><i class="fas fa-clock text-blue-600"></i> Waktu Berjalan Otomatis</div>
-                    <div class="flex items-center gap-2"><i class="fas fa-square-poll-vertical text-emerald-600"></i> Nilai Kuis Instant</div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-2 pt-1 font-medium text-gray-700">
+                    <div class="flex items-center gap-2"><i class="fas fa-play text-brand-500"></i> Kerjakan Ujian Real-time</div>
+                    <div class="flex items-center gap-2"><i class="fas fa-shield-halved text-amber-500"></i> Proteksi Anti Cheat</div>
+                    <div class="flex items-center gap-2"><i class="fas fa-square-poll-vertical text-success-600"></i> Hasil Nilai Otomatis</div>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-<!-- Welcome Hero Card -->
-<div class="p-6 sm:p-8 rounded-2xl bg-gradient-to-r from-brand-600 via-blue-600 to-indigo-700 text-white shadow-md relative overflow-hidden">
-    <div class="relative z-10 space-y-4 max-w-2xl">
-        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/10 text-blue-100 text-xs font-bold border border-white/10">
-            <i class="fas fa-sparkles text-amber-300"></i> Portal Evaluasi Participant
+<!-- TailAdmin Welcome Card -->
+<div class="p-6 sm:p-8 rounded-2xl bg-gradient-to-r from-success-600 via-teal-600 to-brand-600 text-white shadow-theme-xs relative overflow-hidden">
+    <div class="relative z-10 space-y-2">
+        <span class="text-xs font-bold uppercase tracking-widest text-emerald-200">
+            PORTAL PESERTA UJIAN
         </span>
-        <h1 class="text-2xl sm:text-3xl font-extrabold tracking-tight">
-            Selamat Datang, {{ auth('participant')->user()->name }}!
-        </h1>
-        <p class="text-xs sm:text-sm text-blue-100/90 leading-relaxed">
-            Pilih kuis atau ujian yang tersedia di bawah ini. Kerjakan dengan jujur tanpa berpindah tab browser selama ujian berlangsung.
+        <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight">
+            Selamat Datang, {{ auth('participant')->user()->name ?? 'Peserta' }}!
+        </h2>
+        <p class="text-xs sm:text-sm text-emerald-100 max-w-2xl leading-relaxed">
+            Pilih daftar kuis di bawah ini untuk memulai sesi pengerjaan ujian. Pastikan koneksi internet Anda stabil.
         </p>
-        <div class="flex flex-wrap gap-3 pt-2">
-            <a href="#available-quizzes" 
-                class="px-4 py-2.5 rounded-xl bg-white text-brand-600 font-bold text-xs shadow-sm hover:bg-blue-50 transition-all flex items-center gap-2">
-                <i class="fas fa-play"></i>
-                <span>Lihat Kuis Tersedia</span>
-            </a>
-            <a href="{{ route('tenant.participant.history', ['tenant' => $tenant ?? request()->segment(1)]) }}" 
-                class="px-4 py-2.5 rounded-xl bg-white/10 text-white font-bold text-xs hover:bg-white/20 transition-all flex items-center gap-2 border border-white/20">
-                <i class="fas fa-history"></i>
-                <span>Riwayat & Nilai</span>
-            </a>
-        </div>
     </div>
-    <i class="fas fa-user-graduate absolute -right-6 -bottom-8 text-9xl opacity-10 pointer-events-none"></i>
+    <i class="fas fa-pen-ruler absolute -right-6 -bottom-8 text-9xl opacity-10 pointer-events-none"></i>
 </div>
 
-<!-- Available Quizzes Section -->
-<div id="available-quizzes" class="space-y-4">
-    <div class="flex items-center justify-between">
-        <div>
-            <h3 class="text-base sm:text-lg font-bold text-slate-900 flex items-center gap-2">
-                <i class="fas fa-clipboard-list text-brand-500"></i>
-                <span>Kuis & Ujian Tersedia</span>
-            </h3>
-            <p class="text-xs text-slate-500">Daftar paket evaluasi aktif yang dapat Anda kerjakan</p>
-        </div>
-        <span class="px-3 py-1 rounded-full text-xs font-bold bg-blue-50 text-blue-700 border border-blue-200">
-            {{ $quizzes->count() }} Kuis Aktif
-        </span>
-    </div>
+<!-- List Kuis Available Grid -->
+<div class="space-y-4">
+    <h3 class="text-sm font-bold text-gray-900 uppercase tracking-wider">
+        Daftar Kuis Tersedia
+    </h3>
 
-    @if($quizzes->isEmpty())
-        <div class="p-12 text-center rounded-2xl bg-white border border-slate-200 shadow-xs space-y-3">
-            <div class="w-14 h-14 rounded-2xl bg-blue-50 text-brand-500 flex items-center justify-center text-2xl font-bold mx-auto">
-                <i class="fas fa-inbox"></i>
-            </div>
-            <h4 class="font-bold text-slate-900 text-sm">Belum Ada Kuis yang Aktif</h4>
-            <p class="text-xs text-slate-500 max-w-sm mx-auto">
-                Saat ini belum ada paket ujian yang dibuka oleh pengajar. Silakan cek kembali beberapa saat lagi.
-            </p>
-        </div>
-    @else
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+    @if(count($quizzes ?? []) > 0)
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
             @foreach($quizzes as $quiz)
-                @php
-                    $user = auth('participant')->user();
-                    $remaining = $quiz->remainingAttempts($user);
-                    $hasPassed = $quiz->hasUserPassed($user);
-                    $inProgressAttempt = $quiz->attempts()->where('user_id', $user->id)->inProgress()->first();
-                @endphp
-
-                <div class="p-5 rounded-2xl bg-white border border-slate-200 shadow-xs flex flex-col justify-between space-y-4 hover:border-blue-300 transition-all">
-                    <div class="space-y-3">
-                        <div class="flex items-center justify-between gap-2">
-                            <span class="px-2.5 py-1 rounded-md text-[10px] font-bold bg-slate-100 text-slate-600 border border-slate-200 uppercase">
-                                {{ $quiz->category ?: 'Umum' }}
+                <div class="rounded-2xl border border-gray-200 bg-white p-5 md:p-6 shadow-theme-xs hover:border-brand-300 transition space-y-4 flex flex-col justify-between">
+                    <div class="space-y-2">
+                        <div class="flex items-center justify-between">
+                            <span class="px-2.5 py-1 rounded-full text-[10px] font-bold bg-brand-50 text-brand-600 border border-brand-200">
+                                {{ $quiz->duration_minutes }} Menit
                             </span>
-
-                            @if($inProgressAttempt)
-                                <span class="px-2.5 py-1 rounded-md text-[10px] font-bold bg-amber-50 text-amber-700 border border-amber-200 flex items-center gap-1">
-                                    <i class="fas fa-spinner fa-spin"></i> Mengerjakan
-                                </span>
-                            @elseif($hasPassed)
-                                <span class="px-2.5 py-1 rounded-md text-[10px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200 flex items-center gap-1">
-                                    <i class="fas fa-check-circle"></i> Lulus
-                                </span>
-                            @elseif($remaining !== null && $remaining <= 0)
-                                <span class="px-2.5 py-1 rounded-md text-[10px] font-bold bg-red-50 text-red-700 border border-red-200 flex items-center gap-1">
-                                    <i class="fas fa-lock"></i> Habis Kesempatan
-                                </span>
-                            @else
-                                <span class="px-2.5 py-1 rounded-md text-[10px] font-bold bg-blue-50 text-blue-700 border border-blue-200 flex items-center gap-1">
-                                    <i class="fas fa-play"></i> Tersedia
-                                </span>
-                            @endif
+                            <span class="text-xs font-semibold text-gray-500">
+                                Passing: {{ $quiz->passing_score }}%
+                            </span>
                         </div>
-
-                        <h4 class="text-base font-bold text-slate-900 line-clamp-1">
+                        <h4 class="font-bold text-gray-900 text-base line-clamp-2">
                             {{ $quiz->title }}
                         </h4>
-
-                        <p class="text-xs text-slate-500 line-clamp-2 leading-relaxed h-8">
-                            {{ $quiz->description ?: 'Tidak ada deskripsi khusus untuk kuis ini.' }}
+                        <p class="text-xs text-gray-500 line-clamp-3 leading-relaxed">
+                            {{ $quiz->description ?? 'Kuis evaluasi ujian pembelajaran.' }}
                         </p>
-
-                        <div class="pt-3 border-t border-slate-100 grid grid-cols-3 gap-2 text-center text-xs">
-                            <div class="p-2 rounded-lg bg-slate-50">
-                                <span class="text-[10px] text-slate-400 block font-semibold">SOAL</span>
-                                <span class="font-bold text-slate-800">{{ $quiz->questions_count }}</span>
-                            </div>
-                            <div class="p-2 rounded-lg bg-slate-50">
-                                <span class="text-[10px] text-slate-400 block font-semibold">DURASI</span>
-                                <span class="font-bold text-slate-800">{{ $quiz->time_limit }} m</span>
-                            </div>
-                            <div class="p-2 rounded-lg bg-slate-50">
-                                <span class="text-[10px] text-slate-400 block font-semibold">KKM</span>
-                                <span class="font-bold text-emerald-600">{{ $quiz->passing_score }}%</span>
-                            </div>
-                        </div>
                     </div>
 
-                    <div class="pt-2">
-                        @if($inProgressAttempt)
-                            <a href="{{ route('tenant.participant.quiz.show', ['tenant' => $tenant ?? request()->segment(1), 'quiz' => $quiz->id]) }}" 
-                                class="w-full py-2.5 px-4 rounded-xl bg-amber-500 hover:bg-amber-600 text-white font-bold text-xs shadow-xs transition-all flex items-center justify-center gap-2">
-                                <i class="fas fa-play-circle"></i>
-                                <span>Lanjutkan Kuis</span>
-                            </a>
-                        @elseif($remaining !== null && $remaining <= 0)
-                            <button disabled class="w-full py-2.5 px-4 rounded-xl bg-slate-100 text-slate-400 font-bold text-xs cursor-not-allowed">
-                                Kesempatan Mengerjakan Habis
-                            </button>
-                        @else
-                            <a href="{{ route('tenant.participant.quiz.show', ['tenant' => $tenant ?? request()->segment(1), 'quiz' => $quiz->id]) }}" 
-                                class="w-full py-2.5 px-4 rounded-xl bg-brand-500 hover:bg-brand-600 text-white font-bold text-xs shadow-xs transition-all flex items-center justify-center gap-2">
-                                <i class="fas fa-play"></i>
-                                <span>Mulai Kerjakan Ujian</span>
-                            </a>
-                        @endif
+                    <div class="pt-3 border-t border-gray-100 flex items-center justify-between">
+                        <span class="text-xs font-semibold text-gray-600">
+                            <i class="fas fa-list-check text-brand-500 mr-1"></i> {{ $quiz->questions_count ?? count($quiz->questions ?? []) }} Soal
+                        </span>
+                        <a href="{{ route('tenant.participant.quiz.show', ['tenant' => tenant('slug'), 'quiz' => $quiz->id]) }}" 
+                            class="px-3.5 py-2 rounded-xl bg-brand-500 hover:bg-brand-600 text-white font-bold text-xs shadow-theme-xs transition flex items-center gap-1.5">
+                            <span>Mulai Ujian</span>
+                            <i class="fas fa-arrow-right text-[10px]"></i>
+                        </a>
                     </div>
                 </div>
             @endforeach
+        </div>
+    @else
+        <div class="p-8 rounded-2xl border border-dashed border-gray-300 bg-white text-center space-y-3">
+            <div class="w-12 h-12 rounded-xl bg-gray-100 text-gray-400 mx-auto flex items-center justify-center text-xl">
+                <i class="fas fa-folder-open"></i>
+            </div>
+            <p class="text-xs font-semibold text-gray-500">Belum ada kuis yang tersedia untuk Anda saat ini.</p>
         </div>
     @endif
 </div>
