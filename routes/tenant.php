@@ -76,11 +76,13 @@ Route::middleware([
         Route::post('/tokens/simulate/{order}', [\App\Http\Controllers\Modules\Owner\TokenController::class, 'processSimulation'])
             ->name('tokens.simulate.process');
 
-        // Settings
+        // Settings & WhatsApp
         Route::get('/settings', [\App\Http\Controllers\Modules\Owner\SettingsController::class, 'index'])
             ->name('settings');
         Route::put('/settings', [\App\Http\Controllers\Modules\Owner\SettingsController::class, 'update'])
             ->name('settings.update');
+        Route::get('/whatsapp', [\App\Http\Controllers\Modules\Owner\SettingsController::class, 'index'])
+            ->name('whatsapp');
     });
 
     // -------------------------------------------------------

@@ -106,8 +106,8 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="{{ route('superadmin.llm-providers.index') }}"
-                                    class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all {{ request()->routeIs('superadmin.llm-providers.*') ? 'bg-brand-500 text-white font-semibold shadow-sm' : 'text-slate-300 hover:bg-slate-800 hover:text-white' }}">
+                                <a href="{{ route('superadmin.llm.index') }}"
+                                    class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all {{ request()->routeIs('superadmin.llm.*') ? 'bg-brand-500 text-white font-semibold shadow-sm' : 'text-slate-300 hover:bg-slate-800 hover:text-white' }}">
                                     <i class="fas fa-robot w-5 text-center text-base"></i>
                                     <span>Provider AI LLM</span>
                                 </a>
