@@ -29,13 +29,8 @@
 
             <!-- Filter Form -->
             <form method="GET" action="{{ route('tenant.owner.dashboard', ['tenant' => $tenant]) }}" 
-                x-data="{ 
-                    period: '{{ $period }}',
-                    submitForm() {
-                        this.$el.submit();
-                    }
-                }" class="flex items-center gap-2">
-                <select name="period" id="period" x-model="period" @change="submitForm()" 
+                x-data="{ period: '{{ $period }}' }" class="flex items-center gap-2">
+                <select name="period" id="period" x-model="period" @change="$el.closest('form').submit()" 
                     class="px-4 py-2.5 rounded-xl bg-gray-50/50 border border-gray-200 text-xs font-bold text-gray-800 shadow-2xs focus:outline-none focus:border-brand-500 focus:bg-white transition">
                     <option value="hari_ini">Hari Ini</option>
                     <option value="7_hari">7 Hari Terakhir</option>
