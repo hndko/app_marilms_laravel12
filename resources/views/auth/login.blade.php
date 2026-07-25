@@ -15,6 +15,7 @@
             Masuk — MariLMS Platform
         @endif
     </title>
+    <link rel="icon" type="image/png" href="{{ asset('favicon.png') }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -75,10 +76,8 @@
         }
         .brand-icon {
             width: 48px; height: 48px;
-            background: linear-gradient(135deg, var(--accent), var(--primary));
             border-radius: 14px;
             display: flex; align-items: center; justify-content: center;
-            font-size: 22px; font-weight: 800; color: white;
             box-shadow: 0 8px 20px rgba(99,102,241,0.35);
         }
         .brand-text h1 { font-size: 22px; font-weight: 800; color: white; letter-spacing: -0.5px; }
@@ -148,7 +147,7 @@
 <body>
     <div class="auth-card">
         <div class="brand-logo">
-            <div class="brand-icon">M</div>
+            <img src="{{ asset('images/logo.png') }}" alt="MariLMS Logo" style="width: 48px; height: 48px; border-radius: 14px; object-fit: cover; box-shadow: 0 8px 20px rgba(99,102,241,0.35);">
             <div class="brand-text">
                 <h1>{{ $tenantModel->name ?? 'MariLMS' }}</h1>
                 <span>

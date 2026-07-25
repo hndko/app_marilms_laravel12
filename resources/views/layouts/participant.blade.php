@@ -6,6 +6,9 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title', 'Portal Peserta') — MariLMS AI</title>
     
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="{{ asset('favicon.png') }}">
+    
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -24,9 +27,7 @@
     <header style="background: rgba(22,25,35,0.95); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 1000; padding: 0 32px; height: 72px; display: flex; align-items: center; justify-content: space-between;">
         <div style="display: flex; align-items: center; gap: 32px;">
             <a href="{{ route('tenant.participant.dashboard', ['tenant' => $tenant ?? request()->segment(1)]) }}" style="display: flex; align-items: center; gap: 12px; text-decoration: none;">
-                <div style="width: 40px; height: 40px; border-radius: 12px; background: linear-gradient(135deg, var(--accent), var(--primary)); display: flex; align-items: center; justify-content: center; font-size: 20px; color: white; font-weight: 800; box-shadow: 0 4px 15px rgba(6,182,212,0.4);">
-                    <i class="fas fa-graduation-cap"></i>
-                </div>
+                <img src="{{ asset('images/logo.png') }}" alt="MariLMS Logo" style="width: 40px; height: 40px; border-radius: 12px; object-fit: cover; box-shadow: 0 4px 15px rgba(6,182,212,0.4);">
                 <div>
                     <span style="font-family: 'Outfit', sans-serif; font-size: 18px; font-weight: 800; color: white; letter-spacing: -0.5px; display: block;">
                         {{ strtoupper($tenant ?? request()->segment(1)) }} <span style="color: var(--accent); font-weight: 500;">EXAM</span>

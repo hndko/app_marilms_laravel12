@@ -604,6 +604,7 @@
         ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
         ::-webkit-scrollbar-thumb:hover { background: var(--border-light); }
     </style>
+    <link rel="icon" type="image/png" href="{{ asset('favicon.png') }}">
     @livewireStyles
     @yield('head')
 </head>
@@ -611,10 +612,10 @@
     <!-- Sidebar -->
     <aside class="sidebar" id="sidebar">
         <div class="sidebar-brand">
-            <div class="sidebar-brand-icon">M</div>
+            <img src="{{ asset('images/logo.png') }}" alt="MariLMS Logo" style="width: 32px; height: 32px; border-radius: 8px; object-fit: cover;">
             <div class="sidebar-brand-text">
                 <h1>MariLMS</h1>
-                <span>Super Admin &bull; v{{ config('app.version', '1.4.0') }}</span>
+                <span>Super Admin &bull; v{{ config('app.version', '1.4.1') }}</span>
             </div>
         </div>
 

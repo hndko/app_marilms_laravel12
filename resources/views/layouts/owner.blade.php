@@ -327,6 +327,7 @@
             .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
         }
     </style>
+    <link rel="icon" type="image/png" href="{{ asset('favicon.png') }}">
     @yield('head')
 </head>
 <body>
@@ -340,10 +341,10 @@
     <!-- Sidebar -->
     <aside class="sidebar" id="sidebar">
         <div class="sidebar-brand">
-            <div class="sidebar-brand-icon">M</div>
+            <img src="{{ asset('images/logo.png') }}" alt="MariLMS Logo" style="width: 32px; height: 32px; border-radius: 8px; object-fit: cover;">
             <div class="sidebar-brand-text">
                 <h1>{{ $owner?->organization_name ?? 'MariLMS' }}</h1>
-                <span>Owner Panel &bull; v{{ config('app.version', '1.4.0') }}</span>
+                <span>Owner Panel &bull; v{{ config('app.version', '1.4.1') }}</span>
             </div>
         </div>
 

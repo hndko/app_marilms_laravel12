@@ -25,16 +25,14 @@ Route::middleware([
     // -------------------------------------------------------
     // Participant Auth Routes (within tenant)
     // -------------------------------------------------------
-    Route::middleware('guest:participant')->group(function () {
-        Route::get('/login', [\App\Http\Controllers\Auth\AuthController::class, 'showLogin'])
-            ->name('tenant.login');
-        Route::post('/login', [\App\Http\Controllers\Auth\AuthController::class, 'login'])
-            ->name('tenant.login.submit');
-        Route::get('/register/{token}', [\App\Http\Controllers\Auth\AuthController::class, 'showRegister'])
-            ->name('tenant.register');
-        Route::post('/register/{token}', [\App\Http\Controllers\Auth\AuthController::class, 'register'])
-            ->name('tenant.register.submit');
-    });
+    Route::get('/login', [\App\Http\Controllers\Auth\AuthController::class, 'showLogin'])
+        ->name('tenant.login');
+    Route::post('/login', [\App\Http\Controllers\Auth\AuthController::class, 'login'])
+        ->name('tenant.login.submit');
+    Route::get('/register/{token}', [\App\Http\Controllers\Auth\AuthController::class, 'showRegister'])
+        ->name('tenant.register');
+    Route::post('/register/{token}', [\App\Http\Controllers\Auth\AuthController::class, 'register'])
+        ->name('tenant.register.submit');
 
     Route::middleware('auth:participant')->group(function () {
         Route::post('/logout', [\App\Http\Controllers\Auth\AuthController::class, 'logout'])

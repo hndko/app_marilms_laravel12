@@ -8,6 +8,9 @@
     <meta name="description"
         content="Platform Learning Management System (LMS) SaaS modern dengan pembuatan soal otomatis berbantuan AI, proteksi anti-cheat real-time, dan analitik kelulusan.">
 
+    <!-- Favicon & Logo -->
+    <link rel="icon" type="image/png" href="{{ asset('favicon.png') }}">
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -27,9 +30,7 @@
             <div class="flex items-center justify-between h-16">
                 <!-- Logo -->
                 <a href="{{ route('landing') }}" class="flex items-center gap-2.5">
-                    <div
-                        class="w-8 h-8 rounded-lg bg-primary-600 flex items-center justify-center text-white font-display font-bold text-sm">
-                        M</div>
+                    <img src="{{ asset('images/logo.png') }}" alt="MariLMS Logo" class="w-8 h-8 rounded-lg object-cover shadow-sm">
                     <span class="text-lg font-display font-bold text-slate-900 tracking-tight">MariLMS
                         <span class="text-primary-600">AI</span></span>
                 </a>
