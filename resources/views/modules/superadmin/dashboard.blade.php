@@ -1,21 +1,15 @@
 @extends('layouts.app-backend')
 
 @section('title', 'Dashboard SuperAdmin')
-@section('page-title', 'Dashboard SuperAdmin Central & Platform Analytics')
 
 @section('content')
-<!-- Global Period Filter Header -->
-<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-4 rounded-2xl bg-white border border-gray-200 shadow-theme-xs">
-    <div class="flex items-center gap-3">
-        <div class="w-10 h-10 rounded-xl bg-purple-50 text-purple-600 flex items-center justify-center font-bold">
-            <i class="fas fa-chart-line text-lg"></i>
-        </div>
-        <div>
-            <h3 class="text-sm font-bold text-gray-900">Analisis Platform & Transaksi Token</h3>
-            <p class="text-xs text-gray-500">Monitoring platform MariLMS AI central, pendapatan token sales, dan status gateway.</p>
-        </div>
+<!-- TailAdmin Top Header Page Title & Global Period Filter -->
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+    <div>
+        <h2 class="text-xl font-bold text-gray-800 tracking-tight">Dashboard SuperAdmin Central</h2>
+        <p class="text-xs text-gray-500">Monitoring platform MariLMS AI central, pendapatan token sales, dan status gateway.</p>
     </div>
-    
+
     <!-- Filter Form -->
     <form method="GET" action="{{ route('superadmin.dashboard') }}" 
         x-data="{ 
@@ -26,7 +20,7 @@
         }" class="flex items-center gap-2">
         <label for="period" class="text-xs font-bold text-gray-600 whitespace-nowrap">Filter Periode:</label>
         <select name="period" id="period" x-model="period" @change="submitForm()" 
-            class="px-3.5 py-2 pr-8 rounded-xl bg-gray-50 border border-gray-200 text-xs font-bold text-gray-800 focus:outline-none focus:border-purple-600 transition">
+            class="px-3.5 py-2 pr-8 rounded-xl bg-white border border-gray-200 text-xs font-bold text-gray-800 shadow-theme-xs focus:outline-none focus:border-purple-600 transition">
             <option value="hari_ini">Hari Ini</option>
             <option value="7_hari">7 Hari Terakhir</option>
             <option value="bulan_ini">Bulan Ini</option>
@@ -64,71 +58,71 @@
     </div>
 </div>
 
-<!-- TailAdmin Metrics Grid -->
+<!-- TailAdmin Metrics Grid (Exact TailAdmin Card Structure: Icon on top, flex items-end below) -->
 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
     <!-- Total Owner -->
-    <div class="rounded-2xl border border-gray-200 bg-white p-5 md:p-6 shadow-theme-xs space-y-4">
-        <div class="flex items-center justify-between">
-            <div class="w-12 h-12 rounded-xl bg-purple-50 text-purple-600 flex items-center justify-center text-xl font-bold">
-                <i class="fas fa-building"></i>
+    <div class="rounded-2xl border border-gray-200 bg-white p-5 md:p-6 shadow-theme-xs">
+        <div class="flex items-center justify-center w-12 h-12 bg-gray-100 rounded-xl text-gray-800">
+            <i class="fas fa-building text-xl"></i>
+        </div>
+        <div class="flex items-end justify-between mt-5">
+            <div>
+                <span class="text-sm text-gray-500 font-medium">Owner Lembaga</span>
+                <h4 class="mt-2 font-bold text-gray-800 text-title-sm">{{ number_format($data['stats']['total_owners']) }}</h4>
             </div>
-            <span class="inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 text-xs font-bold {{ $data['stats']['owner_growth'] >= 0 ? 'bg-success-50 text-success-600' : 'bg-error-50 text-error-600' }}">
+            <span class="flex items-center gap-1 rounded-full px-2.5 py-0.5 text-xs font-bold {{ $data['stats']['owner_growth'] >= 0 ? 'bg-success-50 text-success-600' : 'bg-error-50 text-error-600' }}">
                 <i class="fas {{ $data['stats']['owner_growth'] >= 0 ? 'fa-arrow-up' : 'fa-arrow-down' }}"></i>
                 {{ abs($data['stats']['owner_growth']) }}%
             </span>
         </div>
-        <div>
-            <span class="text-xs uppercase font-bold tracking-wider text-gray-500">TOTAL OWNER LEMBAGA</span>
-            <h4 class="mt-1 font-bold text-gray-900 text-title-sm">{{ number_format($data['stats']['total_owners']) }}</h4>
-        </div>
     </div>
 
     <!-- Total Revenue -->
-    <div class="rounded-2xl border border-emerald-200 bg-gradient-to-br from-white to-emerald-50/30 p-5 md:p-6 shadow-theme-xs space-y-4">
-        <div class="flex items-center justify-between">
-            <div class="w-12 h-12 rounded-xl bg-emerald-100 text-emerald-600 flex items-center justify-center text-xl font-bold">
-                <i class="fas fa-money-bill-wave"></i>
+    <div class="rounded-2xl border border-emerald-200 bg-gradient-to-br from-white to-emerald-50/20 p-5 md:p-6 shadow-theme-xs">
+        <div class="flex items-center justify-center w-12 h-12 bg-emerald-100 rounded-xl text-emerald-600">
+            <i class="fas fa-money-bill-wave text-xl"></i>
+        </div>
+        <div class="flex items-end justify-between mt-5">
+            <div>
+                <span class="text-sm text-gray-500 font-medium">Pendapatan Token Sales</span>
+                <h4 class="mt-2 font-bold text-gray-800 text-title-sm">Rp {{ number_format($data['stats']['total_revenue'], 0, ',', '.') }}</h4>
             </div>
-            <span class="inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 text-xs font-bold {{ $data['stats']['revenue_growth'] >= 0 ? 'bg-emerald-50 text-emerald-700' : 'bg-error-50 text-error-600' }}">
+            <span class="flex items-center gap-1 rounded-full px-2.5 py-0.5 text-xs font-bold {{ $data['stats']['revenue_growth'] >= 0 ? 'bg-emerald-50 text-emerald-700' : 'bg-error-50 text-error-600' }}">
                 <i class="fas {{ $data['stats']['revenue_growth'] >= 0 ? 'fa-arrow-up' : 'fa-arrow-down' }}"></i>
                 {{ abs($data['stats']['revenue_growth']) }}%
             </span>
         </div>
-        <div>
-            <span class="text-xs uppercase font-bold tracking-wider text-gray-500">PENDAPATAN SALES TOKEN</span>
-            <h4 class="mt-1 font-bold text-gray-900 text-title-sm">Rp {{ number_format($data['stats']['total_revenue'], 0, ',', '.') }}</h4>
-        </div>
     </div>
 
     <!-- Total Kuis Generated -->
-    <div class="rounded-2xl border border-gray-200 bg-white p-5 md:p-6 shadow-theme-xs space-y-4">
-        <div class="flex items-center justify-between">
-            <div class="w-12 h-12 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center text-xl font-bold">
-                <i class="fas fa-magic"></i>
-            </div>
-            <span class="inline-flex items-center gap-1 rounded-full bg-indigo-50 py-0.5 px-2.5 text-xs font-medium text-indigo-600">
-                <i class="fas fa-robot"></i> AI Generated
-            </span>
+    <div class="rounded-2xl border border-gray-200 bg-white p-5 md:p-6 shadow-theme-xs">
+        <div class="flex items-center justify-center w-12 h-12 bg-gray-100 rounded-xl text-gray-800">
+            <i class="fas fa-magic text-xl"></i>
         </div>
-        <div>
-            <span class="text-xs uppercase font-bold tracking-wider text-gray-500">KUIS AI DI-GENERATE</span>
-            <h4 class="mt-1 font-bold text-gray-900 text-title-sm">{{ number_format($data['stats']['total_quizzes']) }}</h4>
+        <div class="flex items-end justify-between mt-5">
+            <div>
+                <span class="text-sm text-gray-500 font-medium">Kuis AI Generated</span>
+                <h4 class="mt-2 font-bold text-gray-800 text-title-sm">{{ number_format($data['stats']['total_quizzes']) }}</h4>
+            </div>
+            <span class="flex items-center gap-1 rounded-full bg-indigo-50 py-0.5 px-2.5 text-xs font-bold text-indigo-600">
+                AI Enabled
+            </span>
         </div>
     </div>
 
     <!-- Total Token Sold/Consumed -->
-    <div class="rounded-2xl border border-gray-200 bg-white p-5 md:p-6 shadow-theme-xs space-y-4">
-        <div class="flex items-center justify-between">
-            <div class="w-12 h-12 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center text-xl font-bold">
-                <i class="fas fa-coins"></i>
-            </div>
-            <span class="inline-flex items-center gap-1 rounded-full bg-amber-50 py-0.5 px-2.5 text-xs font-bold text-amber-700">
-                Saldo Terjual
-            </span>
+    <div class="rounded-2xl border border-gray-200 bg-white p-5 md:p-6 shadow-theme-xs">
+        <div class="flex items-center justify-center w-12 h-12 bg-gray-100 rounded-xl text-gray-800">
+            <i class="fas fa-coins text-xl"></i>
         </div>
-        <div>
-            <span class="text-xs uppercase font-bold tracking-wider text-gray-500">TOKEN TERJUAL / TERPAKAI</span>
-            <h4 class="mt-1 font-bold text-gray-900 text-title-sm">{{ number_format($data['stats']['total_tokens_sold']) }} <span class="text-xs font-normal text-gray-500">({{ number_format($data['stats']['total_tokens_consumed']) }} terpakai)</span></h4>
+        <div class="flex items-end justify-between mt-5">
+            <div>
+                <span class="text-sm text-gray-500 font-medium">Token Terjual</span>
+                <h4 class="mt-2 font-bold text-gray-800 text-title-sm">{{ number_format($data['stats']['total_tokens_sold']) }}</h4>
+            </div>
+            <span class="flex items-center gap-1 rounded-full bg-amber-50 py-0.5 px-2.5 text-xs font-bold text-amber-700">
+                {{ number_format($data['stats']['total_tokens_consumed']) }} terpakai
+            </span>
         </div>
     </div>
 </div>

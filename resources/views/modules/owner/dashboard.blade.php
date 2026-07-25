@@ -1,22 +1,16 @@
 @extends('layouts.app-backend')
 
 @section('title', 'Dashboard Owner')
-@section('page-title', 'Dashboard Owner & Analytical Center')
 
 @section('content')
-<!-- Global Period Filter Header -->
-<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-4 rounded-2xl bg-white border border-gray-200 shadow-theme-xs">
-    <div class="flex items-center gap-3">
-        <div class="w-10 h-10 rounded-xl bg-brand-50 text-brand-500 flex items-center justify-center font-bold">
-            <i class="fas fa-chart-pie text-lg"></i>
-        </div>
-        <div>
-            <h3 class="text-sm font-bold text-gray-900">Analisis Performa Ujian & AI</h3>
-            <p class="text-xs text-gray-500">Monitoring real-time aktivitas peserta, kuis, dan penggunaan saldo token AI.</p>
-        </div>
+<!-- TailAdmin Top Header Page Title & Global Period Filter -->
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+    <div>
+        <h2 class="text-xl font-bold text-gray-800 tracking-tight">Dashboard Owner & Analytical Center</h2>
+        <p class="text-xs text-gray-500">Monitoring real-time aktivitas kuis, peserta, dan saldo token AI.</p>
     </div>
-    
-    <!-- Filter Form with Debounce -->
+
+    <!-- Filter Form -->
     <form method="GET" action="{{ route('tenant.owner.dashboard', ['tenant' => $tenant]) }}" 
         x-data="{ 
             period: '{{ $period }}',
@@ -25,16 +19,14 @@
             }
         }" class="flex items-center gap-2">
         <label for="period" class="text-xs font-bold text-gray-600 whitespace-nowrap">Filter Periode:</label>
-        <div class="relative">
-            <select name="period" id="period" x-model="period" @change="submitForm()" 
-                class="px-3.5 py-2 pr-8 rounded-xl bg-gray-50 border border-gray-200 text-xs font-bold text-gray-800 focus:outline-none focus:border-brand-500 transition">
-                <option value="hari_ini">Hari Ini</option>
-                <option value="7_hari">7 Hari Terakhir</option>
-                <option value="bulan_ini">Bulan Ini</option>
-                <option value="tahun_ini">Tahun Ini</option>
-                <option value="semua">Semua Waktu</option>
-            </select>
-        </div>
+        <select name="period" id="period" x-model="period" @change="submitForm()" 
+            class="px-3.5 py-2 pr-8 rounded-xl bg-white border border-gray-200 text-xs font-bold text-gray-800 shadow-theme-xs focus:outline-none focus:border-brand-500 transition">
+            <option value="hari_ini">Hari Ini</option>
+            <option value="7_hari">7 Hari Terakhir</option>
+            <option value="bulan_ini">Bulan Ini</option>
+            <option value="tahun_ini">Tahun Ini</option>
+            <option value="semua">Semua Waktu</option>
+        </select>
     </form>
 </div>
 
@@ -97,72 +89,72 @@
     <i class="fas fa-graduation-cap absolute -right-6 -bottom-8 text-9xl opacity-10 pointer-events-none"></i>
 </div>
 
-<!-- Summary Metrics Grid with Growth % -->
+<!-- TailAdmin Metrics Grid (Exact TailAdmin Card Structure: Icon on top, flex items-end below) -->
 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
     <!-- Total Kuis -->
-    <div class="rounded-2xl border border-gray-200 bg-white p-5 md:p-6 shadow-theme-xs space-y-4">
-        <div class="flex items-center justify-between">
-            <div class="w-12 h-12 rounded-xl bg-brand-50 text-brand-500 flex items-center justify-center text-xl font-bold">
-                <i class="fas fa-question-circle"></i>
+    <div class="rounded-2xl border border-gray-200 bg-white p-5 md:p-6 shadow-theme-xs">
+        <div class="flex items-center justify-center w-12 h-12 bg-gray-100 rounded-xl text-gray-800">
+            <i class="fas fa-question text-xl"></i>
+        </div>
+        <div class="flex items-end justify-between mt-5">
+            <div>
+                <span class="text-sm text-gray-500 font-medium">Total Kuis</span>
+                <h4 class="mt-2 font-bold text-gray-800 text-title-sm">{{ number_format($data['stats']['total_quizzes']) }}</h4>
             </div>
-            <span class="inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 text-xs font-bold {{ $data['stats']['quiz_growth'] >= 0 ? 'bg-success-50 text-success-600' : 'bg-error-50 text-error-600' }}">
+            <span class="flex items-center gap-1 rounded-full px-2.5 py-0.5 text-xs font-bold {{ $data['stats']['quiz_growth'] >= 0 ? 'bg-success-50 text-success-600' : 'bg-error-50 text-error-600' }}">
                 <i class="fas {{ $data['stats']['quiz_growth'] >= 0 ? 'fa-arrow-up' : 'fa-arrow-down' }}"></i>
                 {{ abs($data['stats']['quiz_growth']) }}%
             </span>
         </div>
-        <div>
-            <span class="text-xs uppercase font-bold tracking-wider text-gray-500">TOTAL KUIS</span>
-            <h4 class="mt-1 font-bold text-gray-900 text-title-sm">{{ number_format($data['stats']['total_quizzes']) }}</h4>
-        </div>
     </div>
 
     <!-- Total Peserta -->
-    <div class="rounded-2xl border border-gray-200 bg-white p-5 md:p-6 shadow-theme-xs space-y-4">
-        <div class="flex items-center justify-between">
-            <div class="w-12 h-12 rounded-xl bg-cyan-50 text-cyan-600 flex items-center justify-center text-xl font-bold">
-                <i class="fas fa-users"></i>
+    <div class="rounded-2xl border border-gray-200 bg-white p-5 md:p-6 shadow-theme-xs">
+        <div class="flex items-center justify-center w-12 h-12 bg-gray-100 rounded-xl text-gray-800">
+            <i class="fas fa-users text-xl"></i>
+        </div>
+        <div class="flex items-end justify-between mt-5">
+            <div>
+                <span class="text-sm text-gray-500 font-medium">Peserta Terdaftar</span>
+                <h4 class="mt-2 font-bold text-gray-800 text-title-sm">{{ number_format($data['stats']['total_participants']) }}</h4>
             </div>
-            <span class="inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 text-xs font-bold {{ $data['stats']['participant_growth'] >= 0 ? 'bg-success-50 text-success-600' : 'bg-error-50 text-error-600' }}">
+            <span class="flex items-center gap-1 rounded-full px-2.5 py-0.5 text-xs font-bold {{ $data['stats']['participant_growth'] >= 0 ? 'bg-success-50 text-success-600' : 'bg-error-50 text-error-600' }}">
                 <i class="fas {{ $data['stats']['participant_growth'] >= 0 ? 'fa-arrow-up' : 'fa-arrow-down' }}"></i>
                 {{ abs($data['stats']['participant_growth']) }}%
             </span>
         </div>
-        <div>
-            <span class="text-xs uppercase font-bold tracking-wider text-gray-500">PESERTA TERDAFTAR</span>
-            <h4 class="mt-1 font-bold text-gray-900 text-title-sm">{{ number_format($data['stats']['total_participants']) }}</h4>
-        </div>
     </div>
 
-    <!-- Total Ujian -->
-    <div class="rounded-2xl border border-gray-200 bg-white p-5 md:p-6 shadow-theme-xs space-y-4">
-        <div class="flex items-center justify-between">
-            <div class="w-12 h-12 rounded-xl bg-success-50 text-success-600 flex items-center justify-center text-xl font-bold">
-                <i class="fas fa-stopwatch"></i>
+    <!-- Sesi Ujian -->
+    <div class="rounded-2xl border border-gray-200 bg-white p-5 md:p-6 shadow-theme-xs">
+        <div class="flex items-center justify-center w-12 h-12 bg-gray-100 rounded-xl text-gray-800">
+            <i class="fas fa-stopwatch text-xl"></i>
+        </div>
+        <div class="flex items-end justify-between mt-5">
+            <div>
+                <span class="text-sm text-gray-500 font-medium">Sesi Ujian Dikerjakan</span>
+                <h4 class="mt-2 font-bold text-gray-800 text-title-sm">{{ number_format($data['stats']['total_attempts']) }}</h4>
             </div>
-            <span class="inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 text-xs font-bold {{ $data['stats']['attempt_growth'] >= 0 ? 'bg-success-50 text-success-600' : 'bg-error-50 text-error-600' }}">
+            <span class="flex items-center gap-1 rounded-full px-2.5 py-0.5 text-xs font-bold {{ $data['stats']['attempt_growth'] >= 0 ? 'bg-success-50 text-success-600' : 'bg-error-50 text-error-600' }}">
                 <i class="fas {{ $data['stats']['attempt_growth'] >= 0 ? 'fa-arrow-up' : 'fa-arrow-down' }}"></i>
                 {{ abs($data['stats']['attempt_growth']) }}%
             </span>
         </div>
-        <div>
-            <span class="text-xs uppercase font-bold tracking-wider text-gray-500">SESI UJIAN DIKERJAKAN</span>
-            <h4 class="mt-1 font-bold text-gray-900 text-title-sm">{{ number_format($data['stats']['total_attempts']) }}</h4>
-        </div>
     </div>
 
-    <!-- Rata-rata Skor & Anti-Cheat Flag -->
-    <div class="rounded-2xl border border-amber-200 bg-gradient-to-br from-white to-amber-50/30 p-5 md:p-6 shadow-theme-xs space-y-4">
-        <div class="flex items-center justify-between">
-            <div class="w-12 h-12 rounded-xl bg-amber-100 text-amber-600 flex items-center justify-center text-xl font-bold">
-                <i class="fas fa-shield-halved"></i>
+    <!-- Rata-rata Skor -->
+    <div class="rounded-2xl border border-amber-200 bg-gradient-to-br from-white to-amber-50/20 p-5 md:p-6 shadow-theme-xs">
+        <div class="flex items-center justify-center w-12 h-12 bg-amber-100 rounded-xl text-amber-600">
+            <i class="fas fa-shield-halved text-xl"></i>
+        </div>
+        <div class="flex items-end justify-between mt-5">
+            <div>
+                <span class="text-sm text-gray-500 font-medium">Rata-rata Skor</span>
+                <h4 class="mt-2 font-bold text-gray-800 text-title-sm">{{ $data['stats']['avg_score'] }}% <span class="text-xs text-amber-600 font-normal">({{ $data['stats']['flagged_count'] }} flag)</span></h4>
             </div>
-            <span class="inline-flex items-center gap-1 rounded-full bg-amber-50 py-0.5 px-2.5 text-xs font-bold text-amber-700 border border-amber-200">
+            <span class="flex items-center gap-1 rounded-full bg-amber-50 px-2.5 py-0.5 text-xs font-bold text-amber-700 border border-amber-200">
                 Flag: {{ $data['stats']['flag_rate'] }}%
             </span>
-        </div>
-        <div>
-            <span class="text-xs uppercase font-bold tracking-wider text-gray-500">RATA-RATA SKOR & CHEAT FLAG</span>
-            <h4 class="mt-1 font-bold text-gray-900 text-title-sm">{{ $data['stats']['avg_score'] }}% <span class="text-xs text-amber-600 font-normal">({{ $data['stats']['flagged_count'] }} kecurangan)</span></h4>
         </div>
     </div>
 </div>

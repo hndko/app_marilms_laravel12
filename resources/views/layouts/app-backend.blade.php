@@ -80,10 +80,10 @@
         </div>
 
         <!-- ============================================================ -->
-        <!-- MARILMS AI SIDEBAR COMPONENT -->
+        <!-- TAILADMIN EXACT SIDEBAR COMPONENT (Light Theme bg-white) -->
         <!-- ============================================================ -->
         <aside id="sidebar"
-            class="fixed flex flex-col mt-0 top-0 px-5 left-0 bg-white text-gray-900 h-screen transition-all duration-300 ease-in-out z-50 border-r border-gray-200 shadow-sm"
+            class="fixed flex flex-col mt-0 top-0 px-5 left-0 bg-white text-gray-900 h-screen transition-all duration-300 ease-in-out z-50 border-r border-gray-200 shadow-xs"
             :class="{
                 'w-[290px]': $store.sidebar.isExpanded || $store.sidebar.isMobileOpen || $store.sidebar.isHovered,
                 'w-[90px]': !$store.sidebar.isExpanded && !$store.sidebar.isHovered,
@@ -94,7 +94,7 @@
             @mouseleave="$store.sidebar.setHovered(false)">
             
             <!-- Logo Section -->
-            <div class="pt-6 pb-6 flex items-center border-b border-gray-100"
+            <div class="pt-7 pb-7 flex items-center border-b border-gray-100"
                 :class="(!$store.sidebar.isExpanded && !$store.sidebar.isHovered && !$store.sidebar.isMobileOpen) ? 'xl:justify-center' : 'justify-between'">
                 <a href="{{ $isSuperAdmin ? route('superadmin.dashboard') : ($isOwner ? route('tenant.owner.dashboard', ['tenant' => $tenantSlug]) : route('tenant.participant.dashboard', ['tenant' => $tenantSlug])) }}" class="flex items-center gap-3">
                     <img x-show="$store.sidebar.isExpanded || $store.sidebar.isHovered || $store.sidebar.isMobileOpen"
@@ -104,22 +104,22 @@
                 </a>
             </div>
 
-            <!-- Navigation Menu with Grouping -->
-            <div class="flex flex-col overflow-y-auto duration-300 ease-linear no-scrollbar flex-1 py-4">
+            <!-- Navigation Menu with TailAdmin Grouping -->
+            <div class="flex flex-col overflow-y-auto duration-300 ease-linear no-scrollbar flex-1 py-5">
                 <nav class="space-y-6">
                     @if($isSuperAdmin)
-                        <!-- ================= SUPERADMIN GROUPS ================= -->
+                        <!-- ================= SUPERADMIN MENU ================= -->
                         <div>
-                            <h2 class="mb-2.5 text-[10px] uppercase font-bold tracking-widest text-gray-400 px-3"
+                            <h2 class="mb-3 text-[11px] uppercase font-bold tracking-wider text-gray-400 px-3"
                                 :class="(!$store.sidebar.isExpanded && !$store.sidebar.isHovered && !$store.sidebar.isMobileOpen) ? 'text-center' : 'text-left'">
-                                <span x-show="$store.sidebar.isExpanded || $store.sidebar.isHovered || $store.sidebar.isMobileOpen">UTAMA</span>
+                                <span x-show="$store.sidebar.isExpanded || $store.sidebar.isHovered || $store.sidebar.isMobileOpen">MENU UTAMA</span>
                                 <span x-show="!$store.sidebar.isExpanded && !$store.sidebar.isHovered && !$store.sidebar.isMobileOpen">•</span>
                             </h2>
                             <ul class="space-y-1">
                                 <li>
                                     <a href="{{ route('superadmin.dashboard') }}"
-                                        class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-semibold transition-all {{ request()->routeIs('superadmin.dashboard') ? 'bg-brand-50 text-brand-600 font-bold shadow-xs' : 'text-gray-700 hover:bg-gray-100 hover:text-gray-900' }}">
-                                        <i class="fas fa-chart-line w-5 text-center text-sm"></i>
+                                        class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all {{ request()->routeIs('superadmin.dashboard') ? 'bg-brand-50 text-brand-500 font-semibold' : 'text-gray-700 hover:bg-gray-100 hover:text-gray-900' }}">
+                                        <i class="fas fa-chart-pie w-5 text-center text-base {{ request()->routeIs('superadmin.dashboard') ? 'text-brand-500' : 'text-gray-400' }}"></i>
                                         <span x-show="$store.sidebar.isExpanded || $store.sidebar.isHovered || $store.sidebar.isMobileOpen">Dashboard Central</span>
                                     </a>
                                 </li>
@@ -127,23 +127,23 @@
                         </div>
 
                         <div>
-                            <h2 class="mb-2.5 text-[10px] uppercase font-bold tracking-widest text-gray-400 px-3"
+                            <h2 class="mb-3 text-[11px] uppercase font-bold tracking-wider text-gray-400 px-3"
                                 :class="(!$store.sidebar.isExpanded && !$store.sidebar.isHovered && !$store.sidebar.isMobileOpen) ? 'text-center' : 'text-left'">
-                                <span x-show="$store.sidebar.isExpanded || $store.sidebar.isHovered || $store.sidebar.isMobileOpen">MANAJEMEN ENTITAS</span>
+                                <span x-show="$store.sidebar.isExpanded || $store.sidebar.isHovered || $store.sidebar.isMobileOpen">MANAJEMEN CENTRAL</span>
                                 <span x-show="!$store.sidebar.isExpanded && !$store.sidebar.isHovered && !$store.sidebar.isMobileOpen">•</span>
                             </h2>
                             <ul class="space-y-1">
                                 <li>
                                     <a href="{{ route('superadmin.owners.index') }}"
-                                        class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-semibold transition-all {{ request()->routeIs('superadmin.owners.*') ? 'bg-brand-50 text-brand-600 font-bold shadow-xs' : 'text-gray-700 hover:bg-gray-100 hover:text-gray-900' }}">
-                                        <i class="fas fa-building w-5 text-center text-sm"></i>
-                                        <span x-show="$store.sidebar.isExpanded || $store.sidebar.isHovered || $store.sidebar.isMobileOpen">Kelola Owner Lembaga</span>
+                                        class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all {{ request()->routeIs('superadmin.owners.*') ? 'bg-brand-50 text-brand-500 font-semibold' : 'text-gray-700 hover:bg-gray-100 hover:text-gray-900' }}">
+                                        <i class="fas fa-building w-5 text-center text-base {{ request()->routeIs('superadmin.owners.*') ? 'text-brand-500' : 'text-gray-400' }}"></i>
+                                        <span x-show="$store.sidebar.isExpanded || $store.sidebar.isHovered || $store.sidebar.isMobileOpen">Owner Lembaga</span>
                                     </a>
                                 </li>
                                 <li>
                                     <a href="{{ route('superadmin.token-packages.index') }}"
-                                        class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-semibold transition-all {{ request()->routeIs('superadmin.token-packages.*') ? 'bg-brand-50 text-brand-600 font-bold shadow-xs' : 'text-gray-700 hover:bg-gray-100 hover:text-gray-900' }}">
-                                        <i class="fas fa-box w-5 text-center text-sm"></i>
+                                        class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all {{ request()->routeIs('superadmin.token-packages.*') ? 'bg-brand-50 text-brand-500 font-semibold' : 'text-gray-700 hover:bg-gray-100 hover:text-gray-900' }}">
+                                        <i class="fas fa-box w-5 text-center text-base {{ request()->routeIs('superadmin.token-packages.*') ? 'text-brand-500' : 'text-gray-400' }}"></i>
                                         <span x-show="$store.sidebar.isExpanded || $store.sidebar.isHovered || $store.sidebar.isMobileOpen">Paket Token AI</span>
                                     </a>
                                 </li>
@@ -151,49 +151,49 @@
                         </div>
 
                         <div>
-                            <h2 class="mb-2.5 text-[10px] uppercase font-bold tracking-widest text-gray-400 px-3"
+                            <h2 class="mb-3 text-[11px] uppercase font-bold tracking-wider text-gray-400 px-3"
                                 :class="(!$store.sidebar.isExpanded && !$store.sidebar.isHovered && !$store.sidebar.isMobileOpen) ? 'text-center' : 'text-left'">
-                                <span x-show="$store.sidebar.isExpanded || $store.sidebar.isHovered || $store.sidebar.isMobileOpen">KONFIGURASI SYSTEM</span>
+                                <span x-show="$store.sidebar.isExpanded || $store.sidebar.isHovered || $store.sidebar.isMobileOpen">PENGATURAN SYSTEM</span>
                                 <span x-show="!$store.sidebar.isExpanded && !$store.sidebar.isHovered && !$store.sidebar.isMobileOpen">•</span>
                             </h2>
                             <ul class="space-y-1">
                                 <li>
                                     <a href="{{ route('superadmin.llm.index') }}"
-                                        class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-semibold transition-all {{ request()->routeIs('superadmin.llm.*') ? 'bg-brand-50 text-brand-600 font-bold shadow-xs' : 'text-gray-700 hover:bg-gray-100 hover:text-gray-900' }}">
-                                        <i class="fas fa-robot w-5 text-center text-sm"></i>
+                                        class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all {{ request()->routeIs('superadmin.llm.*') ? 'bg-brand-50 text-brand-500 font-semibold' : 'text-gray-700 hover:bg-gray-100 hover:text-gray-900' }}">
+                                        <i class="fas fa-robot w-5 text-center text-base {{ request()->routeIs('superadmin.llm.*') ? 'text-brand-500' : 'text-gray-400' }}"></i>
                                         <span x-show="$store.sidebar.isExpanded || $store.sidebar.isHovered || $store.sidebar.isMobileOpen">Provider AI LLM</span>
                                     </a>
                                 </li>
                                 <li>
                                     <a href="{{ route('superadmin.gateways.index') }}"
-                                        class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-semibold transition-all {{ request()->routeIs('superadmin.gateways.*') ? 'bg-brand-50 text-brand-600 font-bold shadow-xs' : 'text-gray-700 hover:bg-gray-100 hover:text-gray-900' }}">
-                                        <i class="fas fa-sliders-h w-5 text-center text-sm"></i>
-                                        <span x-show="$store.sidebar.isExpanded || $store.sidebar.isHovered || $store.sidebar.isMobileOpen">Gateway & Pengaturan</span>
+                                        class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all {{ request()->routeIs('superadmin.gateways.*') ? 'bg-brand-50 text-brand-500 font-semibold' : 'text-gray-700 hover:bg-gray-100 hover:text-gray-900' }}">
+                                        <i class="fas fa-sliders-h w-5 text-center text-base {{ request()->routeIs('superadmin.gateways.*') ? 'text-brand-500' : 'text-gray-400' }}"></i>
+                                        <span x-show="$store.sidebar.isExpanded || $store.sidebar.isHovered || $store.sidebar.isMobileOpen">Gateways & Setting</span>
                                     </a>
                                 </li>
                                 <li>
                                     <a href="{{ route('superadmin.logs.index') }}"
-                                        class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-semibold transition-all {{ request()->routeIs('superadmin.logs.*') ? 'bg-brand-50 text-brand-600 font-bold shadow-xs' : 'text-gray-700 hover:bg-gray-100 hover:text-gray-900' }}">
-                                        <i class="fas fa-history w-5 text-center text-sm"></i>
-                                        <span x-show="$store.sidebar.isExpanded || $store.sidebar.isHovered || $store.sidebar.isMobileOpen">Log Aktivitas System</span>
+                                        class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all {{ request()->routeIs('superadmin.logs.*') ? 'bg-brand-50 text-brand-500 font-semibold' : 'text-gray-700 hover:bg-gray-100 hover:text-gray-900' }}">
+                                        <i class="fas fa-history w-5 text-center text-base {{ request()->routeIs('superadmin.logs.*') ? 'text-brand-500' : 'text-gray-400' }}"></i>
+                                        <span x-show="$store.sidebar.isExpanded || $store.sidebar.isHovered || $store.sidebar.isMobileOpen">Log Aktivitas</span>
                                     </a>
                                 </li>
                             </ul>
                         </div>
 
                     @elseif($isOwner)
-                        <!-- ================= OWNER GROUPS ================= -->
+                        <!-- ================= OWNER MENU ================= -->
                         <div>
-                            <h2 class="mb-2.5 text-[10px] uppercase font-bold tracking-widest text-gray-400 px-3"
+                            <h2 class="mb-3 text-[11px] uppercase font-bold tracking-wider text-gray-400 px-3"
                                 :class="(!$store.sidebar.isExpanded && !$store.sidebar.isHovered && !$store.sidebar.isMobileOpen) ? 'text-center' : 'text-left'">
-                                <span x-show="$store.sidebar.isExpanded || $store.sidebar.isHovered || $store.sidebar.isMobileOpen">UTAMA</span>
+                                <span x-show="$store.sidebar.isExpanded || $store.sidebar.isHovered || $store.sidebar.isMobileOpen">MENU</span>
                                 <span x-show="!$store.sidebar.isExpanded && !$store.sidebar.isHovered && !$store.sidebar.isMobileOpen">•</span>
                             </h2>
                             <ul class="space-y-1">
                                 <li>
                                     <a href="{{ route('tenant.owner.dashboard', ['tenant' => $tenantSlug]) }}"
-                                        class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-semibold transition-all {{ request()->routeIs('tenant.owner.dashboard') ? 'bg-brand-50 text-brand-600 font-bold shadow-xs' : 'text-gray-700 hover:bg-gray-100 hover:text-gray-900' }}">
-                                        <i class="fas fa-chart-line w-5 text-center text-sm"></i>
+                                        class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all {{ request()->routeIs('tenant.owner.dashboard') ? 'bg-brand-50 text-brand-500 font-semibold' : 'text-gray-700 hover:bg-gray-100 hover:text-gray-900' }}">
+                                        <i class="fas fa-chart-pie w-5 text-center text-base {{ request()->routeIs('tenant.owner.dashboard') ? 'text-brand-500' : 'text-gray-400' }}"></i>
                                         <span x-show="$store.sidebar.isExpanded || $store.sidebar.isHovered || $store.sidebar.isMobileOpen">Dashboard Owner</span>
                                     </a>
                                 </li>
@@ -201,30 +201,30 @@
                         </div>
 
                         <div>
-                            <h2 class="mb-2.5 text-[10px] uppercase font-bold tracking-widest text-gray-400 px-3"
+                            <h2 class="mb-3 text-[11px] uppercase font-bold tracking-wider text-gray-400 px-3"
                                 :class="(!$store.sidebar.isExpanded && !$store.sidebar.isHovered && !$store.sidebar.isMobileOpen) ? 'text-center' : 'text-left'">
-                                <span x-show="$store.sidebar.isExpanded || $store.sidebar.isHovered || $store.sidebar.isMobileOpen">KUIS & AKADEMIK</span>
+                                <span x-show="$store.sidebar.isExpanded || $store.sidebar.isHovered || $store.sidebar.isMobileOpen">AKADEMIK & KUIS</span>
                                 <span x-show="!$store.sidebar.isExpanded && !$store.sidebar.isHovered && !$store.sidebar.isMobileOpen">•</span>
                             </h2>
                             <ul class="space-y-1">
                                 <li>
                                     <a href="{{ route('tenant.owner.quizzes.index', ['tenant' => $tenantSlug]) }}"
-                                        class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-semibold transition-all {{ request()->routeIs('tenant.owner.quizzes.*') ? 'bg-brand-50 text-brand-600 font-bold shadow-xs' : 'text-gray-700 hover:bg-gray-100 hover:text-gray-900' }}">
-                                        <i class="fas fa-magic w-5 text-center text-sm"></i>
+                                        class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all {{ request()->routeIs('tenant.owner.quizzes.*') ? 'bg-brand-50 text-brand-500 font-semibold' : 'text-gray-700 hover:bg-gray-100 hover:text-gray-900' }}">
+                                        <i class="fas fa-magic w-5 text-center text-base {{ request()->routeIs('tenant.owner.quizzes.*') ? 'text-brand-500' : 'text-gray-400' }}"></i>
                                         <span x-show="$store.sidebar.isExpanded || $store.sidebar.isHovered || $store.sidebar.isMobileOpen">Manajemen Kuis AI</span>
                                     </a>
                                 </li>
                                 <li>
                                     <a href="{{ route('tenant.owner.participants.index', ['tenant' => $tenantSlug]) }}"
-                                        class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-semibold transition-all {{ request()->routeIs('tenant.owner.participants.*') ? 'bg-brand-50 text-brand-600 font-bold shadow-xs' : 'text-gray-700 hover:bg-gray-100 hover:text-gray-900' }}">
-                                        <i class="fas fa-users-gear w-5 text-center text-sm"></i>
+                                        class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all {{ request()->routeIs('tenant.owner.participants.*') ? 'bg-brand-50 text-brand-500 font-semibold' : 'text-gray-700 hover:bg-gray-100 hover:text-gray-900' }}">
+                                        <i class="fas fa-users-gear w-5 text-center text-base {{ request()->routeIs('tenant.owner.participants.*') ? 'text-brand-500' : 'text-gray-400' }}"></i>
                                         <span x-show="$store.sidebar.isExpanded || $store.sidebar.isHovered || $store.sidebar.isMobileOpen">Kelola Peserta Ujian</span>
                                     </a>
                                 </li>
                                 <li>
                                     <a href="{{ route('tenant.owner.reports', ['tenant' => $tenantSlug]) }}"
-                                        class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-semibold transition-all {{ request()->routeIs('tenant.owner.reports') ? 'bg-brand-50 text-brand-600 font-bold shadow-xs' : 'text-gray-700 hover:bg-gray-100 hover:text-gray-900' }}">
-                                        <i class="fas fa-square-poll-vertical w-5 text-center text-sm"></i>
+                                        class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all {{ request()->routeIs('tenant.owner.reports') ? 'bg-brand-50 text-brand-500 font-semibold' : 'text-gray-700 hover:bg-gray-100 hover:text-gray-900' }}">
+                                        <i class="fas fa-square-poll-vertical w-5 text-center text-base {{ request()->routeIs('tenant.owner.reports') ? 'text-brand-500' : 'text-gray-400' }}"></i>
                                         <span x-show="$store.sidebar.isExpanded || $store.sidebar.isHovered || $store.sidebar.isMobileOpen">Laporan & Hasil Evaluasi</span>
                                     </a>
                                 </li>
@@ -232,23 +232,23 @@
                         </div>
 
                         <div>
-                            <h2 class="mb-2.5 text-[10px] uppercase font-bold tracking-widest text-gray-400 px-3"
+                            <h2 class="mb-3 text-[11px] uppercase font-bold tracking-wider text-gray-400 px-3"
                                 :class="(!$store.sidebar.isExpanded && !$store.sidebar.isHovered && !$store.sidebar.isMobileOpen) ? 'text-center' : 'text-left'">
-                                <span x-show="$store.sidebar.isExpanded || $store.sidebar.isHovered || $store.sidebar.isMobileOpen">TRANSAKSI & MODUL</span>
+                                <span x-show="$store.sidebar.isExpanded || $store.sidebar.isHovered || $store.sidebar.isMobileOpen">MODUL & SETTING</span>
                                 <span x-show="!$store.sidebar.isExpanded && !$store.sidebar.isHovered && !$store.sidebar.isMobileOpen">•</span>
                             </h2>
                             <ul class="space-y-1">
                                 <li>
                                     <a href="{{ route('tenant.owner.tokens', ['tenant' => $tenantSlug]) }}"
-                                        class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-semibold transition-all {{ request()->routeIs('tenant.owner.tokens') ? 'bg-brand-50 text-brand-600 font-bold shadow-xs' : 'text-gray-700 hover:bg-gray-100 hover:text-gray-900' }}">
-                                        <i class="fas fa-coins w-5 text-center text-sm"></i>
+                                        class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all {{ request()->routeIs('tenant.owner.tokens') ? 'bg-brand-50 text-brand-500 font-semibold' : 'text-gray-700 hover:bg-gray-100 hover:text-gray-900' }}">
+                                        <i class="fas fa-coins w-5 text-center text-base {{ request()->routeIs('tenant.owner.tokens') ? 'text-brand-500' : 'text-gray-400' }}"></i>
                                         <span x-show="$store.sidebar.isExpanded || $store.sidebar.isHovered || $store.sidebar.isMobileOpen">Saldo Token & Pembelian</span>
                                     </a>
                                 </li>
                                 <li>
                                     <a href="{{ route('tenant.owner.whatsapp', ['tenant' => $tenantSlug]) }}"
-                                        class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-semibold transition-all {{ request()->routeIs('tenant.owner.whatsapp') ? 'bg-brand-50 text-brand-600 font-bold shadow-xs' : 'text-gray-700 hover:bg-gray-100 hover:text-gray-900' }}">
-                                        <i class="fab fa-whatsapp w-5 text-center text-sm"></i>
+                                        class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all {{ request()->routeIs('tenant.owner.whatsapp') ? 'bg-brand-50 text-brand-500 font-semibold' : 'text-gray-700 hover:bg-gray-100 hover:text-gray-900' }}">
+                                        <i class="fab fa-whatsapp w-5 text-center text-base {{ request()->routeIs('tenant.owner.whatsapp') ? 'text-brand-500' : 'text-gray-400' }}"></i>
                                         <span x-show="$store.sidebar.isExpanded || $store.sidebar.isHovered || $store.sidebar.isMobileOpen">Notifikasi WhatsApp</span>
                                     </a>
                                 </li>
@@ -256,18 +256,18 @@
                         </div>
 
                     @elseif($isParticipant)
-                        <!-- ================= PARTICIPANT GROUPS ================= -->
+                        <!-- ================= PARTICIPANT MENU ================= -->
                         <div>
-                            <h2 class="mb-2.5 text-[10px] uppercase font-bold tracking-widest text-gray-400 px-3"
+                            <h2 class="mb-3 text-[11px] uppercase font-bold tracking-wider text-gray-400 px-3"
                                 :class="(!$store.sidebar.isExpanded && !$store.sidebar.isHovered && !$store.sidebar.isMobileOpen) ? 'text-center' : 'text-left'">
-                                <span x-show="$store.sidebar.isExpanded || $store.sidebar.isHovered || $store.sidebar.isMobileOpen">UTAMA</span>
+                                <span x-show="$store.sidebar.isExpanded || $store.sidebar.isHovered || $store.sidebar.isMobileOpen">MENU</span>
                                 <span x-show="!$store.sidebar.isExpanded && !$store.sidebar.isHovered && !$store.sidebar.isMobileOpen">•</span>
                             </h2>
                             <ul class="space-y-1">
                                 <li>
                                     <a href="{{ route('tenant.participant.dashboard', ['tenant' => $tenantSlug]) }}"
-                                        class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-semibold transition-all {{ request()->routeIs('tenant.participant.dashboard') ? 'bg-brand-50 text-brand-600 font-bold shadow-xs' : 'text-gray-700 hover:bg-gray-100 hover:text-gray-900' }}">
-                                        <i class="fas fa-play-circle w-5 text-center text-sm"></i>
+                                        class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all {{ request()->routeIs('tenant.participant.dashboard') ? 'bg-brand-50 text-brand-500 font-semibold' : 'text-gray-700 hover:bg-gray-100 hover:text-gray-900' }}">
+                                        <i class="fas fa-play-circle w-5 text-center text-base {{ request()->routeIs('tenant.participant.dashboard') ? 'text-brand-500' : 'text-gray-400' }}"></i>
                                         <span x-show="$store.sidebar.isExpanded || $store.sidebar.isHovered || $store.sidebar.isMobileOpen">Beranda Kuis & Ujian</span>
                                     </a>
                                 </li>
@@ -275,7 +275,7 @@
                         </div>
 
                         <div>
-                            <h2 class="mb-2.5 text-[10px] uppercase font-bold tracking-widest text-gray-400 px-3"
+                            <h2 class="mb-3 text-[11px] uppercase font-bold tracking-wider text-gray-400 px-3"
                                 :class="(!$store.sidebar.isExpanded && !$store.sidebar.isHovered && !$store.sidebar.isMobileOpen) ? 'text-center' : 'text-left'">
                                 <span x-show="$store.sidebar.isExpanded || $store.sidebar.isHovered || $store.sidebar.isMobileOpen">RIWAYAT & EVALUASI</span>
                                 <span x-show="!$store.sidebar.isExpanded && !$store.sidebar.isHovered && !$store.sidebar.isMobileOpen">•</span>
@@ -283,8 +283,8 @@
                             <ul class="space-y-1">
                                 <li>
                                     <a href="{{ route('tenant.participant.history', ['tenant' => $tenantSlug]) }}"
-                                        class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-semibold transition-all {{ request()->routeIs('tenant.participant.history') ? 'bg-brand-50 text-brand-600 font-bold shadow-xs' : 'text-gray-700 hover:bg-gray-100 hover:text-gray-900' }}">
-                                        <i class="fas fa-clock-rotate-left w-5 text-center text-sm"></i>
+                                        class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all {{ request()->routeIs('tenant.participant.history') ? 'bg-brand-50 text-brand-500 font-semibold' : 'text-gray-700 hover:bg-gray-100 hover:text-gray-900' }}">
+                                        <i class="fas fa-clock-rotate-left w-5 text-center text-base {{ request()->routeIs('tenant.participant.history') ? 'text-brand-500' : 'text-gray-400' }}"></i>
                                         <span x-show="$store.sidebar.isExpanded || $store.sidebar.isHovered || $store.sidebar.isMobileOpen">Riwayat & Nilai Ujian</span>
                                     </a>
                                 </li>
@@ -294,7 +294,7 @@
                 </nav>
             </div>
 
-            <!-- Footer Tenant / Role Info Card & Version Badge -->
+            <!-- Footer Tenant Info & Version Display -->
             <div class="py-4 border-t border-gray-200 space-y-2.5"
                 x-show="$store.sidebar.isExpanded || $store.sidebar.isHovered || $store.sidebar.isMobileOpen">
                 <div class="flex items-center gap-3 p-2.5 rounded-xl bg-gray-50 border border-gray-200">
@@ -307,7 +307,6 @@
                     </div>
                 </div>
                 
-                <!-- Version Display -->
                 <div class="flex items-center justify-between px-1 text-[11px] text-gray-500 font-medium">
                     <span>MariLMS Platform</span>
                     <span class="px-2 py-0.5 rounded-full bg-brand-50 text-brand-600 font-bold border border-brand-200 text-[10px]">v1.5.1</span>
@@ -316,7 +315,7 @@
         </aside>
 
         <!-- ============================================================ -->
-        <!-- MAIN CONTENT WRAPPER -->
+        <!-- TAILADMIN EXACT APP HEADER & CONTENT WRAPPER -->
         <!-- ============================================================ -->
         <div class="flex-1 transition-all duration-300 ease-in-out min-w-0 flex flex-col min-h-screen"
             :class="{
@@ -325,95 +324,112 @@
                 'ml-0': $store.sidebar.isMobileOpen
             }">
             
-            <!-- MARILMS APP HEADER -->
+            <!-- TAILADMIN EXACT APP HEADER -->
             <header class="sticky top-0 flex w-full bg-white border-b border-gray-200 z-40">
-                <div class="flex flex-col items-center justify-between grow xl:flex-row xl:px-6">
-                    <div class="flex items-center justify-between w-full gap-2 px-4 py-3 border-b border-gray-200 sm:gap-4 xl:justify-normal xl:border-b-0 xl:px-0 lg:py-3.5">
-                        
-                        <!-- Desktop Sidebar Toggle -->
-                        <button class="hidden xl:flex items-center justify-center w-10 h-10 text-gray-500 border border-gray-200 rounded-xl hover:bg-gray-100 hover:text-gray-800 transition"
+                <div class="flex items-center justify-between w-full px-4 py-3 xl:px-6">
+                    
+                    <!-- Left Section: Toggle Buttons & Search Bar -->
+                    <div class="flex items-center gap-3 lg:gap-4">
+                        <!-- Desktop Sidebar Toggle Button -->
+                        <button class="hidden xl:flex items-center justify-center w-10 h-10 text-gray-500 border border-gray-200 rounded-lg hover:bg-gray-100 transition"
                             @click="$store.sidebar.toggleExpanded()" aria-label="Toggle Sidebar">
                             <i class="fas fa-bars text-sm"></i>
                         </button>
 
-                        <!-- Mobile Menu Toggle -->
-                        <button class="flex xl:hidden items-center justify-center w-10 h-10 text-gray-500 border border-gray-200 rounded-xl hover:bg-gray-100 transition"
+                        <!-- Mobile Menu Toggle Button -->
+                        <button class="flex xl:hidden items-center justify-center w-10 h-10 text-gray-500 border border-gray-200 rounded-lg hover:bg-gray-100 transition"
                             @click="$store.sidebar.toggleMobileOpen()" aria-label="Toggle Mobile Menu">
                             <i class="fas fa-bars text-sm"></i>
                         </button>
 
-                        <!-- Page Title & Breadcrumbs -->
-                        <div class="flex items-center gap-2">
-                            <h1 class="text-base sm:text-lg font-bold text-gray-900 tracking-tight">
-                                @yield('page-title', 'Dashboard')
-                            </h1>
-                        </div>
-
-                        <!-- Right Actions & Profile Dropdown -->
-                        <div class="flex items-center gap-3 ml-auto">
-                            @if($isOwner)
-                                <a href="{{ route('tenant.owner.tokens', ['tenant' => $tenantSlug]) }}"
-                                    class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-amber-50 border border-amber-200 text-amber-700 text-xs font-bold hover:bg-amber-100 transition">
-                                    <i class="fas fa-coins text-amber-500"></i>
-                                    <span>Saldo Token: {{ number_format(auth('owner')->user()->tokenBalance->balance ?? 0) }}</span>
-                                </a>
-                            @endif
-
-                            <!-- User Profile Dropdown -->
-                            <div x-data="{ open: false }" class="relative">
-                                <button @click="open = !open"
-                                    class="flex items-center gap-2.5 p-1 rounded-xl hover:bg-gray-100 transition border border-gray-200">
-                                    <div class="w-9 h-9 rounded-lg bg-brand-500 text-white font-bold flex items-center justify-center text-sm shadow-xs">
-                                        {{ strtoupper(substr($user->name ?? 'U', 0, 1)) }}
-                                    </div>
-                                    <div class="hidden sm:flex flex-col text-left pr-1">
-                                        <span class="text-xs font-bold text-gray-900 leading-tight truncate max-w-[130px]">
-                                            {{ $user->name ?? 'User' }}
-                                        </span>
-                                        <span class="text-[10px] font-medium text-gray-500">
-                                            {{ $roleLabel }}
-                                        </span>
-                                    </div>
-                                    <i class="fas fa-chevron-down text-gray-400 text-xs hidden sm:inline-block pr-1"></i>
-                                </button>
-
-                                <div x-show="open"
-                                    @click.outside="open = false"
-                                    x-transition
-                                    class="absolute right-0 mt-2 w-56 bg-white rounded-xl shadow-lg border border-gray-200 py-1.5 z-50">
-                                    
-                                    <div class="px-4 py-2 border-b border-gray-100">
-                                        <p class="text-xs font-bold text-gray-900 truncate">{{ $user->name ?? 'User' }}</p>
-                                        <p class="text-[11px] text-gray-500 truncate">{{ $user->email ?? '-' }}</p>
-                                        <span class="inline-block mt-1.5 px-2 py-0.5 rounded-md text-[10px] font-bold border {{ $roleBadgeColor }}">
-                                            {{ $roleLabel }}
-                                        </span>
-                                    </div>
-
-                                    @php
-                                        $logoutAction = $isParticipant
-                                            ? route('tenant.logout', ['tenant' => $tenantSlug])
-                                            : route('logout');
-                                    @endphp
-
-                                    <form method="POST" action="{{ $logoutAction }}">
-                                        @csrf
-                                        <button type="submit"
-                                            class="w-full text-left px-4 py-2 text-xs font-semibold text-error-600 hover:bg-error-50 flex items-center gap-2 transition">
-                                            <i class="fas fa-right-from-bracket"></i>
-                                            <span>Keluar Akun</span>
-                                        </button>
-                                    </form>
+                        <!-- TailAdmin Search Bar (Desktop only) -->
+                        <div class="hidden sm:block">
+                            <div class="relative">
+                                <span class="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none">
+                                    <i class="fas fa-search text-xs"></i>
+                                </span>
+                                <input type="text" placeholder="Search or type command..."
+                                    class="h-10 w-64 md:w-80 rounded-xl border border-gray-200 bg-gray-50/60 py-2 pl-9 pr-14 text-xs text-gray-800 placeholder:text-gray-400 focus:border-brand-500 focus:bg-white focus:outline-none transition shadow-xs" />
+                                <div class="absolute right-2.5 top-1/2 -translate-y-1/2 flex items-center gap-0.5 rounded-md border border-gray-200 bg-white px-1.5 py-0.5 text-[10px] text-gray-400 font-mono">
+                                    <span>⌘</span>
+                                    <span>K</span>
                                 </div>
                             </div>
                         </div>
-
                     </div>
+
+                    <!-- Right Section: Token Pill & User Profile -->
+                    <div class="flex items-center gap-3">
+                        @if($isOwner)
+                            <a href="{{ route('tenant.owner.tokens', ['tenant' => $tenantSlug]) }}"
+                                class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-50 border border-amber-200 text-amber-700 text-xs font-bold hover:bg-amber-100 transition shadow-2xs">
+                                <i class="fas fa-coins text-amber-500"></i>
+                                <span>Saldo Token: {{ number_format(auth('owner')->user()->tokenBalance->balance ?? 0) }}</span>
+                            </a>
+                        @endif
+
+                        <!-- Notification Bell Icon (TailAdmin Header Component) -->
+                        <div class="relative">
+                            <button class="flex items-center justify-center w-10 h-10 text-gray-500 rounded-full border border-gray-200 bg-white hover:bg-gray-100 transition">
+                                <i class="fas fa-bell text-sm"></i>
+                                <span class="absolute top-2 right-2 w-2 h-2 rounded-full bg-brand-500"></span>
+                            </button>
+                        </div>
+
+                        <!-- User Profile Dropdown (TailAdmin Exact Styling) -->
+                        <div x-data="{ open: false }" class="relative">
+                            <button @click="open = !open"
+                                class="flex items-center gap-2.5 p-1 rounded-xl hover:bg-gray-100 transition">
+                                <div class="w-9 h-9 rounded-full bg-brand-500 text-white font-bold flex items-center justify-center text-sm shadow-xs">
+                                    {{ strtoupper(substr($user->name ?? 'U', 0, 1)) }}
+                                </div>
+                                <div class="hidden md:flex flex-col text-left">
+                                    <span class="text-xs font-bold text-gray-800 leading-tight truncate max-w-[120px]">
+                                        {{ $user->name ?? 'User' }}
+                                    </span>
+                                    <span class="text-[10px] font-medium text-gray-400">
+                                        {{ $roleLabel }}
+                                    </span>
+                                </div>
+                                <i class="fas fa-chevron-down text-gray-400 text-[10px] hidden md:inline-block pr-1"></i>
+                            </button>
+
+                            <div x-show="open"
+                                @click.outside="open = false"
+                                x-transition
+                                class="absolute right-0 mt-2 w-56 bg-white rounded-xl shadow-lg border border-gray-200 py-1.5 z-50">
+                                
+                                <div class="px-4 py-2.5 border-b border-gray-100">
+                                    <p class="text-xs font-bold text-gray-900 truncate">{{ $user->name ?? 'User' }}</p>
+                                    <p class="text-[11px] text-gray-500 truncate">{{ $user->email ?? '-' }}</p>
+                                    <span class="inline-block mt-1.5 px-2 py-0.5 rounded-md text-[10px] font-bold border {{ $roleBadgeColor }}">
+                                        {{ $roleLabel }}
+                                    </span>
+                                </div>
+
+                                @php
+                                    $logoutAction = $isParticipant
+                                        ? route('tenant.logout', ['tenant' => $tenantSlug])
+                                        : route('logout');
+                                @endphp
+
+                                <form method="POST" action="{{ $logoutAction }}">
+                                    @csrf
+                                    <button type="submit"
+                                        class="w-full text-left px-4 py-2 text-xs font-semibold text-error-600 hover:bg-error-50 flex items-center gap-2 transition">
+                                        <i class="fas fa-right-from-bracket"></i>
+                                        <span>Keluar Akun</span>
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </header>
 
-            <!-- Main Content Container -->
-            <div class="p-4 mx-auto max-w-(--breakpoint-2xl) md:p-6 space-y-6 flex-1">
+            <!-- Main Content Container (TailAdmin Max-W 2XL) -->
+            <div class="p-4 mx-auto max-w-(--breakpoint-2xl) md:p-6 space-y-6 flex-1 w-full">
                 @if(session('success'))
                     <div x-data="{ show: true }" x-show="show" class="p-4 rounded-xl bg-success-50 border border-success-200 text-success-700 text-xs font-medium flex items-center justify-between shadow-xs">
                         <div class="flex items-center gap-2">
