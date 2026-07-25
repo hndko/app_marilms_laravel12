@@ -94,9 +94,10 @@ Dokumen ini berisi panduan teknis, aturan pengodean (*coding standards*), arsite
   2. **Panduan Tombol:** Fungsi dari setiap tombol yang ada pada modul.
   3. **Logika Bisnis:** Cara kerja alur data, validasi, dan keamanan di balik layar.
 
-### F. Standar Autentikasi Terpadu Central (Unified Central Login)
-* **Single Unified Login Page:** Halaman login central (`/login`) HANYA ada SATU untuk seluruh peran di tingkat Central (SuperAdmin & Owner). Dilarang memisah halaman login per peran (seperti `/superadmin/login` atau `/owner/login`) dan dilarang meminta input/pilihan role pada form login.
-* **Autodeteksi Peran (Role Auto-Detection):** Controller login (`LoginController`) secara otomatis mencoba autentikasi ke guard `web` (SuperAdmin) terlebih dahulu, kemudian ke guard `owner` (Owner). Pengguna akan langsung diarahkan ke dashboard masing-masing (`/superadmin/dashboard` atau `/{tenant}/dashboard`) secara transparan tanpa perlu memilih role.
+### F. Standar Autentikasi Terpadu & Tunggal (Consolidated Auth Controller & View)
+* **Consolidated Single Auth Controller (Strict Mandatory):** Seluruh logika autentikasi (Login, Register, Logout untuk seluruh peran: SuperAdmin, Owner, dan Participant) WAJIB disatukan dalam SATU berkas controller: `app/Http/Controllers/Auth/AuthController.php`. Dilarang memecah controller autentikasi ke banyak berkas (seperti `SuperAdminAuthController`, `OwnerAuthController`, `ParticipantAuthController`, `LoginController`).
+* **Single Auth View Template:** Seluruh tampilan autentikasi (Login & Register) WAJIB menggunakan SATU berkas template Blade: `resources/views/auth/login.blade.php`, yang mengatur mode tampilan (`central_login`, `participant_login`, `owner_register`, `participant_register`) menggunakan pengkondisian Blade (`@if($mode === ...)`). Dilarang membuat berkas view login/register terpisah per peran.
+* **Autodeteksi Peran (Role Auto-Detection):** Pada proses login central (`/login`), `AuthController` secara otomatis mencoba autentikasi ke guard `web` (SuperAdmin) terlebih dahulu, kemudian ke guard `owner` (Owner). Pengguna akan langsung diarahkan ke dashboard masing-masing (`/superadmin/dashboard` atau `/{tenant}/dashboard`) secara transparan tanpa perlu memilih role.
 
 ---
 

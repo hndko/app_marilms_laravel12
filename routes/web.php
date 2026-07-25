@@ -23,22 +23,22 @@ Route::get('/', function () {
 // Unified Central Authentication Routes
 // -------------------------------------------------------
 Route::middleware('guest:web,owner')->group(function () {
-    Route::get('/login', [\App\Http\Controllers\Auth\LoginController::class, 'showLogin'])->name('login');
-    Route::post('/login', [\App\Http\Controllers\Auth\LoginController::class, 'login'])->name('login.submit');
+    Route::get('/login', [\App\Http\Controllers\Auth\AuthController::class, 'showLogin'])->name('login');
+    Route::post('/login', [\App\Http\Controllers\Auth\AuthController::class, 'login'])->name('login.submit');
 
-    Route::get('/register', [\App\Http\Controllers\Auth\OwnerAuthController::class, 'showRegister'])->name('register');
-    Route::post('/register', [\App\Http\Controllers\Auth\OwnerAuthController::class, 'register'])->name('register.submit');
+    Route::get('/register', [\App\Http\Controllers\Auth\AuthController::class, 'showRegister'])->name('register');
+    Route::post('/register', [\App\Http\Controllers\Auth\AuthController::class, 'register'])->name('register.submit');
 
     // Legacy/Aliased Auth Redirects
     Route::get('/superadmin/login', fn() => redirect()->route('login'))->name('superadmin.login');
-    Route::post('/superadmin/login', [\App\Http\Controllers\Auth\LoginController::class, 'login'])->name('superadmin.login.submit');
+    Route::post('/superadmin/login', [\App\Http\Controllers\Auth\AuthController::class, 'login'])->name('superadmin.login.submit');
     Route::get('/owner/login', fn() => redirect()->route('login'))->name('owner.login');
-    Route::post('/owner/login', [\App\Http\Controllers\Auth\LoginController::class, 'login'])->name('owner.login.submit');
+    Route::post('/owner/login', [\App\Http\Controllers\Auth\AuthController::class, 'login'])->name('owner.login.submit');
     Route::get('/owner/register', fn() => redirect()->route('register'))->name('owner.register');
-    Route::post('/owner/register', [\App\Http\Controllers\Auth\OwnerAuthController::class, 'register'])->name('owner.register.submit');
+    Route::post('/owner/register', [\App\Http\Controllers\Auth\AuthController::class, 'register'])->name('owner.register.submit');
 });
 
-Route::post('/logout', [\App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('logout');
+Route::post('/logout', [\App\Http\Controllers\Auth\AuthController::class, 'logout'])->name('logout');
 
 // -------------------------------------------------------
 // SuperAdmin Routes
