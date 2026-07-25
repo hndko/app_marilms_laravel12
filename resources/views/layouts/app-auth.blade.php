@@ -18,7 +18,8 @@
         @endif
     </title>
 
-    <link rel="icon" type="image/png" href="{{ asset('favicon.png') }}">
+    <link rel="icon" type="image/svg+xml" href="{{ asset('images/logo/logo-icon.svg') }}?v=1.5.1">
+    <link rel="shortcut icon" href="{{ asset('images/logo/logo-icon.svg') }}?v=1.5.1">
 
     <!-- Vite Assets (Tailwind CSS v4 & JS loaded locally, no CDN) -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])

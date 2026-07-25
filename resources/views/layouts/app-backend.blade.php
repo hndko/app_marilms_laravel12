@@ -7,7 +7,8 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>@yield('title', 'Dashboard') — MariLMS AI Platform</title>
-    <link rel="icon" type="image/png" href="{{ asset('favicon.png') }}">
+    <link rel="icon" type="image/svg+xml" href="{{ asset('images/logo/logo-icon.svg') }}?v=1.5.1">
+    <link rel="shortcut icon" href="{{ asset('images/logo/logo-icon.svg') }}?v=1.5.1">
 
     <!-- Vite Assets (Tailwind CSS v4 & Alpine loaded locally) -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -104,9 +105,9 @@
                 :class="(!$store.sidebar.isExpanded && !$store.sidebar.isHovered && !$store.sidebar.isMobileOpen) ? 'xl:justify-center' : 'justify-between'">
                 <a href="{{ $isSuperAdmin ? route('superadmin.dashboard') : ($isOwner ? route('tenant.owner.dashboard', ['tenant' => $tenantSlug]) : route('tenant.participant.dashboard', ['tenant' => $tenantSlug])) }}" class="flex items-center gap-3">
                     <img x-show="$store.sidebar.isExpanded || $store.sidebar.isHovered || $store.sidebar.isMobileOpen"
-                        src="{{ asset('images/logo/logo.svg') }}" alt="MariLMS AI Logo" class="h-9 w-auto" />
+                        src="{{ asset('images/logo/logo.svg') }}?v={{ time() }}" alt="MariLMS AI Logo" class="h-9 w-auto" />
                     <img x-show="!$store.sidebar.isExpanded && !$store.sidebar.isHovered && !$store.sidebar.isMobileOpen"
-                        src="{{ asset('images/logo/logo-icon.svg') }}" alt="MariLMS AI Icon" class="h-9 w-9" />
+                        src="{{ asset('images/logo/logo-icon.svg') }}?v={{ time() }}" alt="MariLMS AI Icon" class="h-9 w-9" />
                 </a>
             </div>
 
@@ -300,7 +301,7 @@
                 </nav>
             </div>
 
-            <!-- Footer Unified Tenant & Version Card -->
+            <!-- Footer Unified Tenant & Version Card (Expanded Sidebar) -->
             <div class="py-4 border-t border-gray-200"
                 x-show="$store.sidebar.isExpanded || $store.sidebar.isHovered || $store.sidebar.isMobileOpen">
                 <div class="p-3 rounded-2xl bg-gray-50/80 border border-gray-200 space-y-2.5 shadow-2xs">
@@ -319,6 +320,14 @@
                         <span class="px-2 py-0.5 rounded-full bg-brand-50 text-brand-600 font-extrabold border border-brand-200 text-[10px]">v1.5.1</span>
                     </div>
                 </div>
+            </div>
+
+            <!-- Footer Mini Version Display (Collapsed Sidebar) -->
+            <div class="py-4 border-t border-gray-200 flex flex-col items-center justify-center"
+                x-show="!$store.sidebar.isExpanded && !$store.sidebar.isHovered && !$store.sidebar.isMobileOpen">
+                <span class="px-2 py-1 rounded-full bg-brand-50 text-brand-600 font-extrabold border border-brand-200 text-[10px] shadow-2xs cursor-pointer" title="MariLMS Platform v1.5.1">
+                    v1.5.1
+                </span>
             </div>
         </aside>
 
