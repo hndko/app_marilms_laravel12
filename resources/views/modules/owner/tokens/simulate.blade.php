@@ -1,97 +1,100 @@
 @extends('layouts.app-backend')
 
-@section('title', 'Simulasi Pembayaran')
-@section('page-title', 'Simulasi Pembayaran Sandbox')
-
-@section('breadcrumb')
-    <a href="{{ route('tenant.owner.tokens', ['tenant' => $tenant]) }}">Token & Top-up</a>
-    <i class="fas fa-chevron-right" style="font-size: 10px;"></i>
-    <span>Simulasi Pembayaran</span>
-@endsection
+@section('title', 'Simulasi Pembayaran Sandbox')
 
 @section('content')
-<div style="max-width: 600px; margin: 0 auto; display: flex; flex-direction: column; gap: 24px;">
+<div class="max-w-2xl mx-auto space-y-6">
 
-    <div class="card" style="border-color: var(--accent); box-shadow: 0 0 30px rgba(6,182,212,0.15);">
-        <div class="card-header" style="background: linear-gradient(135deg, rgba(6,182,212,0.1), rgba(99,102,241,0.1)); border-bottom: 1px solid rgba(6,182,212,0.3);">
-            <div style="display: flex; align-items: center; gap: 12px;">
-                <div style="width: 40px; height: 40px; border-radius: 10px; background: var(--accent); display: flex; align-items: center; justify-content: center; font-size: 20px; color: white;">
-                    <i class="fas fa-laptop-code"></i>
+    <!-- Card Wrapper -->
+    <div class="rounded-2xl border border-gray-200 bg-white p-6 sm:p-8 shadow-theme-xs space-y-6">
+        
+        <!-- Header Section -->
+        <div class="flex items-center gap-3 pb-4 border-b border-gray-100">
+            <div class="w-12 h-12 rounded-2xl bg-amber-50 text-amber-600 border border-amber-200 flex items-center justify-center font-bold text-xl shrink-0">
+                <i class="fas fa-laptop-code"></i>
+            </div>
+            <div>
+                <h3 class="text-base font-bold text-gray-900">Sandbox Checkout Simulation</h3>
+                <span class="text-xs font-bold text-amber-600 uppercase tracking-wider">Gateway: {{ strtoupper($order->gateway) }}</span>
+            </div>
+        </div>
+
+        <!-- Alert Info -->
+        <div class="p-4 rounded-2xl bg-amber-50 border border-amber-200 text-amber-900 space-y-1 text-xs">
+            <div class="flex items-center gap-2 font-bold text-amber-900">
+                <i class="fas fa-circle-info text-amber-600"></i>
+                <span>Pengujian Mode Simulasi Sandbox</span>
+            </div>
+            <p class="text-amber-800 leading-relaxed">
+                Anda melihat halaman ini karena kredensial API payment gateway berada dalam mode pengujian sandbox atau belum dikonfigurasi di environment produksi. Pilih tombol simulasi di bawah untuk menguji alur webhook dan kredit token otomatis.
+            </p>
+        </div>
+
+        <!-- Order Summary Box -->
+        <div class="p-5 rounded-2xl bg-gray-50 border border-gray-200 space-y-3 text-xs">
+            <h4 class="font-extrabold text-gray-900 uppercase tracking-wider text-[11px] pb-2 border-b border-gray-200">
+                Detail Pesanan Token (#{{ substr($order->id, 0, 8) }}...)
+            </h4>
+            
+            <div class="space-y-2">
+                <div class="flex justify-between items-center text-gray-600">
+                    <span>Paket Token:</span>
+                    <span class="font-bold text-gray-900">{{ $order->package?->name ?? 'Paket Token' }}</span>
                 </div>
-                <div>
-                    <h3 style="font-size: 16px; font-weight: 700; color: var(--text-white);">Sandbox Checkout Simulation</h3>
-                    <span style="font-size: 12px; color: var(--accent-light); font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">Gateway: {{ strtoupper($order->gateway) }}</span>
+                <div class="flex justify-between items-center text-gray-600">
+                    <span>Jumlah Token:</span>
+                    <span class="font-bold text-amber-600">{{ number_format($order->token_amount) }} Token</span>
+                </div>
+                <div class="flex justify-between items-center text-gray-600">
+                    <span>ID Referensi Gateway:</span>
+                    <span class="font-mono text-gray-500">{{ $order->gateway_order_id ?: 'SIM_' . time() }}</span>
+                </div>
+                <div class="pt-3 border-t border-gray-200 flex justify-between items-center font-bold text-sm">
+                    <span class="text-gray-900">Total Tagihan:</span>
+                    <span class="text-success-600 text-base">Rp {{ number_format($order->amount_idr, 0, ',', '.') }}</span>
                 </div>
             </div>
         </div>
 
-        <div class="card-body">
-            <div class="alert alert-warning" style="margin-bottom: 24px;">
-                <i class="fas fa-info-circle" style="font-size: 18px; flex-shrink: 0;"></i>
-                <div>
-                    <strong>Mode Simulasi / Sandbox</strong><br>
-                    <span style="font-size: 12px; color: var(--text-secondary);">
-                        Anda melihat halaman ini karena kredensial API payment gateway belum diatur untuk production atau Anda sedang dalam mode pengujian lokal. Gunakan tombol di bawah untuk menyimulasikan respons dari pihak gateway.
-                    </span>
-                </div>
-            </div>
-
-            <div style="background: var(--bg-input); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 20px; margin-bottom: 24px;">
-                <h4 style="font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); margin-bottom: 16px; border-bottom: 1px solid var(--border); padding-bottom: 8px;">
-                    Detail Pesanan (#{{ substr($order->id, 0, 8) }}...)
-                </h4>
-                
-                <div style="display: flex; flex-direction: column; gap: 12px;">
-                    <div style="display: flex; justify-content: space-between; align-items: center; font-size: 14px;">
-                        <span style="color: var(--text-muted);">Paket Token:</span>
-                        <span style="font-weight: 700; color: var(--text-white);">{{ $order->package?->name ?? 'Paket Token' }}</span>
-                    </div>
-                    <div style="display: flex; justify-content: space-between; align-items: center; font-size: 14px;">
-                        <span style="color: var(--text-muted);">Jumlah Token:</span>
-                        <span style="font-weight: 700; color: var(--accent-light);">{{ number_format($order->token_amount) }} Token</span>
-                    </div>
-                    <div style="display: flex; justify-content: space-between; align-items: center; font-size: 14px;">
-                        <span style="color: var(--text-muted);">ID Referensi Gateway:</span>
-                        <span style="font-family: monospace; color: var(--text-secondary); font-size: 12px;">{{ $order->gateway_order_id ?: 'SIM_' . time() }}</span>
-                    </div>
-                    <div style="display: flex; justify-content: space-between; align-items: center; font-size: 14px; margin-top: 4px; padding-top: 12px; border-top: 1px dashed var(--border);">
-                        <span style="font-size: 15px; font-weight: 600; color: var(--text-white);">Total Tagihan:</span>
-                        <span style="font-size: 20px; font-weight: 800; color: var(--success);">Rp {{ number_format($order->amount_idr, 0, ',', '.') }}</span>
-                    </div>
-                </div>
-            </div>
-
-            <p style="font-size: 13px; font-weight: 600; color: var(--text-white); margin-bottom: 16px; text-align: center;">
+        <!-- Simulation Action Choice -->
+        <div class="space-y-3">
+            <p class="text-xs font-bold text-gray-700 text-center">
                 Pilih hasil simulasi pembayaran yang ingin diuji:
             </p>
 
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <!-- Simulate Success -->
                 <form method="POST" action="{{ route('tenant.owner.tokens.simulate.process', ['tenant' => $tenant, 'order' => $order->id]) }}">
                     @csrf
-                    <input type="hidden" name="action" value="success">
-                    <button type="submit" class="btn btn-success" style="width: 100%; padding: 14px; justify-content: center; font-size: 14px; box-shadow: 0 4px 15px rgba(16,185,129,0.3);">
-                        <i class="fas fa-check-circle"></i> Bayar & Berhasil
+                    <input type="hidden" name="action" value="success" />
+                    <button type="submit" 
+                        class="w-full py-3 rounded-xl bg-success-600 hover:bg-success-700 text-white font-bold text-xs shadow-theme-xs transition flex items-center justify-center gap-2">
+                        <i class="fas fa-check-circle text-sm"></i>
+                        <span>Bayar & Berhasil (Success)</span>
                     </button>
                 </form>
 
                 <!-- Simulate Failed -->
                 <form method="POST" action="{{ route('tenant.owner.tokens.simulate.process', ['tenant' => $tenant, 'order' => $order->id]) }}">
                     @csrf
-                    <input type="hidden" name="action" value="failed">
-                    <button type="submit" class="btn btn-danger" style="width: 100%; padding: 14px; justify-content: center; font-size: 14px; background: rgba(239,68,68,0.2); color: var(--danger); border: 1px solid var(--danger);">
-                        <i class="fas fa-times-circle"></i> Batalkan / Gagal
+                    <input type="hidden" name="action" value="failed" />
+                    <button type="submit" 
+                        class="w-full py-3 rounded-xl bg-error-50 hover:bg-error-100 text-error-700 border border-error-200 font-bold text-xs transition flex items-center justify-center gap-2">
+                        <i class="fas fa-times-circle text-sm"></i>
+                        <span>Batalkan / Gagal (Failed)</span>
                     </button>
                 </form>
             </div>
         </div>
 
-        <div class="card-footer" style="justify-content: center; background: rgba(0,0,0,0.1);">
-            <a href="{{ route('tenant.owner.tokens', ['tenant' => $tenant]) }}" style="font-size: 13px; color: var(--text-muted); text-decoration: none;">
-                <i class="fas fa-arrow-left"></i> Kembali ke daftar paket token
+        <!-- Footer Link -->
+        <div class="pt-4 border-t border-gray-100 text-center">
+            <a href="{{ route('tenant.owner.tokens', ['tenant' => $tenant]) }}" 
+                class="text-xs font-bold text-gray-500 hover:text-gray-800 transition inline-flex items-center gap-2">
+                <i class="fas fa-arrow-left"></i>
+                <span>Kembali ke Halaman Token</span>
             </a>
         </div>
     </div>
-
 </div>
 @endsection
