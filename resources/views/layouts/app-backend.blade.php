@@ -126,7 +126,7 @@
                                     <a href="{{ route('superadmin.dashboard') }}"
                                         class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all {{ request()->routeIs('superadmin.dashboard') ? 'bg-brand-50 text-brand-500 font-semibold' : 'text-gray-700 hover:bg-gray-100 hover:text-gray-900' }}">
                                         <i class="fas fa-chart-pie w-5 text-center text-base {{ request()->routeIs('superadmin.dashboard') ? 'text-brand-500' : 'text-gray-400' }}"></i>
-                                        <span x-show="$store.sidebar.isExpanded || $store.sidebar.isHovered || $store.sidebar.isMobileOpen">Dashboard Central</span>
+                                        <span x-show="$store.sidebar.isExpanded || $store.sidebar.isHovered || $store.sidebar.isMobileOpen">Dashboard</span>
                                     </a>
                                 </li>
                             </ul>
@@ -200,7 +200,7 @@
                                     <a href="{{ route('tenant.owner.dashboard', ['tenant' => $tenantSlug]) }}"
                                         class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all {{ request()->routeIs('tenant.owner.dashboard') ? 'bg-brand-50 text-brand-500 font-semibold' : 'text-gray-700 hover:bg-gray-100 hover:text-gray-900' }}">
                                         <i class="fas fa-chart-pie w-5 text-center text-base {{ request()->routeIs('tenant.owner.dashboard') ? 'text-brand-500' : 'text-gray-400' }}"></i>
-                                        <span x-show="$store.sidebar.isExpanded || $store.sidebar.isHovered || $store.sidebar.isMobileOpen">Dashboard Owner</span>
+                                        <span x-show="$store.sidebar.isExpanded || $store.sidebar.isHovered || $store.sidebar.isMobileOpen">Dashboard</span>
                                     </a>
                                 </li>
                             </ul>
@@ -274,7 +274,7 @@
                                     <a href="{{ route('tenant.participant.dashboard', ['tenant' => $tenantSlug]) }}"
                                         class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all {{ request()->routeIs('tenant.participant.dashboard') ? 'bg-brand-50 text-brand-500 font-semibold' : 'text-gray-700 hover:bg-gray-100 hover:text-gray-900' }}">
                                         <i class="fas fa-play-circle w-5 text-center text-base {{ request()->routeIs('tenant.participant.dashboard') ? 'text-brand-500' : 'text-gray-400' }}"></i>
-                                        <span x-show="$store.sidebar.isExpanded || $store.sidebar.isHovered || $store.sidebar.isMobileOpen">Beranda Kuis & Ujian</span>
+                                        <span x-show="$store.sidebar.isExpanded || $store.sidebar.isHovered || $store.sidebar.isMobileOpen">Dashboard</span>
                                     </a>
                                 </li>
                             </ul>
