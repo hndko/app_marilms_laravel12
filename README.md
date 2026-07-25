@@ -1,4 +1,4 @@
-# 🎓 MariLMS AI — Platform LMS & Portal Ujian Multi-Tenant Berbasis AI (v1.5.0)
+# 🎓 MariLMS AI — Platform LMS & Portal Ujian Multi-Tenant Berbasis AI (v1.5.1)
 
 **MariLMS AI** adalah platform *Learning Management System* (LMS) dan evaluasi ujian digital multi-tenant berbasis Laravel 12 dengan fitur pembuatan kuis otomatis berbantuan Artificial Intelligence serta sistem pengawasan ujian anti-kecurangan terintegrasi.
 
