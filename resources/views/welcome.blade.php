@@ -14,7 +14,7 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     <!-- Vite (Tailwind CSS v4 & Alpine.js) -->
@@ -73,27 +73,27 @@
     <main>
 
         {{-- ============================================================ --}}
-        {{-- HERO SECTION (2-Column Layout with Image Preview) --}}
+        {{-- HERO SECTION (Proportional Typography & Real Tenant URL) --}}
         {{-- ============================================================ --}}
         <section class="bg-white border-b border-slate-200 overflow-hidden">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 lg:py-20">
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
                     
                     <!-- Left Column: Content -->
-                    <div class="lg:col-span-7 space-y-6 text-left">
+                    <div class="lg:col-span-7 space-y-5 text-left">
                         <!-- Badge -->
-                        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-blue-200 bg-blue-50 text-blue-700 text-xs font-bold">
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-blue-200 bg-blue-50 text-blue-700 text-xs font-bold">
                             <i class="fas fa-sparkles text-blue-600"></i>
                             <span>Platform Evaluasi & LMS Multi-Tenant Berbasis AI</span>
                         </div>
 
-                        <!-- Headline -->
-                        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-display font-extrabold text-slate-900 tracking-tight leading-tight">
+                        <!-- Headline (Optimized Typography: text-3xl sm:text-4xl lg:text-5xl) -->
+                        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-display font-extrabold text-slate-900 tracking-tight leading-[1.15]">
                             Buat Soal Ujian Otomatis dengan AI,
-                            <span class="text-blue-600 block mt-1.5">Ujian Aman Anti-Kecurangan</span>
+                            <span class="text-blue-600 block mt-1">Ujian Aman Anti-Kecurangan</span>
                         </h1>
 
-                        <!-- Subheadline -->
+                        <!-- Subheadline (Optimized font-size & line-height) -->
                         <p class="text-base sm:text-lg text-slate-600 max-w-2xl leading-relaxed">
                             MariLMS AI membantu instansi dan pengajar menghasilkan kuis berkualitas lengkap dengan kunci jawaban & pembahasan ilmiah dalam hitungan detik, didukung timer server otoritatif dan pengawasan ujian real-time.
                         </p>
@@ -106,7 +106,7 @@
                         </div>
 
                         <!-- CTA Group -->
-                        <div class="pt-3 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+                        <div class="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
                             <a href="{{ route('register') }}"
                                 class="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-semibold text-sm shadow-md transition-all duration-150">
                                 <i class="fas fa-rocket"></i>
@@ -122,7 +122,6 @@
 
                     <!-- Right Column: Interactive Image Preview Showcase -->
                     <div class="lg:col-span-5 relative">
-                        <!-- Decorative Frame Container -->
                         <div class="relative mx-auto max-w-md lg:max-w-none">
                             
                             <!-- Main Preview Image Card -->
@@ -132,7 +131,8 @@
                                         <span class="w-2.5 h-2.5 rounded-full bg-red-400"></span>
                                         <span class="w-2.5 h-2.5 rounded-full bg-amber-400"></span>
                                         <span class="w-2.5 h-2.5 rounded-full bg-emerald-400"></span>
-                                        <span class="ml-2 font-mono text-[11px] text-slate-500">marilms.id/dashboard/ai-quiz</span>
+                                        <!-- Real Path-Based Tenant URL -->
+                                        <span class="ml-2 font-mono text-[11px] text-slate-600 font-semibold">marilms.id/sma-nusantara/dashboard/quizzes</span>
                                     </div>
                                     <span class="text-[10px] font-bold text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded">ONLINE</span>
                                 </div>
@@ -170,7 +170,7 @@
                 </div>
 
                 <!-- Stats Row -->
-                <div class="mt-16 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-5xl mx-auto border-t border-slate-200 pt-10">
+                <div class="mt-14 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-5xl mx-auto border-t border-slate-200 pt-8">
                     <div class="bg-slate-50 border border-slate-200 rounded-xl p-4 text-center">
                         <p class="text-3xl font-display font-extrabold text-slate-900">&lt; 30<span class="text-base font-semibold text-blue-600 ml-1">Detik</span></p>
                         <p class="text-xs font-medium text-slate-600 mt-1"><i class="fas fa-bolt text-amber-500 mr-1"></i>Generate Kuis AI</p>
