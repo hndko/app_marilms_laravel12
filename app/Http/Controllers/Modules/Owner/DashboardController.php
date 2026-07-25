@@ -30,12 +30,14 @@ class DashboardController extends Controller
             // 1. Metrics & Comparison
             $totalQuizzes = Quiz::where('quizzes.tenant_id', $tenantId)->count();
             $prevQuizzes = Quiz::where('quizzes.tenant_id', $tenantId)
-                ->where('quizzes.created_at', '<', $dateRange['start'])->count();
+                ->when($dateRange['start'], fn($q) => $q->where('quizzes.created_at', '<', $dateRange['start']))
+                ->count();
             $quizGrowth = $this->calculateGrowth($totalQuizzes, $prevQuizzes);
 
             $activeParticipants = User::where('tenant_users.tenant_id', $tenantId)->count();
             $prevParticipants = User::where('tenant_users.tenant_id', $tenantId)
-                ->where('tenant_users.created_at', '<', $dateRange['start'])->count();
+                ->when($dateRange['start'], fn($q) => $q->where('tenant_users.created_at', '<', $dateRange['start']))
+                ->count();
             $participantGrowth = $this->calculateGrowth($activeParticipants, $prevParticipants);
 
             $attemptsQuery = QuizAttempt::where('quiz_attempts.tenant_id', $tenantId)
