@@ -148,7 +148,7 @@
                 <div class="grid-2">
                     <div class="form-group">
                         <label class="form-label">From Address</label>
-                        <input type="email" name="from_address" class="form-input" value="{{ $emailConfig->from_address ?? '' }}" placeholder="noreply@marilms.com">
+                        <input type="email" name="from_address" class="form-input" value="{{ $emailConfig->from_address ?? '' }}" placeholder="noreply@example.com">
                     </div>
                     <div class="form-group">
                         <label class="form-label">From Name</label>

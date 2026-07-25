@@ -16,13 +16,13 @@ class DemoOwnerSeeder extends Seeder
      */
     public function run(): void
     {
-        if (Owner::where('email', 'owner@marilms.com')->exists()) {
+        if (Owner::where('email', 'owner@example.com')->exists() || Owner::where('slug', 'academy')->exists()) {
             return;
         }
 
         $owner = Owner::create([
             'name' => 'Demo Owner',
-            'email' => 'owner@marilms.com',
+            'email' => 'owner@example.com',
             'password' => Hash::make('password'),
             'organization_name' => 'MariLMS Academy',
             'slug' => 'academy',

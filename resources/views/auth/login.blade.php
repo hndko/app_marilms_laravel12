@@ -220,7 +220,7 @@
                     <label class="form-label">Alamat Email</label>
                     <div class="input-group">
                         <i class="fas fa-envelope input-icon"></i>
-                        <input type="email" name="email" class="form-input" value="{{ old('email') }}" required placeholder="nama@email.com">
+                        <input type="email" name="email" class="form-input" value="{{ old('email') }}" required placeholder="user@example.com">
                     </div>
                 </div>
 
@@ -291,7 +291,7 @@
                     <label class="form-label">Alamat Email</label>
                     <div class="input-group">
                         <i class="fas fa-envelope input-icon"></i>
-                        <input type="email" name="email" class="form-input" value="{{ old('email') }}" required autofocus placeholder="nama@email.com">
+                        <input type="email" name="email" class="form-input" value="{{ old('email') }}" required autofocus placeholder="user@example.com">
                     </div>
                 </div>
 

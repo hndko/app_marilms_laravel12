@@ -42,7 +42,7 @@ class MidtransGateway implements PaymentGatewayContract
             ],
             'customer_details' => [
                 'first_name' => $customerDetails['name'] ?? ($order->owner->name ?? 'Owner'),
-                'email' => $customerDetails['email'] ?? ($order->owner->email ?? 'owner@marilms.com'),
+                'email' => $customerDetails['email'] ?? ($order->owner->email ?? 'owner@example.com'),
                 'phone' => $customerDetails['phone'] ?? ($order->owner->phone ?? '08123456789'),
             ],
             'item_details' => [

@@ -38,7 +38,7 @@ class XenditGateway implements PaymentGatewayContract
             'invoice_duration' => 86400,
             'customer' => [
                 'given_names' => $customerDetails['name'] ?? ($order->owner->name ?? 'Owner'),
-                'email' => $customerDetails['email'] ?? ($order->owner->email ?? 'owner@marilms.com'),
+                'email' => $customerDetails['email'] ?? ($order->owner->email ?? 'owner@example.com'),
             ],
             'success_redirect_url' => $finishUrl,
             'failure_redirect_url' => $errorUrl,

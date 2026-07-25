@@ -36,7 +36,7 @@
                 <div class="grid-2">
                     <div class="form-group">
                         <label class="form-label">Alamat Email <span style="color: var(--danger);">*</span></label>
-                        <input type="email" name="email" class="form-input" required placeholder="siswa@sekolah.sch.id" value="{{ old('email') }}">
+                        <input type="email" name="email" class="form-input" required placeholder="siswa@example.com" value="{{ old('email') }}">
                         <p style="font-size: 11px; color: var(--text-muted); margin-top: 4px;">Digunakan untuk login peserta</p>
                     </div>
 
