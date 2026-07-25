@@ -1,132 +1,164 @@
 @extends('layouts.app-backend')
 
 @section('title', $quiz->title)
-@section('page-title', 'Preview & Detail Kuis')
-
-@section('breadcrumb')
-    <a href="{{ route('tenant.owner.quizzes.index') }}">Daftar Kuis</a>
-    <i class="fas fa-chevron-right" style="font-size: 10px;"></i>
-    <span>{{ Str::limit($quiz->title, 25) }}</span>
-@endsection
 
 @section('content')
-<div style="display: flex; flex-direction: column; gap: 28px;">
+<div class="space-y-6">
 
     <!-- Quiz Overview Header Card -->
-    <div class="card" style="border-color: rgba(99,102,241,0.4); box-shadow: 0 0 30px rgba(99,102,241,0.1);">
-        <div class="card-body" style="padding: 28px;">
-            
-            <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 16px; margin-bottom: 20px;">
-                <div>
-                    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
-                        <span class="badge badge-info">{{ $quiz->category ?: 'Umum' }}</span>
-                        @if($quiz->status === 'active')
-                            <span class="badge badge-success"><i class="fas fa-check-circle"></i> Aktif & Siap Dikerjakan</span>
-                        @elseif($quiz->status === 'draft')
-                            <span class="badge badge-warning"><i class="fas fa-edit"></i> Draft (Belum Dipublikasi)</span>
-                        @else
-                            <span class="badge badge-danger"><i class="fas fa-archive"></i> Diarsipkan</span>
-                        @endif
-                    </div>
-                    <h2 style="font-size: 28px; font-weight: 800; color: var(--text-white);">{{ $quiz->title }}</h2>
-                    @if($quiz->description)
-                        <p style="font-size: 14px; color: var(--text-muted); margin-top: 8px; max-width: 700px; line-height: 1.6;">
-                            {{ $quiz->description }}
-                        </p>
+    <div class="rounded-2xl border border-gray-200 bg-white p-6 sm:p-8 shadow-theme-xs space-y-6">
+        
+        <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
+            <div class="space-y-2">
+                <div class="flex flex-wrap items-center gap-2">
+                    <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-brand-50 text-brand-700 border border-brand-200">
+                        {{ $quiz->category ?: 'Umum' }}
+                    </span>
+                    @if($quiz->status === 'active')
+                        <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-success-50 text-success-700 border border-success-200">
+                            <i class="fas fa-check-circle mr-1"></i> Aktif & Siap Dikerjakan
+                        </span>
+                    @elseif($quiz->status === 'draft')
+                        <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-amber-50 text-amber-700 border border-amber-200">
+                            <i class="fas fa-edit mr-1"></i> Draft (Belum Dipublikasi)
+                        </span>
+                    @else
+                        <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-error-50 text-error-700 border border-error-200">
+                            <i class="fas fa-archive mr-1"></i> Diarsipkan
+                        </span>
                     @endif
                 </div>
 
-                <div style="display: flex; gap: 10px;">
-                    <a href="{{ route('tenant.owner.quizzes.edit', ['quiz' => $quiz->id]) }}" class="btn btn-primary" style="padding: 12px 20px;">
-                        <i class="fas fa-edit"></i> Edit Kuis & Soal
-                    </a>
-                </div>
+                <h2 class="text-2xl sm:text-3xl font-extrabold text-gray-900 tracking-tight leading-snug">
+                    {{ $quiz->title }}
+                </h2>
+
+                @if($quiz->description)
+                    <p class="text-xs text-gray-500 leading-relaxed max-w-3xl">
+                        {{ $quiz->description }}
+                    </p>
+                @endif
             </div>
 
-            <!-- Specs Grid -->
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; padding-top: 20px; border-top: 1px solid var(--border);">
-                <div style="background: var(--bg-input); padding: 14px; border-radius: 12px;">
-                    <span style="font-size: 12px; color: var(--text-muted); display: block;">Total Butir Soal</span>
-                    <span style="font-size: 20px; font-weight: 800; color: var(--text-white); margin-top: 4px; display: block;">
-                        <i class="fas fa-list-ol" style="color: var(--accent); margin-right: 6px;"></i> {{ $quiz->questions->count() }} Soal
-                    </span>
-                </div>
-
-                <div style="background: var(--bg-input); padding: 14px; border-radius: 12px;">
-                    <span style="font-size: 12px; color: var(--text-muted); display: block;">Durasi Waktu</span>
-                    <span style="font-size: 20px; font-weight: 800; color: var(--text-white); margin-top: 4px; display: block;">
-                        <i class="fas fa-stopwatch" style="color: var(--warning); margin-right: 6px;"></i> {{ $quiz->time_limit }} Menit
-                    </span>
-                </div>
-
-                <div style="background: var(--bg-input); padding: 14px; border-radius: 12px;">
-                    <span style="font-size: 12px; color: var(--text-muted); display: block;">Nilai Kelulusan</span>
-                    <span style="font-size: 20px; font-weight: 800; color: var(--success); margin-top: 4px; display: block;">
-                        <i class="fas fa-trophy" style="margin-right: 6px;"></i> {{ $quiz->passing_score }}%
-                    </span>
-                </div>
-
-                <div style="background: var(--bg-input); padding: 14px; border-radius: 12px;">
-                    <span style="font-size: 12px; color: var(--text-muted); display: block;">Batas Percobaan</span>
-                    <span style="font-size: 20px; font-weight: 800; color: var(--primary-light); margin-top: 4px; display: block;">
-                        <i class="fas fa-redo" style="margin-right: 6px;"></i> {{ $quiz->max_attempts }}x
-                    </span>
-                </div>
+            <div class="flex items-center gap-2 shrink-0">
+                <a href="{{ route('tenant.owner.quizzes.index', ['tenant' => $tenant]) }}" 
+                    class="px-3.5 py-2.5 rounded-xl border border-gray-200 bg-white hover:bg-gray-50 text-gray-700 font-bold text-xs transition">
+                    <i class="fas fa-arrow-left text-xs mr-1.5"></i>
+                    <span>Kembali</span>
+                </a>
+                <a href="{{ route('tenant.owner.quizzes.edit', ['quiz' => $quiz->id]) }}" 
+                    class="px-4 py-2.5 rounded-xl bg-brand-500 hover:bg-brand-600 text-white font-bold text-xs shadow-theme-xs transition flex items-center gap-2">
+                    <i class="fas fa-pen-to-square text-xs"></i>
+                    <span>Edit Kuis & Soal</span>
+                </a>
             </div>
-
         </div>
+
+        <!-- Specs Grid -->
+        <div class="pt-6 border-t border-gray-100 grid grid-cols-2 sm:grid-cols-4 gap-4">
+            <div class="p-4 rounded-xl bg-gray-50 border border-gray-200/80 space-y-1">
+                <span class="text-[10px] font-semibold text-gray-400 uppercase">Total Butir Soal</span>
+                <p class="text-lg font-extrabold text-gray-900 flex items-center gap-2">
+                    <i class="fas fa-list-ol text-brand-500 text-sm"></i>
+                    <span>{{ $quiz->questions->count() }} Soal</span>
+                </p>
+            </div>
+
+            <div class="p-4 rounded-xl bg-gray-50 border border-gray-200/80 space-y-1">
+                <span class="text-[10px] font-semibold text-gray-400 uppercase">Durasi Waktu</span>
+                <p class="text-lg font-extrabold text-gray-900 flex items-center gap-2">
+                    <i class="fas fa-clock text-amber-500 text-sm"></i>
+                    <span>{{ $quiz->time_limit }} Menit</span>
+                </p>
+            </div>
+
+            <div class="p-4 rounded-xl bg-gray-50 border border-gray-200/80 space-y-1">
+                <span class="text-[10px] font-semibold text-gray-400 uppercase">Nilai Kelulusan</span>
+                <p class="text-lg font-extrabold text-success-600 flex items-center gap-2">
+                    <i class="fas fa-trophy text-sm"></i>
+                    <span>{{ $quiz->passing_score }}%</span>
+                </p>
+            </div>
+
+            <div class="p-4 rounded-xl bg-gray-50 border border-gray-200/80 space-y-1">
+                <span class="text-[10px] font-semibold text-gray-400 uppercase">Batas Percobaan</span>
+                <p class="text-lg font-extrabold text-indigo-600 flex items-center gap-2">
+                    <i class="fas fa-rotate text-sm"></i>
+                    <span>{{ $quiz->max_attempts }}x Percobaan</span>
+                </p>
+            </div>
+        </div>
+
     </div>
 
     <!-- Questions Preview List -->
-    <div class="card">
-        <div class="card-header" style="justify-content: space-between;">
-            <h3><i class="fas fa-file-alt" style="color: var(--accent); margin-right: 8px;"></i> Daftar Butir Soal & Pilihan Jawaban</h3>
-            <span class="badge badge-primary">{{ $quiz->questions->count() }} Soal</span>
+    <div class="rounded-2xl border border-gray-200 bg-white p-6 sm:p-8 shadow-theme-xs space-y-6">
+        <div class="flex items-center justify-between border-b border-gray-100 pb-4">
+            <div>
+                <h3 class="text-base font-bold text-gray-900 flex items-center gap-2">
+                    <i class="fas fa-file-lines text-brand-500"></i>
+                    <span>Daftar Butir Soal & Pilihan Jawaban</span>
+                </h3>
+                <p class="text-xs text-gray-500">Pratinjau soal kuis dan kunci jawaban yang akan dikerjakan oleh peserta.</p>
+            </div>
+            <span class="px-3 py-1 rounded-full text-xs font-extrabold bg-brand-50 text-brand-700 border border-brand-200">
+                {{ $quiz->questions->count() }} Soal
+            </span>
         </div>
 
         @if($quiz->questions->isEmpty())
-            <div style="padding: 60px 20px; text-align: center;">
-                <i class="fas fa-question-circle" style="font-size: 48px; color: var(--text-muted); margin-bottom: 16px;"></i>
-                <h4 style="font-size: 16px; font-weight: 700; color: var(--text-white);">Kuis Ini Belum Memiliki Soal</h4>
-                <p style="font-size: 13px; color: var(--text-muted); margin: 6px 0 20px;">Silakan masuk ke editor untuk menambahkan soal secara manual atau menggunakan AI.</p>
-                <a href="{{ route('tenant.owner.quizzes.edit', ['quiz' => $quiz->id]) }}" class="btn btn-primary">
-                    <i class="fas fa-plus"></i> Tambah Soal Sekarang
+            <div class="p-12 text-center space-y-3">
+                <div class="w-12 h-12 rounded-2xl bg-gray-100 text-gray-400 mx-auto flex items-center justify-center text-xl">
+                    <i class="fas fa-question-circle"></i>
+                </div>
+                <h4 class="text-base font-bold text-gray-900">Kuis Ini Belum Memiliki Soal</h4>
+                <p class="text-xs text-gray-500 max-w-sm mx-auto">
+                    Silakan masuk ke mode editor untuk menambahkan soal secara manual atau menggunakan generator AI.
+                </p>
+                <a href="{{ route('tenant.owner.quizzes.edit', ['quiz' => $quiz->id]) }}" 
+                    class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-brand-500 hover:bg-brand-600 text-white font-bold text-xs shadow-theme-xs transition">
+                    <i class="fas fa-plus text-xs"></i>
+                    <span>Tambah Soal Sekarang</span>
                 </a>
             </div>
         @else
-            <div style="display: flex; flex-direction: column; divide-y: 1px solid var(--border);">
+            <div class="space-y-6 divide-y divide-gray-100">
                 @foreach($quiz->questions as $index => $q)
-                    <div style="padding: 24px; {{ $loop->notFirst ? 'border-top: 1px solid var(--border);' : '' }}">
-                        <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; margin-bottom: 16px;">
-                            <div style="display: flex; gap: 12px; align-items: flex-start;">
-                                <div style="width: 32px; height: 32px; border-radius: 8px; background: var(--primary); color: white; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 14px; flex-shrink: 0;">
+                    <div class="pt-6 first:pt-0 space-y-4">
+                        <div class="flex items-start justify-between gap-4">
+                            <div class="flex items-start gap-3">
+                                <div class="w-8 h-8 rounded-xl bg-brand-500 text-white font-extrabold text-xs flex items-center justify-center shrink-0">
                                     {{ $index + 1 }}
                                 </div>
-                                <div>
-                                    <h4 style="font-size: 16px; font-weight: 700; color: var(--text-white); line-height: 1.5;">
+                                <div class="space-y-1">
+                                    <h4 class="text-sm font-bold text-gray-900 leading-snug">
                                         {{ $q->question_text }}
                                     </h4>
-                                    <div style="display: flex; gap: 10px; margin-top: 6px;">
-                                        <span class="badge badge-info" style="font-size: 11px;">Bobot: {{ $q->points }} Poin</span>
-                                        <span class="badge badge-secondary" style="font-size: 11px;">Tipe: {{ str_replace('_', ' ', $q->question_type) }}</span>
+                                    <div class="flex items-center gap-2">
+                                        <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-brand-50 text-brand-700 border border-brand-200">
+                                            Bobot: {{ $q->points }} Poin
+                                        </span>
+                                        <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-gray-100 text-gray-700 border border-gray-200 capitalize">
+                                            Tipe: {{ str_replace('_', ' ', $q->question_type) }}
+                                        </span>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Options List -->
-                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 12px; margin-left: 44px; margin-bottom: 16px;">
+                        <!-- Options List Grid -->
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pl-11">
                             @foreach($q->options as $optIdx => $opt)
                                 @php
-                                    $letter = chr(65 + $optIdx); // A, B, C, D...
+                                    $letter = chr(65 + $optIdx);
                                 @endphp
-                                <div style="padding: 12px 16px; border-radius: 10px; border: 1px solid {{ $opt->is_correct ? 'var(--success)' : 'var(--border)' }}; background: {{ $opt->is_correct ? 'rgba(16,185,129,0.1)' : 'var(--bg-input)' }}; display: flex; align-items: center; justify-content: space-between; gap: 10px;">
-                                    <div style="display: flex; align-items: center; gap: 10px; font-size: 14px; color: {{ $opt->is_correct ? 'var(--success)' : 'var(--text-white)' }}; font-weight: {{ $opt->is_correct ? '700' : '400' }};">
-                                        <span style="font-weight: 800; color: var(--text-muted);">{{ $letter }}.</span>
+                                <div class="p-3 rounded-xl border flex items-center justify-between gap-3 text-xs transition {{ $opt->is_correct ? 'bg-success-50/60 border-success-300 text-success-800 font-bold' : 'bg-gray-50/50 border-gray-200 text-gray-700' }}">
+                                    <div class="flex items-center gap-2.5">
+                                        <span class="font-extrabold w-4 text-center text-gray-500">{{ $letter }}.</span>
                                         <span>{{ $opt->option_text }}</span>
                                     </div>
                                     @if($opt->is_correct)
-                                        <span style="color: var(--success); font-size: 16px;" title="Jawaban Benar">
+                                        <span class="text-success-600 text-sm" title="Kunci Jawaban Benar">
                                             <i class="fas fa-check-circle"></i>
                                         </span>
                                     @endif
@@ -136,11 +168,12 @@
 
                         <!-- Explanation Box -->
                         @if($q->explanation)
-                            <div style="margin-left: 44px; background: rgba(99,102,241,0.08); border-left: 3px solid var(--primary-light); padding: 12px 16px; border-radius: 0 8px 8px 0;">
-                                <div style="font-size: 12px; font-weight: 700; color: var(--primary-light); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px;">
-                                    <i class="fas fa-lightbulb"></i> Pembahasan / Penjelasan:
+                            <div class="ml-11 p-3.5 rounded-r-xl rounded-l-none border-l-4 border-brand-500 bg-brand-50/50 space-y-1 text-xs">
+                                <div class="font-bold text-brand-700 uppercase tracking-wider text-[10px] flex items-center gap-1.5">
+                                    <i class="fas fa-lightbulb"></i>
+                                    <span>Pembahasan / Penjelasan Jawaban:</span>
                                 </div>
-                                <p style="font-size: 13px; color: var(--text-secondary); line-height: 1.5;">
+                                <p class="text-gray-600 leading-relaxed">
                                     {{ $q->explanation }}
                                 </p>
                             </div>

@@ -1,72 +1,176 @@
 @extends('layouts.app-backend')
 
-@section('title', 'Daftar Kuis')
-@section('page-title', 'Manajemen Kuis AI')
-
-@section('breadcrumb')
-    <span>Daftar Kuis</span>
-@endsection
+@section('title', 'Daftar Kuis AI')
 
 @section('content')
-<div style="display: flex; flex-direction: column; gap: 28px;">
+<div x-data="{ 
+    showInfoModal: false,
+    init() {
+        this.$watch('showInfoModal', val => document.body.style.overflow = val ? 'hidden' : 'unset');
+    }
+}" class="space-y-6">
 
-    <!-- Top Action & Banner -->
-    <div class="card" style="background: linear-gradient(135deg, rgba(99,102,241,0.15), rgba(6,182,212,0.15)); border: 1px solid rgba(99,102,241,0.3); padding: 24px;">
-        <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px;">
-            <div>
-                <span style="font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--accent-light);">Bank Soal & Evaluasi</span>
-                <h2 style="font-size: 26px; font-weight: 800; color: var(--text-white); margin-top: 4px;">
-                    Kelola Paket Kuis Anda
-                </h2>
-                <p style="font-size: 13px; color: var(--text-muted); margin-top: 4px;">
-                    Buat kuis baru secara otomatis menggunakan AI dari materi pengajaran atau bangun secara manual.
-                </p>
-            </div>
-            <div style="display: flex; gap: 12px;">
-                <a href="{{ route('tenant.owner.quizzes.create', ['tenant' => $tenant]) }}" class="btn btn-primary" style="padding: 12px 24px; font-size: 14px;">
-                    <i class="fas fa-wand-magic-sparkles"></i> Buat Kuis Baru (AI / Manual)
-                </a>
-            </div>
+    <!-- TailAdmin Top Header Card Wrapper with Panduan Modul Button -->
+    <div class="p-5 md:p-6 rounded-2xl bg-white border border-gray-200 shadow-theme-xs flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div>
+            <h2 class="text-xl font-bold text-gray-800 tracking-tight">Manajemen Kuis & Bank Soal AI</h2>
+            <p class="text-xs text-gray-500">Kelola paket kuis, buat kuis otomatis berbasis AI, dan atur hak akses peserta kuis.</p>
+        </div>
+
+        <div class="flex flex-wrap items-center gap-3">
+            <button @click="showInfoModal = true" 
+                class="px-3.5 py-2.5 rounded-xl bg-brand-50 hover:bg-brand-100 text-brand-600 border border-brand-200 text-xs font-bold transition flex items-center gap-2 shadow-2xs">
+                <i class="fas fa-circle-info text-brand-500 text-sm"></i>
+                <span>Panduan Modul</span>
+            </button>
+
+            <a href="{{ route('tenant.owner.quizzes.create', ['tenant' => $tenant]) }}" 
+                class="px-4 py-2.5 rounded-xl bg-brand-500 hover:bg-brand-600 text-white font-bold text-xs shadow-theme-xs transition flex items-center gap-2">
+                <i class="fas fa-wand-magic-sparkles text-xs"></i>
+                <span>Buat Kuis Baru (AI / Manual)</span>
+            </a>
         </div>
     </div>
 
-    <!-- Filter & Search Bar -->
-    <div class="card" style="padding: 20px;">
-        <form method="GET" action="{{ route('tenant.owner.quizzes.index', ['tenant' => $tenant]) }}" style="display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-end;">
-            <div style="flex: 1; min-width: 240px;">
-                <label class="form-label" style="font-size: 12px;">Cari Kuis</label>
-                <div style="position: relative;">
-                    <input type="text" name="search" class="form-input" value="{{ request('search') }}" placeholder="Judul kuis, deskripsi, atau materi..." style="padding-left: 36px;">
-                    <i class="fas fa-search" style="position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: var(--text-muted);"></i>
+    <!-- Teleport Panduan Modul to Body -->
+    <template x-teleport="body">
+        <div x-show="showInfoModal" x-cloak
+            @keydown.escape.window="showInfoModal = false"
+            x-transition:enter="transition ease-out duration-200"
+            x-transition:enter-start="opacity-0"
+            x-transition:enter-end="opacity-100"
+            x-transition:leave="transition ease-in duration-150"
+            x-transition:leave-start="opacity-100"
+            x-transition:leave-end="opacity-0"
+            class="fixed inset-0 z-[99999] flex items-center justify-center p-4 sm:p-6 bg-gray-900/60 backdrop-blur-md overflow-y-auto"
+            style="display: none;">
+            
+            <div @click="showInfoModal = false" class="fixed inset-0 h-full w-full"></div>
+
+            <div class="relative w-full max-w-[580px] rounded-3xl bg-white p-6 sm:p-8 shadow-2xl border border-gray-200 z-10 flex flex-col max-h-[85vh] animate-in fade-in zoom-in duration-150">
+                
+                <div class="flex items-center justify-between pb-4 border-b border-gray-100 shrink-0">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-brand-50 text-brand-500 border border-brand-200 flex items-center justify-center font-bold shrink-0">
+                            <i class="fas fa-wand-magic-sparkles text-base"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-base font-bold text-gray-900">Panduan Modul Manajemen Kuis</h3>
+                            <p class="text-xs text-gray-500">Tata cara pembuatan kuis, generator AI, dan pengelolaan soal.</p>
+                        </div>
+                    </div>
+                    <button @click="showInfoModal = false" class="w-9 h-9 flex items-center justify-center rounded-full bg-gray-100 text-gray-400 hover:bg-gray-200 hover:text-gray-700 transition">
+                        <i class="fas fa-times text-sm"></i>
+                    </button>
+                </div>
+
+                <div class="flex-1 overflow-y-auto py-4 space-y-4 text-xs text-gray-600 leading-relaxed pr-2">
+                    <div class="space-y-1.5 bg-gray-50 p-4 rounded-2xl border border-gray-200/80">
+                        <h4 class="font-bold text-gray-900 flex items-center gap-2">
+                            <i class="fas fa-bullseye text-brand-500"></i>
+                            Fungsi Utama Modul Kuis
+                        </h4>
+                        <p>
+                            Modul ini digunakan oleh Owner Lembaga untuk membuat, mengedit, dan mempublikasikan kuis ujian. Anda dapat memanfaatkan AI Quiz Generator untuk membuat paket soal lengkap beserta opsi jawaban dan pembahasannya secara otomatis.
+                        </p>
+                    </div>
+
+                    <div class="space-y-2">
+                        <h4 class="font-bold text-gray-900 flex items-center gap-2">
+                            <i class="fas fa-layer-group text-amber-500"></i>
+                            Status Kuis
+                        </h4>
+                        <div class="space-y-2">
+                            <div class="p-3 rounded-2xl bg-white border border-gray-200 space-y-1">
+                                <span class="font-bold text-success-700 flex items-center gap-1.5">
+                                    <i class="fas fa-check-circle text-xs"></i> Status Aktif (Public/Assigned)
+                                </span>
+                                <p>Kuis dapat dilihat dan dikerjakan oleh peserta yang terdaftar.</p>
+                            </div>
+                            <div class="p-3 rounded-2xl bg-white border border-gray-200 space-y-1">
+                                <span class="font-bold text-amber-700 flex items-center gap-1.5">
+                                    <i class="fas fa-edit text-xs"></i> Status Draft
+                                </span>
+                                <p>Kuis dalam tahap pembuatan atau penyuntingan soal, belum dapat dikerjakan oleh peserta.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pt-4 border-t border-gray-100 flex justify-end shrink-0">
+                    <button @click="showInfoModal = false" 
+                        class="px-6 py-2.5 rounded-xl bg-brand-500 hover:bg-brand-600 text-white font-bold text-xs shadow-theme-xs transition">
+                        Saya Mengerti
+                    </button>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <!-- TailAdmin Filter & Search Card Wrapper -->
+    <div class="p-5 rounded-2xl border border-gray-200 bg-white shadow-theme-xs">
+        <form method="GET" action="{{ route('tenant.owner.quizzes.index', ['tenant' => $tenant]) }}" 
+            class="grid grid-cols-1 sm:grid-cols-12 gap-4 items-end">
+            
+            <!-- Search Query -->
+            <div class="sm:col-span-5 space-y-1.5">
+                <label for="search" class="block text-xs font-bold text-gray-700">Cari Judul / Deskripsi Kuis</label>
+                <div class="relative">
+                    <span class="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400">
+                        <i class="fas fa-search text-xs"></i>
+                    </span>
+                    <input type="text" name="search" id="search" value="{{ request('search') }}" 
+                        placeholder="Ketik kata kunci judul, topik, atau materi..."
+                        class="h-11 w-full rounded-xl border border-gray-200 bg-gray-50/50 py-2.5 pl-10 pr-4 text-xs font-medium text-gray-800 focus:border-brand-500 focus:bg-white focus:outline-none transition shadow-2xs" />
                 </div>
             </div>
 
-            <div style="width: 180px;">
-                <label class="form-label" style="font-size: 12px;">Kategori</label>
-                <select name="category" class="form-select" onchange="this.form.submit()">
-                    <option value="">Semua Kategori</option>
-                    @foreach($categories as $cat)
-                        <option value="{{ $cat }}" {{ request('category') == $cat ? 'selected' : '' }}>{{ $cat }}</option>
-                    @endforeach
-                </select>
+            <!-- Category Filter -->
+            <div class="sm:col-span-3 space-y-1.5">
+                <label for="category" class="block text-xs font-bold text-gray-700">Kategori</label>
+                <div class="relative">
+                    <span class="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400">
+                        <i class="fas fa-tag text-xs"></i>
+                    </span>
+                    <select name="category" id="category" @change="$el.closest('form').submit()"
+                        class="h-11 w-full rounded-xl border border-gray-200 bg-gray-50/50 py-2.5 pl-10 pr-4 text-xs font-medium text-gray-800 focus:border-brand-500 focus:bg-white focus:outline-none transition shadow-2xs">
+                        <option value="">Semua Kategori</option>
+                        @foreach($categories as $cat)
+                            <option value="{{ $cat }}" {{ request('category') == $cat ? 'selected' : '' }}>{{ $cat }}</option>
+                        @endforeach
+                    </select>
+                </div>
             </div>
 
-            <div style="width: 160px;">
-                <label class="form-label" style="font-size: 12px;">Status</label>
-                <select name="status" class="form-select" onchange="this.form.submit()">
-                    <option value="">Semua Status</option>
-                    <option value="active" {{ request('status') === 'active' ? 'selected' : '' }}>Aktif</option>
-                    <option value="draft" {{ request('status') === 'draft' ? 'selected' : '' }}>Draft</option>
-                    <option value="archived" {{ request('status') === 'archived' ? 'selected' : '' }}>Diarsipkan</option>
-                </select>
+            <!-- Status Filter -->
+            <div class="sm:col-span-2 space-y-1.5">
+                <label for="status" class="block text-xs font-bold text-gray-700">Status</label>
+                <div class="relative">
+                    <span class="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400">
+                        <i class="fas fa-filter text-xs"></i>
+                    </span>
+                    <select name="status" id="status" @change="$el.closest('form').submit()"
+                        class="h-11 w-full rounded-xl border border-gray-200 bg-gray-50/50 py-2.5 pl-10 pr-4 text-xs font-medium text-gray-800 focus:border-brand-500 focus:bg-white focus:outline-none transition shadow-2xs">
+                        <option value="">Semua Status</option>
+                        <option value="active" {{ request('status') === 'active' ? 'selected' : '' }}>Aktif</option>
+                        <option value="draft" {{ request('status') === 'draft' ? 'selected' : '' }}>Draft</option>
+                        <option value="archived" {{ request('status') === 'archived' ? 'selected' : '' }}>Diarsipkan</option>
+                    </select>
+                </div>
             </div>
 
-            <div>
-                <button type="submit" class="btn btn-secondary" style="height: 42px;">
-                    <i class="fas fa-filter"></i> Filter
+            <!-- Action Buttons -->
+            <div class="sm:col-span-2 flex items-center gap-2">
+                <button type="submit" 
+                    class="h-11 px-4 rounded-xl bg-gray-900 hover:bg-gray-800 text-white font-bold text-xs shadow-2xs transition flex items-center justify-center gap-2 flex-1">
+                    <i class="fas fa-filter text-xs"></i>
+                    <span>Filter</span>
                 </button>
                 @if(request()->hasAny(['search', 'category', 'status']))
-                    <a href="{{ route('tenant.owner.quizzes.index', ['tenant' => $tenant]) }}" class="btn btn-ghost" style="height: 42px;">Reset</a>
+                    <a href="{{ route('tenant.owner.quizzes.index', ['tenant' => $tenant]) }}" 
+                        class="h-11 px-3.5 rounded-xl border border-gray-200 bg-white hover:bg-gray-50 text-gray-600 font-bold text-xs transition flex items-center justify-center">
+                        <i class="fas fa-rotate-left"></i>
+                    </a>
                 @endif
             </div>
         </form>
@@ -74,85 +178,115 @@
 
     <!-- Quiz Cards Grid -->
     @if($quizzes->isEmpty())
-        <div class="card" style="padding: 60px 20px; text-align: center;">
-            <div style="width: 72px; height: 72px; border-radius: 20px; background: rgba(99,102,241,0.1); color: var(--primary-light); display: flex; align-items: center; justify-content: center; font-size: 32px; margin: 0 auto 20px;">
+        <div class="p-12 rounded-2xl border border-dashed border-gray-300 bg-white text-center space-y-4 shadow-theme-xs">
+            <div class="w-16 h-16 rounded-2xl bg-brand-50 text-brand-500 mx-auto flex items-center justify-center text-2xl font-bold border border-brand-100">
                 <i class="fas fa-folder-open"></i>
             </div>
-            <h3 style="font-size: 18px; font-weight: 700; color: var(--text-white);">Belum Ada Kuis Ditemukan</h3>
-            <p style="font-size: 13px; color: var(--text-muted); max-width: 400px; margin: 8px auto 24px;">
-                Mulai buat kuis pertama Anda dengan generator soal otomatis berteknologi AI.
-            </p>
-            <a href="{{ route('tenant.owner.quizzes.create', ['tenant' => $tenant]) }}" class="btn btn-primary">
-                <i class="fas fa-magic"></i> Generate Kuis Sekarang
+            <div class="space-y-1">
+                <h3 class="text-base font-bold text-gray-900">Belum Ada Kuis Ditemukan</h3>
+                <p class="text-xs text-gray-500 max-w-md mx-auto">
+                    Mulai buat kuis pertama Anda dengan generator otomatis berteknologi AI atau buat paket kuis manual.
+                </p>
+            </div>
+            <a href="{{ route('tenant.owner.quizzes.create', ['tenant' => $tenant]) }}" 
+                class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-brand-500 hover:bg-brand-600 text-white font-bold text-xs shadow-theme-xs transition">
+                <i class="fas fa-wand-magic-sparkles text-xs"></i>
+                <span>Generate Kuis Sekarang</span>
             </a>
         </div>
     @else
-        <div class="grid-3">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
             @foreach($quizzes as $quiz)
-                <div class="card" style="display: flex; flex-direction: column; justify-content: space-between; position: relative; transition: all 0.2s; border-color: {{ $quiz->status === 'active' ? 'rgba(16,185,129,0.3)' : 'var(--border)' }};">
+                <div class="rounded-2xl border bg-white p-5 md:p-6 shadow-theme-xs hover:border-brand-300 transition flex flex-col justify-between {{ $quiz->status === 'active' ? 'border-gray-200' : 'border-gray-200/80 bg-gray-50/40' }}">
                     
-                    <div class="card-body" style="padding: 24px;">
-                        <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; margin-bottom: 12px;">
-                            <span class="badge badge-info" style="font-size: 11px;">{{ $quiz->category ?: 'Umum' }}</span>
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-start gap-3">
+                            <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-brand-50 text-brand-700 border border-brand-200">
+                                {{ $quiz->category ?: 'Umum' }}
+                            </span>
                             @if($quiz->status === 'active')
-                                <span class="badge badge-success"><i class="fas fa-check-circle"></i> Aktif</span>
+                                <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-success-50 text-success-700 border border-success-200">
+                                    <i class="fas fa-check-circle mr-1"></i> Aktif
+                                </span>
                             @elseif($quiz->status === 'draft')
-                                <span class="badge badge-warning"><i class="fas fa-edit"></i> Draft</span>
+                                <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-amber-50 text-amber-700 border border-amber-200">
+                                    <i class="fas fa-pen mr-1"></i> Draft
+                                </span>
                             @else
-                                <span class="badge badge-danger"><i class="fas fa-archive"></i> Arsip</span>
+                                <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-error-50 text-error-700 border border-error-200">
+                                    <i class="fas fa-archive mr-1"></i> Arsip
+                                </span>
                             @endif
                         </div>
 
-                        <h3 style="font-size: 18px; font-weight: 700; color: var(--text-white); line-height: 1.4; margin-bottom: 8px;">
-                            <a href="{{ route('tenant.owner.quizzes.show', ['quiz' => $quiz->id]) }}" style="color: inherit; text-decoration: none;">
-                                {{ $quiz->title }}
-                            </a>
-                        </h3>
+                        <div class="space-y-1">
+                            <h3 class="text-base font-bold text-gray-900 leading-snug line-clamp-2">
+                                <a href="{{ route('tenant.owner.quizzes.show', ['quiz' => $quiz->id]) }}" class="hover:text-brand-600 transition">
+                                    {{ $quiz->title }}
+                                </a>
+                            </h3>
+                            <p class="text-xs text-gray-500 line-clamp-2 leading-relaxed">
+                                {{ $quiz->description ?: 'Tidak ada deskripsi.' }}
+                            </p>
+                        </div>
 
-                        <p style="font-size: 13px; color: var(--text-muted); line-height: 1.5; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; height: 38px;">
-                            {{ $quiz->description ?: 'Tidak ada deskripsi.' }}
-                        </p>
-
-                        <div style="margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--border); display: grid; grid-template-columns: 1fr 1fr; gap: 12px; font-size: 12px;">
-                            <div>
-                                <span style="color: var(--text-muted); display: block;">Jumlah Soal:</span>
-                                <span style="font-weight: 700; color: var(--text-white); font-size: 14px;">
-                                    <i class="fas fa-list-ol" style="color: var(--accent); margin-right: 4px;"></i> {{ $quiz->questions_count }} Soal
-                                </span>
+                        <!-- Specs Grid -->
+                        <div class="pt-4 border-t border-gray-100 grid grid-cols-2 gap-3 text-xs">
+                            <div class="space-y-0.5">
+                                <span class="text-[10px] font-semibold text-gray-400 uppercase">Jumlah Soal</span>
+                                <p class="font-extrabold text-gray-800 flex items-center gap-1.5">
+                                    <i class="fas fa-list-ol text-brand-500 text-xs"></i>
+                                    <span>{{ $quiz->questions_count }} Soal</span>
+                                </p>
                             </div>
-                            <div>
-                                <span style="color: var(--text-muted); display: block;">Durasi:</span>
-                                <span style="font-weight: 700; color: var(--text-white); font-size: 14px;">
-                                    <i class="fas fa-clock" style="color: var(--warning); margin-right: 4px;"></i> {{ $quiz->time_limit }} Menit
-                                </span>
+                            <div class="space-y-0.5">
+                                <span class="text-[10px] font-semibold text-gray-400 uppercase">Durasi Waktu</span>
+                                <p class="font-extrabold text-gray-800 flex items-center gap-1.5">
+                                    <i class="fas fa-clock text-amber-500 text-xs"></i>
+                                    <span>{{ $quiz->time_limit }} Menit</span>
+                                </p>
                             </div>
-                            <div>
-                                <span style="color: var(--text-muted); display: block;">Nilai Lulus:</span>
-                                <span style="font-weight: 700; color: var(--success); font-size: 14px;">
-                                    <i class="fas fa-star" style="margin-right: 4px;"></i> {{ $quiz->passing_score }}%
-                                </span>
+                            <div class="space-y-0.5">
+                                <span class="text-[10px] font-semibold text-gray-400 uppercase">Nilai Lulus</span>
+                                <p class="font-extrabold text-success-600 flex items-center gap-1.5">
+                                    <i class="fas fa-trophy text-xs"></i>
+                                    <span>{{ $quiz->passing_score }}%</span>
+                                </p>
                             </div>
-                            <div>
-                                <span style="color: var(--text-muted); display: block;">Peserta:</span>
-                                <span style="font-weight: 700; color: var(--primary-light); font-size: 14px;">
-                                    <i class="fas fa-users" style="margin-right: 4px;"></i> {{ $quiz->participants_count }} Orang
-                                </span>
+                            <div class="space-y-0.5">
+                                <span class="text-[10px] font-semibold text-gray-400 uppercase">Peserta</span>
+                                <p class="font-extrabold text-gray-800 flex items-center gap-1.5">
+                                    <i class="fas fa-users text-indigo-500 text-xs"></i>
+                                    <span>{{ $quiz->participants_count }} Orang</span>
+                                </p>
                             </div>
                         </div>
                     </div>
 
-                    <div class="card-footer" style="background: rgba(0,0,0,0.15); padding: 12px 20px; justify-content: space-between;">
-                        <a href="{{ route('tenant.owner.quizzes.show', ['quiz' => $quiz->id]) }}" class="btn btn-sm btn-secondary">
-                            <i class="fas fa-eye"></i> Detail
+                    <!-- Footer Action Column -->
+                    <div class="pt-4 border-t border-gray-100 mt-5 flex items-center justify-between gap-2">
+                        <a href="{{ route('tenant.owner.quizzes.show', ['quiz' => $quiz->id]) }}" 
+                            class="px-3 py-2 rounded-xl bg-gray-100 hover:bg-gray-200 text-gray-700 font-bold text-xs transition flex items-center gap-1.5">
+                            <i class="fas fa-eye text-xs"></i>
+                            <span>Detail</span>
                         </a>
-                        <div style="display: flex; gap: 8px;">
-                            <a href="{{ route('tenant.owner.quizzes.edit', ['quiz' => $quiz->id]) }}" class="btn btn-sm btn-primary">
-                                <i class="fas fa-edit"></i> Edit
+
+                        <div class="flex items-center gap-1.5">
+                            <a href="{{ route('tenant.owner.quizzes.edit', ['quiz' => $quiz->id]) }}" 
+                                class="px-3 py-2 rounded-xl bg-brand-50 hover:bg-brand-100 text-brand-600 border border-brand-200 font-bold text-xs transition flex items-center gap-1.5">
+                                <i class="fas fa-pen-to-square text-xs"></i>
+                                <span>Edit</span>
                             </a>
-                            <form method="POST" action="{{ route('tenant.owner.quizzes.destroy', ['quiz' => $quiz->id]) }}" onsubmit="return confirm('Apakah Anda yakin ingin menghapus kuis ini?')">
+
+                            <!-- Icon-Only Button for Delete -->
+                            <form method="POST" action="{{ route('tenant.owner.quizzes.destroy', ['quiz' => $quiz->id]) }}" 
+                                onsubmit="return confirm('Apakah Anda yakin ingin menghapus kuis ini?')">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn btn-sm btn-icon btn-ghost" style="color: var(--danger);"><i class="fas fa-trash"></i></button>
+                                <button type="submit" title="Hapus Kuis"
+                                    class="w-9 h-9 flex items-center justify-center rounded-xl bg-error-50 hover:bg-error-100 text-error-600 border border-error-200 transition">
+                                    <i class="fas fa-trash text-xs"></i>
+                                </button>
                             </form>
                         </div>
                     </div>
@@ -162,8 +296,8 @@
         </div>
 
         @if($quizzes->hasPages())
-            <div class="card" style="padding: 16px 24px; display: flex; justify-content: space-between; align-items: center;">
-                <span style="font-size: 13px; color: var(--text-muted);">
+            <div class="p-4 rounded-2xl border border-gray-200 bg-white shadow-theme-xs flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
+                <span class="text-gray-500 font-medium">
                     Menampilkan {{ $quizzes->firstItem() }} - {{ $quizzes->lastItem() }} dari {{ $quizzes->total() }} kuis
                 </span>
                 <div>
