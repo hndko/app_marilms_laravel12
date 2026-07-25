@@ -1,6 +1,6 @@
-# 🎓 MariLMS AI — Portal Evaluasi & Ujian Berbasis AI Multi-Tenant
+# 🎓 MariLMS AI — Portal Evaluasi & Ujian Berbasis AI Multi-Tenant (v1.4.0)
 
-Platform Learning Management System (LMS) modern berbasis Laravel 12 dengan dukungan arsitektur multi-tenant, pembuatan soal otomatis berbantuan Artificial Intelligence (LLM), serta sistem keamanan ujian anti-cheat terintegrasi.
+Platform Learning Management System (LMS) modern berbasis Laravel 12 dengan dukungan arsitektur **Single-Database Multi-Tenant**, pembuatan soal otomatis berbantuan Artificial Intelligence (LLM OpenRouter), serta sistem keamanan ujian anti-cheat terintegrasi.
 
 ---
 
@@ -8,10 +8,11 @@ Platform Learning Management System (LMS) modern berbasis Laravel 12 dengan duku
 - [Deskripsi Proyek](#-deskripsi-proyek)
 - [Fitur Utama & Peran Pengguna (Roles)](#-fitur-utama--peran-pengguna-roles)
 - [Tumpukan Teknologi (Tech Stack) & Library](#-tumpukan-teknologi-tech-stack--library)
-- [Struktur Database & Arsitektur Tenancy](#-struktur-database--arsitektur-tenancy)
+- [Struktur Database & Arsitektur Single-Database Tenancy](#-struktur-database--arsitektur-single-database-tenancy)
 - [Prasyarat Sistem](#-prasyarat-sistem)
-- [Panduan Instalasi](#-panduan-instalasi)
-- [Panduan Penggunaan](#-panduan-penggunaan)
+- [Panduan Instalasi Lokal](#-panduan-instalasi-lokal)
+- [Setup Queue Worker (`php artisan queue:work`)](#-setup-queue-worker-php-artisan-queuework)
+- [Panduan Deployment (aaPanel, VPS, Shared Hosting)](#-panduan-deployment)
 - [Kontribusi](#-kontribusi)
 - [Lisensi](#-lisensi)
 
@@ -19,12 +20,12 @@ Platform Learning Management System (LMS) modern berbasis Laravel 12 dengan duku
 
 ## 💡 Deskripsi Proyek
 
-**MariLMS AI** adalah solusi platform pendidikan digital kelas enterprise yang dirancang khusus untuk sekolah, perguruan tinggi, lembaga bimbingan belajar, maupun institusi pelatihan profesional. Platform ini mengadopsi konsep **Multi-Tenancy** terisolasi di mana setiap lembaga pendidikan memiliki ruang kerja (*workspace*) dan portal ujian tersendiri yang aman dan mandiri.
+**MariLMS AI** adalah solusi platform pendidikan digital kelas enterprise yang dirancang khusus untuk sekolah, perguruan tinggi, lembaga bimbingan belajar, maupun institusi pelatihan profesional. Platform ini mengadopsi konsep **Path-Based Single-Database Multi-Tenancy** (`/{tenant}/...`) di mana seluruh data tenant tersimpan aman dalam 1 database utama dengan kolom `tenant_id` dan *Global Scope Isolation*.
 
 ### 🎯 Masalah yang Diselesaikan:
-* **Efisiensi Waktu Pengajar**: Memangkas waktu pembuatan puluhan soal ujian dan pembahasan ilmiah dari berjam-jam menjadi **kurang dari 30 detik** menggunakan generator AI otomatis.
+* **Efisiensi Waktu Pengajar**: Memangkas waktu pembuatan puluhan soal ujian dan pembahasan ilmiah dari berjam-jam menjadi **kurang dari 30 detik** menggunakan generator AI otomatis (OpenRouter API).
 * **Keamanan & Integritas Ujian**: Mengeliminasi praktik kecurangan daring (*online cheating*) melalui pemantauan perpindahan tab atau jendela browser secara real-time yang didukung oleh perhitungan waktu ujian langsung dari server (*server-authoritative timer*).
-* **Komunikasi Akademik Real-Time**: Menyederhanakan distribusi informasi akademik kepada siswa melalui integrasi langsung dengan WhatsApp Gateway untuk pengiriman undangan ujian, pengingat, dan hasil evaluasi nilai.
+* **Kemudahan Deployment**: Menggunakan **Single-Database Tenancy** sehingga dapat di-deploy tanpa memerlukan privilege `CREATE DATABASE` (sangat ramah untuk aaPanel, Shared Hosting cPanel, maupun VPS).
 
 ---
 
@@ -32,27 +33,27 @@ Platform Learning Management System (LMS) modern berbasis Laravel 12 dengan duku
 
 Platform ini dibagi menjadi 3 lapisan hak akses (*3-Tier Authentication Guards*) yang memiliki fungsi dan ruang lingkup khusus:
 
-### 👑 1. SuperAdmin (Pusat Platform / Global)
+### 👑 1. SuperAdmin (Pusat Platform / Global - Guard `web`)
 * **Manajemen Tenant & Lembaga**: Memantau seluruh tenant aktif, statistik penggunaan sistem, dan pengelolaan pemilik tenant (*owner*).
-* **Konfigurasi AI / LLM Providers**: Mengatur penyedia model AI (OpenRouter, DeepSeek, Custom API) beserta urutan prioritas cadangan (*fallback chain*) agar sistem pembuatan kuis tidak pernah gagal saat terjadi gangguan jaringan.
+* **Konfigurasi AI / LLM Providers**: Mengatur penyedia model AI (OpenRouter, OpenAI, Custom API) beserta parameter max tokens & temperature.
 * **Manajemen Paket Token AI**: Membuat dan menentukan harga paket saldo token AI yang dapat dibeli oleh lembaga.
 * **Integrasi Payment Gateway**: Mengonfigurasi gerbang pembayaran otomatis (Midtrans, Xendit, Duitku, Ipaymu, Doku).
-* **Audit Logs & System Health**: Memantau log aktivitas sistem, antrean pekerjaan latar belakang (*queue/horizon*), dan parameter keamanan global.
+* **Audit Logs & System Health**: Memantau log aktivitas sistem & audit trail.
 
-### 🏫 2. Owner / Pengajar (Tenant Lembaga Pendidikan)
+### 🏫 2. Owner / Pengajar (Tenant Lembaga Pendidikan - Guard `owner`)
 * **🤖 AI Quiz Generator**: Membuat puluhan soal evaluasi pilihan ganda lengkap dengan bobot poin, kunci jawaban, dan pembahasan ilmiah secara otomatis dari materi pelajaran menggunakan token AI.
-* **📝 Interactive Quiz Editor**: Menyunting butir pertanyaan, opsi jawaban, dan pengaturan kuis (durasi, batas kelulusan, sisa percobaan) melalui antarmuka interaktif.
-* **👨‍🎓 Manajemen Peserta Ujian**: Mengundang siswa secara individual, mengimpor ribuan data siswa secara massal menggunakan file CSV, serta me-reset kata sandi peserta.
-* **💰 Top-Up Token AI**: Membeli saldo token AI secara instan melalui integrasi pembayaran Midtrans otomatis atau menggunakan fitur simulasi sandbox tes.
-* **⚙️ Pengaturan Tenant & WhatsApp Gateway**: Menyesuaikan identitas portal (nama lembaga, deskripsi, warna brand) dan mengintegrasikan WhatsApp Gateway pribadi (Fonnte, Wablast, Log) untuk pengiriman notifikasi otomatis.
-* **📊 Laporan & Ekspor Analitik**: Melihat rekapitulasi nilai evaluasi, persentase kelulusan siswa, dan mengunduh laporan ke format CSV/Excel (kompatibel UTF-8 BOM).
+* **📝 Interactive Quiz Editor**: Menyunting butir pertanyaan, opsi jawaban, dan pengaturan kuis (durasi, KKM, batas percobaan).
+* **👨‍🎓 Manajemen Peserta Ujian**: Mengundang siswa secara individual, mengimpor data siswa via CSV, serta me-reset kata sandi peserta.
+* **💰 Top-Up Token AI**: Membeli saldo token AI secara instan melalui integrasi pembayaran Midtrans otomatis atau simulasi sandbox tes.
+* **⚙️ Pengaturan Tenant & WhatsApp Gateway**: Menyesuaikan identitas portal (nama lembaga, deskripsi, warna brand) dan integrasi gateway notifikasi.
+* **📊 Laporan & Ekspor Analitik**: Melihat rekapitulasi nilai evaluasi, persentase kelulusan siswa, dan mengunduh laporan format CSV/Excel.
 
-### 👨‍🎓 3. Participant / Siswa (Peserta Ujian)
-* **🏠 Portal Siswa Khusus Tenant**: Mengakses portal ujian lembaga melalui tautan khusus tenant dengan kredensial undangan yang aman.
+### 👨‍🎓 3. Participant / Siswa (Peserta Ujian - Guard `participant`)
+* **🏠 Portal Siswa Khusus Tenant**: Mengakses portal ujian lembaga melalui URL path `/{tenant}/login` dengan kredensial undangan yang aman.
 * **⏱️ Layar Ujian Anti-Cheat**:
-  * **Server-Authoritative Timer**: Waktu ujian berjalan mundur dari server secara akurat dan tidak dapat dimanipulasi melalui konsol browser atau jam sistem komputer.
-  * **Deteksi Tab Switch**: Memantau aktivitas jendela browser. Jika siswa keluar dari halaman ujian melebihi batas toleransi, ujian akan **dikumpulkan secara paksa otomatis (*force-submit*)**.
-  * **Auto-Save Jawaban**: Setiap pilihan jawaban disimpan secara instan via AJAX sehingga siswa tidak kehilangan progres jika terjadi kendala koneksi sesaat.
+  * **Server-Authoritative Timer**: Waktu ujian berjalan mundur dari server secara akurat dan tidak dapat dimanipulasi client.
+  * **Deteksi Tab Switch**: Memantau aktivitas jendela browser. Jika siswa keluar dari halaman ujian, ujian akan **dikumpulkan secara paksa otomatis (*force-submit*)** dan diberi bendera peringatan.
+  * **Auto-Save Jawaban**: Setiap pilihan jawaban disimpan secara instan via AJAX.
 * **🏆 Riwayat & Pembahasan AI**: Melihat skor akhir, status kelulusan (*Lulus / Belum Lulus*), serta membaca penjelasan ilmiah AI untuk setiap soal sehabis ujian.
 
 ---
@@ -61,202 +62,132 @@ Platform ini dibagi menjadi 3 lapisan hak akses (*3-Tier Authentication Guards*)
 
 * **Bahasa Pemrograman**: PHP 8.2+, JavaScript (ES6+ / Vanilla JS), HTML5, CSS3.
 * **Framework Utama**: Laravel 12.x.
-* **Database & Cache**: MySQL 8.0+ / MariaDB 10.5+, Redis (untuk *Queue Workers* & *Session Caching*).
+* **Database & Cache**: MySQL 8.0+ / MariaDB 10.5+ (Single-Database).
 * **Library & Paket Kunci**:
-  * `stancl/tenancy` (v3.x/v4.x): Paket arsitektur multi-tenancy berbasis jalur (*path-based tenancy* `{tenant}/...`).
-  * `livewire/livewire` (v3.x): Komponen UI reaktif dan dinamis untuk interaktivitas layar.
-  * `guzzlehttp/guzzle`: Klien HTTP untuk komunikasi dengan penyedia API LLM dan WhatsApp Gateway.
-  * `midtrans/midtrans-php`: Integrasi gerbang pembayaran otomatis untuk pembelian token AI.
-  * `alpinejs`: Kerangka kerja JavaScript ringan untuk interaktivitas komponen sisi klien dan timer ujian.
+  * `stancl/tenancy` (v3.10): Paket path-based URL routing `{tenant}/...`.
+  * `spatie/laravel-permission` (v6.25): Manajemen Role & Hak Akses.
+  * `laravel/fortify` (v1.37): Layanan backend autentikasi.
+  * `livewire/livewire` (v4.3): Komponen UI reaktif.
+  * `alpinejs`: Kerangka kerja JS ringan untuk timer & modal UI.
 
 ---
 
-## 🗄️ Struktur Database & Arsitektur Tenancy
+## 🗄️ Struktur Database & Arsitektur Single-Database Tenancy
 
-Proyek ini menerapkan model **Path-Based Multi-Tenancy** dengan pemisahan struktur database yang jelas antara data pusat (sentral) dan data lembaga (tenant):
+Proyek ini menggunakan **Single-Database Tenancy**, di mana seluruh tabel disimpan dalam 1 database MySQL utama:
 
-### 🌐 1. Database Sentral (Global Platform)
-Database ini menyimpan informasi admin pusat, identitas tenant, konfigurasi LLM, dan transaksi keuangan:
-* **`tenants` & `domains`**: Menyimpan identitas unik lembaga, slug subdomain, dan status aktif tenant.
-* **`superadmin_users`**: Kredensial dan hak akses pengelola pusat platform.
-* **`owners`**: Akun penanggung jawab atau pengajar pemilik lembaga pendidikan.
-* **`owner_token_balances` & `token_transactions`**: Menyimpan saldo token AI pengajar beserta riwayat pemakaian dan top-up (diberi perlindungan *row locking* / `lockForUpdate` untuk mencegah *race condition*).
-* **`token_packages`**: Master paket token AI yang diperjualbelikan kepada lembaga.
-* **`payment_gateways` & `payment_transactions`**: Rekam jejak pesanan dan log verifikasi webhook Midtrans/Xendit.
-* **`llm_providers`**: Daftar konfigurasi kunci rahasia API LLM (OpenRouter, DeepSeek, Custom) beserta urutan *fallback chain*.
-* **`system_settings`**: Pengaturan global platform dan parameter default sistem.
+### 🌐 1. Tabel Sentral (Central Tables)
+* `users`: Kredensial SuperAdmin (`web` guard).
+* `owners`: Data Owner Lembaga/Instansi (`owner` guard).
+* `tenants` & `domains`: Identitas tenant lembaga, slug, dan status aktif.
+* `owner_token_balances` & `token_transactions`: Saldo token AI owner & histori kredit/debit.
+* `token_packages`: Katalog paket token AI.
+* `token_orders`: Transaksi pembelian token via Payment Gateway.
+* `llm_providers`: Konfigurasi provider AI (OpenRouter, API Key, Model).
+* `system_settings`: Pengaturan global platform.
 
-### 📁 2. Database Tenant (Terisolasi per Lembaga/Sekolah)
-Setiap lembaga memiliki ruang isolasi data mandiri sehingga data siswa dan soal ujian antar sekolah tidak akan pernah tercampur:
-* **`users` (Participants)**: Data siswa atau peserta ujian yang terdaftar di lembaga tersebut.
-* **`quizzes`**: Master paket kuis evaluasi (judul, kategori, durasi waktu, batas kelulusan minimum/KKM, dan metadata AI).
-* **`quiz_questions`**: Daftar butir soal, tipe soal, bobot nilai poin, dan teks penjelasan ilmiah AI (*explanation*).
-* **`quiz_options`**: Pilihan opsi jawaban per soal (A, B, C, D) dengan penanda status jawaban benar (`is_correct`).
-* **`quiz_attempts`**: Rekam jejak sesi pengerjaan ujian siswa (waktu mulai server, durasi total, skor akhir, status pengerjaan, dan alasan selesai seperti `manual`, `time_up`, atau `tab_switch`).
-* **`quiz_answers`**: Rekaman jawaban eksplisit yang dipilih siswa pada setiap butir soal secara *real-time*.
+### 📁 2. Tabel Tenant (Single-Database dengan `tenant_id` & `TenantScope`)
+* `tenant_users`: Data akun siswa/peserta per tenant (`participant` guard).
+* `quizzes`: Master kuis evaluasi, passing score, durasi, KKM, prompt AI.
+* `questions`: Butir soal kuis & bobot kesulitan.
+* `question_options`: Opsi pilihan jawaban & penjelasan ilmiah AI.
+* `quiz_participants`: Pivot penugasan kuis private ke peserta.
+* `quiz_attempts`: Sesi pengerjaan ujian peserta (authoritative timer, skor, status, end_reason, flags).
+* `quiz_answers`: Jawaban peserta per attempt secara real-time.
+* `notification_logs`: Log pengiriman notifikasi (Email/WhatsApp).
 
 ---
 
 ## 💻 Prasyarat Sistem
 
-Pastikan lingkungan pengembang atau server Anda telah memenuhi spesifikasi minimum berikut:
-* **PHP**: Versi >= 8.2 (dengan ekstensi `bcmath`, `ctype`, `fileinfo`, `json`, `mbstring`, `openssl`, `pdo_mysql`, `tokenizer`, `xml`, `curl`).
+* **PHP**: Versi >= 8.2 (ekstensi `bcmath`, `ctype`, `fileinfo`, `json`, `mbstring`, `openssl`, `pdo_mysql`, `tokenizer`, `xml`, `curl`).
 * **Database**: MySQL >= 8.0 atau MariaDB >= 10.5.
-* **Manajer Paket**: Composer >= 2.x dan Node.js >= 18.x (beserta NPM).
-* **Server Caching (Opsional)**: Redis (sangat disarankan untuk pengelolaan antrean latar belakang *Horizon/Queue* di produksi).
+* **Manajer Paket**: Composer >= 2.x dan Node.js >= 18.x (NPM).
 
 ---
 
-## 🚀 Panduan Instalasi
-
-Ikuti langkah-langkah berbasis terminal berikut untuk memasang dan menjalankan proyek secara lokal:
+## 🚀 Panduan Instalasi Lokal
 
 1. **Kloning repositori proyek:**
-```bash
-git clone https://github.com/hndko/app_marilms_laravel12.git
-cd app_marilms_laravel12
-```
+   ```bash
+   git clone https://github.com/hndko/app_marilms_laravel12.git
+   cd app_marilms_laravel12
+   ```
 
 2. **Pasang dependensi PHP dan Node.js:**
-```bash
-composer install
-npm install && npm run build
-```
+   ```bash
+   composer install
+   npm install && npm run build
+   ```
 
-3. **Salin berkas konfigurasi lingkungan dan hasilkan kunci aplikasi:**
-```bash
-cp .env.example .env
-php artisan key:generate
-```
+3. **Salin berkas `.env` dan hasilkan kunci aplikasi:**
+   ```bash
+   cp .env.example .env
+   php artisan key:generate
+   ```
 
-4. **Konfigurasi koneksi database di dalam berkas `.env`:**
-```ini
-DB_CONNECTION=mysql
-DB_HOST=127.0.0.1
-DB_PORT=3306
-DB_DATABASE=app_marilms
-DB_USERNAME=root
-DB_PASSWORD=
-```
+4. **Konfigurasi koneksi database di `.env`:**
+   ```ini
+   DB_CONNECTION=mysql
+   DB_HOST=127.0.0.1
+   DB_PORT=3306
+   DB_DATABASE=app_marilms
+   DB_USERNAME=root
+   DB_PASSWORD=
+   ```
 
 5. **Jalankan migrasi database beserta data awal (seeder):**
-```bash
-php artisan migrate --seed
-```
+   ```bash
+   php artisan migrate:fresh --seed
+   ```
 
-6. **Jalankan server pengembangan lokal dan worker antrean latar belakang:**
-```bash
-# Terminal 1: Menjalankan web server lokal
-php artisan serve
-
-# Terminal 2: Menjalankan queue worker untuk pemrosesan AI & email
-php artisan queue:work
-```
+6. **Jalankan aplikasi:**
+   ```bash
+   npm run dev
+   ```
 
 ---
 
-## 📖 Panduan Penggunaan
+## ⚙️ Setup Queue Worker (`php artisan queue:work`)
 
-### 1. Menjalankan Pengujian Otomatis (Automated Testing)
-Platform ini dilengkapi dengan *Unit Tests* dan *Feature Tests* untuk memverifikasi logika token, validasi skema AI, dan timer waktu server. Untuk menjalankan seluruh pengujian:
+Untuk memproses pembuatan kuis AI (LLM) dan notifikasi latar belakang:
+
 ```bash
-php artisan test
+# Menjalankan worker di terminal lokal
+php artisan queue:work --sleep=3 --tries=3
 ```
 
-### 2. Contoh Penggunaan `NotificationService` (Kode PHP)
-Sistem notifikasi dapat dipanggil secara programatis dari dalam Controller atau Job untuk mengirim pesan WhatsApp dan Email secara simultan:
-```php
-use App\Services\NotificationService;
+Panduan setup otomatis menggunakan **Supervisor aaPanel**, **Systemd Service Linux**, maupun **cPanel Cron Job** selengkapnya dapat dibaca di **[Panduan Queue & Deployment](file:///D:/laragon/www/app_marilms_laravel12/docs/DEPLOYMENT.md)**.
 
-$notifService = new NotificationService();
+---
 
-// Mengirim undangan kredensial login ke WhatsApp dan Email peserta
-$notifService->send('participant_invited', $participant, [
-    'email' => $participant->email,
-    'password' => 'rahasia123',
-    'url' => url('/tenant-sekolah/login')
-], sendWa: true, sendEmail: true);
-```
+## 📖 Panduan Deployment
 
-### 3. Contoh Penggunaan `LlmService` untuk Pembuatan Soal AI (Kode PHP)
-Memanggil layanan LLM dengan dukungan *fallback chain* otomatis:
-```php
-use App\Services\LlmService;
+Panduan deployment lengkap untuk berbagai lingkungan dapat diakses pada dokumen terpisah di folder `docs/`:
 
-$llmService = new LlmService();
+👉 **[Dokumentasi Deployment Lengkap (`docs/DEPLOYMENT.md`)](file:///D:/laragon/www/app_marilms_laravel12/docs/DEPLOYMENT.md)**
 
-// Men-generate soal berdasarkan prompt yang telah dibentuk oleh PromptBuilder
-$jsonResponse = $llmService->generateQuestion($promptText);
-$quizData = json_decode($jsonResponse, true);
-```
-
-### 4. Menjalankan Perintah Maintenance & Optimasi Produksi
-Saat aplikasi hendak dirilis ke lingkungan produksi, bersihkan dan buat cache baru agar kinerja maksimal:
-```bash
-php artisan optimize:clear
-php artisan config:cache
-php artisan route:cache
-php artisan view:cache
-```
+Lingkungan yang didukung:
+1. **Local Development** (Laragon / XAMPP)
+2. **VPS dengan aaPanel** (Rekomendasi untuk VPS aaPanel)
+3. **VPS Linux Murni** (Ubuntu / Debian + Nginx CLI)
+4. **Shared Hosting** (cPanel / DirectAdmin)
 
 ---
 
 ## 🤝 Kontribusi
 
-Kami sangat menyambut kontribusi dari pengembang luar untuk memperkaya fitur dan meningkatkan kinerja platform **MariLMS AI**. Berikut adalah aturan main untuk berkontribusi:
-
 1. **Fork** repositori ini ke akun GitHub pribadi Anda.
-2. Buat *branch* fitur baru dari branch `main`:
-   ```bash
-   git checkout -b feature/nama-fitur-kreatif
-   ```
-3. Lakukan perubahan kode dan pastikan standar penulisan rapi serta mempertahankan komentar/dokumentasi yang ada.
-4. **Wajib Menjalankan Test**: Pastikan seluruh pengujian otomatis lulus (*100% green tests*) sebelum melakukan commit:
-   ```bash
-   php artisan test
-   ```
-5. Lakukan commit dengan pesan yang jelas menggunakan konvensi standar (contoh: `feat: add export to pdf feature` atau `fix: resolve timer sync issue`):
-   ```bash
-   git commit -m "feat: deskripsi fitur baru Anda"
-   ```
-6. Push *branch* tersebut ke repositori fork Anda:
-   ```bash
-   git push origin feature/nama-fitur-kreatif
-   ```
-7. Buat **Pull Request (PR)** menuju branch `main` di repositori utama beserta deskripsi lengkap mengenai perubahan yang Anda buat.
-
-### 🤖 Aturan Kerja Agent & Konvensi Proyek
-Proyek ini memiliki aturan kerja komprehensif yang tercatat secara transparan di dalam berkas `.agents/AGENTS.md`. Seluruh AI Agent dan developer **wajib mematuhi** aturan berikut:
-
-#### 📝 Aturan Bahasa
-* Seluruh elemen antarmuka yang dibaca pengguna (*user-facing text*) seperti alert, notifikasi, pesan error, label form, dan placeholder **WAJIB menggunakan Bahasa Indonesia** yang formal dan baku.
-* Penamaan variabel, function, controller, model, migrasi, dan komentar kode teknis menggunakan **Bahasa Inggris** sesuai standar ekosistem Laravel.
-
-#### 🎨 Aturan UI/UX Design Philosophy
-* **Konsep Visual:** Modern Enterprise, Flat Design, Professional, Clean, Minimal (sekelas Stripe, GitHub, Notion, Linear).
-* **Pantangan Keras:**
-  - ❌ Dilarang: *Glassmorphism, Neon UI, Heavy Gradients, Blur Background, Skeuomorphism*.
-  - ❌ Dilarang: Animasi berlebihan (*bounce, zoom, rotate, pulse, floating*). Gunakan transisi halus maks 150ms ease.
-  - ❌ Dilarang: Ilustrasi AI stereotipikal (robot, otak bercahaya, sirkuit).
-  - ❌ Dilarang: *Speedometer, Gauge, Pie Chart* untuk indikator skor.
-* **Palet Warna:** Primary Blue 600 (`#2563EB`), Background `#F8FAFC`, Surface White, Text `#0F172A`.
-
-#### 🏗️ Aturan Arsitektur & Kode
-* **Multi-Tenancy:** `stancl/tenancy` path-based dengan database terisolasi per tenant.
-* **Token Service:** Wajib menggunakan `lockForUpdate()` untuk mencegah race condition.
-* **LLM Service:** Fallback chain pattern — konfigurasi di database, bukan hardcoded di `.env`.
-* **Quiz Timer:** Server-authoritative timer murni, anti-cheat tab switch detection wajib aktif.
-* **Frontend Stack:** Tailwind CSS v4 + Alpine.js wajib diinstall via NPM (bukan CDN), dibundle lewat Vite.
-
-#### ⚙️ Otomatisasi
-* **Otomatisasi Commit & Push:** Setiap tugas selesai → otomatis `git add .`, `git commit`, `git push`.
-* **Sinkronisasi Dokumentasi:** Perubahan aturan baru → catat di `.agents/AGENTS.md` → update `README.md` otomatis.
+2. Buat *branch* fitur baru: `git checkout -b feature/nama-fitur`.
+3. Jalankan pengujian: `php artisan test`.
+4. Commit perubahan sesuai *Conventional Commits*: `git commit -m "feat: tambah fitur X"`.
+5. Push & buat **Pull Request (PR)**.
 
 ---
 
 ## ⚖️ Lisensi
 
-Proyek **MariLMS AI** dirilis dan didistribusikan di bawah [Lisensi MIT](https://opensource.org/licenses/MIT). Anda bebas untuk menggunakan, memodifikasi, dan mendistribusikan perangkat lunak ini baik untuk keperluan komersial maupun non-komersial sesuai dengan syarat dan ketentuan yang berlaku dalam lisensi tersebut.
+Proyek **MariLMS AI** dirilis di bawah [Lisensi MIT](https://opensource.org/licenses/MIT).
 
 ---
 <p align="center"><b>Dikembangkan dengan ❤️ untuk Kemajuan Evaluasi Pendidikan Digital</b></p>
