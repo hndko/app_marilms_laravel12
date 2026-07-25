@@ -76,10 +76,23 @@ class LlmProviderController extends Controller
     public function testConnection(LlmProvider $llm)
     {
         try {
+            $apiKey = trim((string) $llm->api_key);
+            if (empty($apiKey)) {
+                $apiKey = match (strtolower($llm->provider_type)) {
+                    'openrouter' => env('OPENROUTER_API_KEY', ''),
+                    'deepseek' => env('DEEPSEEK_API_KEY', ''),
+                    default => env('LLM_API_KEY', ''),
+                };
+            }
+
+            if (empty($apiKey)) {
+                return back()->with('error', "API Key untuk {$llm->name} belum dikonfigurasi.");
+            }
+
             $response = Http::withHeaders([
-                'Authorization' => 'Bearer ' . $llm->api_key,
+                'Authorization' => 'Bearer ' . $apiKey,
                 'Content-Type' => 'application/json',
-            ])->timeout(15)->post($llm->base_url . '/chat/completions', [
+            ])->timeout(15)->post(rtrim($llm->base_url, '/') . '/chat/completions', [
                 'model' => $llm->model,
                 'messages' => [['role' => 'user', 'content' => 'Hello, respond with just "OK"']],
                 'max_tokens' => 10,
@@ -89,7 +102,7 @@ class LlmProviderController extends Controller
                 return back()->with('success', "Koneksi ke {$llm->name} berhasil! Model: {$llm->model}");
             }
 
-            return back()->with('error', "Koneksi gagal: " . $response->body());
+            return back()->with('error', "Koneksi gagal ({$response->status()}): " . $response->body());
         } catch (\Exception $e) {
             return back()->with('error', "Koneksi gagal: " . $e->getMessage());
         }

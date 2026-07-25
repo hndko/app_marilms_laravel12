@@ -11,8 +11,23 @@ class CustomProvider implements LlmProviderContract
 {
     public function __construct(protected LlmProviderModel $config) {}
 
+    protected function getApiKey(): string
+    {
+        $key = trim((string) $this->config->api_key);
+        if (!empty($key)) {
+            return $key;
+        }
+
+        return trim((string) env('LLM_API_KEY', ''));
+    }
+
     public function generate(string $prompt, array $options = []): string
     {
+        $apiKey = $this->getApiKey();
+        if (empty($apiKey)) {
+            throw new \Exception("API Key untuk Custom LLM belum dikonfigurasi. Harap isi API Key pada menu SuperAdmin > LLM Provider atau di file .env (LLM_API_KEY).");
+        }
+
         $baseUrl = rtrim($this->config->base_url ?: 'https://api.openai.com/v1', '/');
         $url = str_ends_with($baseUrl, '/chat/completions') ? $baseUrl : $baseUrl . '/chat/completions';
 
@@ -21,7 +36,7 @@ class CustomProvider implements LlmProviderContract
         $maxTokens = (int) ($options['max_tokens'] ?? $this->config->max_tokens ?: 4000);
 
         $response = Http::withHeaders([
-            'Authorization' => 'Bearer ' . $this->config->api_key,
+            'Authorization' => 'Bearer ' . $apiKey,
             'Content-Type' => 'application/json',
         ])
         ->timeout(120)
@@ -60,10 +75,15 @@ class CustomProvider implements LlmProviderContract
     public function testConnection(): bool
     {
         try {
+            $apiKey = $this->getApiKey();
+            if (empty($apiKey)) {
+                return false;
+            }
+
             $baseUrl = rtrim($this->config->base_url ?: 'https://api.openai.com/v1', '/');
             $url = str_replace('/chat/completions', '', $baseUrl) . '/models';
             $response = Http::withHeaders([
-                'Authorization' => 'Bearer ' . $this->config->api_key,
+                'Authorization' => 'Bearer ' . $apiKey,
             ])
             ->timeout(10)
             ->get($url);
