@@ -46,7 +46,7 @@ Route::post('/logout', [\App\Http\Controllers\Auth\AuthController::class, 'logou
 Route::prefix('superadmin')->name('superadmin.')->group(function () {
     // Authenticated SuperAdmin routes
     Route::middleware('auth:web')->group(function () {
-        Route::post('/logout', [\App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('logout');
+        Route::post('/logout', [\App\Http\Controllers\Auth\AuthController::class, 'logout'])->name('logout');
         Route::get('/dashboard', [\App\Http\Controllers\SuperAdmin\DashboardController::class, 'index'])
             ->name('dashboard');
 
@@ -100,7 +100,7 @@ Route::prefix('superadmin')->name('superadmin.')->group(function () {
 // -------------------------------------------------------
 Route::prefix('owner')->name('owner.')->group(function () {
     Route::middleware('auth:owner')->group(function () {
-        Route::post('/logout', [\App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('logout');
+        Route::post('/logout', [\App\Http\Controllers\Auth\AuthController::class, 'logout'])->name('logout');
     });
 });
 
