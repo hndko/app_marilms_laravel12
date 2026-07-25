@@ -4,22 +4,32 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
+/**
+ * Membuat tabel quiz_participants, quiz_attempts, dan quiz_answers di database central.
+ * Sebelumnya tabel-tabel ini ada di database tenant terpisah.
+ * Kini disatukan dengan tambahan kolom tenant_id.
+ */
 return new class extends Migration
 {
     public function up(): void
     {
         Schema::create('quiz_participants', function (Blueprint $table) {
             $table->id();
+            $table->string('tenant_id');
             $table->foreignId('quiz_id')->constrained()->onDelete('cascade');
-            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            // user_id merujuk ke tenant_users.id
+            $table->unsignedBigInteger('user_id');
             $table->timestamps();
 
-            $table->unique(['quiz_id', 'user_id']);
+            $table->unique(['tenant_id', 'quiz_id', 'user_id']);
+            $table->index('tenant_id');
         });
 
         Schema::create('quiz_attempts', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->string('tenant_id');
+            // user_id merujuk ke tenant_users.id
+            $table->unsignedBigInteger('user_id');
             $table->foreignId('quiz_id')->constrained()->onDelete('cascade');
             $table->timestamp('started_at');
             $table->timestamp('submitted_at')->nullable();
@@ -30,13 +40,15 @@ return new class extends Migration
             $table->integer('score')->nullable();
             $table->timestamps();
 
-            $table->index(['user_id', 'quiz_id']);
+            $table->index('tenant_id');
+            $table->index(['tenant_id', 'user_id', 'quiz_id']);
             $table->index('status');
             $table->index('started_at');
         });
 
         Schema::create('quiz_answers', function (Blueprint $table) {
             $table->id();
+            $table->string('tenant_id');
             $table->foreignId('attempt_id')->constrained('quiz_attempts')->onDelete('cascade');
             $table->foreignId('question_id')->constrained()->onDelete('cascade');
             $table->foreignId('selected_option_id')->nullable()->constrained('question_options')->onDelete('set null');
@@ -45,6 +57,7 @@ return new class extends Migration
             $table->timestamps();
 
             $table->unique(['attempt_id', 'question_id']);
+            $table->index('tenant_id');
             $table->index('attempt_id');
         });
     }

@@ -4,12 +4,18 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
+/**
+ * Membuat tabel quizzes, questions, dan question_options di database central.
+ * Sebelumnya tabel-tabel ini ada di database tenant terpisah.
+ * Kini disatukan dengan tambahan kolom tenant_id.
+ */
 return new class extends Migration
 {
     public function up(): void
     {
         Schema::create('quizzes', function (Blueprint $table) {
             $table->id();
+            $table->string('tenant_id');
             $table->string('title');
             $table->text('description')->nullable();
             $table->string('category')->nullable();
@@ -25,24 +31,33 @@ return new class extends Migration
             $table->text('prompt_topic')->nullable(); // original AI prompt topic
             $table->timestamps();
 
-            $table->index('status');
-            $table->index('category');
+            $table->index('tenant_id');
+            $table->index(['tenant_id', 'status']);
+            $table->index(['tenant_id', 'category']);
             $table->index('deadline_at');
+
+            $table->foreign('tenant_id')
+                ->references('id')
+                ->on('tenants')
+                ->onDelete('cascade');
         });
 
         Schema::create('questions', function (Blueprint $table) {
             $table->id();
+            $table->string('tenant_id');
             $table->foreignId('quiz_id')->constrained()->onDelete('cascade');
             $table->text('question_text');
             $table->integer('order')->default(0);
             $table->enum('difficulty', ['easy', 'medium', 'hard'])->nullable();
             $table->timestamps();
 
+            $table->index('tenant_id');
             $table->index(['quiz_id', 'order']);
         });
 
         Schema::create('question_options', function (Blueprint $table) {
             $table->id();
+            $table->string('tenant_id');
             $table->foreignId('question_id')->constrained()->onDelete('cascade');
             $table->text('option_text');
             $table->boolean('is_correct')->default(false);
@@ -50,6 +65,7 @@ return new class extends Migration
             $table->integer('order')->default(0);
             $table->timestamps();
 
+            $table->index('tenant_id');
             $table->index('question_id');
         });
     }

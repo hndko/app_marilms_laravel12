@@ -2,6 +2,7 @@
 
 namespace App\Models\Tenant;
 
+use App\Models\Scopes\TenantScope;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -9,6 +10,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class QuizAttempt extends Model
 {
     protected $fillable = [
+        'tenant_id',
         'user_id',
         'quiz_id',
         'started_at',
@@ -29,6 +31,21 @@ class QuizAttempt extends Model
             'is_flagged' => 'boolean',
             'score' => 'integer',
         ];
+    }
+
+    protected static function booted(): void
+    {
+        static::addGlobalScope(new TenantScope());
+
+        static::creating(function (self $model) {
+            if (empty($model->tenant_id)) {
+                try {
+                    if (function_exists('tenancy') && tenancy()->initialized) {
+                        $model->tenant_id = tenancy()->tenant->getTenantKey();
+                    }
+                } catch (\Throwable) {}
+            }
+        });
     }
 
     public function user(): BelongsTo

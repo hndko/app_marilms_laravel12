@@ -7,13 +7,17 @@ use App\Models\Central\Tenant;
 
 return [
     'tenant_model' => Tenant::class,
-    'id_generator' => Stancl\Tenancy\UUIDGenerator::class,
+
+    /*
+     * Single-database tenancy: tenant_id is resolved from the URL path
+     * via InitializeTenancyByPath middleware. No separate databases are created.
+     * tenant()->tenant gives the active Tenant model instance.
+     */
 
     'domain_model' => Domain::class,
 
     /**
      * The list of domains hosting your central app.
-     * Only relevant if you're using the domain or subdomain identification middleware.
      */
     'central_domains' => [
         '127.0.0.1',
@@ -22,73 +26,39 @@ return [
     ],
 
     /**
-     * Tenancy bootstrappers are executed when tenancy is initialized.
-     * Their responsibility is making Laravel features tenant-aware.
+     * Bootstrappers: DatabaseTenancyBootstrapper dihapus karena kita menggunakan
+     * single-database tenancy. Tidak ada lagi switch database per tenant.
      */
     'bootstrappers' => [
-        Stancl\Tenancy\Bootstrappers\DatabaseTenancyBootstrapper::class,
-        Stancl\Tenancy\Bootstrappers\CacheTenancyBootstrapper::class,
-        Stancl\Tenancy\Bootstrappers\FilesystemTenancyBootstrapper::class,
-        Stancl\Tenancy\Bootstrappers\QueueTenancyBootstrapper::class,
+        // Stancl\Tenancy\Bootstrappers\DatabaseTenancyBootstrapper::class, // DISABLED: single-db tenancy
+        // Stancl\Tenancy\Bootstrappers\CacheTenancyBootstrapper::class,
+        // Stancl\Tenancy\Bootstrappers\FilesystemTenancyBootstrapper::class,
+        // Stancl\Tenancy\Bootstrappers\QueueTenancyBootstrapper::class,
     ],
 
     /**
-     * Database tenancy config. Used by DatabaseTenancyBootstrapper.
-     */
-    'database' => [
-        'central_connection' => env('DB_CONNECTION', 'mysql'),
-
-        /**
-         * Connection used as a "template" for the dynamically created tenant database connection.
-         */
-        'template_tenant_connection' => null,
-
-        /**
-         * Tenant database names are created like this:
-         * prefix + tenant_id + suffix.
-         */
-        'prefix' => env('TENANT_DB_PREFIX', 'marilms_tenant_'),
-        'suffix' => '',
-
-        /**
-         * TenantDatabaseManagers are classes that handle the creation & deletion of tenant databases.
-         */
-        'managers' => [
-            'sqlite' => Stancl\Tenancy\TenantDatabaseManagers\SQLiteDatabaseManager::class,
-            'mysql' => Stancl\Tenancy\TenantDatabaseManagers\MySQLDatabaseManager::class,
-            'mariadb' => Stancl\Tenancy\TenantDatabaseManagers\MySQLDatabaseManager::class,
-            'pgsql' => Stancl\Tenancy\TenantDatabaseManagers\PostgreSQLDatabaseManager::class,
-        ],
-    ],
-
-    /**
-     * Cache tenancy config. Used by CacheTenancyBootstrapper.
+     * Cache tenancy config (tidak digunakan saat ini).
      */
     'cache' => [
         'tag_base' => 'tenant',
     ],
 
     /**
-     * Filesystem tenancy config. Used by FilesystemTenancyBootstrapper.
+     * Filesystem tenancy config (tidak digunakan saat ini).
      */
     'filesystem' => [
         'suffix_base' => 'tenant',
-        'disks' => [
-            'local',
-            'public',
-        ],
-
+        'disks' => ['local', 'public'],
         'root_override' => [
             'local' => '%storage_path%/app/',
             'public' => '%storage_path%/app/public/',
         ],
-
         'suffix_storage_path' => true,
-        'asset_helper_tenancy' => true,
+        'asset_helper_tenancy' => false,
     ],
 
     /**
-     * Redis tenancy config. Used by RedisTenancyBootstrapper.
+     * Redis tenancy config (tidak digunakan saat ini).
      */
     'redis' => [
         'prefix_base' => 'tenant',
@@ -96,15 +66,10 @@ return [
     ],
 
     /**
-     * Features are classes that provide additional functionality.
+     * Features yang aktif.
      */
     'features' => [
-        // Stancl\Tenancy\Features\UserImpersonation::class,
-        // Stancl\Tenancy\Features\TelescopeTags::class,
         Stancl\Tenancy\Features\UniversalRoutes::class,
-        // Stancl\Tenancy\Features\TenantConfig::class,
-        // Stancl\Tenancy\Features\CrossDomainRedirect::class,
-        // Stancl\Tenancy\Features\ViteBundler::class,
     ],
 
     /**
@@ -113,7 +78,8 @@ return [
     'routes' => true,
 
     /**
-     * Parameters used by the tenants:migrate command.
+     * Migration parameters (folder tenant/ sudah tidak digunakan,
+     * semua migrasi kini ada di database/migrations/ utama).
      */
     'migration_parameters' => [
         '--force' => true,
@@ -122,7 +88,7 @@ return [
     ],
 
     /**
-     * Parameters used by the tenants:seed command.
+     * Seeder parameters (tidak digunakan lagi).
      */
     'seeder_parameters' => [
         '--class' => 'Database\\Seeders\\TenantDatabaseSeeder',

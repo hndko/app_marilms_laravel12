@@ -2,12 +2,14 @@
 
 namespace App\Models\Tenant;
 
+use App\Models\Scopes\TenantScope;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class QuestionOption extends Model
 {
     protected $fillable = [
+        'tenant_id',
         'question_id',
         'option_text',
         'is_correct',
@@ -21,6 +23,21 @@ class QuestionOption extends Model
             'is_correct' => 'boolean',
             'order' => 'integer',
         ];
+    }
+
+    protected static function booted(): void
+    {
+        static::addGlobalScope(new TenantScope());
+
+        static::creating(function (self $model) {
+            if (empty($model->tenant_id)) {
+                try {
+                    if (function_exists('tenancy') && tenancy()->initialized) {
+                        $model->tenant_id = tenancy()->tenant->getTenantKey();
+                    }
+                } catch (\Throwable) {}
+            }
+        });
     }
 
     public function question(): BelongsTo

@@ -5,13 +5,17 @@ namespace App\Models\Central;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Stancl\Tenancy\Database\Models\Tenant as BaseTenant;
-use Stancl\Tenancy\Contracts\TenantWithDatabase;
-use Stancl\Tenancy\Database\Concerns\HasDatabase;
 use Stancl\Tenancy\Database\Concerns\HasDomains;
 
-class Tenant extends BaseTenant implements TenantWithDatabase
+/**
+ * Tenant model — single-database tenancy.
+ * Tidak lagi implement TenantWithDatabase; tidak ada pembuatan database terpisah.
+ * Setiap tenant hanya merupakan record di tabel 'tenants' dan
+ * diidentifikasi via kolom tenant_id pada tabel-tabel tenant.
+ */
+class Tenant extends BaseTenant
 {
-    use HasDatabase, HasDomains;
+    use HasDomains;
 
     /**
      * Custom columns on the tenants table.
@@ -33,6 +37,7 @@ class Tenant extends BaseTenant implements TenantWithDatabase
      * The attributes that are mass assignable.
      */
     protected $fillable = [
+        'id',
         'slug',
         'name',
         'owner_id',
