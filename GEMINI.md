@@ -6,7 +6,7 @@ Dokumen ini berisi panduan teknis, aturan pengodean (*coding standards*), arsite
 
 ## 🏢 1. Ringkasan Proyek
 
-* **Nama Proyek:** MariLMS — AI-Powered Multi-Tenant Learning Management System (Single-Database Tenancy) (v1.4.2)
+* **Nama Proyek:** MariLMS — AI-Powered Multi-Tenant Learning Management System (Single-Database Tenancy) (v1.5.0)
 * **Deskripsi:** Platform LMS multi-tenant cerdas berbasis AI untuk pembuatan kuis otomatis (via LLM OpenRouter/OpenAI), pengelolaan peserta, pelaksanaan ujian real-time dengan pengawasan tab-switch & timer ketat, serta monetisasi berbasis sistem token & Payment Gateway.
 * **Tujuan:** Efisiensi pembuatan kuis dengan AI, isolasi data multi-tenant berbasis single-database (`tenant_id` + `TenantScope`), pengawasan ujian anti-kecurangan, pengelolaan token owner, dan transaksi pembayaran otomatis.
 
@@ -20,8 +20,8 @@ Dokumen ini berisi panduan teknis, aturan pengodean (*coding standards*), arsite
 | **Backend Framework** | [Laravel 12](https://laravel.com) | `laravel/framework ^12.0` |
 | **Autentikasi & Authorization** | Laravel Fortify & Spatie Permission | Fortify `^1.37`, Spatie `^6.25` |
 | **Multi-Tenancy** | Stancl Tenancy (Single-DB) + Custom `TenantScope` | `stancl/tenancy ^3.10` (Path-based routing `/{tenant}/`) |
-| **Frontend & Components** | Livewire & Blade Templates (Tailwind CSS v4) | `livewire/livewire ^4.3`, Vite |
-| **Styling & CSS** | Tailwind CSS v4 & Vite Plugin | `@tailwindcss/vite` |
+| **Frontend & Components** | TailAdmin Blade Templates (Tailwind CSS v4 & Alpine.js) | Vite, `@tailwindcss/vite ^4.0` |
+| **Styling & CSS** | Tailwind CSS v4 & FontAwesome Free | `@fortawesome/fontawesome-free ^6.7` |
 | **AI Integration** | OpenRouter API / OpenAI API Client | Dynamic LLM Provider via Service Layer |
 | **Payment Gateways** | Midtrans, Xendit, Ipaymu, Doku, Duitku | Webhook verification & simulation support |
 | **Database** | MySQL / MariaDB | Single Database (Central + Tenant tables) |
@@ -87,17 +87,29 @@ Dokumen ini berisi panduan teknis, aturan pengodean (*coding standards*), arsite
 * **Atomic Token Deduction:** Pemotongan token saat generate kuis AI WAJIB dibungkus dalam `DB::transaction()` dan mengecek ketersediaan saldo di `OwnerTokenBalance` terlebih dahulu.
 
 ### E. Standar Tampilan UI & Form (Mandatory UI Rules)
-* **Icon Group & Placeholder pada Input Form:** Setiap elemen input form (text, email, password, select, search, date) WAJIB memiliki Icon Group (ikon SVG di dalam/di samping input) dan teks placeholder yang informatif.
-* **Ikon pada Tombol (Buttons):** Setiap tombol aksi WAJIB memiliki ikon SVG. Khusus untuk tombol di dalam kolom aksi tabel (*action column*), WAJIB hanya menampilkan ikon saja (*icon-only button*) dengan tooltip/title yang jelas.
+* **Icon Group & Placeholder pada Input Form:** Setiap elemen input form (text, email, password, select, search, date) WAJIB memiliki Icon Group (ikon SVG/FontAwesome di dalam/di samping input) dan teks placeholder yang informatif.
+* **Ikon pada Tombol (Buttons):** Setiap tombol aksi WAJIB memiliki ikon SVG/FontAwesome. Khusus untuk tombol di dalam kolom aksi tabel (*action column*), WAJIB hanya menampilkan ikon saja (*icon-only button*) dengan tooltip/title yang jelas.
 * **Information Card Modul (Dengan Show/Hide Toggle):** Setiap berkas tampilan modul/halaman utama aplikasi (khusus modul internal/dashboard, tidak termasuk halaman autentikasi publik) WAJIB menyediakan **Information Card** yang dapat disembunyikan/dikeluarkan (*collapsible*) menggunakan Alpine.js (`x-data="{ showInfoCard: true }"`). Card ini menjelaskan secara transparan:
   1. **Fungsi & Tujuan Modul:** Fitur ini digunakan untuk apa.
   2. **Panduan Tombol:** Fungsi dari setiap tombol yang ada pada modul.
   3. **Logika Bisnis:** Cara kerja alur data, validasi, dan keamanan di balik layar.
 
 ### F. Standar Autentikasi Terpadu & Tunggal (Consolidated Auth Controller & View)
-* **Consolidated Single Auth Controller (Strict Mandatory):** Seluruh logika autentikasi (Login, Register, Logout untuk seluruh peran: SuperAdmin, Owner, dan Participant) WAJIB disatukan dalam SATU berkas controller: `app/Http/Controllers/Auth/AuthController.php`. Dilarang memecah controller autentikasi ke banyak berkas (seperti `SuperAdminAuthController`, `OwnerAuthController`, `ParticipantAuthController`, `LoginController`).
-* **Single Auth View Template:** Seluruh tampilan autentikasi (Login & Register) WAJIB menggunakan SATU berkas template Blade: `resources/views/auth/login.blade.php`, yang mengatur mode tampilan (`central_login`, `participant_login`, `owner_register`, `participant_register`) menggunakan pengkondisian Blade (`@if($mode === ...)`). Dilarang membuat berkas view login/register terpisah per peran.
-* **Autodeteksi Peran (Role Auto-Detection):** Pada proses login central (`/login`), `AuthController` secara otomatis mencoba autentikasi ke guard `web` (SuperAdmin) terlebih dahulu, kemudian ke guard `owner` (Owner). Pengguna akan langsung diarahkan ke dashboard masing-masing (`/superadmin/dashboard` atau `/{tenant}/dashboard`) secara transparan tanpa perlu memilih role.
+* **Consolidated Single Auth Controller (Strict Mandatory):** Seluruh logika autentikasi (Login, Register, Logout untuk seluruh peran: SuperAdmin, Owner, dan Participant) WAJIB disatukan dalam SATU berkas controller: `app/Http/Controllers/Auth/AuthController.php`.
+* **Single Auth View Template:** Seluruh tampilan autentikasi (Login & Register) WAJIB menggunakan SATU berkas template Blade: `resources/views/auth/login.blade.php`, yang menginduk ke layout `resources/views/layouts/app-auth.blade.php`.
+* **Autodeteksi Peran (Role Auto-Detection):** Pada proses login central (`/login`), `AuthController` secara otomatis mencoba autentikasi ke guard `web` (SuperAdmin) terlebih dahulu, kemudian ke guard `owner` (Owner).
+
+### G. Arsitektur Struktur Folder Modules (Strict Mandatory)
+* **Subfolder Modules untuk Controller:** Seluruh Controller backend per peran WAJIB disimpan di dalam direktori `app/Http/Controllers/Modules/{Role}/`:
+  * SuperAdmin: `App\Http\Controllers\Modules\SuperAdmin\`
+  * Owner: `App\Http\Controllers\Modules\Owner\`
+  * Participant: `App\Http\Controllers\Modules\Participant\`
+* **Subfolder Modules untuk View Templates:** Seluruh tampilan Blade backend per peran WAJIB disimpan di dalam direktori `resources/views/modules/{role}/`:
+  * SuperAdmin Views: `resources/views/modules/superadmin/`
+  * Owner Views: `resources/views/modules/owner/`
+  * Participant Views: `resources/views/modules/participant/`
+* **Layout Backend Tunggal Terpadu (`app-backend.blade.php`):** Seluruh tampilan backend menginduk ke SATU berkas layout `resources/views/layouts/app-backend.blade.php` yang mengatur sidebar reaktif dan header bar secara konsolidasi berbasis Blade conditionals (`@if($isSuperAdmin)... @elseif($isOwner)...`).
+* **Strict Light Mode Only:** Dilarang mengaktifkan mode gelap pada halaman publik, autentikasi, maupun backend internal. Seluruh tampilan wajib menggunakan 100% Light Mode TailAdmin theme (`bg-slate-50`, `bg-white`, `text-slate-900`).
 
 ---
 

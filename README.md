@@ -1,4 +1,4 @@
-# 🎓 MariLMS AI — Platform LMS & Portal Ujian Multi-Tenant Berbasis AI (v1.4.2)
+# 🎓 MariLMS AI — Platform LMS & Portal Ujian Multi-Tenant Berbasis AI (v1.5.0)
 
 **MariLMS AI** adalah platform *Learning Management System* (LMS) dan evaluasi ujian digital multi-tenant berbasis Laravel 12 dengan fitur pembuatan kuis otomatis berbantuan Artificial Intelligence serta sistem pengawasan ujian anti-kecurangan terintegrasi.
 
@@ -11,6 +11,7 @@
 * [⚙️ Penggunaan](#-penggunaan)
 * [👥 Peran Pengguna (Roles) & Fitur](#-peran-pengguna-roles--fitur)
 * [🛠️ Tumpukan Teknologi & Library](#-tumpukan-teknologi--library)
+* [📁 Struktur Direktori Modul](#-struktur-direktori-modul)
 * [🗄️ Struktur Database](#-struktur-database)
 * [🤝 Kontribusi](#-kontribusi)
 * [⚖️ Lisensi](#-lisensi)
@@ -98,151 +99,112 @@ Atau jalankan server Laravel dan Vite secara terpisah:
 # Terminal 1: Server Laravel
 php artisan serve
 
-# Terminal 2: Vite Frontend Dev Server
+# Terminal 2: Vite Dev Server
 npm run dev
-
-# Terminal 3: Pemroses Antrean Kuis AI & Notifikasi
-php artisan queue:work --sleep=3 --tries=3
 ```
 
-### 2. Contoh Potongan Kode Logika Utama
+### 2. Kredensial Pengujian Awal (Default Credentials)
 
-#### A. Isolasi Data Tenant (`TenantScope`)
-Seluruh model data milik tenant diisolasi secara otomatis menggunakan `TenantScope` dan pengisian `tenant_id`:
-
-```php
-namespace App\Models\Tenant;
-
-use App\Models\Scopes\TenantScope;
-use Illuminate\Database\Eloquent\Model;
-
-class Quiz extends Model
-{
-    protected static function booted(): void
-    {
-        static::addGlobalScope(new TenantScope);
-        
-        static::creating(function ($model) {
-            if (tenant()) {
-                $model->tenant_id = tenant('id');
-            }
-        });
-    }
-}
-```
-
-#### B. Perhitungan Sisa Waktu Ujian Otoritatif Server
-Menghitung sisa waktu pengerjaan kuis peserta secara presisi dari server untuk mencegah manipulasi client:
-
-```php
-public function getRemainingSeconds(): int
-{
-    $elapsed = $this->started_at->diffInSeconds(now());
-    $totalDuration = $this->quiz->duration_minutes * 60;
-    
-    return max(0, $totalDuration - $elapsed);
-}
-```
-
-#### C. Pengujian Sintaks dan Pengujian Aplikasi
-```bash
-# Uji sintaks file PHP
-php -l app/Http/Controllers/Auth/AuthController.php
-
-# Jalankan pengujian otomatis (Unit/Feature Tests)
-php artisan test
-```
+* **SuperAdmin Panel**: `http://localhost:8000/login`
+  * **Email**: `admin@marilms.id`
+  * **Password**: `password`
+* **Owner Tenant Demo**: `http://localhost:8000/login`
+  * **Email**: `owner@nusantara.sch.id`
+  * **Password**: `password`
+* **Participant Tenant Demo**: `http://localhost:8000/sma-nusantara/login`
+  * **Email**: `budi@student.nusantara.sch.id`
+  * **Password**: `password`
 
 ---
 
 ## 👥 Peran Pengguna (Roles) & Fitur
 
-Aplikasi ini mengimplementasikan *3-Tier Authentication Guards* untuk memisahkan wewenang pengguna secara ketat:
-
-### 👑 1. SuperAdmin (Pusat Platform / Guard `web`)
-* **Manajemen Tenant & Owner**: Kelola pendaftaran lembaga/tenant, pemblokiran, dan penambahan saldo token secara manual.
-* **Konfigurasi AI / LLM Provider**: Pengaturan penyedia model AI (OpenRouter, OpenAI) beserta *API Key*, model utama, dan *fallback chain*.
-* **Katalog Paket Token & Payment Gateway**: Konfigurasi harga paket token AI dan integrasi payment gateway (Midtrans, Xendit, Doku, Duitku, Ipaymu).
-* **Audit & Gateway Notifikasi**: Pemantauan log aktivitas sistem serta integrasi WhatsApp/Email Gateway.
-
-### 🏫 2. Owner / Pengajar (Tenant Lembaga / Guard `owner`)
-* **🤖 AI Quiz Generator**: Membuat puluhan soal pilihan ganda, kunci jawaban, dan pembahasan ilmiah berbasis AI secara otomatis dari materi/prompt.
-* **📝 Interactive Quiz Editor**: Kelola butir soal, bobot nilai, KKM, durasi ujian, dan jumlah batas percobaan (*retry limit*).
-* **👨‍🎓 Manajemen Peserta**: Undang peserta, impor data siswa via berkas CSV, dan reset kata sandi peserta.
-* **💰 Top-Up Token AI**: Pembelian saldo token AI secara otomatis melalui integrasi Payment Gateway.
-* **📊 Laporan & Ekspor Analitik**: Rekapitulasi hasil ujian, grafik persentase kelulusan, dan ekspor laporan format CSV/Excel.
-
-### 👨‍🎓 3. Participant / Siswa (Peserta Ujian / Guard `participant`)
-* **🏠 Portal Ujian Tenant**: Akses halaman kuis melalui URL khusus lembaga (`/{tenant}/login`).
-* **⏱️ Layar Ujian Anti-Cheat**: 
-  * Waktu ujian berjalan mundur terpusat dari server (*server-authoritative timer*).
-  * Pemantauan *tab switch* dan penutupan browser yang memicu pengumpulan otomatis (*force-submit*) dan penandaan bintik kecurangan (*is_flagged*).
-  * Penyimpanan jawaban otomatis (*auto-save*) berbasis AJAX.
-* **🏆 Hasil & Pembahasan AI**: Melihat skor akhir, status kelulusan, serta membaca pembahasan jawaban otomatis pasca ujian.
+| Peran (Role) | Guard | Fitur Utama |
+| :--- | :--- | :--- |
+| 👑 **SuperAdmin** | `web` | Kelola Owner Lembaga, Paket Token AI, Provider AI LLM, Gateway Pembayaran, System Settings, & Activity Logs. |
+| 🏢 **Owner** | `owner` | Generator Kuis AI, Manajemen Soal & Jawaban, Kelola Peserta & Password, Notifikasi WhatsApp, Beli Token, & Laporan Evaluasi. |
+| 🎓 **Participant** | `participant` | Portal Ujian Tenant, Pengerjaan Kuis Anti-Cheat, Server Timer Real-time, Hasil Skor & Riwayat Nilai Instant. |
 
 ---
 
 ## 🛠️ Tumpukan Teknologi & Library
 
-* **Bahasa Pemrograman**: PHP 8.2+, JavaScript (ES6+), HTML5, CSS3.
-* **Backend Framework**: Laravel 12.x (`laravel/framework ^12.0`).
-* **Autentikasi & Otorisasi**: Laravel Fortify (`laravel/fortify ^1.37`), Spatie Permission (`spatie/laravel-permission ^6.25`).
-* **Multi-Tenancy**: Stancl Tenancy (`stancl/tenancy ^3.10`) dengan penyesuaian *Single-Database Tenancy*.
-* **Frontend & Styling**: Livewire (`livewire/livewire ^4.3`), Tailwind CSS v4 (`@tailwindcss/vite`), Alpine.js (`alpinejs ^3.15`), Vite 7 (`vite ^7.0`).
-* **Integrasi AI & Gateway**: OpenRouter API / OpenAI Client, Midtrans Payment Gateway, WhatsApp Gateway (Fonnte/Wablast).
+* **Backend Framework**: Laravel 12 (`laravel/framework ^12.0`)
+* **Multi-Tenancy**: Stancl Tenancy (`stancl/tenancy ^3.10`) + Single-DB `TenantScope`
+* **Autentikasi**: Single Consolidated `AuthController` & `login.blade.php` (`laravel/fortify ^1.37`)
+* **Role & Otorisasi**: Spatie Laravel Permission (`spatie/laravel-permission ^6.25`)
+* **Frontend Design**: TailAdmin Blade Templates + Tailwind CSS v4 (`@tailwindcss/vite ^4.0`)
+* **Interaktivitas UI**: Alpine.js, ApexCharts, Flatpickr, FontAwesome Free (`@fortawesome/fontawesome-free ^6.7`)
+* **AI Provider**: OpenRouter / OpenAI API Client via Service Layer
+
+---
+
+## 📁 Struktur Direktori Modul
+
+Aplikasi MariLMS AI mengadopsi arsitektur terstruktur berbasis **Modul Peran**:
+
+```
+app/
+└── Http/
+    └── Controllers/
+        ├── Auth/
+        │   └── AuthController.php        # Consolidated Single Auth Controller
+        ├── Modules/
+        │   ├── SuperAdmin/                # Controller Backend SuperAdmin
+        │   ├── Owner/                     # Controller Backend Owner
+        │   └── Participant/               # Controller Backend Participant
+        └── Webhook/
+
+resources/
+└── views/
+    ├── auth/
+    │   └── login.blade.php               # Consolidated Auth View Template
+    ├── layouts/
+    │   ├── app-auth.blade.php            # Layout Auth Fullscreen (100% Light)
+    │   └── app-backend.blade.php         # Unified Backend Layout (100% Light)
+    └── modules/
+        ├── superadmin/                    # Views Backend SuperAdmin
+        ├── owner/                         # Views Backend Owner
+        └── participant/                   # Views Backend Participant
+```
 
 ---
 
 ## 🗄️ Struktur Database
 
-Sistem mengadopsi **Single-Database Tenancy**, di mana seluruh tabel tersimpan dalam 1 database terpusat:
+### A. Tabel Central (Central Manager)
+* `users` — Akun SuperAdmin
+* `owners` — Data Lembaga / Instansi
+* `tenants` — Data Tenant & Slug (`/slug/`)
+* `domains` — Domain Tenant
+* `owner_token_balances` — Stok Saldo Token AI
+* `token_transactions` — Riwayat Kredit / Debit Token
+* `token_packages` — Katalog Paket Token
+* `token_orders` — Order Transaksi Pembayaran
+* `llm_providers` — Konfigurasi Provider AI (OpenRouter)
+* `payment_gateway_configs` — Konfigurasi Gateway Pembayaran
+* `email_gateway_configs` — Konfigurasi Email Gateway
+* `whatsapp_gateway_configs` — Konfigurasi WhatsApp Gateway
+* `system_settings` & `activity_logs` — Pengaturan & Log Sistem
 
-### 🌐 1. Tabel Sentral (Central Tables)
-* `users`: Kredensial akun SuperAdmin global.
-* `owners`: Data Pemilik Instansi/Lembaga.
-* `tenants` & `domains`: Identitas tenant lembaga, slug URL, dan status akses.
-* `owner_token_balances` & `token_transactions`: Saldo token AI milik owner dan riwayat transaksi kredit/debit.
-* `token_packages` & `token_orders`: Katalog paket token AI dan riwayat pemesanan via Payment Gateway.
-* `llm_providers`: Konfigurasi provider AI, model, dan API Key.
-* `gateway_configs`: Konfigurasi gateway pembayaran, email, dan WhatsApp.
-* `system_settings` & `activity_logs`: Pengaturan global aplikasi dan log jejak audit.
-
-### 📁 2. Tabel Tenant (Berisi Kolom `tenant_id` & Global Scope `TenantScope`)
-* `tenant_users`: Akun peserta/siswa per tenant lembaga.
-* `quizzes`: Master data kuis, durasi, KKM, passing score, dan prompt AI.
-* `questions`: Butir soal kuis, tingkat kesulitan, dan urutan tampilan.
-* `question_options`: Pilihan jawaban kuis, kunci jawaban (`is_correct`), dan penjelasan ilmiah AI.
-* `quiz_participants`: Penugasan kuis secara privat ke peserta tertentu.
-* `quiz_attempts`: Sesi pengerjaan ujian peserta (authoritative timer, skor, status, *end_reason*, dan *flag* kecurangan).
-* `quiz_answers`: Jawaban yang dipilih peserta per sesi attempt secara real-time.
-* `notification_logs`: Log riwayat pengiriman notifikasi Email & WhatsApp.
+### B. Tabel Tenant (Berisi `tenant_id` + `TenantScope`)
+* `tenant_users` — Data Akun Peserta per Tenant
+* `quizzes` — Data Kuis, Passing Score, Durasi, & Prompt AI
+* `questions` — Soal Kuis & Tingkat Kesulitan
+* `question_options` — Pilihan Jawaban & Kunci Jawaban
+* `quiz_participants` — Penugasan Kuis Private
+* `quiz_attempts` — Sesi Pengerjaan & Anti-Cheat Record
+* `quiz_answers` — Jawaban Peserta per Attempt
+* `notification_logs` — Log Pengiriman Email / WhatsApp
 
 ---
 
 ## 🤝 Kontribusi
 
-Kami menyambut baik kontribusi dari komunitas pengembang! Untuk berkontribusi pada kode MariLMS AI:
-
-1. **Fork** repositori ini ke akun GitHub Anda.
-2. Buat *branch* fitur atau perbaikan baru:
-   ```bash
-   git checkout -b feat/nama-fitur-baru
-   ```
-3. Pastikan kode memenuhi aturan sintaks dan pengujian:
-   ```bash
-   php artisan test
-   ```
-4. Commit perubahan Anda mengikuti standar **Conventional Commits**:
-   ```bash
-   git commit -m "feat(quiz): tambah fitur pendeteksi tab switch otomatis"
-   ```
-5. Push ke *branch* Anda dan buat **Pull Request (PR)** dengan penjelasan perubahan yang jelas.
+Kontribusi selalu terbuka! Silakan lakukan *fork* pada repositori ini, buat *branch* fitur baru, dan ajukan *Pull Request* (PR) sesuai aturan *Conventional Commits*.
 
 ---
 
 ## ⚖️ Lisensi
 
-Proyek **MariLMS AI** didistribusikan di bawah naungan [Lisensi MIT](https://opensource.org/licenses/MIT). Anda bebas menggunakan, memodifikasi, dan mendistribusikan perangkat lunak ini sesuai ketentuan lisensi.
-
----
-<p align="center"><b>MariLMS AI — Solusi Evaluasi & Ujian Digital Cerdas Terintegrasi ❤️</b></p>
+MariLMS AI dirilis di bawah lisensi [MIT License](LICENSE).
