@@ -43,11 +43,11 @@
 
                 <!-- CTA -->
                 <div class="flex items-center gap-3">
-                    <a href="{{ route('owner.login') }}"
+                    <a href="{{ route('login') }}"
                         class="text-sm font-semibold text-slate-600 hover:text-slate-900 transition-colors duration-150">
                         Masuk
                     </a>
-                    <a href="{{ route('owner.register') }}"
+                    <a href="{{ route('register') }}"
                         class="text-sm font-semibold text-white bg-primary-600 hover:bg-primary-700 px-4 py-2 rounded-lg transition-colors duration-150">
                         Daftar Lembaga
                     </a>
@@ -86,7 +86,7 @@
 
                 <!-- CTA Group -->
                 <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3">
-                    <a href="{{ route('owner.register') }}"
+                    <a href="{{ route('register') }}"
                         class="w-full sm:w-auto px-6 py-3 rounded-lg bg-primary-600 hover:bg-primary-700 text-white font-semibold text-sm transition-colors duration-150">
                         Mulai Gratis Sekarang →
                     </a>
@@ -610,7 +610,7 @@
                         </div>
 
                         <div class="mt-6">
-                            <a href="{{ route('owner.register') }}"
+                            <a href="{{ route('register') }}"
                                 class="w-full py-3 px-4 rounded-lg font-semibold text-sm text-center block transition-colors duration-150 {{ $loop->iteration === 2 ? 'bg-primary-600 hover:bg-primary-700 text-white' : 'border border-gray-300 hover:border-gray-400 text-slate-700' }}">
                                 Beli Paket
                             </a>
@@ -638,11 +638,11 @@
                     menit, tanpa kartu kredit.
                 </p>
                 <div class="mt-8 flex flex-col sm:flex-row justify-center items-center gap-3">
-                    <a href="{{ route('owner.register') }}"
+                    <a href="{{ route('register') }}"
                         class="px-6 py-3 rounded-lg bg-primary-600 hover:bg-primary-700 text-white font-semibold text-sm transition-colors duration-150">
                         Daftar Lembaga Saya →
                     </a>
-                    <a href="{{ route('owner.login') }}"
+                    <a href="{{ route('login') }}"
                         class="px-6 py-3 rounded-lg border border-gray-300 hover:border-gray-400 text-slate-700 font-semibold text-sm transition-colors duration-150">
                         Masuk Akun Pengajar
                     </a>
@@ -663,15 +663,13 @@
                 <span class="font-display font-bold text-sm text-slate-900">MariLMS AI</span>
             </div>
             <p class="text-xs text-slate-400 text-center">
-                &copy; {{ date('Y') }} MariLMS AI v{{ config('app.version', '1.4.0') }}. Dikembangkan untuk kemajuan pendidikan digital Indonesia.
+                &copy; {{ date('Y') }} MariLMS AI v{{ config('app.version', '1.4.1') }}. Dikembangkan untuk kemajuan pendidikan digital Indonesia.
             </p>
             <div class="flex gap-6 text-xs text-slate-500">
                 <a href="#fitur" class="hover:text-slate-900 transition-colors duration-150">Fitur</a>
                 <a href="#harga" class="hover:text-slate-900 transition-colors duration-150">Harga</a>
-                <a href="{{ route('owner.login') }}"
-                    class="hover:text-slate-900 transition-colors duration-150">Login</a>
-                <a href="{{ route('superadmin.login') }}"
-                    class="hover:text-slate-900 transition-colors duration-150">Admin</a>
+                <a href="{{ route('login') }}"
+                    class="hover:text-slate-900 transition-colors duration-150">Masuk Portal</a>
             </div>
         </div>
     </footer>
