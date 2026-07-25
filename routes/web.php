@@ -49,8 +49,8 @@ Route::prefix('superadmin')->name('superadmin.')->group(function () {
             ->name('dashboard');
 
         // Profile Editing
-        Route::get('/profile', [\App\Http\Controllers\ProfileController::class, 'edit'])->name('profile.edit');
-        Route::put('/profile', [\App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');
+        Route::get('/profile', [\App\Http\Controllers\Modules\ProfileController::class, 'edit'])->name('profile.edit');
+        Route::put('/profile', [\App\Http\Controllers\Modules\ProfileController::class, 'update'])->name('profile.update');
 
         // Owner Management
         Route::resource('owners', \App\Http\Controllers\Modules\SuperAdmin\OwnerController::class);
@@ -76,25 +76,25 @@ Route::prefix('superadmin')->name('superadmin.')->group(function () {
         Route::post('/llm/test-connection', [\App\Http\Controllers\Modules\SuperAdmin\LlmProviderController::class, 'testConnection'])->name('llm.test-connection');
 
         // Gateway Settings (Payment, Email, WhatsApp)
-        Route::get('/gateways', [\App\Http\Controllers\Modules\SuperAdmin\GatewaySettingController::class, 'index'])->name('gateways.index');
-        Route::put('/gateways/payment/{id}', [\App\Http\Controllers\Modules\SuperAdmin\GatewaySettingController::class, 'updatePayment'])->name('gateways.payment.update');
-        Route::put('/gateways/email', [\App\Http\Controllers\Modules\SuperAdmin\GatewaySettingController::class, 'updateEmail'])->name('gateways.email.update');
-        Route::put('/gateways/whatsapp', [\App\Http\Controllers\Modules\SuperAdmin\GatewaySettingController::class, 'updateWhatsApp'])->name('gateways.whatsapp.update');
+        Route::get('/gateways', [\App\Http\Controllers\Modules\SuperAdmin\GatewayController::class, 'index'])->name('gateways.index');
+        Route::put('/gateways/payment/{gateway}', [\App\Http\Controllers\Modules\SuperAdmin\GatewayController::class, 'updatePayment'])->name('gateways.payment.update');
+        Route::put('/gateways/email', [\App\Http\Controllers\Modules\SuperAdmin\GatewayController::class, 'updateEmail'])->name('gateways.email.update');
+        Route::put('/gateways/whatsapp/{id}', [\App\Http\Controllers\Modules\SuperAdmin\GatewayController::class, 'updateWhatsApp'])->name('gateways.whatsapp.update');
 
         // System Settings & Activity Logs
-        Route::get('/logs', [\App\Http\Controllers\Modules\SuperAdmin\SystemSettingController::class, 'logs'])->name('logs.index');
-        Route::get('/settings', [\App\Http\Controllers\Modules\SuperAdmin\SystemSettingController::class, 'settings'])->name('settings.index');
-        Route::put('/settings', [\App\Http\Controllers\Modules\SuperAdmin\SystemSettingController::class, 'updateSettings'])->name('settings.update');
+        Route::get('/logs', [\App\Http\Controllers\Modules\SuperAdmin\LogController::class, 'index'])->name('logs.index');
+        Route::get('/settings', [\App\Http\Controllers\Modules\SuperAdmin\SettingsController::class, 'index'])->name('settings.index');
+        Route::put('/settings', [\App\Http\Controllers\Modules\SuperAdmin\SettingsController::class, 'update'])->name('settings.update');
     });
 });
 
 // -------------------------------------------------------
 // Webhook Routes (Public / Unauthenticated)
 // -------------------------------------------------------
-Route::prefix('webhooks')->name('webhooks.')->group(function () {
-    Route::post('/midtrans', [\App\Http\Controllers\WebhookController::class, 'midtrans'])->name('midtrans');
-    Route::post('/xendit', [\App\Http\Controllers\WebhookController::class, 'xendit'])->name('xendit');
-    Route::post('/ipaymu', [\App\Http\Controllers\WebhookController::class, 'ipaymu'])->name('ipaymu');
-    Route::post('/doku', [\App\Http\Controllers\WebhookController::class, 'doku'])->name('doku');
-    Route::post('/duitku', [\App\Http\Controllers\WebhookController::class, 'duitku'])->name('duitku');
+Route::prefix('webhook')->name('webhook.')->group(function () {
+    Route::post('/midtrans', [\App\Http\Controllers\Webhook\PaymentWebhookController::class, 'midtrans'])->name('midtrans');
+    Route::post('/xendit', [\App\Http\Controllers\Webhook\PaymentWebhookController::class, 'xendit'])->name('xendit');
+    Route::post('/ipaymu', [\App\Http\Controllers\Webhook\PaymentWebhookController::class, 'ipaymu'])->name('ipaymu');
+    Route::post('/doku', [\App\Http\Controllers\Webhook\PaymentWebhookController::class, 'doku'])->name('doku');
+    Route::post('/duitku', [\App\Http\Controllers\Webhook\PaymentWebhookController::class, 'duitku'])->name('duitku');
 });

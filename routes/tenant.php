@@ -47,9 +47,9 @@ Route::middleware([
             ->name('dashboard');
 
         // Profile Editing for Owner
-        Route::get('/profile', [\App\Http\Controllers\ProfileController::class, 'edit'])
+        Route::get('/profile', [\App\Http\Controllers\Modules\ProfileController::class, 'edit'])
             ->name('profile.edit');
-        Route::put('/profile', [\App\Http\Controllers\ProfileController::class, 'update'])
+        Route::put('/profile', [\App\Http\Controllers\Modules\ProfileController::class, 'update'])
             ->name('profile.update');
 
         // Quiz Management
@@ -99,29 +99,29 @@ Route::middleware([
             ->name('dashboard');
 
         // Profile Editing for Participant
-        Route::get('/participant/profile', [\App\Http\Controllers\ProfileController::class, 'edit'])
+        Route::get('/participant/profile', [\App\Http\Controllers\Modules\ProfileController::class, 'edit'])
             ->name('profile.edit');
-        Route::put('/participant/profile', [\App\Http\Controllers\ProfileController::class, 'update'])
+        Route::put('/participant/profile', [\App\Http\Controllers\Modules\ProfileController::class, 'update'])
             ->name('profile.update');
 
         // Quiz Execution Engine
-        Route::get('/quiz/{quiz}', [\App\Http\Controllers\Modules\Participant\QuizExecutionController::class, 'show'])
+        Route::get('/quiz/{quiz}', [\App\Http\Controllers\Modules\Participant\QuizController::class, 'show'])
             ->name('quiz.show');
-        Route::post('/quiz/{quiz}/start', [\App\Http\Controllers\Modules\Participant\QuizExecutionController::class, 'start'])
+        Route::post('/quiz/{quiz}/start', [\App\Http\Controllers\Modules\Participant\QuizController::class, 'startAttempt'])
             ->name('quiz.start');
-        Route::get('/attempt/{attempt}', [\App\Http\Controllers\Modules\Participant\QuizExecutionController::class, 'attempt'])
+        Route::get('/attempt/{attempt}', [\App\Http\Controllers\Modules\Participant\QuizController::class, 'takeQuiz'])
             ->name('attempt.show');
-        Route::post('/attempt/{attempt}/answer', [\App\Http\Controllers\Modules\Participant\QuizExecutionController::class, 'saveAnswer'])
+        Route::post('/attempt/{attempt}/answer', [\App\Http\Controllers\Modules\Participant\QuizController::class, 'saveAnswer'])
             ->name('attempt.answer');
-        Route::post('/attempt/{attempt}/submit', [\App\Http\Controllers\Modules\Participant\QuizExecutionController::class, 'submit'])
+        Route::post('/attempt/{attempt}/submit', [\App\Http\Controllers\Modules\Participant\QuizController::class, 'submitAttempt'])
             ->name('attempt.submit');
-        Route::post('/attempt/{attempt}/flag', [\App\Http\Controllers\Modules\Participant\QuizExecutionController::class, 'flagCheat'])
+        Route::post('/attempt/{attempt}/flag', [\App\Http\Controllers\Modules\Participant\QuizForceSubmitController::class, 'forceSubmit'])
             ->name('attempt.flag');
-        Route::get('/attempt/{attempt}/result', [\App\Http\Controllers\Modules\Participant\QuizExecutionController::class, 'result'])
+        Route::get('/attempt/{attempt}/result', [\App\Http\Controllers\Modules\Participant\QuizController::class, 'showResult'])
             ->name('attempt.result');
 
         // History
-        Route::get('/history', [\App\Http\Controllers\Modules\Participant\QuizExecutionController::class, 'history'])
+        Route::get('/history', [\App\Http\Controllers\Modules\Participant\QuizController::class, 'history'])
             ->name('history');
     });
 });

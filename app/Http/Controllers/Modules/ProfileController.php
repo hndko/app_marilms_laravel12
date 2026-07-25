@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Modules;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -16,7 +17,7 @@ class ProfileController extends Controller
         $isOwner = Auth::guard('owner')->check();
         $isParticipant = Auth::guard('participant')->check();
 
-        return view('profile.edit', compact('user', 'isSuperAdmin', 'isOwner', 'isParticipant'));
+        return view('modules.profile.edit', compact('user', 'isSuperAdmin', 'isOwner', 'isParticipant'));
     }
 
     public function update(Request $request)
