@@ -300,22 +300,24 @@
                 </nav>
             </div>
 
-            <!-- Footer Tenant Info & Version Display -->
-            <div class="py-4 border-t border-gray-200 space-y-2.5"
+            <!-- Footer Unified Tenant & Version Card -->
+            <div class="py-4 border-t border-gray-200"
                 x-show="$store.sidebar.isExpanded || $store.sidebar.isHovered || $store.sidebar.isMobileOpen">
-                <div class="flex items-center gap-3 p-2.5 rounded-xl bg-gray-50 border border-gray-200">
-                    <div class="w-8 h-8 rounded-lg bg-brand-500 text-white font-bold flex items-center justify-center text-xs shrink-0 shadow-xs">
-                        <i class="fas fa-server"></i>
+                <div class="p-3 rounded-2xl bg-gray-50/80 border border-gray-200 space-y-2.5 shadow-2xs">
+                    <div class="flex items-center gap-3">
+                        <div class="w-9 h-9 rounded-xl bg-brand-500 text-white font-bold flex items-center justify-center text-xs shrink-0 shadow-xs">
+                            <i class="fas fa-server"></i>
+                        </div>
+                        <div class="flex flex-col min-w-0 flex-1">
+                            <span class="text-xs font-bold text-gray-900 truncate leading-tight">{{ tenant('name') ?? 'MariLMS System' }}</span>
+                            <span class="text-[10px] text-gray-500 truncate">ID: {{ tenant('id') ?? 'Central' }}</span>
+                        </div>
                     </div>
-                    <div class="flex flex-col min-w-0">
-                        <span class="text-xs font-bold text-gray-900 truncate">{{ tenant('name') ?? 'MariLMS System' }}</span>
-                        <span class="text-[10px] text-gray-500 truncate">ID: {{ tenant('id') ?? 'Central' }}</span>
+
+                    <div class="pt-2 border-t border-gray-200/80 flex items-center justify-between text-[11px] text-gray-500 font-medium">
+                        <span>MariLMS Platform</span>
+                        <span class="px-2 py-0.5 rounded-full bg-brand-50 text-brand-600 font-extrabold border border-brand-200 text-[10px]">v1.5.1</span>
                     </div>
-                </div>
-                
-                <div class="flex items-center justify-between px-1 text-[11px] text-gray-500 font-medium">
-                    <span>MariLMS Platform</span>
-                    <span class="px-2 py-0.5 rounded-full bg-brand-50 text-brand-600 font-bold border border-brand-200 text-[10px]">v1.5.1</span>
                 </div>
             </div>
         </aside>
