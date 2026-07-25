@@ -328,29 +328,35 @@
             <header class="sticky top-0 flex w-full bg-white border-b border-gray-200 z-40">
                 <div class="flex items-center justify-between w-full px-4 py-3 xl:px-6">
                     
-                    <!-- Left Section: Toggle Buttons & Search Bar -->
+                    <!-- Left Section: TailAdmin Hamburger Toggle & Search Bar -->
                     <div class="flex items-center gap-3 lg:gap-4">
-                        <!-- Desktop Sidebar Toggle Button -->
-                        <button class="hidden xl:flex items-center justify-center w-10 h-10 text-gray-500 border border-gray-200 rounded-lg hover:bg-gray-100 transition"
+                        <!-- Desktop Sidebar Toggle Button (Exact TailAdmin SVG & Dimensions) -->
+                        <button class="hidden xl:flex items-center justify-center w-10 h-10 lg:w-11 lg:h-11 text-gray-500 border border-gray-200 rounded-lg hover:bg-gray-100 transition"
                             @click="$store.sidebar.toggleExpanded()" aria-label="Toggle Sidebar">
-                            <i class="fas fa-bars text-sm"></i>
+                            <svg width="16" height="12" viewBox="0 0 16 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M0.583252 1C0.583252 0.585788 0.919038 0.25 1.33325 0.25H14.6666C15.0808 0.25 15.4166 0.585786 15.4166 1C15.4166 1.41421 15.0808 1.75 14.6666 1.75L1.33325 1.75C0.919038 1.75 0.583252 1.41422 0.583252 1ZM0.583252 11C0.583252 10.5858 0.919038 10.25 1.33325 10.25L14.6666 10.25C15.0808 10.25 15.4166 10.5858 15.4166 11C15.4166 11.4142 15.0808 11.75 14.6666 11.75L1.33325 11.75C0.919038 11.75 0.583252 11.4142 0.583252 11ZM1.33325 5.25C0.919038 5.25 0.583252 5.58579 0.583252 6C0.583252 6.41421 0.919038 6.75 1.33325 6.75L7.99992 6.75C8.41413 6.75 8.74992 6.41421 8.74992 6C8.74992 5.58579 8.41413 5.25 7.99992 5.25L1.33325 5.25Z" fill="currentColor"></path>
+                            </svg>
                         </button>
 
                         <!-- Mobile Menu Toggle Button -->
                         <button class="flex xl:hidden items-center justify-center w-10 h-10 text-gray-500 border border-gray-200 rounded-lg hover:bg-gray-100 transition"
                             @click="$store.sidebar.toggleMobileOpen()" aria-label="Toggle Mobile Menu">
-                            <i class="fas fa-bars text-sm"></i>
+                            <svg width="16" height="12" viewBox="0 0 16 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M0.583252 1C0.583252 0.585788 0.919038 0.25 1.33325 0.25H14.6666C15.0808 0.25 15.4166 0.585786 15.4166 1C15.4166 1.41421 15.0808 1.75 14.6666 1.75L1.33325 1.75C0.919038 1.75 0.583252 1.41422 0.583252 1ZM0.583252 11C0.583252 10.5858 0.919038 10.25 1.33325 10.25L14.6666 10.25C15.0808 10.25 15.4166 10.5858 15.4166 11C15.4166 11.4142 15.0808 11.75 14.6666 11.75L1.33325 11.75C0.919038 11.75 0.583252 11.4142 0.583252 11ZM1.33325 5.25C0.919038 5.25 0.583252 5.58579 0.583252 6C0.583252 6.41421 0.919038 6.75 1.33325 6.75L7.99992 6.75C8.41413 6.75 8.74992 6.41421 8.74992 6C8.74992 5.58579 8.41413 5.25 7.99992 5.25L1.33325 5.25Z" fill="currentColor"></path>
+                            </svg>
                         </button>
 
                         <!-- TailAdmin Search Bar (Desktop only) -->
                         <div class="hidden sm:block">
                             <div class="relative">
                                 <span class="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none">
-                                    <i class="fas fa-search text-xs"></i>
+                                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M3.04175 9.37363C3.04175 5.87693 5.87711 3.04199 9.37508 3.04199C12.8731 3.04199 15.7084 5.87693 15.7084 9.37363C15.7084 12.8703 12.8731 15.7053 9.37508 15.7053C5.87711 15.7053 3.04175 12.8703 3.04175 9.37363ZM9.37508 1.54199C5.04902 1.54199 1.54175 5.04817 1.54175 9.37363C1.54175 13.6991 5.04902 17.2053 9.37508 17.2053C11.2674 17.2053 13.003 16.5344 14.357 15.4176L17.177 18.238C17.4699 18.5309 17.9448 18.5309 18.2377 18.238C18.5306 17.9451 18.5306 17.4703 18.2377 17.1774L15.418 14.3573C16.5365 13.0033 17.2084 11.2669 17.2084 9.37363C17.2084 5.04817 13.7011 1.54199 9.37508 1.54199Z" fill="currentColor"></path>
+                                    </svg>
                                 </span>
                                 <input type="text" placeholder="Search or type command..."
-                                    class="h-10 w-64 md:w-80 rounded-xl border border-gray-200 bg-gray-50/60 py-2 pl-9 pr-14 text-xs text-gray-800 placeholder:text-gray-400 focus:border-brand-500 focus:bg-white focus:outline-none transition shadow-xs" />
-                                <div class="absolute right-2.5 top-1/2 -translate-y-1/2 flex items-center gap-0.5 rounded-md border border-gray-200 bg-white px-1.5 py-0.5 text-[10px] text-gray-400 font-mono">
+                                    class="h-11 w-64 md:w-96 rounded-lg border border-gray-200 bg-transparent py-2.5 pl-12 pr-14 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-none focus:ring-3 focus:ring-brand-500/10 transition" />
+                                <div class="absolute right-2.5 top-1/2 -translate-y-1/2 flex items-center gap-0.5 rounded-lg border border-gray-200 bg-gray-50 px-2 py-1 text-xs text-gray-400 font-mono">
                                     <span>⌘</span>
                                     <span>K</span>
                                 </div>
@@ -358,51 +364,56 @@
                         </div>
                     </div>
 
-                    <!-- Right Section: Token Pill & User Profile -->
-                    <div class="flex items-center gap-3">
+                    <!-- Right Section: Token Pill, Notification Bell, & User Profile (Exact TailAdmin Image 2 Specs) -->
+                    <div class="flex items-center gap-3 sm:gap-4">
                         @if($isOwner)
                             <a href="{{ route('tenant.owner.tokens', ['tenant' => $tenantSlug]) }}"
-                                class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-50 border border-amber-200 text-amber-700 text-xs font-bold hover:bg-amber-100 transition shadow-2xs">
+                                class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-amber-50 border border-amber-200 text-amber-700 text-xs font-bold hover:bg-amber-100 transition shadow-2xs">
                                 <i class="fas fa-coins text-amber-500"></i>
                                 <span>Saldo Token: {{ number_format(auth('owner')->user()->tokenBalance->balance ?? 0) }}</span>
                             </a>
                         @endif
 
-                        <!-- Notification Bell Icon (TailAdmin Header Component) -->
-                        <div class="relative">
-                            <button class="flex items-center justify-center w-10 h-10 text-gray-500 rounded-full border border-gray-200 bg-white hover:bg-gray-100 transition">
-                                <i class="fas fa-bell text-sm"></i>
-                                <span class="absolute top-2 right-2 w-2 h-2 rounded-full bg-brand-500"></span>
+                        <!-- TailAdmin Exact Bell Icon with Orange Ping Badge (Image 2) -->
+                        <div class="relative" x-data="{ open: false }">
+                            <button class="relative flex items-center justify-center text-gray-500 transition-colors bg-white border border-gray-200 rounded-full hover:text-gray-700 h-11 w-11 hover:bg-gray-100">
+                                <!-- Orange Badge Dot -->
+                                <span class="absolute right-0.5 top-0.5 z-10 flex h-2.5 w-2.5">
+                                    <span class="absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75 animate-ping"></span>
+                                    <span class="relative inline-flex h-2.5 w-2.5 rounded-full bg-orange-500 border border-white"></span>
+                                </span>
+
+                                <!-- TailAdmin Bell SVG Icon -->
+                                <svg class="fill-current text-gray-500" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M10.75 2.29248C10.75 1.87827 10.4143 1.54248 10 1.54248C9.58583 1.54248 9.25004 1.87827 9.25004 2.29248V2.83613C6.08266 3.20733 3.62504 5.9004 3.62504 9.16748V14.4591H3.33337C2.91916 14.4591 2.58337 14.7949 2.58337 15.2091C2.58337 15.6234 2.91916 15.9591 3.33337 15.9591H4.37504H15.625H16.6667C17.0809 15.9591 17.4167 15.6234 17.4167 15.2091C17.4167 14.7949 17.0809 14.4591 16.6667 14.4591H16.375V9.16748C16.375 5.9004 13.9174 3.20733 10.75 2.83613V2.29248ZM14.875 14.4591V9.16748C14.875 6.47509 12.6924 4.29248 10 4.29248C7.30765 4.29248 5.12504 6.47509 5.12504 9.16748V14.4591H14.875ZM8.00004 17.7085C8.00004 18.1228 8.33583 18.4585 8.75004 18.4585H11.25C11.6643 18.4585 12 18.1228 12 17.7085C12 17.2943 11.6643 16.9585 11.25 16.9585H8.75004C8.33583 16.9585 8.00004 17.2943 8.00004 17.7085Z" fill="currentColor" />
+                                </svg>
                             </button>
                         </div>
 
-                        <!-- User Profile Dropdown (TailAdmin Exact Styling) -->
+                        <!-- TailAdmin Exact User Profile Component (Image 2) -->
                         <div x-data="{ open: false }" class="relative">
                             <button @click="open = !open"
-                                class="flex items-center gap-2.5 p-1 rounded-xl hover:bg-gray-100 transition">
-                                <div class="w-9 h-9 rounded-full bg-brand-500 text-white font-bold flex items-center justify-center text-sm shadow-xs">
+                                class="flex items-center text-gray-700 focus:outline-none">
+                                <span class="mr-3 overflow-hidden rounded-full h-11 w-11 shrink-0 bg-brand-500 text-white font-bold flex items-center justify-center text-sm shadow-xs">
                                     {{ strtoupper(substr($user->name ?? 'U', 0, 1)) }}
-                                </div>
-                                <div class="hidden md:flex flex-col text-left">
-                                    <span class="text-xs font-bold text-gray-800 leading-tight truncate max-w-[120px]">
-                                        {{ $user->name ?? 'User' }}
-                                    </span>
-                                    <span class="text-[10px] font-medium text-gray-400">
-                                        {{ $roleLabel }}
-                                    </span>
-                                </div>
-                                <i class="fas fa-chevron-down text-gray-400 text-[10px] hidden md:inline-block pr-1"></i>
+                                </span>
+                                <span class="hidden sm:block mr-1.5 font-medium text-theme-sm text-gray-800">
+                                    {{ $user->name ?? 'User' }}
+                                </span>
+                                <svg class="w-5 h-5 text-gray-500 transition-transform duration-200" :class="{ 'rotate-180': open }" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                </svg>
                             </button>
 
                             <div x-show="open"
                                 @click.outside="open = false"
                                 x-transition
-                                class="absolute right-0 mt-2 w-56 bg-white rounded-xl shadow-lg border border-gray-200 py-1.5 z-50">
+                                class="absolute right-0 mt-[17px] w-[260px] flex flex-col rounded-2xl border border-gray-200 bg-white p-3 shadow-theme-lg z-50">
                                 
-                                <div class="px-4 py-2.5 border-b border-gray-100">
-                                    <p class="text-xs font-bold text-gray-900 truncate">{{ $user->name ?? 'User' }}</p>
-                                    <p class="text-[11px] text-gray-500 truncate">{{ $user->email ?? '-' }}</p>
-                                    <span class="inline-block mt-1.5 px-2 py-0.5 rounded-md text-[10px] font-bold border {{ $roleBadgeColor }}">
+                                <div class="px-2 py-2 border-b border-gray-100 space-y-0.5">
+                                    <p class="font-medium text-gray-800 text-theme-sm truncate">{{ $user->name ?? 'User' }}</p>
+                                    <p class="text-theme-xs text-gray-500 truncate">{{ $user->email ?? '-' }}</p>
+                                    <span class="inline-block mt-1 px-2 py-0.5 rounded-md text-[10px] font-bold border {{ $roleBadgeColor }}">
                                         {{ $roleLabel }}
                                     </span>
                                 </div>
@@ -416,9 +427,13 @@
                                 <form method="POST" action="{{ $logoutAction }}">
                                     @csrf
                                     <button type="submit"
-                                        class="w-full text-left px-4 py-2 text-xs font-semibold text-error-600 hover:bg-error-50 flex items-center gap-2 transition">
-                                        <i class="fas fa-right-from-bracket"></i>
-                                        <span>Keluar Akun</span>
+                                        class="flex items-center w-full gap-3 px-3 py-2 mt-3 font-medium text-gray-700 rounded-lg group text-theme-sm hover:bg-gray-100 transition">
+                                        <span class="text-gray-500 group-hover:text-error-600">
+                                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path>
+                                            </svg>
+                                        </span>
+                                        <span class="text-error-600">Sign out</span>
                                     </button>
                                 </form>
                             </div>
