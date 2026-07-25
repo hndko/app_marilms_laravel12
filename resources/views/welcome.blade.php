@@ -73,43 +73,104 @@
     <main>
 
         {{-- ============================================================ --}}
-        {{-- HERO SECTION --}}
+        {{-- HERO SECTION (2-Column Layout with Image Preview) --}}
         {{-- ============================================================ --}}
-        <section class="bg-white border-b border-slate-200">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-20 text-center">
-                <!-- Badge -->
-                <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-blue-200 bg-blue-50 text-blue-700 text-xs font-bold mb-6">
-                    <i class="fas fa-sparkles text-blue-600"></i>
-                    <span>Platform Evaluasi & LMS Multi-Tenant Berbasis AI</span>
-                </div>
+        <section class="bg-white border-b border-slate-200 overflow-hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 lg:py-20">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                    
+                    <!-- Left Column: Content -->
+                    <div class="lg:col-span-7 space-y-6 text-left">
+                        <!-- Badge -->
+                        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-blue-200 bg-blue-50 text-blue-700 text-xs font-bold">
+                            <i class="fas fa-sparkles text-blue-600"></i>
+                            <span>Platform Evaluasi & LMS Multi-Tenant Berbasis AI</span>
+                        </div>
 
-                <!-- Headline -->
-                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-display font-extrabold text-slate-900 tracking-tight leading-tight max-w-4xl mx-auto">
-                    Buat Soal Ujian Otomatis dengan AI,
-                    <span class="text-blue-600 block mt-1">Ujian Aman Anti-Kecurangan</span>
-                </h1>
+                        <!-- Headline -->
+                        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-display font-extrabold text-slate-900 tracking-tight leading-tight">
+                            Buat Soal Ujian Otomatis dengan AI,
+                            <span class="text-blue-600 block mt-1.5">Ujian Aman Anti-Kecurangan</span>
+                        </h1>
 
-                <!-- Subheadline -->
-                <p class="mt-6 text-lg text-slate-600 max-w-3xl mx-auto leading-relaxed">
-                    MariLMS AI membantu instansi dan pengajar menghasilkan kuis berkualitas lengkap dengan kunci jawaban & pembahasan ilmiah dalam hitungan detik, didukung timer server otoritatif dan pengawasan ujian real-time.
-                </p>
+                        <!-- Subheadline -->
+                        <p class="text-base sm:text-lg text-slate-600 max-w-2xl leading-relaxed">
+                            MariLMS AI membantu instansi dan pengajar menghasilkan kuis berkualitas lengkap dengan kunci jawaban & pembahasan ilmiah dalam hitungan detik, didukung timer server otoritatif dan pengawasan ujian real-time.
+                        </p>
 
-                <!-- CTA Group -->
-                <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3">
-                    <a href="{{ route('register') }}"
-                        class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-semibold text-sm shadow-md transition-all duration-150">
-                        <i class="fas fa-rocket"></i>
-                        Mulai Gratis & Klaim 50 Token
-                    </a>
-                    <a href="#cara-kerja"
-                        class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl border border-slate-300 hover:border-slate-400 bg-white hover:bg-slate-50 text-slate-700 font-semibold text-sm transition-all duration-150">
-                        <i class="fas fa-circle-play text-slate-500"></i>
-                        Lihat Alur Kerja
-                    </a>
+                        <!-- Highlights Pills -->
+                        <div class="flex flex-wrap gap-y-2 gap-x-4 text-xs font-semibold text-slate-700 pt-1">
+                            <span class="inline-flex items-center gap-1.5"><i class="fas fa-circle-check text-emerald-600"></i> Generasi Soal &lt; 30 Detik</span>
+                            <span class="inline-flex items-center gap-1.5"><i class="fas fa-circle-check text-emerald-600"></i> Timer Server Otoritatif</span>
+                            <span class="inline-flex items-center gap-1.5"><i class="fas fa-circle-check text-emerald-600"></i> Workspace Tenant Mandiri</span>
+                        </div>
+
+                        <!-- CTA Group -->
+                        <div class="pt-3 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+                            <a href="{{ route('register') }}"
+                                class="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-semibold text-sm shadow-md transition-all duration-150">
+                                <i class="fas fa-rocket"></i>
+                                Mulai Gratis & Klaim 50 Token
+                            </a>
+                            <a href="#cara-kerja"
+                                class="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl border border-slate-300 hover:border-slate-400 bg-white hover:bg-slate-50 text-slate-700 font-semibold text-sm transition-all duration-150">
+                                <i class="fas fa-circle-play text-slate-500"></i>
+                                Lihat Alur Kerja
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Right Column: Interactive Image Preview Showcase -->
+                    <div class="lg:col-span-5 relative">
+                        <!-- Decorative Frame Container -->
+                        <div class="relative mx-auto max-w-md lg:max-w-none">
+                            
+                            <!-- Main Preview Image Card -->
+                            <div class="bg-slate-100 p-2 sm:p-3 rounded-2xl border border-slate-200 shadow-xl overflow-hidden group">
+                                <div class="bg-slate-200/80 px-3 py-2 rounded-xl mb-2 flex items-center justify-between text-xs text-slate-600 border border-slate-300/50">
+                                    <div class="flex items-center gap-1.5">
+                                        <span class="w-2.5 h-2.5 rounded-full bg-red-400"></span>
+                                        <span class="w-2.5 h-2.5 rounded-full bg-amber-400"></span>
+                                        <span class="w-2.5 h-2.5 rounded-full bg-emerald-400"></span>
+                                        <span class="ml-2 font-mono text-[11px] text-slate-500">marilms.id/dashboard/ai-quiz</span>
+                                    </div>
+                                    <span class="text-[10px] font-bold text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded">ONLINE</span>
+                                </div>
+
+                                <img src="{{ asset('images/hero_lms_preview.jpg') }}" 
+                                     alt="MariLMS AI Dashboard Preview" 
+                                     class="w-full h-auto object-cover rounded-xl border border-slate-200 transition-transform duration-300 group-hover:scale-[1.01]" />
+                            </div>
+
+                            <!-- Floating Badge 1: AI Status -->
+                            <div class="absolute -bottom-4 -left-4 bg-white border border-slate-200 p-3 rounded-xl shadow-lg flex items-center gap-3 hidden sm:flex">
+                                <div class="w-9 h-9 rounded-lg bg-blue-100 text-blue-600 flex items-center justify-center text-base font-bold">
+                                    <i class="fas fa-bolt"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xs font-bold text-slate-900">AI Generator Ready</p>
+                                    <p class="text-[11px] text-slate-500">OpenRouter & DeepSeek API</p>
+                                </div>
+                            </div>
+
+                            <!-- Floating Badge 2: Anti-Cheat Status -->
+                            <div class="absolute -top-4 -right-4 bg-white border border-slate-200 p-3 rounded-xl shadow-lg flex items-center gap-3 hidden sm:flex">
+                                <div class="w-9 h-9 rounded-lg bg-emerald-100 text-emerald-600 flex items-center justify-center text-base font-bold">
+                                    <i class="fas fa-shield-check"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xs font-bold text-slate-900">Anti-Cheat Active</p>
+                                    <p class="text-[11px] text-slate-500">Authoritative Server Timer</p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
                 </div>
 
                 <!-- Stats Row -->
-                <div class="mt-14 grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto border-t border-slate-200 pt-10">
+                <div class="mt-16 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-5xl mx-auto border-t border-slate-200 pt-10">
                     <div class="bg-slate-50 border border-slate-200 rounded-xl p-4 text-center">
                         <p class="text-3xl font-display font-extrabold text-slate-900">&lt; 30<span class="text-base font-semibold text-blue-600 ml-1">Detik</span></p>
                         <p class="text-xs font-medium text-slate-600 mt-1"><i class="fas fa-bolt text-amber-500 mr-1"></i>Generate Kuis AI</p>
