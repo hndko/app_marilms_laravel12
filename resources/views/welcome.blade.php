@@ -663,7 +663,7 @@
                 <span class="font-display font-bold text-sm text-slate-900">MariLMS AI</span>
             </div>
             <p class="text-xs text-slate-400 text-center">
-                &copy; {{ date('Y') }} MariLMS AI Platform. Dikembangkan untuk kemajuan pendidikan digital Indonesia.
+                &copy; {{ date('Y') }} MariLMS AI v{{ config('app.version', '1.4.0') }}. Dikembangkan untuk kemajuan pendidikan digital Indonesia.
             </p>
             <div class="flex gap-6 text-xs text-slate-500">
                 <a href="#fitur" class="hover:text-slate-900 transition-colors duration-150">Fitur</a>

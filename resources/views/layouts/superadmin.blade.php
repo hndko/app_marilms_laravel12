@@ -614,7 +614,7 @@
             <div class="sidebar-brand-icon">M</div>
             <div class="sidebar-brand-text">
                 <h1>MariLMS</h1>
-                <span>Super Admin</span>
+                <span>Super Admin &bull; v{{ config('app.version', '1.4.0') }}</span>
             </div>
         </div>
 

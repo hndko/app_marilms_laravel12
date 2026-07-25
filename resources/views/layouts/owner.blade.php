@@ -343,7 +343,7 @@
             <div class="sidebar-brand-icon">M</div>
             <div class="sidebar-brand-text">
                 <h1>{{ $owner?->organization_name ?? 'MariLMS' }}</h1>
-                <span>Owner Panel</span>
+                <span>Owner Panel &bull; v{{ config('app.version', '1.4.0') }}</span>
             </div>
         </div>
 

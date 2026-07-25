@@ -13,7 +13,9 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Laravel'),
+    'name' => env('APP_NAME', 'MariLMS'),
+
+    'version' => env('APP_VERSION', '1.4.0'),
 
     /*
     |--------------------------------------------------------------------------

@@ -88,7 +88,7 @@
 
     <!-- Footer -->
     <footer style="background: var(--bg-card); border-top: 1px solid var(--border); padding: 24px; text-align: center; font-size: 12px; color: var(--text-muted); margin-top: auto;">
-        &copy; {{ date('Y') }} <strong>MariLMS AI</strong>. Portal Evaluasi & Ujian Berbasis Artificial Intelligence.
+        &copy; {{ date('Y') }} <strong>MariLMS AI</strong> v{{ config('app.version', '1.4.0') }}. Portal Evaluasi & Ujian Berbasis Artificial Intelligence.
     </footer>
 
     @yield('scripts')
