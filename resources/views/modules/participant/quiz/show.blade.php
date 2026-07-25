@@ -1,4 +1,4 @@
-@extends('layouts.participant')
+@extends('layouts.app-backend')
 
 @section('title', $quiz->title . ' — Petunjuk Ujian')
 

@@ -1,4 +1,4 @@
-@extends('layouts.participant')
+@extends('layouts.app-backend')
 
 @section('title', 'Riwayat Ujian & Nilai')
 

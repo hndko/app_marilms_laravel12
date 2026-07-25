@@ -1,4 +1,4 @@
-@extends('layouts.superadmin')
+@extends('layouts.app-backend')
 
 @section('title', 'Gateway')
 @section('page-title', 'Konfigurasi Gateway')

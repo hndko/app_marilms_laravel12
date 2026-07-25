@@ -1,4 +1,4 @@
-@extends('layouts.superadmin')
+@extends('layouts.app-backend')
 
 @section('title', 'Detail Owner — ' . $owner->name)
 @section('page-title', 'Detail Owner')

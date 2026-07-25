@@ -1,4 +1,4 @@
-@extends('layouts.superadmin')
+@extends('layouts.app-backend')
 
 @section('title', 'Manajemen Owner')
 @section('page-title', 'Manajemen Owner')

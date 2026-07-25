@@ -1,4 +1,4 @@
-@extends('layouts.owner')
+@extends('layouts.app-backend')
 
 @section('title', 'Token & Top-up')
 @section('page-title', 'Token & Pembelian')

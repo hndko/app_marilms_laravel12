@@ -1,4 +1,4 @@
-@extends('layouts.owner')
+@extends('layouts.app-backend')
 
 @section('title', 'Edit Kuis: ' . $quiz->title)
 @section('page-title', 'Editor Kuis & Butir Soal')

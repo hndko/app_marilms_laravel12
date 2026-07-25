@@ -1,4 +1,4 @@
-@extends('layouts.superadmin')
+@extends('layouts.app-backend')
 
 @section('title', 'LLM Provider')
 @section('page-title', 'LLM Provider')

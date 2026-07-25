@@ -1,4 +1,4 @@
-@extends('layouts.owner')
+@extends('layouts.app-backend')
 
 @section('title', 'Edit Peserta: ' . $participant->name)
 @section('page-title', 'Edit Data Peserta')

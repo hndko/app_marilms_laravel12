@@ -1,4 +1,4 @@
-@extends('layouts.owner')
+@extends('layouts.app-backend')
 
 @section('title', 'Simulasi Pembayaran')
 @section('page-title', 'Simulasi Pembayaran Sandbox')
