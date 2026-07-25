@@ -68,7 +68,7 @@ class GenerateQuizJob implements ShouldQueue
             $tokenService->deduct(
                 $owner,
                 $requiredTokens,
-                'quiz_generation',
+                'quiz_generate',
                 'AI_GEN_' . time(),
                 "Generate Kuis AI: " . ($this->params['topic'] ?? 'Topik Kuis') . " ({$questionCount} soal)"
             );

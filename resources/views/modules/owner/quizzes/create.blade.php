@@ -7,6 +7,7 @@
     activeTab: 'ai',
     questionCount: 5,
     tokenPerQuestion: {{ $tokenPerQuestion }},
+    showLoadingOverlay: false,
     get tokenCost() { return this.questionCount * this.tokenPerQuestion; }
 }" class="max-w-4xl mx-auto space-y-6">
 
@@ -327,24 +328,35 @@
                 </div>
             </form>
         </div>
-    </div>
+    <!-- Full Screen Teleport Loading Overlay for AI Generation -->
+    <template x-teleport="body">
+        <div x-show="showLoadingOverlay" x-cloak
+            x-transition:enter="transition ease-out duration-200"
+            x-transition:enter-start="opacity-0"
+            x-transition:enter-end="opacity-100"
+            x-transition:leave="transition ease-in duration-150"
+            x-transition:leave-start="opacity-100"
+            x-transition:leave-end="opacity-0"
+            class="fixed inset-0 z-[999999] flex flex-col items-center justify-center p-6 bg-gray-900/80 backdrop-blur-md text-white text-center space-y-4"
+            style="display: none;">
+            <div class="w-16 h-16 rounded-full border-4 border-white/20 border-t-brand-400 border-r-amber-400 animate-spin"></div>
+            <div class="space-y-2">
+                <h2 class="text-xl font-extrabold tracking-tight">✨ AI Sedang Merancang Soal...</h2>
+                <p class="text-xs text-gray-300 max-w-sm mx-auto leading-relaxed">
+                    Mohon tunggu beberapa saat. AI sedang menyusun butir pertanyaan, pilihan jawaban, dan penjelasan ilmiah yang relevan.
+                </p>
+            </div>
+        </div>
+    </template>
 
-</div>
-
-<!-- Full Screen Teleport Loading Overlay for AI Generation -->
-<div id="ai-loading-overlay" class="fixed inset-0 z-[99999] flex flex-col items-center justify-center p-6 bg-gray-900/80 backdrop-blur-md text-white text-center space-y-4" style="display: none;">
-    <div class="w-16 h-16 rounded-full border-4 border-white/20 border-t-brand-400 border-r-amber-400 animate-spin"></div>
-    <div class="space-y-2">
-        <h2 class="text-xl font-extrabold tracking-tight">✨ AI Sedang Merancang Soal...</h2>
-        <p class="text-xs text-gray-300 max-w-sm mx-auto leading-relaxed">
-            Mohon tunggu beberapa saat. AI sedang menyusun butir pertanyaan, pilihan jawaban, dan penjelasan ilmiah yang relevan.
-        </p>
-    </div>
 </div>
 
 <script>
     function showLoadingState() {
-        document.getElementById('ai-loading-overlay').style.display = 'flex';
+        const root = document.querySelector('[x-data]');
+        if (root && root._x_dataStack) {
+            root._x_dataStack[0].showLoadingOverlay = true;
+        }
         const btn = document.getElementById('ai-submit-btn');
         if (btn) {
             btn.disabled = true;

@@ -117,11 +117,17 @@ class TokenService
      */
     private function logTransaction(Owner $owner, string $type, int $amount, string $source, string $referenceId, string $note): void
     {
+        $normalizedSource = match ($source) {
+            'quiz_generation' => 'quiz_generate',
+            'package_purchase' => 'purchase',
+            default => $source,
+        };
+
         TokenTransaction::create([
             'owner_id' => $owner->id,
             'type' => $type,
             'amount' => $amount,
-            'source' => $source,
+            'source' => $normalizedSource,
             'reference_id' => $referenceId,
             'note' => $note,
             'created_at' => now(),
