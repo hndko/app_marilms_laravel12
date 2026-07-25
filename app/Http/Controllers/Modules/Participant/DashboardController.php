@@ -23,15 +23,15 @@ class DashboardController extends Controller
         $dashboardData = Cache::remember($cacheKey, 120, function () use ($tenantId, $user, $period) {
             $dateRange = $this->getDateRange($period);
 
-            $attemptsQuery = QuizAttempt::where('tenant_id', $tenantId)
-                ->where('user_id', $user->id)
-                ->when($dateRange['start'], fn($q) => $q->whereBetween('created_at', [$dateRange['start'], $dateRange['end']]));
+            $attemptsQuery = QuizAttempt::where('quiz_attempts.tenant_id', $tenantId)
+                ->where('quiz_attempts.user_id', $user->id)
+                ->when($dateRange['start'], fn($q) => $q->whereBetween('quiz_attempts.created_at', [$dateRange['start'], $dateRange['end']]));
 
-            $totalCompleted = (clone $attemptsQuery)->whereIn('status', ['submitted', 'timeout', 'force_ended'])->count();
-            $avgScore = round((clone $attemptsQuery)->whereNotNull('score')->avg('score') ?? 0, 1);
-            $flaggedCount = (clone $attemptsQuery)->where('is_flagged', true)->count();
+            $totalCompleted = (clone $attemptsQuery)->whereIn('quiz_attempts.status', ['submitted', 'timeout', 'force_ended'])->count();
+            $avgScore = round((clone $attemptsQuery)->whereNotNull('quiz_attempts.score')->avg('quiz_attempts.score') ?? 0, 1);
+            $flaggedCount = (clone $attemptsQuery)->where('quiz_attempts.is_flagged', true)->count();
 
-            // Passed Count
+            // Passed Count (Qualified join columns to avoid ambiguous column 1052 error)
             $passedCount = (clone $attemptsQuery)
                 ->join('quizzes', 'quiz_attempts.quiz_id', '=', 'quizzes.id')
                 ->whereRaw('quiz_attempts.score >= quizzes.passing_score')
@@ -41,9 +41,9 @@ class DashboardController extends Controller
 
             // Time series line chart of scores (Last 8 attempts)
             $recentScores = (clone $attemptsQuery)
-                ->whereNotNull('score')
+                ->whereNotNull('quiz_attempts.score')
                 ->with('quiz')
-                ->orderBy('created_at', 'asc')
+                ->orderBy('quiz_attempts.created_at', 'asc')
                 ->take(8)
                 ->get()
                 ->map(fn($att) => [
@@ -55,7 +55,7 @@ class DashboardController extends Controller
             // Recent attempts
             $recentAttempts = (clone $attemptsQuery)
                 ->with('quiz')
-                ->orderBy('created_at', 'desc')
+                ->orderBy('quiz_attempts.created_at', 'desc')
                 ->take(6)
                 ->get();
 
@@ -78,20 +78,20 @@ class DashboardController extends Controller
 
         // Fetch active quizzes for participant
         $quizzes = Quiz::active()
-            ->where('tenant_id', $tenantId)
+            ->where('quizzes.tenant_id', $tenantId)
             ->where(function ($query) use ($user) {
-                $query->where('is_public', true)
+                $query->where('quizzes.is_public', true)
                     ->orWhereHas('participants', function ($q) use ($user) {
-                        $q->where('users.id', $user->id);
+                        $q->where('tenant_users.id', $user->id);
                     });
             })
             ->withCount(['attempts' => function ($query) use ($user) {
-                $query->where('user_id', $user->id);
+                $query->where('quiz_attempts.user_id', $user->id);
             }])
             ->get()
             ->map(function ($quiz) use ($user) {
                 $lastAttempt = $quiz->attempts()
-                    ->where('user_id', $user->id)
+                    ->where('quiz_attempts.user_id', $user->id)
                     ->latest()
                     ->first();
 
@@ -99,7 +99,7 @@ class DashboardController extends Controller
                 $quiz->has_passed = $quiz->hasUserPassed($user);
                 $quiz->remaining_attempts = $quiz->remainingAttempts($user);
                 $quiz->has_active_attempt = $quiz->attempts()
-                    ->where('user_id', $user->id)
+                    ->where('quiz_attempts.user_id', $user->id)
                     ->inProgress()
                     ->exists();
 

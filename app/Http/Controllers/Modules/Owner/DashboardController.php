@@ -28,49 +28,49 @@ class DashboardController extends Controller
             $prevDateRange = $this->getPreviousDateRange($period);
 
             // 1. Metrics & Comparison
-            $totalQuizzes = Quiz::where('tenant_id', $tenantId)->count();
-            $prevQuizzes = Quiz::where('tenant_id', $tenantId)
-                ->where('created_at', '<', $dateRange['start'])->count();
+            $totalQuizzes = Quiz::where('quizzes.tenant_id', $tenantId)->count();
+            $prevQuizzes = Quiz::where('quizzes.tenant_id', $tenantId)
+                ->where('quizzes.created_at', '<', $dateRange['start'])->count();
             $quizGrowth = $this->calculateGrowth($totalQuizzes, $prevQuizzes);
 
-            $activeParticipants = User::where('tenant_id', $tenantId)->count();
-            $prevParticipants = User::where('tenant_id', $tenantId)
-                ->where('created_at', '<', $dateRange['start'])->count();
+            $activeParticipants = User::where('tenant_users.tenant_id', $tenantId)->count();
+            $prevParticipants = User::where('tenant_users.tenant_id', $tenantId)
+                ->where('tenant_users.created_at', '<', $dateRange['start'])->count();
             $participantGrowth = $this->calculateGrowth($activeParticipants, $prevParticipants);
 
-            $attemptsQuery = QuizAttempt::where('tenant_id', $tenantId)
-                ->when($dateRange['start'], fn($q) => $q->whereBetween('created_at', [$dateRange['start'], $dateRange['end']]));
+            $attemptsQuery = QuizAttempt::where('quiz_attempts.tenant_id', $tenantId)
+                ->when($dateRange['start'], fn($q) => $q->whereBetween('quiz_attempts.created_at', [$dateRange['start'], $dateRange['end']]));
             $totalAttempts = (clone $attemptsQuery)->count();
 
-            $prevAttemptsQuery = QuizAttempt::where('tenant_id', $tenantId)
-                ->when($prevDateRange['start'], fn($q) => $q->whereBetween('created_at', [$prevDateRange['start'], $prevDateRange['end']]));
+            $prevAttemptsQuery = QuizAttempt::where('quiz_attempts.tenant_id', $tenantId)
+                ->when($prevDateRange['start'], fn($q) => $q->whereBetween('quiz_attempts.created_at', [$prevDateRange['start'], $prevDateRange['end']]));
             $prevAttempts = (clone $prevAttemptsQuery)->count();
             $attemptGrowth = $this->calculateGrowth($totalAttempts, $prevAttempts);
 
-            $avgScore = round((clone $attemptsQuery)->whereNotNull('score')->avg('score') ?? 0, 1);
-            $flaggedCount = (clone $attemptsQuery)->where('is_flagged', true)->count();
+            $avgScore = round((clone $attemptsQuery)->whereNotNull('quiz_attempts.score')->avg('quiz_attempts.score') ?? 0, 1);
+            $flaggedCount = (clone $attemptsQuery)->where('quiz_attempts.is_flagged', true)->count();
             $flagRate = $totalAttempts > 0 ? round(($flaggedCount / $totalAttempts) * 100, 1) : 0;
 
             // 2. Status & Pass/Fail Distribution
             $statusCounts = [
-                'submitted' => (clone $attemptsQuery)->where('status', 'submitted')->count(),
-                'in_progress' => (clone $attemptsQuery)->where('status', 'in_progress')->count(),
-                'timeout' => (clone $attemptsQuery)->where('status', 'timeout')->count(),
-                'force_ended' => (clone $attemptsQuery)->where('status', 'force_ended')->count(),
+                'submitted' => (clone $attemptsQuery)->where('quiz_attempts.status', 'submitted')->count(),
+                'in_progress' => (clone $attemptsQuery)->where('quiz_attempts.status', 'in_progress')->count(),
+                'timeout' => (clone $attemptsQuery)->where('quiz_attempts.status', 'timeout')->count(),
+                'force_ended' => (clone $attemptsQuery)->where('quiz_attempts.status', 'force_ended')->count(),
             ];
 
-            // Passed vs Failed
+            // Passed vs Failed (Qualified join columns to avoid ambiguous column 1052 error)
             $passedAttempts = (clone $attemptsQuery)
                 ->join('quizzes', 'quiz_attempts.quiz_id', '=', 'quizzes.id')
                 ->whereRaw('quiz_attempts.score >= quizzes.passing_score')
                 ->count();
             $failedAttempts = max(0, $totalAttempts - $passedAttempts);
 
-            // 3. Time Series Chart Data (Last 7 Days or Months)
+            // 3. Time Series Chart Data (Last 7 Days)
             $chartDays = collect(range(6, 0))->map(function ($daysAgo) use ($tenantId) {
                 $date = Carbon::now()->subDays($daysAgo)->toDateString();
-                $count = QuizAttempt::where('tenant_id', $tenantId)->whereDate('created_at', $date)->count();
-                $avg = round(QuizAttempt::where('tenant_id', $tenantId)->whereDate('created_at', $date)->avg('score') ?? 0, 1);
+                $count = QuizAttempt::where('quiz_attempts.tenant_id', $tenantId)->whereDate('quiz_attempts.created_at', $date)->count();
+                $avg = round(QuizAttempt::where('quiz_attempts.tenant_id', $tenantId)->whereDate('quiz_attempts.created_at', $date)->avg('quiz_attempts.score') ?? 0, 1);
                 return [
                     'label' => Carbon::now()->subDays($daysAgo)->format('d M'),
                     'attempts' => $count,
@@ -78,10 +78,10 @@ class DashboardController extends Controller
                 ];
             });
 
-            // 4. Recent Attempts Table with Eager Loading (prevent N+1)
-            $recentAttempts = QuizAttempt::where('tenant_id', $tenantId)
+            // 4. Recent Attempts Table with Eager Loading
+            $recentAttempts = QuizAttempt::where('quiz_attempts.tenant_id', $tenantId)
                 ->with(['user', 'quiz'])
-                ->orderBy('created_at', 'desc')
+                ->orderBy('quiz_attempts.created_at', 'desc')
                 ->take(8)
                 ->get();
 
@@ -89,7 +89,7 @@ class DashboardController extends Controller
                 'stats' => [
                     'total_quizzes' => $totalQuizzes,
                     'quiz_growth' => $quizGrowth,
-                    'active_quizzes' => Quiz::where('tenant_id', $tenantId)->where('status', 'active')->count(),
+                    'active_quizzes' => Quiz::where('quizzes.tenant_id', $tenantId)->where('quizzes.status', 'active')->count(),
                     'total_participants' => $activeParticipants,
                     'participant_growth' => $participantGrowth,
                     'total_attempts' => $totalAttempts,
