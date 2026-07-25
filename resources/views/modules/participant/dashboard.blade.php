@@ -3,7 +3,14 @@
 @section('title', 'Beranda Kuis & Ujian')
 
 @section('content')
-<div x-data="{ showInfoModal: false }" class="space-y-6">
+<div x-data="{ 
+    showInfoModal: false,
+    init() {
+        this.$watch('showInfoModal', value => {
+            document.body.style.overflow = value ? 'hidden' : 'unset';
+        });
+    }
+}" class="space-y-6">
 
     <!-- TailAdmin Top Header Card Wrapper with Panduan Modul Button -->
     <div class="p-5 md:p-6 rounded-2xl bg-white border border-gray-200 shadow-theme-xs flex flex-col sm:flex-row sm:items-center justify-between gap-4">
@@ -13,7 +20,7 @@
         </div>
 
         <div class="flex flex-wrap items-center gap-3">
-            <!-- Information Modal Trigger Button (Fix: Compact & Space Saving) -->
+            <!-- Information Modal Trigger Button -->
             <button @click="showInfoModal = true" 
                 class="px-3.5 py-2.5 rounded-xl bg-success-50 hover:bg-success-100 text-success-700 border border-success-200 text-xs font-bold transition flex items-center gap-2 shadow-2xs">
                 <i class="fas fa-circle-info text-success-600 text-sm"></i>
@@ -39,22 +46,26 @@
         </div>
     </div>
 
-    <!-- TailAdmin Modal Information Component (Rule 5.E GEMINI.md) -->
-    <div x-show="showInfoModal" 
+    <!-- TailAdmin Perfect Modal Component (Exact Header, Scroll Body & Fixed Footer) -->
+    <div x-show="showInfoModal" x-cloak
+        @keydown.escape.window="showInfoModal = false"
         x-transition:enter="transition ease-out duration-200"
         x-transition:enter-start="opacity-0"
         x-transition:enter-end="opacity-100"
         x-transition:leave="transition ease-in duration-150"
         x-transition:leave-start="opacity-100"
         x-transition:leave-end="opacity-0"
-        class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-gray-900/50 backdrop-blur-xs"
+        class="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-gray-900/50 backdrop-blur-xs overflow-y-auto"
         style="display: none;">
         
-        <div @click.outside="showInfoModal = false"
-            class="bg-white rounded-2xl border border-gray-200 shadow-2xl max-w-xl w-full p-6 space-y-5 relative animate-in fade-in zoom-in duration-150">
+        <!-- Backdrop Click to Close -->
+        <div @click="showInfoModal = false" class="fixed inset-0 h-full w-full"></div>
+
+        <!-- Modal Dialog Box -->
+        <div class="relative w-full max-w-[580px] rounded-3xl bg-white p-6 sm:p-8 shadow-2xl border border-gray-200 z-10 flex flex-col max-h-[85vh] animate-in fade-in zoom-in duration-150">
             
-            <!-- Header Modal -->
-            <div class="flex items-center justify-between pb-4 border-b border-gray-100">
+            <!-- Modal Header (Fixed Top) -->
+            <div class="flex items-center justify-between pb-4 border-b border-gray-100 shrink-0">
                 <div class="flex items-center gap-3">
                     <div class="w-10 h-10 rounded-xl bg-success-50 text-success-600 border border-success-200 flex items-center justify-center font-bold shrink-0">
                         <i class="fas fa-user-graduate text-base"></i>
@@ -64,15 +75,15 @@
                         <p class="text-xs text-gray-500">Petunjuk pengerjaan ujian dan sistem pengawasan.</p>
                     </div>
                 </div>
-                <button @click="showInfoModal = false" class="text-gray-400 hover:text-gray-600 text-sm p-1.5 rounded-lg hover:bg-gray-100 transition">
-                    <i class="fas fa-times"></i>
+                <button @click="showInfoModal = false" class="w-9 h-9 flex items-center justify-center rounded-full bg-gray-100 text-gray-400 hover:bg-gray-200 hover:text-gray-700 transition">
+                    <i class="fas fa-times text-sm"></i>
                 </button>
             </div>
 
-            <!-- Body Modal Content -->
-            <div class="space-y-4 text-xs text-gray-600 leading-relaxed max-h-[60vh] overflow-y-auto pr-1">
+            <!-- Modal Body (Dedicated Scrollable Container with Bottom Padding) -->
+            <div class="flex-1 overflow-y-auto py-4 space-y-4 text-xs text-gray-600 leading-relaxed pr-2">
                 <!-- 1. Tujuan Modul -->
-                <div class="space-y-1.5 bg-gray-50 p-3.5 rounded-xl border border-gray-200/80">
+                <div class="space-y-1.5 bg-gray-50 p-4 rounded-2xl border border-gray-200/80">
                     <h4 class="font-bold text-gray-900 flex items-center gap-2">
                         <i class="fas fa-bullseye text-success-600"></i>
                         Fungsi & Petunjuk Ujian
@@ -83,7 +94,7 @@
                 </div>
 
                 <!-- 2. Proteksi Anti-Cheat -->
-                <div class="space-y-1.5 bg-amber-50/60 p-3.5 rounded-xl border border-amber-200/60 text-amber-950">
+                <div class="space-y-1.5 bg-amber-50/60 p-4 rounded-2xl border border-amber-200/80 text-amber-950 mb-2">
                     <h4 class="font-bold text-amber-900 flex items-center gap-2">
                         <i class="fas fa-triangle-exclamation text-amber-600"></i>
                         Aturan Anti-Kecurangan (Anti-Cheat)
@@ -94,10 +105,10 @@
                 </div>
             </div>
 
-            <!-- Footer Modal Button -->
-            <div class="pt-3 border-t border-gray-100 flex justify-end">
+            <!-- Modal Footer (Fixed Bottom outside Body Scroll Container) -->
+            <div class="pt-4 border-t border-gray-100 flex justify-end shrink-0">
                 <button @click="showInfoModal = false" 
-                    class="px-5 py-2.5 rounded-xl bg-success-600 hover:bg-success-700 text-white font-bold text-xs shadow-theme-xs transition">
+                    class="px-6 py-2.5 rounded-xl bg-success-600 hover:bg-success-700 text-white font-bold text-xs shadow-theme-xs transition">
                     Saya Mengerti
                 </button>
             </div>
