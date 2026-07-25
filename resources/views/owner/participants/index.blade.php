@@ -26,7 +26,7 @@
                 <button type="button" onclick="openImportModal()" class="btn btn-secondary" style="padding: 12px 20px; font-size: 14px;">
                     <i class="fas fa-file-csv" style="color: var(--success);"></i> Impor CSV Massal
                 </button>
-                <a href="{{ route('tenant.owner.participants.create') }}" class="btn btn-primary" style="padding: 12px 24px; font-size: 14px; background: linear-gradient(135deg, var(--accent), var(--primary));">
+                <a href="{{ route('tenant.owner.participants.create', ['tenant' => $tenant]) }}" class="btn btn-primary" style="padding: 12px 24px; font-size: 14px; background: linear-gradient(135deg, var(--accent), var(--primary));">
                     <i class="fas fa-user-plus"></i> Tambah Peserta
                 </a>
             </div>
@@ -35,7 +35,7 @@
 
     <!-- Filter & Search Bar -->
     <div class="card" style="padding: 20px;">
-        <form method="GET" action="{{ route('tenant.owner.participants.index') }}" style="display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-end;">
+        <form method="GET" action="{{ route('tenant.owner.participants.index', ['tenant' => $tenant]) }}" style="display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-end;">
             <div style="flex: 1; min-width: 260px;">
                 <label class="form-label" style="font-size: 12px;">Cari Peserta</label>
                 <div style="position: relative;">
@@ -58,7 +58,7 @@
                     <i class="fas fa-filter"></i> Filter
                 </button>
                 @if(request()->hasAny(['search', 'status']))
-                    <a href="{{ route('tenant.owner.participants.index') }}" class="btn btn-ghost" style="height: 42px;">Reset</a>
+                    <a href="{{ route('tenant.owner.participants.index', ['tenant' => $tenant]) }}" class="btn btn-ghost" style="height: 42px;">Reset</a>
                 @endif
             </div>
         </form>
@@ -82,7 +82,7 @@
                 </p>
                 <div style="display: flex; gap: 12px; justify-content: center;">
                     <button type="button" onclick="openImportModal()" class="btn btn-secondary"><i class="fas fa-file-csv"></i> Impor CSV</button>
-                    <a href="{{ route('tenant.owner.participants.create') }}" class="btn btn-primary"><i class="fas fa-plus"></i> Tambah Manual</a>
+                    <a href="{{ route('tenant.owner.participants.create', ['tenant' => $tenant]) }}" class="btn btn-primary"><i class="fas fa-plus"></i> Tambah Manual</a>
                 </div>
             </div>
         @else
@@ -107,7 +107,7 @@
                                             {{ strtoupper(substr($p->name, 0, 1)) }}
                                         </div>
                                         <div>
-                                            <a href="{{ route('tenant.owner.participants.show', ['participant' => $p->id]) }}" style="font-weight: 700; color: var(--text-white); text-decoration: none;">
+                                            <a href="{{ route('tenant.owner.participants.show', ['tenant' => $tenant, 'participant' => $p->id]) }}" style="font-weight: 700; color: var(--text-white); text-decoration: none;">
                                                 {{ $p->name }}
                                             </a>
                                             <div style="font-size: 11px; color: var(--text-muted);">ID: #{{ $p->id }}</div>
@@ -139,19 +139,19 @@
                                 </td>
                                 <td style="text-align: right;">
                                     <div style="display: flex; justify-content: flex-end; gap: 6px;">
-                                        <a href="{{ route('tenant.owner.participants.show', ['participant' => $p->id]) }}" class="btn btn-sm btn-icon btn-secondary" title="Lihat Detail & Riwayat">
+                                        <a href="{{ route('tenant.owner.participants.show', ['tenant' => $tenant, 'participant' => $p->id]) }}" class="btn btn-sm btn-icon btn-secondary" title="Lihat Detail & Riwayat">
                                             <i class="fas fa-eye"></i>
                                         </a>
-                                        <a href="{{ route('tenant.owner.participants.edit', ['participant' => $p->id]) }}" class="btn btn-sm btn-icon btn-primary" title="Edit Peserta">
+                                        <a href="{{ route('tenant.owner.participants.edit', ['tenant' => $tenant, 'participant' => $p->id]) }}" class="btn btn-sm btn-icon btn-primary" title="Edit Peserta">
                                             <i class="fas fa-edit"></i>
                                         </a>
-                                        <form method="POST" action="{{ route('tenant.owner.participants.reset-password', ['participant' => $p->id]) }}" onsubmit="return confirm('Reset password peserta ini menjadi password123?')">
+                                        <form method="POST" action="{{ route('tenant.owner.participants.reset-password', ['tenant' => $tenant, 'participant' => $p->id]) }}" onsubmit="return confirm('Reset password peserta ini menjadi password123?')">
                                             @csrf
                                             <button type="submit" class="btn btn-sm btn-icon btn-warning" title="Reset Password ke password123">
                                                 <i class="fas fa-key"></i>
                                             </button>
                                         </form>
-                                        <form method="POST" action="{{ route('tenant.owner.participants.destroy', ['participant' => $p->id]) }}" onsubmit="return confirm('Apakah Anda yakin ingin menghapus peserta ini?')">
+                                        <form method="POST" action="{{ route('tenant.owner.participants.destroy', ['tenant' => $tenant, 'participant' => $p->id]) }}" onsubmit="return confirm('Apakah Anda yakin ingin menghapus peserta ini?')">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-sm btn-icon btn-ghost" style="color: var(--danger);" title="Hapus Peserta">
@@ -192,7 +192,7 @@
             <button type="button" onclick="closeImportModal()" class="btn btn-sm btn-icon btn-ghost"><i class="fas fa-times"></i></button>
         </div>
 
-        <form method="POST" action="{{ route('tenant.owner.participants.import') }}" enctype="multipart/form-data">
+        <form method="POST" action="{{ route('tenant.owner.participants.import', ['tenant' => $tenant]) }}" enctype="multipart/form-data">
             @csrf
             <div class="card-body">
                 <div style="background: rgba(99,102,241,0.08); border-left: 3px solid var(--primary-light); padding: 14px; border-radius: 0 8px 8px 0; margin-bottom: 20px;">

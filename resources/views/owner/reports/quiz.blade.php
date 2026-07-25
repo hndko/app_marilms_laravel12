@@ -4,7 +4,7 @@
 @section('page-title', 'Analitik Kuis Detail')
 
 @section('breadcrumb')
-    <a href="{{ route('tenant.owner.reports') }}">Laporan</a>
+    <a href="{{ route('tenant.owner.reports', ['tenant' => $tenant]) }}">Laporan</a>
     <i class="fas fa-chevron-right" style="font-size: 10px;"></i>
     <span>{{ Str::limit($quiz->title, 25) }}</span>
 @endsection
@@ -26,7 +26,7 @@
                 </p>
             </div>
             <div style="display: flex; gap: 12px;">
-                <a href="{{ route('tenant.owner.reports.export', ['type' => 'csv', 'quiz_id' => $quiz->id]) }}" class="btn btn-primary" style="padding: 12px 24px; background: linear-gradient(135deg, var(--success), #059669);">
+                <a href="{{ route('tenant.owner.reports.export', ['tenant' => $tenant, 'type' => 'csv', 'quiz_id' => $quiz->id]) }}" class="btn btn-primary" style="padding: 12px 24px; background: linear-gradient(135deg, var(--success), #059669);">
                     <i class="fas fa-file-csv"></i> Ekspor Laporan Kuis Ini (CSV)
                 </a>
             </div>

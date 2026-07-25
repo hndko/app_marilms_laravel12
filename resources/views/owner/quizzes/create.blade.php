@@ -4,7 +4,7 @@
 @section('page-title', 'Buat Kuis Baru')
 
 @section('breadcrumb')
-    <a href="{{ route('tenant.owner.quizzes.index') }}">Daftar Kuis</a>
+    <a href="{{ route('tenant.owner.quizzes.index', ['tenant' => $tenant]) }}">Daftar Kuis</a>
     <i class="fas fa-chevron-right" style="font-size: 10px;"></i>
     <span>Buat Kuis</span>
 @endsection
@@ -37,7 +37,7 @@
                 </div>
             </div>
 
-            <form method="POST" action="{{ route('tenant.owner.quizzes.generate') }}" id="ai-generate-form" onsubmit="showLoadingState()">
+            <form method="POST" action="{{ route('tenant.owner.quizzes.generate', ['tenant' => $tenant]) }}" id="ai-generate-form" onsubmit="showLoadingState()">
                 @csrf
                 <div class="card-body">
                     
@@ -51,7 +51,7 @@
                             </div>
                         </div>
                         @if(!$isUnlimited && $tokenBalance < 5)
-                            <a href="{{ route('tenant.owner.tokens') }}" class="btn btn-sm btn-accent"><i class="fas fa-plus"></i> Top Up Token</a>
+                            <a href="{{ route('tenant.owner.tokens', ['tenant' => $tenant]) }}" class="btn btn-sm btn-accent"><i class="fas fa-plus"></i> Top Up Token</a>
                         @endif
                     </div>
 
@@ -124,7 +124,7 @@
                 </div>
 
                 <div class="card-footer" style="justify-content: flex-end; gap: 12px; background: rgba(0,0,0,0.15);">
-                    <a href="{{ route('tenant.owner.quizzes.index') }}" class="btn btn-ghost">Batal</a>
+                    <a href="{{ route('tenant.owner.quizzes.index', ['tenant' => $tenant]) }}" class="btn btn-ghost">Batal</a>
                     <button type="submit" id="ai-submit-btn" class="btn btn-primary" style="padding: 14px 28px; font-size: 15px; background: linear-gradient(135deg, var(--primary), var(--accent));">
                         <i class="fas fa-bolt"></i> Generate Soal Sekarang
                     </button>
@@ -140,7 +140,7 @@
                 <h3><i class="fas fa-edit" style="color: var(--primary); margin-right: 8px;"></i> Buat Kuis Manual</h3>
             </div>
 
-            <form method="POST" action="{{ route('tenant.owner.quizzes.store') }}">
+            <form method="POST" action="{{ route('tenant.owner.quizzes.store', ['tenant' => $tenant]) }}">
                 @csrf
                 <input type="hidden" name="status" value="draft">
                 
@@ -173,7 +173,7 @@
                 </div>
 
                 <div class="card-footer" style="justify-content: flex-end; gap: 12px;">
-                    <a href="{{ route('tenant.owner.quizzes.index') }}" class="btn btn-ghost">Batal</a>
+                    <a href="{{ route('tenant.owner.quizzes.index', ['tenant' => $tenant]) }}" class="btn btn-ghost">Batal</a>
                     <button type="submit" class="btn btn-primary">
                         <i class="fas fa-save"></i> Simpan & Lanjut ke Editor Soal
                     </button>

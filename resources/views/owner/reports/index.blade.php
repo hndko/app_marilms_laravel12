@@ -20,7 +20,7 @@
                     Pantau statistik pengerjaan ujian, tingkat kelulusan siswa, dan ekspor data hasil ke file CSV/Excel.
                 </p>
             </div>
-            <a href="{{ route('tenant.owner.reports.export', ['type' => 'csv']) }}" class="btn btn-primary" style="padding: 14px 24px; font-size: 14px; background: linear-gradient(135deg, var(--success), #059669);">
+            <a href="{{ route('tenant.owner.reports.export', ['tenant' => $tenant, 'type' => 'csv']) }}" class="btn btn-primary" style="padding: 14px 24px; font-size: 14px; background: linear-gradient(135deg, var(--success), #059669);">
                 <i class="fas fa-file-csv"></i> Ekspor Semua Data (CSV)
             </a>
         </div>
@@ -104,7 +104,7 @@
                                     </span>
                                 </td>
                                 <td style="text-align: right;">
-                                    <a href="{{ route('tenant.owner.reports.quiz', ['quiz' => $q->id]) }}" class="btn btn-sm btn-primary">
+                                    <a href="{{ route('tenant.owner.reports.quiz', ['tenant' => $tenant, 'quiz' => $q->id]) }}" class="btn btn-sm btn-primary">
                                         <i class="fas fa-chart-bar"></i> Lihat Laporan Detail
                                     </a>
                                 </td>
@@ -151,7 +151,7 @@
                                     <div style="font-size: 11px; color: var(--text-muted);">{{ $att->user?->email ?: '-' }}</div>
                                 </td>
                                 <td>
-                                    <a href="{{ route('tenant.owner.reports.quiz', ['quiz' => $att->quiz_id]) }}" style="font-weight: 600; color: var(--accent-light); text-decoration: none;">
+                                    <a href="{{ route('tenant.owner.reports.quiz', ['tenant' => $tenant, 'quiz' => $att->quiz_id]) }}" style="font-weight: 600; color: var(--accent-light); text-decoration: none;">
                                         {{ $att->quiz?->title ?: 'Terhapus' }}
                                     </a>
                                 </td>

@@ -4,7 +4,7 @@
 @section('page-title', 'Profil & Riwayat Peserta')
 
 @section('breadcrumb')
-    <a href="{{ route('tenant.owner.participants.index') }}">Data Peserta</a>
+    <a href="{{ route('tenant.owner.participants.index', ['tenant' => $tenant]) }}">Data Peserta</a>
     <i class="fas fa-chevron-right" style="font-size: 10px;"></i>
     <span>{{ Str::limit($participant->name, 20) }}</span>
 @endsection
@@ -40,10 +40,10 @@
                 </div>
 
                 <div style="display: flex; gap: 10px;">
-                    <a href="{{ route('tenant.owner.participants.edit', ['participant' => $participant->id]) }}" class="btn btn-primary">
+                    <a href="{{ route('tenant.owner.participants.edit', ['tenant' => $tenant, 'participant' => $participant->id]) }}" class="btn btn-primary">
                         <i class="fas fa-edit"></i> Edit Profil
                     </a>
-                    <form method="POST" action="{{ route('tenant.owner.participants.reset-password', ['participant' => $participant->id]) }}" onsubmit="return confirm('Reset password peserta ini menjadi password123?')">
+                    <form method="POST" action="{{ route('tenant.owner.participants.reset-password', ['tenant' => $tenant, 'participant' => $participant->id]) }}" onsubmit="return confirm('Reset password peserta ini menjadi password123?')">
                         @csrf
                         <button type="submit" class="btn btn-warning" title="Reset Password ke password123">
                             <i class="fas fa-key"></i> Reset Password
@@ -112,7 +112,7 @@
                         @foreach($participant->quizAttempts as $attempt)
                             <tr>
                                 <td>
-                                    <a href="{{ route('tenant.owner.quizzes.show', ['quiz' => $attempt->quiz_id]) }}" style="font-weight: 700; color: var(--text-white); text-decoration: none;">
+                                    <a href="{{ route('tenant.owner.quizzes.show', ['tenant' => $tenant, 'quiz' => $attempt->quiz_id]) }}" style="font-weight: 700; color: var(--text-white); text-decoration: none;">
                                         {{ $attempt->quiz?->title ?: 'Kuis Terhapus' }}
                                     </a>
                                 </td>

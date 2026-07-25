@@ -4,7 +4,7 @@
 @section('page-title', 'Tambah Peserta')
 
 @section('breadcrumb')
-    <a href="{{ route('tenant.owner.participants.index') }}">Data Peserta</a>
+    <a href="{{ route('tenant.owner.participants.index', ['tenant' => $tenant]) }}">Data Peserta</a>
     <i class="fas fa-chevron-right" style="font-size: 10px;"></i>
     <span>Tambah Peserta</span>
 @endsection
@@ -24,7 +24,7 @@
             </div>
         </div>
 
-        <form method="POST" action="{{ route('tenant.owner.participants.store') }}">
+        <form method="POST" action="{{ route('tenant.owner.participants.store', ['tenant' => $tenant]) }}">
             @csrf
             <div class="card-body">
                 
@@ -76,7 +76,7 @@
             </div>
 
             <div class="card-footer" style="justify-content: flex-end; gap: 12px; background: rgba(0,0,0,0.15);">
-                <a href="{{ route('tenant.owner.participants.index') }}" class="btn btn-ghost">Batal</a>
+                <a href="{{ route('tenant.owner.participants.index', ['tenant' => $tenant]) }}" class="btn btn-ghost">Batal</a>
                 <button type="submit" class="btn btn-primary" style="padding: 12px 28px; font-size: 15px; background: linear-gradient(135deg, var(--accent), var(--primary));">
                     <i class="fas fa-save"></i> Simpan Peserta Baru
                 </button>

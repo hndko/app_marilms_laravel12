@@ -23,7 +23,7 @@
                 </p>
             </div>
             <div style="display: flex; gap: 12px;">
-                <a href="{{ route('tenant.owner.quizzes.create') }}" class="btn btn-primary" style="padding: 12px 24px; font-size: 14px;">
+                <a href="{{ route('tenant.owner.quizzes.create', ['tenant' => $tenant]) }}" class="btn btn-primary" style="padding: 12px 24px; font-size: 14px;">
                     <i class="fas fa-wand-magic-sparkles"></i> Buat Kuis Baru (AI / Manual)
                 </a>
             </div>
@@ -32,7 +32,7 @@
 
     <!-- Filter & Search Bar -->
     <div class="card" style="padding: 20px;">
-        <form method="GET" action="{{ route('tenant.owner.quizzes.index') }}" style="display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-end;">
+        <form method="GET" action="{{ route('tenant.owner.quizzes.index', ['tenant' => $tenant]) }}" style="display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-end;">
             <div style="flex: 1; min-width: 240px;">
                 <label class="form-label" style="font-size: 12px;">Cari Kuis</label>
                 <div style="position: relative;">
@@ -66,7 +66,7 @@
                     <i class="fas fa-filter"></i> Filter
                 </button>
                 @if(request()->hasAny(['search', 'category', 'status']))
-                    <a href="{{ route('tenant.owner.quizzes.index') }}" class="btn btn-ghost" style="height: 42px;">Reset</a>
+                    <a href="{{ route('tenant.owner.quizzes.index', ['tenant' => $tenant]) }}" class="btn btn-ghost" style="height: 42px;">Reset</a>
                 @endif
             </div>
         </form>
@@ -82,7 +82,7 @@
             <p style="font-size: 13px; color: var(--text-muted); max-width: 400px; margin: 8px auto 24px;">
                 Mulai buat kuis pertama Anda dengan generator soal otomatis berteknologi AI.
             </p>
-            <a href="{{ route('tenant.owner.quizzes.create') }}" class="btn btn-primary">
+            <a href="{{ route('tenant.owner.quizzes.create', ['tenant' => $tenant]) }}" class="btn btn-primary">
                 <i class="fas fa-magic"></i> Generate Kuis Sekarang
             </a>
         </div>

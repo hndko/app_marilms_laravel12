@@ -4,9 +4,9 @@
 @section('page-title', 'Edit Data Peserta')
 
 @section('breadcrumb')
-    <a href="{{ route('tenant.owner.participants.index') }}">Data Peserta</a>
+    <a href="{{ route('tenant.owner.participants.index', ['tenant' => $tenant]) }}">Data Peserta</a>
     <i class="fas fa-chevron-right" style="font-size: 10px;"></i>
-    <a href="{{ route('tenant.owner.participants.show', ['participant' => $participant->id]) }}">{{ Str::limit($participant->name, 20) }}</a>
+    <a href="{{ route('tenant.owner.participants.show', ['tenant' => $tenant, 'participant' => $participant->id]) }}">{{ Str::limit($participant->name, 20) }}</a>
     <i class="fas fa-chevron-right" style="font-size: 10px;"></i>
     <span>Edit</span>
 @endsection
@@ -26,7 +26,7 @@
             </div>
         </div>
 
-        <form method="POST" action="{{ route('tenant.owner.participants.update', ['participant' => $participant->id]) }}">
+        <form method="POST" action="{{ route('tenant.owner.participants.update', ['tenant' => $tenant, 'participant' => $participant->id]) }}">
             @csrf
             @method('PUT')
             
@@ -68,7 +68,7 @@
             </div>
 
             <div class="card-footer" style="justify-content: flex-end; gap: 12px; background: rgba(0,0,0,0.15);">
-                <a href="{{ route('tenant.owner.participants.show', ['participant' => $participant->id]) }}" class="btn btn-ghost">Batal</a>
+                <a href="{{ route('tenant.owner.participants.show', ['tenant' => $tenant, 'participant' => $participant->id]) }}" class="btn btn-ghost">Batal</a>
                 <button type="submit" class="btn btn-primary" style="padding: 12px 28px; font-size: 15px;">
                     <i class="fas fa-save"></i> Simpan Perubahan
                 </button>
