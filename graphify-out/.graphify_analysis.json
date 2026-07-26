@@ -1,0 +1,2042 @@
+{
+  "communities": {
+    "0": [
+      "app_http_controllers_auth_authcontroller",
+      "app_http_controllers_auth_authcontroller_authcontroller",
+      "app_http_controllers_auth_authcontroller_authcontroller_login",
+      "app_http_controllers_auth_authcontroller_authcontroller_logout",
+      "app_http_controllers_auth_authcontroller_authcontroller_register",
+      "app_http_controllers_auth_authcontroller_authcontroller_showlogin",
+      "app_http_controllers_auth_authcontroller_authcontroller_showregister",
+      "app_http_controllers_modules_superadmin_dashboardcontroller",
+      "app_http_controllers_modules_superadmin_dashboardcontroller_dashboardcontroller",
+      "app_http_controllers_modules_superadmin_dashboardcontroller_dashboardcontroller_calculategrowth",
+      "app_http_controllers_modules_superadmin_dashboardcontroller_dashboardcontroller_getdaterange",
+      "app_http_controllers_modules_superadmin_dashboardcontroller_dashboardcontroller_getpreviousdaterange",
+      "app_http_controllers_modules_superadmin_dashboardcontroller_dashboardcontroller_index",
+      "app_http_controllers_modules_superadmin_logcontroller",
+      "app_http_controllers_modules_superadmin_logcontroller_logcontroller",
+      "app_http_controllers_modules_superadmin_logcontroller_logcontroller_index",
+      "app_http_controllers_modules_superadmin_ownercontroller",
+      "app_http_controllers_modules_superadmin_ownercontroller_ownercontroller",
+      "app_http_controllers_modules_superadmin_ownercontroller_ownercontroller_construct",
+      "app_http_controllers_modules_superadmin_ownercontroller_ownercontroller_destroy",
+      "app_http_controllers_modules_superadmin_ownercontroller_ownercontroller_impersonate",
+      "app_http_controllers_modules_superadmin_ownercontroller_ownercontroller_index",
+      "app_http_controllers_modules_superadmin_ownercontroller_ownercontroller_resetpassword",
+      "app_http_controllers_modules_superadmin_ownercontroller_ownercontroller_show",
+      "app_http_controllers_modules_superadmin_ownercontroller_ownercontroller_toggleunlimited",
+      "app_http_controllers_modules_superadmin_ownercontroller_ownercontroller_topup",
+      "app_http_controllers_modules_superadmin_ownercontroller_ownercontroller_update",
+      "app_models_central_activitylog",
+      "app_models_central_activitylog_activitylog",
+      "app_models_central_activitylog_activitylog_casts",
+      "app_models_central_owner_owner",
+      "app_models_central_owner_owner_casts",
+      "app_models_central_owner_owner_gettokenbalanceamount",
+      "app_models_central_owner_owner_isactive",
+      "app_models_central_owner_owner_isregular",
+      "app_models_central_owner_owner_isunlimited",
+      "app_models_central_owner_owner_tokenbalance",
+      "app_models_central_ownertokenbalance",
+      "app_models_central_ownertokenbalance_ownertokenbalance",
+      "app_models_central_ownertokenbalance_ownertokenbalance_casts",
+      "app_models_central_ownertokenbalance_ownertokenbalance_owner",
+      "app_models_central_tenant",
+      "app_models_central_tenant_tenant",
+      "app_models_central_tenant_tenant_casts",
+      "app_models_central_tenant_tenant_getcustomcolumns",
+      "app_models_central_tenant_tenant_owner",
+      "app_models_central_tokenorder",
+      "app_models_central_tokentransaction",
+      "app_models_central_tokentransaction_tokentransaction",
+      "app_models_central_tokentransaction_tokentransaction_casts",
+      "app_models_central_tokentransaction_tokentransaction_owner",
+      "app_models_central_tokentransaction_tokentransaction_scopeofsource",
+      "app_models_central_tokentransaction_tokentransaction_scopeoftype",
+      "app_services_tokenservice",
+      "app_services_tokenservice_tokenservice",
+      "app_services_tokenservice_tokenservice_calculatecost",
+      "app_services_tokenservice_tokenservice_checkbalance",
+      "app_services_tokenservice_tokenservice_credit",
+      "app_services_tokenservice_tokenservice_deduct",
+      "app_services_tokenservice_tokenservice_getbalance",
+      "app_services_tokenservice_tokenservice_isunlimited",
+      "app_services_tokenservice_tokenservice_logtransaction",
+      "app_services_tokenservice_tokenservice_manualtopup",
+      "app_services_tokenservice_tokenservice_toggleunlimited",
+      "database_seeders_userseeder_userseeder_run",
+      "illuminate_database_eloquent_concerns_hasuuids",
+      "illuminate_database_eloquent_relations_hasone",
+      "stancl_tenancy_database_concerns_hasdomains",
+      "stancl_tenancy_database_models_tenant",
+      "tests_unit_tokenservicetest",
+      "tests_unit_tokenservicetest_tokenservicetest",
+      "tests_unit_tokenservicetest_tokenservicetest_test_calculate_cost_returns_correct_tokens_per_question"
+    ],
+    "1": [
+      "app_contracts_llmprovidercontract",
+      "app_contracts_llmprovidercontract_generate",
+      "app_contracts_llmprovidercontract_getname",
+      "app_contracts_llmprovidercontract_testconnection",
+      "app_http_controllers_modules_superadmin_llmprovidercontroller",
+      "app_http_controllers_modules_superadmin_llmprovidercontroller_llmprovidercontroller",
+      "app_http_controllers_modules_superadmin_llmprovidercontroller_llmprovidercontroller_destroy",
+      "app_http_controllers_modules_superadmin_llmprovidercontroller_llmprovidercontroller_index",
+      "app_http_controllers_modules_superadmin_llmprovidercontroller_llmprovidercontroller_store",
+      "app_http_controllers_modules_superadmin_llmprovidercontroller_llmprovidercontroller_testconnection",
+      "app_http_controllers_modules_superadmin_llmprovidercontroller_llmprovidercontroller_update",
+      "app_models_central_activitylog_activitylog_log",
+      "app_models_central_activitylog_php_static",
+      "app_models_central_llmprovider_llmprovider",
+      "app_models_central_llmprovider_llmprovider_casts",
+      "app_models_central_llmprovider_llmprovider_scopeactive",
+      "app_models_central_llmprovider_llmprovider_scopeavailable",
+      "app_models_central_llmprovider_llmprovider_scopebypriority",
+      "app_models_central_llmprovider_llmprovider_scopefallback",
+      "app_models_central_llmprovider_llmprovider_scopeglobal",
+      "app_services_llmproviders_customprovider",
+      "app_services_llmproviders_customprovider_customprovider",
+      "app_services_llmproviders_customprovider_customprovider_construct",
+      "app_services_llmproviders_customprovider_customprovider_generate",
+      "app_services_llmproviders_customprovider_customprovider_getapikey",
+      "app_services_llmproviders_customprovider_customprovider_getname",
+      "app_services_llmproviders_customprovider_customprovider_testconnection",
+      "app_services_llmproviders_deepseekprovider",
+      "app_services_llmproviders_deepseekprovider_deepseekprovider",
+      "app_services_llmproviders_deepseekprovider_deepseekprovider_construct",
+      "app_services_llmproviders_deepseekprovider_deepseekprovider_generate",
+      "app_services_llmproviders_deepseekprovider_deepseekprovider_getapikey",
+      "app_services_llmproviders_deepseekprovider_deepseekprovider_getname",
+      "app_services_llmproviders_deepseekprovider_deepseekprovider_testconnection",
+      "app_services_llmproviders_openrouterprovider",
+      "app_services_llmproviders_openrouterprovider_openrouterprovider",
+      "app_services_llmproviders_openrouterprovider_openrouterprovider_construct",
+      "app_services_llmproviders_openrouterprovider_openrouterprovider_generate",
+      "app_services_llmproviders_openrouterprovider_openrouterprovider_getapikey",
+      "app_services_llmproviders_openrouterprovider_openrouterprovider_getname",
+      "app_services_llmproviders_openrouterprovider_openrouterprovider_testconnection",
+      "app_services_llmservice",
+      "app_services_llmservice_llmservice",
+      "app_services_llmservice_llmservice_cleanjsonstring",
+      "app_services_llmservice_llmservice_generatequizjson",
+      "app_services_llmservice_llmservice_resolvedriver",
+      "app_services_llmservice_llmservice_testconnection",
+      "app_services_llmservice_php_llmprovidermodel",
+      "database_seeders_llmproviderseeder_llmproviderseeder_run"
+    ],
+    "2": [
+      "docs_tailadmin_laravel_main_package",
+      "docs_tailadmin_laravel_main_package_dependencies",
+      "docs_tailadmin_laravel_main_package_dependencies_alpinejs",
+      "docs_tailadmin_laravel_main_package_dependencies_apexcharts",
+      "docs_tailadmin_laravel_main_package_dependencies_flatpickr",
+      "docs_tailadmin_laravel_main_package_dependencies_floating_ui_dom",
+      "docs_tailadmin_laravel_main_package_dependencies_fullcalendar_core",
+      "docs_tailadmin_laravel_main_package_dependencies_fullcalendar_daygrid",
+      "docs_tailadmin_laravel_main_package_dependencies_fullcalendar_interaction",
+      "docs_tailadmin_laravel_main_package_dependencies_fullcalendar_list",
+      "docs_tailadmin_laravel_main_package_dependencies_fullcalendar_timegrid",
+      "docs_tailadmin_laravel_main_package_dependencies_jsvectormap",
+      "docs_tailadmin_laravel_main_package_dependencies_popperjs_core",
+      "docs_tailadmin_laravel_main_package_dependencies_prismjs",
+      "docs_tailadmin_laravel_main_package_dependencies_swiper",
+      "docs_tailadmin_laravel_main_package_devdependencies",
+      "docs_tailadmin_laravel_main_package_devdependencies_axios",
+      "docs_tailadmin_laravel_main_package_devdependencies_concurrently",
+      "docs_tailadmin_laravel_main_package_devdependencies_laravel_vite_plugin",
+      "docs_tailadmin_laravel_main_package_devdependencies_tailwindcss",
+      "docs_tailadmin_laravel_main_package_devdependencies_tailwindcss_vite",
+      "docs_tailadmin_laravel_main_package_devdependencies_vite",
+      "docs_tailadmin_laravel_main_package_json_alpinejs",
+      "docs_tailadmin_laravel_main_package_json_apexcharts",
+      "docs_tailadmin_laravel_main_package_json_axios",
+      "docs_tailadmin_laravel_main_package_json_concurrently",
+      "docs_tailadmin_laravel_main_package_json_flatpickr",
+      "docs_tailadmin_laravel_main_package_json_floating_ui_dom",
+      "docs_tailadmin_laravel_main_package_json_laravel_vite_plugin",
+      "docs_tailadmin_laravel_main_package_json_prismjs",
+      "docs_tailadmin_laravel_main_package_json_tailwindcss",
+      "docs_tailadmin_laravel_main_package_json_tailwindcss_vite",
+      "docs_tailadmin_laravel_main_package_json_vite",
+      "docs_tailadmin_laravel_main_package_private",
+      "docs_tailadmin_laravel_main_package_schema",
+      "docs_tailadmin_laravel_main_package_scripts",
+      "docs_tailadmin_laravel_main_package_scripts_build",
+      "docs_tailadmin_laravel_main_package_scripts_dev",
+      "docs_tailadmin_laravel_main_package_type",
+      "fullcalendar_core",
+      "fullcalendar_daygrid",
+      "fullcalendar_interaction",
+      "fullcalendar_list",
+      "fullcalendar_timegrid",
+      "jsvectormap",
+      "popperjs_core",
+      "swiper"
+    ],
+    "3": [
+      "composer",
+      "composer_allow_plugins_pestphp_pest_plugin",
+      "composer_allow_plugins_php_http_discovery",
+      "composer_autoload",
+      "composer_autoload_dev",
+      "composer_autoload_dev_psr_4",
+      "composer_autoload_psr_4",
+      "composer_config",
+      "composer_config_allow_plugins",
+      "composer_config_optimize_autoloader",
+      "composer_config_preferred_install",
+      "composer_config_sort_packages",
+      "composer_description",
+      "composer_extra",
+      "composer_extra_laravel",
+      "composer_json_ref_framework",
+      "composer_json_ref_laravel",
+      "composer_keywords",
+      "composer_laravel_dont_discover",
+      "composer_license",
+      "composer_minimum_stability",
+      "composer_name",
+      "composer_prefer_stable",
+      "composer_psr_4_app",
+      "composer_psr_4_database_factories",
+      "composer_psr_4_database_seeders",
+      "composer_psr_4_tests",
+      "composer_require",
+      "composer_require_dev",
+      "composer_require_dev_fakerphp_faker",
+      "composer_require_dev_laravel_pail",
+      "composer_require_dev_laravel_pint",
+      "composer_require_dev_laravel_sail",
+      "composer_require_dev_mockery_mockery",
+      "composer_require_dev_nunomaduro_collision",
+      "composer_require_dev_phpunit_phpunit",
+      "composer_require_laravel_fortify",
+      "composer_require_laravel_framework",
+      "composer_require_laravel_tinker",
+      "composer_require_livewire_livewire",
+      "composer_require_php",
+      "composer_require_spatie_laravel_permission",
+      "composer_require_stancl_tenancy",
+      "composer_schema",
+      "composer_type",
+      "composer_version"
+    ],
+    "4": [
+      "app_contracts_paymentgatewaycontract",
+      "app_contracts_paymentgatewaycontract_createorder",
+      "app_contracts_paymentgatewaycontract_parsewebhook",
+      "app_contracts_paymentgatewaycontract_verifywebhook",
+      "app_models_central_paymentgatewayconfig_paymentgatewayconfig",
+      "app_models_central_paymentgatewayconfig_paymentgatewayconfig_casts",
+      "app_models_central_paymentgatewayconfig_paymentgatewayconfig_getcredential",
+      "app_models_central_paymentgatewayconfig_paymentgatewayconfig_isproduction",
+      "app_models_central_paymentgatewayconfig_paymentgatewayconfig_scopeactive",
+      "app_models_central_tokenorder_tokenorder",
+      "app_models_central_tokenorder_tokenorder_casts",
+      "app_models_central_tokenorder_tokenorder_getformattedamountattribute",
+      "app_models_central_tokenorder_tokenorder_ispending",
+      "app_models_central_tokenorder_tokenorder_issuccess",
+      "app_services_paymentgatewaymanager",
+      "app_services_paymentgateways_dokugateway",
+      "app_services_paymentgateways_dokugateway_dokugateway",
+      "app_services_paymentgateways_dokugateway_dokugateway_construct",
+      "app_services_paymentgateways_dokugateway_dokugateway_createorder",
+      "app_services_paymentgateways_dokugateway_dokugateway_parsewebhook",
+      "app_services_paymentgateways_dokugateway_dokugateway_verifywebhook",
+      "app_services_paymentgateways_duitkugateway",
+      "app_services_paymentgateways_ipaymugateway",
+      "app_services_paymentgateways_ipaymugateway_ipaymugateway",
+      "app_services_paymentgateways_ipaymugateway_ipaymugateway_construct",
+      "app_services_paymentgateways_ipaymugateway_ipaymugateway_createorder",
+      "app_services_paymentgateways_ipaymugateway_ipaymugateway_parsewebhook",
+      "app_services_paymentgateways_ipaymugateway_ipaymugateway_verifywebhook",
+      "app_services_paymentgateways_midtransgateway",
+      "app_services_paymentgateways_midtransgateway_midtransgateway",
+      "app_services_paymentgateways_midtransgateway_midtransgateway_construct",
+      "app_services_paymentgateways_midtransgateway_midtransgateway_createorder",
+      "app_services_paymentgateways_midtransgateway_midtransgateway_parsewebhook",
+      "app_services_paymentgateways_midtransgateway_midtransgateway_verifywebhook",
+      "app_services_paymentgateways_xenditgateway",
+      "app_services_paymentgateways_xenditgateway_xenditgateway",
+      "app_services_paymentgateways_xenditgateway_xenditgateway_construct",
+      "app_services_paymentgateways_xenditgateway_xenditgateway_createorder",
+      "app_services_paymentgateways_xenditgateway_xenditgateway_parsewebhook",
+      "app_services_paymentgateways_xenditgateway_xenditgateway_verifywebhook"
+    ],
+    "5": [
+      "app_contracts_wagatewaycontract",
+      "app_contracts_wagatewaycontract_getname",
+      "app_contracts_wagatewaycontract_send",
+      "app_http_controllers_modules_owner_settingscontroller",
+      "app_http_controllers_modules_owner_settingscontroller_settingscontroller",
+      "app_http_controllers_modules_owner_settingscontroller_settingscontroller_gettenant",
+      "app_http_controllers_modules_owner_settingscontroller_settingscontroller_index",
+      "app_http_controllers_modules_owner_settingscontroller_settingscontroller_update",
+      "app_http_controllers_modules_superadmin_settingscontroller",
+      "app_http_controllers_modules_superadmin_settingscontroller_settingscontroller",
+      "app_http_controllers_modules_superadmin_settingscontroller_settingscontroller_index",
+      "app_http_controllers_modules_superadmin_settingscontroller_settingscontroller_update",
+      "app_models_central_systemsetting",
+      "app_models_central_systemsetting_systemsetting",
+      "app_models_central_systemsetting_systemsetting_getvalue",
+      "app_models_central_systemsetting_systemsetting_setvalue",
+      "app_services_notificationservice",
+      "app_services_notificationservice_notificationservice",
+      "app_services_notificationservice_notificationservice_formatemailtemplate",
+      "app_services_notificationservice_notificationservice_formatwatemplate",
+      "app_services_notificationservice_notificationservice_getemailsubject",
+      "app_services_notificationservice_notificationservice_resolvewadriver",
+      "app_services_notificationservice_notificationservice_send",
+      "app_services_wagateways_fonntedriver",
+      "app_services_wagateways_fonntedriver_fonntedriver",
+      "app_services_wagateways_fonntedriver_fonntedriver_construct",
+      "app_services_wagateways_fonntedriver_fonntedriver_formatphone",
+      "app_services_wagateways_fonntedriver_fonntedriver_getname",
+      "app_services_wagateways_fonntedriver_fonntedriver_send",
+      "app_services_wagateways_logdriver",
+      "app_services_wagateways_logdriver_logdriver",
+      "app_services_wagateways_logdriver_logdriver_getname",
+      "app_services_wagateways_logdriver_logdriver_send",
+      "app_services_wagateways_wablastdriver",
+      "app_services_wagateways_wablastdriver_wablastdriver",
+      "app_services_wagateways_wablastdriver_wablastdriver_construct",
+      "app_services_wagateways_wablastdriver_wablastdriver_formatphone",
+      "app_services_wagateways_wablastdriver_wablastdriver_getname",
+      "app_services_wagateways_wablastdriver_wablastdriver_send",
+      "database_seeders_systemsettingseeder_systemsettingseeder_run"
+    ],
+    "6": [
+      "app_actions_fortify_createnewuser",
+      "app_actions_fortify_createnewuser_createnewuser",
+      "app_actions_fortify_createnewuser_createnewuser_create",
+      "app_actions_fortify_createnewuser_php_user",
+      "app_actions_fortify_resetuserpassword",
+      "app_actions_fortify_resetuserpassword_resetuserpassword",
+      "app_actions_fortify_resetuserpassword_resetuserpassword_reset",
+      "app_actions_fortify_updateuserpassword",
+      "app_actions_fortify_updateuserpassword_updateuserpassword",
+      "app_actions_fortify_updateuserpassword_updateuserpassword_update",
+      "app_actions_fortify_updateuserprofileinformation",
+      "app_actions_fortify_updateuserprofileinformation_updateuserprofileinformation",
+      "app_actions_fortify_updateuserprofileinformation_updateuserprofileinformation_update",
+      "app_actions_fortify_updateuserprofileinformation_updateuserprofileinformation_updateverifieduser",
+      "app_http_controllers_modules_owner_dashboardcontroller",
+      "app_models_central_owner",
+      "app_models_user",
+      "app_models_user_user",
+      "app_models_user_user_casts",
+      "app_models_user_user_issuperadmin",
+      "app_providers_fortifyserviceprovider",
+      "config_auth",
+      "config_fortify",
+      "docs_tailadmin_laravel_main_app_models_user",
+      "docs_tailadmin_laravel_main_app_models_user_user",
+      "docs_tailadmin_laravel_main_app_models_user_user_casts",
+      "illuminate_database_eloquent_factories_hasfactory",
+      "illuminate_foundation_auth_user",
+      "illuminate_notifications_notifiable",
+      "laravel_fortify_contracts_createsnewusers",
+      "laravel_fortify_contracts_resetsuserpasswords",
+      "laravel_fortify_contracts_updatesuserpasswords",
+      "laravel_fortify_contracts_updatesuserprofileinformation",
+      "passwordvalidationrules",
+      "spatie_permission_traits_hasroles"
+    ],
+    "7": [
+      "fortawesome_fontawesome_free",
+      "package",
+      "package_dependencies",
+      "package_dependencies_alpinejs",
+      "package_dependencies_apexcharts",
+      "package_dependencies_flatpickr",
+      "package_dependencies_floating_ui_dom",
+      "package_dependencies_fortawesome_fontawesome_free",
+      "package_dependencies_prismjs",
+      "package_devdependencies",
+      "package_devdependencies_axios",
+      "package_devdependencies_concurrently",
+      "package_devdependencies_laravel_vite_plugin",
+      "package_devdependencies_tailwindcss",
+      "package_devdependencies_tailwindcss_vite",
+      "package_devdependencies_vite",
+      "package_json_alpinejs",
+      "package_json_apexcharts",
+      "package_json_axios",
+      "package_json_concurrently",
+      "package_json_flatpickr",
+      "package_json_floating_ui_dom",
+      "package_json_laravel_vite_plugin",
+      "package_json_prismjs",
+      "package_json_tailwindcss",
+      "package_json_tailwindcss_vite",
+      "package_json_vite",
+      "package_private",
+      "package_schema",
+      "package_scripts",
+      "package_scripts_build",
+      "package_scripts_dev",
+      "package_type",
+      "package_version"
+    ],
+    "8": [
+      "app_http_controllers_modules_superadmin_tokenpackagecontroller",
+      "app_http_controllers_modules_superadmin_tokenpackagecontroller_tokenpackagecontroller",
+      "app_http_controllers_modules_superadmin_tokenpackagecontroller_tokenpackagecontroller_destroy",
+      "app_http_controllers_modules_superadmin_tokenpackagecontroller_tokenpackagecontroller_index",
+      "app_http_controllers_modules_superadmin_tokenpackagecontroller_tokenpackagecontroller_store",
+      "app_http_controllers_modules_superadmin_tokenpackagecontroller_tokenpackagecontroller_update",
+      "app_models_central_tokenpackage",
+      "app_models_central_tokenpackage_tokenpackage",
+      "app_models_central_tokenpackage_tokenpackage_casts",
+      "app_models_central_tokenpackage_tokenpackage_getformattedpriceattribute",
+      "app_models_central_tokenpackage_tokenpackage_scopeactive",
+      "app_models_central_tokenpackage_tokenpackage_scopeordered",
+      "database_seeders_databaseseeder",
+      "database_seeders_databaseseeder_databaseseeder",
+      "database_seeders_databaseseeder_databaseseeder_run",
+      "database_seeders_llmproviderseeder",
+      "database_seeders_llmproviderseeder_llmproviderseeder",
+      "database_seeders_roleseeder",
+      "database_seeders_roleseeder_roleseeder",
+      "database_seeders_roleseeder_roleseeder_run",
+      "database_seeders_systemsettingseeder",
+      "database_seeders_systemsettingseeder_systemsettingseeder",
+      "database_seeders_tokenpackageseeder",
+      "database_seeders_tokenpackageseeder_tokenpackageseeder",
+      "database_seeders_tokenpackageseeder_tokenpackageseeder_run",
+      "database_seeders_userseeder",
+      "database_seeders_userseeder_userseeder",
+      "docs_tailadmin_laravel_main_database_seeders_databaseseeder",
+      "docs_tailadmin_laravel_main_database_seeders_databaseseeder_databaseseeder",
+      "docs_tailadmin_laravel_main_database_seeders_databaseseeder_databaseseeder_run",
+      "illuminate_database_seeder"
+    ],
+    "9": [
+      "composer_json_ref_composer_config_disableprocesstimeout",
+      "composer_json_ref_illuminate_foundation_composerscripts_postautoloaddump",
+      "composer_json_ref_php_artisan_config_clear_ansi",
+      "composer_json_ref_php_artisan_key_generate_ansi",
+      "composer_json_ref_php_artisan_migrate_graceful_ansi",
+      "composer_json_ref_php_artisan_package_discover_ansi",
+      "composer_json_ref_php_artisan_test",
+      "composer_json_ref_php_artisan_vendor_publish_tag_laravel_assets_ansi_force",
+      "composer_json_ref_php_r_file_exists_database_database_sqlite_touch_database_database_sqlite",
+      "composer_json_ref_php_r_file_exists_env_copy_env_example_env",
+      "composer_scripts",
+      "composer_scripts_dev",
+      "composer_scripts_post_autoload_dump",
+      "composer_scripts_post_create_project_cmd",
+      "composer_scripts_post_root_package_install",
+      "composer_scripts_post_update_cmd",
+      "composer_scripts_pre_package_uninstall",
+      "composer_scripts_setup",
+      "composer_scripts_test",
+      "ref_composer_install",
+      "ref_illuminate_foundation_composerscripts_prepackageuninstall",
+      "ref_npm_install",
+      "ref_npm_run_build",
+      "ref_npx_concurrently_c_93c5fd_c4b5fd_fb7185_fdba74_php_artisan_serve_php_artisan_queue_listen_tries_1_timeout_0_php_artisan_pail_timeout_0_npm_run_dev_names_server_queue_logs_vite_kill_others",
+      "ref_php_artisan_key_generate",
+      "ref_php_artisan_migrate_force"
+    ],
+    "10": [
+      "app_providers_appserviceprovider",
+      "app_providers_appserviceprovider_appserviceprovider",
+      "app_providers_appserviceprovider_appserviceprovider_boot",
+      "app_providers_appserviceprovider_appserviceprovider_register",
+      "app_providers_fortifyserviceprovider_fortifyserviceprovider",
+      "app_providers_fortifyserviceprovider_fortifyserviceprovider_boot",
+      "app_providers_fortifyserviceprovider_fortifyserviceprovider_register",
+      "app_providers_tenancyserviceprovider",
+      "app_providers_tenancyserviceprovider_tenancyserviceprovider",
+      "app_providers_tenancyserviceprovider_tenancyserviceprovider_boot",
+      "app_providers_tenancyserviceprovider_tenancyserviceprovider_bootevents",
+      "app_providers_tenancyserviceprovider_tenancyserviceprovider_events",
+      "app_providers_tenancyserviceprovider_tenancyserviceprovider_maketenancymiddlewarehighestpriority",
+      "app_providers_tenancyserviceprovider_tenancyserviceprovider_maproutes",
+      "app_providers_tenancyserviceprovider_tenancyserviceprovider_register",
+      "bootstrap_providers",
+      "docs_tailadmin_laravel_main_app_providers_appserviceprovider",
+      "docs_tailadmin_laravel_main_app_providers_appserviceprovider_appserviceprovider",
+      "docs_tailadmin_laravel_main_app_providers_appserviceprovider_appserviceprovider_boot",
+      "docs_tailadmin_laravel_main_app_providers_appserviceprovider_appserviceprovider_register",
+      "illuminate_support_serviceprovider"
+    ],
+    "11": [
+      "app_http_controllers_modules_participant_quizcontroller_quizcontroller",
+      "app_http_controllers_modules_participant_quizcontroller_quizcontroller_getremainingtime",
+      "app_http_controllers_modules_participant_quizcontroller_quizcontroller_history",
+      "app_http_controllers_modules_participant_quizcontroller_quizcontroller_show",
+      "app_http_controllers_modules_participant_quizcontroller_quizcontroller_showresult",
+      "app_http_controllers_modules_participant_quizcontroller_quizcontroller_startattempt",
+      "app_http_controllers_modules_participant_quizcontroller_quizcontroller_submitattempt",
+      "app_http_controllers_modules_participant_quizcontroller_quizcontroller_takequiz",
+      "app_models_tenant_quizattempt_quizattempt",
+      "app_models_tenant_quizattempt_quizattempt_answers",
+      "app_models_tenant_quizattempt_quizattempt_booted",
+      "app_models_tenant_quizattempt_quizattempt_casts",
+      "app_models_tenant_quizattempt_quizattempt_getendreasonlabelattribute",
+      "app_models_tenant_quizattempt_quizattempt_getremainingseconds",
+      "app_models_tenant_quizattempt_quizattempt_haspassed",
+      "app_models_tenant_quizattempt_quizattempt_isexpired",
+      "app_models_tenant_quizattempt_quizattempt_isinprogress",
+      "app_models_tenant_quizattempt_quizattempt_scopeexpirednotsubmitted",
+      "app_models_tenant_quizattempt_quizattempt_scopeinprogress",
+      "app_models_tenant_quizattempt_quizattempt_submit"
+    ],
+    "12": [
+      "app_models_central_llmprovider",
+      "app_models_scopes_tenantscope",
+      "app_models_scopes_tenantscope_tenantscope",
+      "app_models_scopes_tenantscope_tenantscope_apply",
+      "app_models_scopes_tenantscope_tenantscope_resolvetenantid",
+      "app_models_tenant_notificationlog",
+      "app_models_tenant_notificationlog_notificationlog",
+      "app_models_tenant_notificationlog_notificationlog_booted",
+      "app_models_tenant_notificationlog_notificationlog_casts",
+      "app_models_tenant_quiz",
+      "app_models_tenant_quizparticipant",
+      "app_models_tenant_quizparticipant_quizparticipant",
+      "app_models_tenant_quizparticipant_quizparticipant_booted",
+      "app_models_tenant_quizparticipant_quizparticipant_quiz",
+      "app_models_tenant_quizparticipant_quizparticipant_user",
+      "illuminate_database_eloquent_builder",
+      "illuminate_database_eloquent_model",
+      "illuminate_database_eloquent_relations_belongstomany",
+      "illuminate_database_eloquent_scope"
+    ],
+    "13": [
+      "app_services_promptbuilder",
+      "docs_tailadmin_laravel_main_tests_testcase",
+      "docs_tailadmin_laravel_main_tests_testcase_testcase",
+      "illuminate_foundation_testing_testcase",
+      "tests_feature_exampletest",
+      "tests_feature_exampletest_exampletest",
+      "tests_feature_exampletest_exampletest_test_the_application_returns_a_successful_response",
+      "tests_feature_quizattempttest",
+      "tests_feature_quizattempttest_quizattempttest",
+      "tests_feature_quizattempttest_quizattempttest_test_expired_attempt_returns_zero_remaining_seconds",
+      "tests_feature_quizattempttest_quizattempttest_test_server_authoritative_timer_calculation",
+      "tests_testcase",
+      "tests_testcase_testcase",
+      "tests_unit_llmservicetest",
+      "tests_unit_llmservicetest_llmservicetest",
+      "tests_unit_llmservicetest_llmservicetest_test_llm_service_resolves_default_driver_when_none_active",
+      "tests_unit_llmservicetest_llmservicetest_test_prompt_builder_generates_valid_json_schema"
+    ],
+    "14": [
+      "closure",
+      "docs_tailadmin_laravel_main_app_view_components_form_formelements_checkboxcomponent",
+      "docs_tailadmin_laravel_main_app_view_components_form_formelements_checkboxcomponent_checkboxcomponent",
+      "docs_tailadmin_laravel_main_app_view_components_form_formelements_checkboxcomponent_checkboxcomponent_construct",
+      "docs_tailadmin_laravel_main_app_view_components_form_formelements_checkboxcomponent_checkboxcomponent_render",
+      "docs_tailadmin_laravel_main_app_view_components_form_formelements_radiobuttons",
+      "docs_tailadmin_laravel_main_app_view_components_form_formelements_radiobuttons_radiobuttons",
+      "docs_tailadmin_laravel_main_app_view_components_form_formelements_radiobuttons_radiobuttons_construct",
+      "docs_tailadmin_laravel_main_app_view_components_form_formelements_radiobuttons_radiobuttons_render",
+      "docs_tailadmin_laravel_main_app_view_components_ui_alert",
+      "docs_tailadmin_laravel_main_app_view_components_ui_alert_alert",
+      "docs_tailadmin_laravel_main_app_view_components_ui_alert_alert_construct",
+      "docs_tailadmin_laravel_main_app_view_components_ui_alert_alert_render",
+      "docs_tailadmin_laravel_main_app_view_components_ui_button",
+      "docs_tailadmin_laravel_main_app_view_components_ui_button_button",
+      "docs_tailadmin_laravel_main_app_view_components_ui_button_button_construct",
+      "docs_tailadmin_laravel_main_app_view_components_ui_button_button_render"
+    ],
+    "15": [
+      "docs_tailadmin_laravel_main_app_view_components_common_commongridshape",
+      "docs_tailadmin_laravel_main_app_view_components_common_commongridshape_commongridshape",
+      "docs_tailadmin_laravel_main_app_view_components_common_commongridshape_commongridshape_construct",
+      "docs_tailadmin_laravel_main_app_view_components_common_commongridshape_commongridshape_render",
+      "docs_tailadmin_laravel_main_app_view_components_common_componentcard",
+      "docs_tailadmin_laravel_main_app_view_components_common_componentcard_componentcard",
+      "docs_tailadmin_laravel_main_app_view_components_common_componentcard_componentcard_construct",
+      "docs_tailadmin_laravel_main_app_view_components_common_componentcard_componentcard_render",
+      "docs_tailadmin_laravel_main_app_view_components_form_formelements_fileinputexample",
+      "docs_tailadmin_laravel_main_app_view_components_form_formelements_fileinputexample_fileinputexample",
+      "docs_tailadmin_laravel_main_app_view_components_form_formelements_fileinputexample_fileinputexample_construct",
+      "docs_tailadmin_laravel_main_app_view_components_form_formelements_fileinputexample_fileinputexample_render",
+      "docs_tailadmin_laravel_main_app_view_components_tables_basictables_basictablesfive",
+      "docs_tailadmin_laravel_main_app_view_components_tables_basictables_basictablesfive_basictablesfive",
+      "docs_tailadmin_laravel_main_app_view_components_tables_basictables_basictablesfive_basictablesfive_construct",
+      "docs_tailadmin_laravel_main_app_view_components_tables_basictables_basictablesfive_basictablesfive_render",
+      "illuminate_view_component"
+    ],
+    "16": [
+      "docs_tailadmin_laravel_main_app_view_components_common_themetoggle",
+      "docs_tailadmin_laravel_main_app_view_components_common_themetoggle_themetoggle",
+      "docs_tailadmin_laravel_main_app_view_components_common_themetoggle_themetoggle_construct",
+      "docs_tailadmin_laravel_main_app_view_components_common_themetoggle_themetoggle_render",
+      "docs_tailadmin_laravel_main_app_view_components_ecommerce_customerdemographic",
+      "docs_tailadmin_laravel_main_app_view_components_ecommerce_customerdemographic_customerdemographic",
+      "docs_tailadmin_laravel_main_app_view_components_ecommerce_customerdemographic_customerdemographic_construct",
+      "docs_tailadmin_laravel_main_app_view_components_ecommerce_customerdemographic_customerdemographic_render",
+      "docs_tailadmin_laravel_main_app_view_components_form_formelements_inputstates",
+      "docs_tailadmin_laravel_main_app_view_components_form_formelements_inputstates_inputstates",
+      "docs_tailadmin_laravel_main_app_view_components_form_formelements_inputstates_inputstates_construct",
+      "docs_tailadmin_laravel_main_app_view_components_form_formelements_inputstates_inputstates_render",
+      "docs_tailadmin_laravel_main_app_view_components_header_userdropdown",
+      "docs_tailadmin_laravel_main_app_view_components_header_userdropdown_userdropdown",
+      "docs_tailadmin_laravel_main_app_view_components_header_userdropdown_userdropdown_construct",
+      "docs_tailadmin_laravel_main_app_view_components_header_userdropdown_userdropdown_render",
+      "illuminate_contracts_view_view"
+    ],
+    "17": [
+      "app_http_controllers_modules_owner_quizcontroller_quizcontroller_destroy",
+      "app_http_controllers_modules_owner_reportcontroller_reportcontroller",
+      "app_http_controllers_modules_owner_reportcontroller_reportcontroller_export",
+      "app_http_controllers_modules_owner_reportcontroller_reportcontroller_gettenant",
+      "app_http_controllers_modules_owner_reportcontroller_reportcontroller_index",
+      "app_http_controllers_modules_owner_reportcontroller_reportcontroller_quizreport",
+      "app_models_tenant_quiz_php_user",
+      "app_models_tenant_quiz_quiz",
+      "app_models_tenant_quiz_quiz_booted",
+      "app_models_tenant_quiz_quiz_canusertake",
+      "app_models_tenant_quiz_quiz_casts",
+      "app_models_tenant_quiz_quiz_gettotaldurationseconds",
+      "app_models_tenant_quiz_quiz_isaccessible",
+      "app_models_tenant_quiz_quiz_participants",
+      "app_models_tenant_quiz_quiz_questions",
+      "app_models_tenant_quiz_quiz_scopeactive"
+    ],
+    "18": [
+      "app_http_controllers_controller",
+      "app_http_controllers_controller_controller",
+      "app_http_controllers_modules_participant_quizforcesubmitcontroller",
+      "app_http_controllers_modules_participant_quizforcesubmitcontroller_quizforcesubmitcontroller",
+      "app_http_controllers_modules_participant_quizforcesubmitcontroller_quizforcesubmitcontroller_forcesubmit",
+      "app_http_controllers_modules_profilecontroller",
+      "app_http_controllers_modules_profilecontroller_profilecontroller",
+      "app_http_controllers_modules_profilecontroller_profilecontroller_edit",
+      "app_http_controllers_modules_profilecontroller_profilecontroller_update",
+      "docs_tailadmin_laravel_main_app_http_controllers_dashboardcontroller",
+      "docs_tailadmin_laravel_main_app_http_controllers_dashboardcontroller_dashboardcontroller",
+      "docs_tailadmin_laravel_main_app_http_controllers_dashboardcontroller_dashboardcontroller_index",
+      "docs_tailadmin_laravel_main_app_http_controllers_sidebarcontroller",
+      "docs_tailadmin_laravel_main_app_http_controllers_sidebarcontroller_sidebarcontroller",
+      "docs_tailadmin_laravel_main_app_http_controllers_sidebarcontroller_sidebarcontroller_getmenudata"
+    ],
+    "19": [
+      "app_http_controllers_modules_owner_quizcontroller",
+      "app_jobs_generatequizjob",
+      "app_jobs_generatequizjob_generatequizjob",
+      "app_jobs_generatequizjob_generatequizjob_construct",
+      "app_jobs_generatequizjob_generatequizjob_handle",
+      "app_models_tenant_question",
+      "app_models_tenant_questionoption",
+      "app_services_promptbuilder_promptbuilder",
+      "app_services_promptbuilder_promptbuilder_build",
+      "app_services_promptbuilder_promptbuilder_validatestructure",
+      "illuminate_bus_queueable",
+      "illuminate_contracts_queue_shouldqueue",
+      "illuminate_foundation_bus_dispatchable",
+      "illuminate_queue_interactswithqueue",
+      "illuminate_queue_serializesmodels"
+    ],
+    "20": [
+      "app_http_controllers_modules_participant_quizcontroller",
+      "app_http_controllers_modules_participant_quizcontroller_quizcontroller_saveanswer",
+      "app_models_central_tokenorder_tokenorder_owner",
+      "app_models_central_tokenorder_tokenorder_package",
+      "app_models_tenant_quizanswer",
+      "app_models_tenant_quizanswer_quizanswer",
+      "app_models_tenant_quizanswer_quizanswer_attempt",
+      "app_models_tenant_quizanswer_quizanswer_booted",
+      "app_models_tenant_quizanswer_quizanswer_casts",
+      "app_models_tenant_quizanswer_quizanswer_question",
+      "app_models_tenant_quizanswer_quizanswer_selectedoption",
+      "app_models_tenant_quizattempt_quizattempt_quiz",
+      "app_models_tenant_quizattempt_quizattempt_user",
+      "illuminate_database_eloquent_relations_belongsto"
+    ],
+    "21": [
+      "docs_tailadmin_laravel_main_composer_json_ref_composer_config_disableprocesstimeout",
+      "docs_tailadmin_laravel_main_composer_json_ref_illuminate_foundation_composerscripts_postautoloaddump",
+      "docs_tailadmin_laravel_main_composer_json_ref_php_artisan_config_clear_ansi",
+      "docs_tailadmin_laravel_main_composer_json_ref_php_artisan_package_discover_ansi",
+      "docs_tailadmin_laravel_main_composer_json_ref_php_artisan_test",
+      "docs_tailadmin_laravel_main_composer_json_ref_php_artisan_vendor_publish_tag_laravel_assets_ansi_force",
+      "docs_tailadmin_laravel_main_composer_json_ref_php_r_file_exists_env_copy_env_example_env",
+      "docs_tailadmin_laravel_main_composer_scripts",
+      "docs_tailadmin_laravel_main_composer_scripts_dev",
+      "docs_tailadmin_laravel_main_composer_scripts_post_autoload_dump",
+      "docs_tailadmin_laravel_main_composer_scripts_post_root_package_install",
+      "docs_tailadmin_laravel_main_composer_scripts_post_update_cmd",
+      "docs_tailadmin_laravel_main_composer_scripts_test",
+      "ref_npx_concurrently_c_93c5fd_c4b5fd_fb7185_fdba74_php_artisan_serve_php_artisan_queue_listen_tries_1_php_artisan_pail_timeout_0_npm_run_dev_names_server_queue_logs_vite_kill_others"
+    ],
+    "22": [
+      "app_http_controllers_modules_owner_tokencontroller",
+      "app_http_controllers_modules_owner_tokencontroller_tokencontroller",
+      "app_http_controllers_modules_owner_tokencontroller_tokencontroller_construct",
+      "app_http_controllers_modules_owner_tokencontroller_tokencontroller_index",
+      "app_http_controllers_modules_owner_tokencontroller_tokencontroller_processsimulation",
+      "app_http_controllers_modules_owner_tokencontroller_tokencontroller_purchase",
+      "app_http_controllers_modules_owner_tokencontroller_tokencontroller_simulatepayment",
+      "app_http_controllers_webhook_paymentwebhookcontroller_paymentwebhookcontroller_construct",
+      "app_models_central_owner_owner_tenant",
+      "app_models_central_paymentgatewayconfig",
+      "app_services_paymentgatewaymanager_paymentgatewaymanager",
+      "app_services_paymentgatewaymanager_paymentgatewaymanager_getsupportedgateways",
+      "app_services_paymentgatewaymanager_paymentgatewaymanager_resolve"
+    ],
+    "23": [
+      "app_models_central_owner_owner_tokenorders",
+      "app_models_central_owner_owner_tokentransactions",
+      "app_models_tenant_quiz_quiz_attempts",
+      "app_models_tenant_quiz_quiz_hasuserpassed",
+      "app_models_tenant_quiz_quiz_remainingattempts",
+      "app_models_tenant_user",
+      "app_models_tenant_user_user",
+      "app_models_tenant_user_user_booted",
+      "app_models_tenant_user_user_casts",
+      "app_models_tenant_user_user_isactive",
+      "app_models_tenant_user_user_quizattempts",
+      "app_models_tenant_user_user_quizparticipants",
+      "illuminate_database_eloquent_relations_hasmany"
+    ],
+    "24": [
+      "app_http_controllers_modules_owner_participantcontroller",
+      "app_http_controllers_modules_owner_participantcontroller_participantcontroller",
+      "app_http_controllers_modules_owner_participantcontroller_participantcontroller_create",
+      "app_http_controllers_modules_owner_participantcontroller_participantcontroller_destroy",
+      "app_http_controllers_modules_owner_participantcontroller_participantcontroller_edit",
+      "app_http_controllers_modules_owner_participantcontroller_participantcontroller_gettenant",
+      "app_http_controllers_modules_owner_participantcontroller_participantcontroller_import",
+      "app_http_controllers_modules_owner_participantcontroller_participantcontroller_index",
+      "app_http_controllers_modules_owner_participantcontroller_participantcontroller_resetpassword",
+      "app_http_controllers_modules_owner_participantcontroller_participantcontroller_show",
+      "app_http_controllers_modules_owner_participantcontroller_participantcontroller_store",
+      "app_http_controllers_modules_owner_participantcontroller_participantcontroller_update"
+    ],
+    "25": [
+      "app_http_controllers_modules_superadmin_gatewaycontroller",
+      "app_http_controllers_modules_superadmin_gatewaycontroller_gatewaycontroller_index",
+      "app_models_central_emailgatewayconfig",
+      "app_models_central_emailgatewayconfig_emailgatewayconfig",
+      "app_models_central_emailgatewayconfig_emailgatewayconfig_casts",
+      "app_models_central_emailgatewayconfig_emailgatewayconfig_scopeactive",
+      "app_models_central_whatsappgatewayconfig",
+      "app_models_central_whatsappgatewayconfig_whatsappgatewayconfig",
+      "app_models_central_whatsappgatewayconfig_whatsappgatewayconfig_casts",
+      "app_models_central_whatsappgatewayconfig_whatsappgatewayconfig_scopeactive",
+      "app_models_central_whatsappgatewayconfig_whatsappgatewayconfig_scopedefault",
+      "app_models_central_whatsappgatewayconfig_whatsappgatewayconfig_scopeglobal"
+    ],
+    "26": [
+      "app_http_controllers_modules_owner_quizcontroller_quizcontroller_update",
+      "app_models_tenant_question_question",
+      "app_models_tenant_question_question_booted",
+      "app_models_tenant_question_question_casts",
+      "app_models_tenant_question_question_correctoption",
+      "app_models_tenant_question_question_options",
+      "app_models_tenant_question_question_quiz",
+      "app_models_tenant_questionoption_questionoption",
+      "app_models_tenant_questionoption_questionoption_booted",
+      "app_models_tenant_questionoption_questionoption_casts",
+      "app_models_tenant_questionoption_questionoption_question"
+    ],
+    "27": [
+      "app_http_controllers_modules_superadmin_gatewaycontroller_gatewaycontroller",
+      "app_http_controllers_modules_superadmin_gatewaycontroller_gatewaycontroller_testemail",
+      "app_http_controllers_modules_superadmin_gatewaycontroller_gatewaycontroller_testwhatsapp",
+      "app_http_controllers_modules_superadmin_gatewaycontroller_gatewaycontroller_updateemail",
+      "app_http_controllers_modules_superadmin_gatewaycontroller_gatewaycontroller_updatepayment",
+      "app_http_controllers_modules_superadmin_gatewaycontroller_gatewaycontroller_updatewhatsapp",
+      "app_http_middleware_settenanturldefaults",
+      "app_http_middleware_settenanturldefaults_settenanturldefaults",
+      "app_http_middleware_settenanturldefaults_settenanturldefaults_handle",
+      "illuminate_http_request",
+      "symfony_component_httpfoundation_response"
+    ],
+    "28": [
+      "database_factories_userfactory",
+      "database_factories_userfactory_php_static",
+      "database_factories_userfactory_userfactory",
+      "database_factories_userfactory_userfactory_definition",
+      "database_factories_userfactory_userfactory_unverified",
+      "docs_tailadmin_laravel_main_database_factories_userfactory",
+      "docs_tailadmin_laravel_main_database_factories_userfactory_php_static",
+      "docs_tailadmin_laravel_main_database_factories_userfactory_userfactory",
+      "docs_tailadmin_laravel_main_database_factories_userfactory_userfactory_definition",
+      "docs_tailadmin_laravel_main_database_factories_userfactory_userfactory_unverified",
+      "illuminate_database_eloquent_factories_factory"
+    ],
+    "29": [
+      "docs_tailadmin_laravel_main_composer",
+      "docs_tailadmin_laravel_main_composer_autoload_dev",
+      "docs_tailadmin_laravel_main_composer_autoload_dev_psr_4",
+      "docs_tailadmin_laravel_main_composer_description",
+      "docs_tailadmin_laravel_main_composer_license",
+      "docs_tailadmin_laravel_main_composer_minimum_stability",
+      "docs_tailadmin_laravel_main_composer_name",
+      "docs_tailadmin_laravel_main_composer_prefer_stable",
+      "docs_tailadmin_laravel_main_composer_psr_4_tests",
+      "docs_tailadmin_laravel_main_composer_schema",
+      "docs_tailadmin_laravel_main_composer_type"
+    ],
+    "30": [
+      "app_http_controllers_webhook_paymentwebhookcontroller",
+      "app_http_controllers_webhook_paymentwebhookcontroller_paymentwebhookcontroller",
+      "app_http_controllers_webhook_paymentwebhookcontroller_paymentwebhookcontroller_doku",
+      "app_http_controllers_webhook_paymentwebhookcontroller_paymentwebhookcontroller_duitku",
+      "app_http_controllers_webhook_paymentwebhookcontroller_paymentwebhookcontroller_handlewebhook",
+      "app_http_controllers_webhook_paymentwebhookcontroller_paymentwebhookcontroller_ipaymu",
+      "app_http_controllers_webhook_paymentwebhookcontroller_paymentwebhookcontroller_midtrans",
+      "app_http_controllers_webhook_paymentwebhookcontroller_paymentwebhookcontroller_xendit",
+      "illuminate_http_jsonresponse"
+    ],
+    "31": [
+      "docs_tailadmin_laravel_main_composer_require_dev",
+      "docs_tailadmin_laravel_main_composer_require_dev_fakerphp_faker",
+      "docs_tailadmin_laravel_main_composer_require_dev_laravel_pail",
+      "docs_tailadmin_laravel_main_composer_require_dev_laravel_pint",
+      "docs_tailadmin_laravel_main_composer_require_dev_laravel_sail",
+      "docs_tailadmin_laravel_main_composer_require_dev_mockery_mockery",
+      "docs_tailadmin_laravel_main_composer_require_dev_nunomaduro_collision",
+      "docs_tailadmin_laravel_main_composer_require_dev_pestphp_pest",
+      "docs_tailadmin_laravel_main_composer_require_dev_pestphp_pest_plugin_laravel"
+    ],
+    "32": [
+      "app_http_controllers_modules_owner_quizcontroller_quizcontroller",
+      "app_http_controllers_modules_owner_quizcontroller_quizcontroller_create",
+      "app_http_controllers_modules_owner_quizcontroller_quizcontroller_edit",
+      "app_http_controllers_modules_owner_quizcontroller_quizcontroller_generate",
+      "app_http_controllers_modules_owner_quizcontroller_quizcontroller_gettenant",
+      "app_http_controllers_modules_owner_quizcontroller_quizcontroller_index",
+      "app_http_controllers_modules_owner_quizcontroller_quizcontroller_show",
+      "app_http_controllers_modules_owner_quizcontroller_quizcontroller_store"
+    ],
+    "33": [
+      "app_http_controllers_modules_owner_reportcontroller",
+      "app_http_controllers_modules_participant_dashboardcontroller",
+      "app_http_controllers_modules_participant_dashboardcontroller_dashboardcontroller",
+      "app_http_controllers_modules_participant_dashboardcontroller_dashboardcontroller_getdaterange",
+      "app_http_controllers_modules_participant_dashboardcontroller_dashboardcontroller_index",
+      "app_models_tenant_quizattempt",
+      "illuminate_support_facades_response"
+    ],
+    "34": [
+      "docs_tailadmin_laravel_main_app_helpers_menuhelper",
+      "docs_tailadmin_laravel_main_app_helpers_menuhelper_menuhelper",
+      "docs_tailadmin_laravel_main_app_helpers_menuhelper_menuhelper_geticonsvg",
+      "docs_tailadmin_laravel_main_app_helpers_menuhelper_menuhelper_getmainnavitems",
+      "docs_tailadmin_laravel_main_app_helpers_menuhelper_menuhelper_getmenugroups",
+      "docs_tailadmin_laravel_main_app_helpers_menuhelper_menuhelper_getothersitems",
+      "docs_tailadmin_laravel_main_app_helpers_menuhelper_menuhelper_isactive"
+    ],
+    "35": [
+      "docs_tailadmin_laravel_main_composer_allow_plugins_pestphp_pest_plugin",
+      "docs_tailadmin_laravel_main_composer_allow_plugins_php_http_discovery",
+      "docs_tailadmin_laravel_main_composer_config",
+      "docs_tailadmin_laravel_main_composer_config_allow_plugins",
+      "docs_tailadmin_laravel_main_composer_config_optimize_autoloader",
+      "docs_tailadmin_laravel_main_composer_config_preferred_install",
+      "docs_tailadmin_laravel_main_composer_config_sort_packages"
+    ],
+    "36": [
+      "app_console_commands_autosubmitexpiredattempts",
+      "app_console_commands_autosubmitexpiredattempts_autosubmitexpiredattempts",
+      "app_console_commands_autosubmitexpiredattempts_autosubmitexpiredattempts_handle",
+      "command",
+      "illuminate_console_command"
+    ],
+    "37": [
+      "app_http_controllers_modules_owner_dashboardcontroller_dashboardcontroller",
+      "app_http_controllers_modules_owner_dashboardcontroller_dashboardcontroller_calculategrowth",
+      "app_http_controllers_modules_owner_dashboardcontroller_dashboardcontroller_getdaterange",
+      "app_http_controllers_modules_owner_dashboardcontroller_dashboardcontroller_getpreviousdaterange",
+      "app_http_controllers_modules_owner_dashboardcontroller_dashboardcontroller_index"
+    ],
+    "38": [
+      "app_services_paymentgateways_duitkugateway_duitkugateway",
+      "app_services_paymentgateways_duitkugateway_duitkugateway_construct",
+      "app_services_paymentgateways_duitkugateway_duitkugateway_createorder",
+      "app_services_paymentgateways_duitkugateway_duitkugateway_parsewebhook",
+      "app_services_paymentgateways_duitkugateway_duitkugateway_verifywebhook"
+    ],
+    "39": [
+      "database_migrations_2019_09_15_000020_create_domains_table",
+      "database_migrations_2019_09_15_000020_create_domains_table_createdomainstable",
+      "database_migrations_2019_09_15_000020_create_domains_table_createdomainstable_down",
+      "database_migrations_2019_09_15_000020_create_domains_table_createdomainstable_up",
+      "illuminate_database_migrations_migration"
+    ],
+    "40": [
+      "docs_tailadmin_laravel_main_composer_autoload",
+      "docs_tailadmin_laravel_main_composer_autoload_psr_4",
+      "docs_tailadmin_laravel_main_composer_psr_4_app",
+      "docs_tailadmin_laravel_main_composer_psr_4_database_factories",
+      "docs_tailadmin_laravel_main_composer_psr_4_database_seeders"
+    ],
+    "41": [
+      "app_models_central_domain",
+      "app_models_central_domain_domain",
+      "config_tenancy",
+      "stancl_tenancy_database_models_domain"
+    ],
+    "42": [
+      "docs_tailadmin_laravel_main_app_view_components_calenderarea",
+      "docs_tailadmin_laravel_main_app_view_components_calenderarea_calenderarea",
+      "docs_tailadmin_laravel_main_app_view_components_calenderarea_calenderarea_construct",
+      "docs_tailadmin_laravel_main_app_view_components_calenderarea_calenderarea_render"
+    ],
+    "43": [
+      "docs_tailadmin_laravel_main_app_view_components_common_dropdownmenu",
+      "docs_tailadmin_laravel_main_app_view_components_common_dropdownmenu_dropdownmenu",
+      "docs_tailadmin_laravel_main_app_view_components_common_dropdownmenu_dropdownmenu_construct",
+      "docs_tailadmin_laravel_main_app_view_components_common_dropdownmenu_dropdownmenu_render"
+    ],
+    "44": [
+      "docs_tailadmin_laravel_main_app_view_components_common_pagebreadcrumb",
+      "docs_tailadmin_laravel_main_app_view_components_common_pagebreadcrumb_pagebreadcrumb",
+      "docs_tailadmin_laravel_main_app_view_components_common_pagebreadcrumb_pagebreadcrumb_construct",
+      "docs_tailadmin_laravel_main_app_view_components_common_pagebreadcrumb_pagebreadcrumb_render"
+    ],
+    "45": [
+      "docs_tailadmin_laravel_main_app_view_components_common_preloader",
+      "docs_tailadmin_laravel_main_app_view_components_common_preloader_preloader",
+      "docs_tailadmin_laravel_main_app_view_components_common_preloader_preloader_construct",
+      "docs_tailadmin_laravel_main_app_view_components_common_preloader_preloader_render"
+    ],
+    "46": [
+      "docs_tailadmin_laravel_main_app_view_components_common_tabledropdown",
+      "docs_tailadmin_laravel_main_app_view_components_common_tabledropdown_tabledropdown",
+      "docs_tailadmin_laravel_main_app_view_components_common_tabledropdown_tabledropdown_construct",
+      "docs_tailadmin_laravel_main_app_view_components_common_tabledropdown_tabledropdown_render"
+    ],
+    "47": [
+      "docs_tailadmin_laravel_main_app_view_components_ecommerce_ecommercemetrics",
+      "docs_tailadmin_laravel_main_app_view_components_ecommerce_ecommercemetrics_ecommercemetrics",
+      "docs_tailadmin_laravel_main_app_view_components_ecommerce_ecommercemetrics_ecommercemetrics_construct",
+      "docs_tailadmin_laravel_main_app_view_components_ecommerce_ecommercemetrics_ecommercemetrics_render"
+    ],
+    "48": [
+      "docs_tailadmin_laravel_main_app_view_components_ecommerce_monthlysale",
+      "docs_tailadmin_laravel_main_app_view_components_ecommerce_monthlysale_monthlysale",
+      "docs_tailadmin_laravel_main_app_view_components_ecommerce_monthlysale_monthlysale_construct",
+      "docs_tailadmin_laravel_main_app_view_components_ecommerce_monthlysale_monthlysale_render"
+    ],
+    "49": [
+      "docs_tailadmin_laravel_main_app_view_components_ecommerce_monthlytarget",
+      "docs_tailadmin_laravel_main_app_view_components_ecommerce_monthlytarget_monthlytarget",
+      "docs_tailadmin_laravel_main_app_view_components_ecommerce_monthlytarget_monthlytarget_construct",
+      "docs_tailadmin_laravel_main_app_view_components_ecommerce_monthlytarget_monthlytarget_render"
+    ],
+    "50": [
+      "docs_tailadmin_laravel_main_app_view_components_ecommerce_recentorders",
+      "docs_tailadmin_laravel_main_app_view_components_ecommerce_recentorders_recentorders",
+      "docs_tailadmin_laravel_main_app_view_components_ecommerce_recentorders_recentorders_construct",
+      "docs_tailadmin_laravel_main_app_view_components_ecommerce_recentorders_recentorders_render"
+    ],
+    "51": [
+      "docs_tailadmin_laravel_main_app_view_components_ecommerce_statisticschart",
+      "docs_tailadmin_laravel_main_app_view_components_ecommerce_statisticschart_statisticschart",
+      "docs_tailadmin_laravel_main_app_view_components_ecommerce_statisticschart_statisticschart_construct",
+      "docs_tailadmin_laravel_main_app_view_components_ecommerce_statisticschart_statisticschart_render"
+    ],
+    "52": [
+      "docs_tailadmin_laravel_main_app_view_components_form_datepicker",
+      "docs_tailadmin_laravel_main_app_view_components_form_datepicker_datepicker",
+      "docs_tailadmin_laravel_main_app_view_components_form_datepicker_datepicker_construct",
+      "docs_tailadmin_laravel_main_app_view_components_form_datepicker_datepicker_render"
+    ],
+    "53": [
+      "docs_tailadmin_laravel_main_app_view_components_form_formelements_defaultinputs",
+      "docs_tailadmin_laravel_main_app_view_components_form_formelements_defaultinputs_defaultinputs",
+      "docs_tailadmin_laravel_main_app_view_components_form_formelements_defaultinputs_defaultinputs_construct",
+      "docs_tailadmin_laravel_main_app_view_components_form_formelements_defaultinputs_defaultinputs_render"
+    ],
+    "54": [
+      "docs_tailadmin_laravel_main_app_view_components_form_formelements_dropzone",
+      "docs_tailadmin_laravel_main_app_view_components_form_formelements_dropzone_dropzone",
+      "docs_tailadmin_laravel_main_app_view_components_form_formelements_dropzone_dropzone_construct",
+      "docs_tailadmin_laravel_main_app_view_components_form_formelements_dropzone_dropzone_render"
+    ],
+    "55": [
+      "docs_tailadmin_laravel_main_app_view_components_form_formelements_inputgroup",
+      "docs_tailadmin_laravel_main_app_view_components_form_formelements_inputgroup_inputgroup",
+      "docs_tailadmin_laravel_main_app_view_components_form_formelements_inputgroup_inputgroup_construct",
+      "docs_tailadmin_laravel_main_app_view_components_form_formelements_inputgroup_inputgroup_render"
+    ],
+    "56": [
+      "docs_tailadmin_laravel_main_app_view_components_form_formelements_selectinputs",
+      "docs_tailadmin_laravel_main_app_view_components_form_formelements_selectinputs_selectinputs",
+      "docs_tailadmin_laravel_main_app_view_components_form_formelements_selectinputs_selectinputs_construct",
+      "docs_tailadmin_laravel_main_app_view_components_form_formelements_selectinputs_selectinputs_render"
+    ],
+    "57": [
+      "docs_tailadmin_laravel_main_app_view_components_form_formelements_textareainputs",
+      "docs_tailadmin_laravel_main_app_view_components_form_formelements_textareainputs_textareainputs",
+      "docs_tailadmin_laravel_main_app_view_components_form_formelements_textareainputs_textareainputs_construct",
+      "docs_tailadmin_laravel_main_app_view_components_form_formelements_textareainputs_textareainputs_render"
+    ],
+    "58": [
+      "docs_tailadmin_laravel_main_app_view_components_form_formelements_toggleswitch",
+      "docs_tailadmin_laravel_main_app_view_components_form_formelements_toggleswitch_toggleswitch",
+      "docs_tailadmin_laravel_main_app_view_components_form_formelements_toggleswitch_toggleswitch_construct",
+      "docs_tailadmin_laravel_main_app_view_components_form_formelements_toggleswitch_toggleswitch_render"
+    ],
+    "59": [
+      "docs_tailadmin_laravel_main_app_view_components_form_input_radio",
+      "docs_tailadmin_laravel_main_app_view_components_form_input_radio_radio",
+      "docs_tailadmin_laravel_main_app_view_components_form_input_radio_radio_construct",
+      "docs_tailadmin_laravel_main_app_view_components_form_input_radio_radio_render"
+    ],
+    "60": [
+      "docs_tailadmin_laravel_main_app_view_components_form_select_multipleselect",
+      "docs_tailadmin_laravel_main_app_view_components_form_select_multipleselect_multipleselect",
+      "docs_tailadmin_laravel_main_app_view_components_form_select_multipleselect_multipleselect_construct",
+      "docs_tailadmin_laravel_main_app_view_components_form_select_multipleselect_multipleselect_render"
+    ],
+    "61": [
+      "docs_tailadmin_laravel_main_app_view_components_header_notificationdropdown",
+      "docs_tailadmin_laravel_main_app_view_components_header_notificationdropdown_notificationdropdown",
+      "docs_tailadmin_laravel_main_app_view_components_header_notificationdropdown_notificationdropdown_construct",
+      "docs_tailadmin_laravel_main_app_view_components_header_notificationdropdown_notificationdropdown_render"
+    ],
+    "62": [
+      "docs_tailadmin_laravel_main_app_view_components_profile_addresscard",
+      "docs_tailadmin_laravel_main_app_view_components_profile_addresscard_addresscard",
+      "docs_tailadmin_laravel_main_app_view_components_profile_addresscard_addresscard_construct",
+      "docs_tailadmin_laravel_main_app_view_components_profile_addresscard_addresscard_render"
+    ],
+    "63": [
+      "docs_tailadmin_laravel_main_app_view_components_profile_personalinfocard",
+      "docs_tailadmin_laravel_main_app_view_components_profile_personalinfocard_personalinfocard",
+      "docs_tailadmin_laravel_main_app_view_components_profile_personalinfocard_personalinfocard_construct",
+      "docs_tailadmin_laravel_main_app_view_components_profile_personalinfocard_personalinfocard_render"
+    ],
+    "64": [
+      "docs_tailadmin_laravel_main_app_view_components_profile_profilecard",
+      "docs_tailadmin_laravel_main_app_view_components_profile_profilecard_profilecard",
+      "docs_tailadmin_laravel_main_app_view_components_profile_profilecard_profilecard_construct",
+      "docs_tailadmin_laravel_main_app_view_components_profile_profilecard_profilecard_render"
+    ],
+    "65": [
+      "docs_tailadmin_laravel_main_app_view_components_tables_basictables_basictablesfour",
+      "docs_tailadmin_laravel_main_app_view_components_tables_basictables_basictablesfour_basictablesfour",
+      "docs_tailadmin_laravel_main_app_view_components_tables_basictables_basictablesfour_basictablesfour_construct",
+      "docs_tailadmin_laravel_main_app_view_components_tables_basictables_basictablesfour_basictablesfour_render"
+    ],
+    "66": [
+      "docs_tailadmin_laravel_main_app_view_components_tables_basictables_basictablesone",
+      "docs_tailadmin_laravel_main_app_view_components_tables_basictables_basictablesone_basictablesone",
+      "docs_tailadmin_laravel_main_app_view_components_tables_basictables_basictablesone_basictablesone_construct",
+      "docs_tailadmin_laravel_main_app_view_components_tables_basictables_basictablesone_basictablesone_render"
+    ],
+    "67": [
+      "docs_tailadmin_laravel_main_app_view_components_tables_basictables_basictablesthree",
+      "docs_tailadmin_laravel_main_app_view_components_tables_basictables_basictablesthree_basictablesthree",
+      "docs_tailadmin_laravel_main_app_view_components_tables_basictables_basictablesthree_basictablesthree_construct",
+      "docs_tailadmin_laravel_main_app_view_components_tables_basictables_basictablesthree_basictablesthree_render"
+    ],
+    "68": [
+      "docs_tailadmin_laravel_main_app_view_components_tables_basictables_basictablestwo",
+      "docs_tailadmin_laravel_main_app_view_components_tables_basictables_basictablestwo_basictablestwo",
+      "docs_tailadmin_laravel_main_app_view_components_tables_basictables_basictablestwo_basictablestwo_construct",
+      "docs_tailadmin_laravel_main_app_view_components_tables_basictables_basictablestwo_basictablestwo_render"
+    ],
+    "69": [
+      "docs_tailadmin_laravel_main_app_view_components_ui_avatar",
+      "docs_tailadmin_laravel_main_app_view_components_ui_avatar_avatar",
+      "docs_tailadmin_laravel_main_app_view_components_ui_avatar_avatar_construct",
+      "docs_tailadmin_laravel_main_app_view_components_ui_avatar_avatar_render"
+    ],
+    "70": [
+      "docs_tailadmin_laravel_main_app_view_components_ui_badge",
+      "docs_tailadmin_laravel_main_app_view_components_ui_badge_badge",
+      "docs_tailadmin_laravel_main_app_view_components_ui_badge_badge_construct",
+      "docs_tailadmin_laravel_main_app_view_components_ui_badge_badge_render"
+    ],
+    "71": [
+      "docs_tailadmin_laravel_main_app_view_components_ui_modal",
+      "docs_tailadmin_laravel_main_app_view_components_ui_modal_modal",
+      "docs_tailadmin_laravel_main_app_view_components_ui_modal_modal_construct",
+      "docs_tailadmin_laravel_main_app_view_components_ui_modal_modal_render"
+    ],
+    "72": [
+      "docs_tailadmin_laravel_main_app_view_components_ui_youtubeembed",
+      "docs_tailadmin_laravel_main_app_view_components_ui_youtubeembed_youtubeembed",
+      "docs_tailadmin_laravel_main_app_view_components_ui_youtubeembed_youtubeembed_construct",
+      "docs_tailadmin_laravel_main_app_view_components_ui_youtubeembed_youtubeembed_render"
+    ],
+    "73": [
+      "docs_tailadmin_laravel_main_composer_json_ref_php_artisan_key_generate_ansi",
+      "docs_tailadmin_laravel_main_composer_json_ref_php_artisan_migrate_graceful_ansi",
+      "docs_tailadmin_laravel_main_composer_json_ref_php_r_file_exists_database_database_sqlite_touch_database_database_sqlite",
+      "docs_tailadmin_laravel_main_composer_scripts_post_create_project_cmd"
+    ],
+    "74": [
+      "docs_tailadmin_laravel_main_composer_require",
+      "docs_tailadmin_laravel_main_composer_require_laravel_framework",
+      "docs_tailadmin_laravel_main_composer_require_laravel_tinker",
+      "docs_tailadmin_laravel_main_composer_require_php"
+    ],
+    "75": [
+      "docs_tailadmin_laravel_main_resources_views_layouts_app_blade",
+      "layouts_app_header",
+      "layouts_backdrop",
+      "layouts_sidebar"
+    ],
+    "76": [
+      "phpunit_framework_testcase",
+      "tests_unit_exampletest",
+      "tests_unit_exampletest_exampletest",
+      "tests_unit_exampletest_exampletest_test_that_true_is_true"
+    ],
+    "77": [
+      "artisan",
+      "docs_tailadmin_laravel_main_routes_console",
+      "routes_console"
+    ],
+    "78": [
+      "database_migrations_0001_01_01_000000_create_users_table",
+      "database_migrations_0001_01_01_000000_create_users_table_down",
+      "database_migrations_0001_01_01_000000_create_users_table_up"
+    ],
+    "79": [
+      "database_migrations_0001_01_01_000001_create_cache_table",
+      "database_migrations_0001_01_01_000001_create_cache_table_down",
+      "database_migrations_0001_01_01_000001_create_cache_table_up"
+    ],
+    "80": [
+      "database_migrations_0001_01_01_000002_create_jobs_table",
+      "database_migrations_0001_01_01_000002_create_jobs_table_down",
+      "database_migrations_0001_01_01_000002_create_jobs_table_up"
+    ],
+    "81": [
+      "database_migrations_2019_09_15_000010_create_tenants_table",
+      "database_migrations_2019_09_15_000010_create_tenants_table_down",
+      "database_migrations_2019_09_15_000010_create_tenants_table_up"
+    ],
+    "82": [
+      "database_migrations_2024_01_01_000001_create_owners_table",
+      "database_migrations_2024_01_01_000001_create_owners_table_down",
+      "database_migrations_2024_01_01_000001_create_owners_table_up"
+    ],
+    "83": [
+      "database_migrations_2024_01_01_000002_create_owner_token_balances_table",
+      "database_migrations_2024_01_01_000002_create_owner_token_balances_table_down",
+      "database_migrations_2024_01_01_000002_create_owner_token_balances_table_up"
+    ],
+    "84": [
+      "database_migrations_2024_01_01_000003_create_token_transactions_table",
+      "database_migrations_2024_01_01_000003_create_token_transactions_table_down",
+      "database_migrations_2024_01_01_000003_create_token_transactions_table_up"
+    ],
+    "85": [
+      "database_migrations_2024_01_01_000004_create_token_packages_table",
+      "database_migrations_2024_01_01_000004_create_token_packages_table_down",
+      "database_migrations_2024_01_01_000004_create_token_packages_table_up"
+    ],
+    "86": [
+      "database_migrations_2024_01_01_000005_create_token_orders_table",
+      "database_migrations_2024_01_01_000005_create_token_orders_table_down",
+      "database_migrations_2024_01_01_000005_create_token_orders_table_up"
+    ],
+    "87": [
+      "database_migrations_2024_01_01_000006_create_llm_providers_table",
+      "database_migrations_2024_01_01_000006_create_llm_providers_table_down",
+      "database_migrations_2024_01_01_000006_create_llm_providers_table_up"
+    ],
+    "88": [
+      "database_migrations_2024_01_01_000007_create_gateway_configs_tables",
+      "database_migrations_2024_01_01_000007_create_gateway_configs_tables_down",
+      "database_migrations_2024_01_01_000007_create_gateway_configs_tables_up"
+    ],
+    "89": [
+      "database_migrations_2024_01_01_000008_create_system_settings_and_activity_logs_tables",
+      "database_migrations_2024_01_01_000008_create_system_settings_and_activity_logs_tables_down",
+      "database_migrations_2024_01_01_000008_create_system_settings_and_activity_logs_tables_up"
+    ],
+    "90": [
+      "database_migrations_2026_07_05_221447_create_permission_tables",
+      "database_migrations_2026_07_05_221447_create_permission_tables_down",
+      "database_migrations_2026_07_05_221447_create_permission_tables_up"
+    ],
+    "91": [
+      "database_migrations_2026_07_05_221449_add_two_factor_columns_to_users_table",
+      "database_migrations_2026_07_05_221449_add_two_factor_columns_to_users_table_down",
+      "database_migrations_2026_07_05_221449_add_two_factor_columns_to_users_table_up"
+    ],
+    "92": [
+      "database_migrations_2026_07_05_221450_create_passkeys_table",
+      "database_migrations_2026_07_05_221450_create_passkeys_table_down",
+      "database_migrations_2026_07_05_221450_create_passkeys_table_up"
+    ],
+    "93": [
+      "database_migrations_2026_07_25_000001_modify_token_transactions_source_column",
+      "database_migrations_2026_07_25_000001_modify_token_transactions_source_column_down",
+      "database_migrations_2026_07_25_000001_modify_token_transactions_source_column_up"
+    ],
+    "94": [
+      "database_migrations_2026_07_25_100001_create_tenant_users_table",
+      "database_migrations_2026_07_25_100001_create_tenant_users_table_down",
+      "database_migrations_2026_07_25_100001_create_tenant_users_table_up"
+    ],
+    "95": [
+      "database_migrations_2026_07_25_100002_create_quizzes_tables",
+      "database_migrations_2026_07_25_100002_create_quizzes_tables_down",
+      "database_migrations_2026_07_25_100002_create_quizzes_tables_up"
+    ],
+    "96": [
+      "database_migrations_2026_07_25_100003_create_quiz_attempts_tables",
+      "database_migrations_2026_07_25_100003_create_quiz_attempts_tables_down",
+      "database_migrations_2026_07_25_100003_create_quiz_attempts_tables_up"
+    ],
+    "97": [
+      "database_migrations_2026_07_25_100004_create_notification_logs_table",
+      "database_migrations_2026_07_25_100004_create_notification_logs_table_down",
+      "database_migrations_2026_07_25_100004_create_notification_logs_table_up"
+    ],
+    "98": [
+      "database_migrations_2026_07_25_100005_fix_sessions_user_id_column",
+      "database_migrations_2026_07_25_100005_fix_sessions_user_id_column_down",
+      "database_migrations_2026_07_25_100005_fix_sessions_user_id_column_up"
+    ],
+    "99": [
+      "database_migrations_2026_07_25_200000_add_dashboard_performance_indexes",
+      "database_migrations_2026_07_25_200000_add_dashboard_performance_indexes_down",
+      "database_migrations_2026_07_25_200000_add_dashboard_performance_indexes_up"
+    ],
+    "100": [
+      "docs_tailadmin_laravel_main_composer_extra",
+      "docs_tailadmin_laravel_main_composer_extra_laravel",
+      "docs_tailadmin_laravel_main_composer_laravel_dont_discover"
+    ],
+    "101": [
+      "docs_tailadmin_laravel_main_composer_json_ref_framework",
+      "docs_tailadmin_laravel_main_composer_json_ref_laravel",
+      "docs_tailadmin_laravel_main_composer_keywords"
+    ],
+    "102": [
+      "docs_tailadmin_laravel_main_database_migrations_0001_01_01_000000_create_users_table",
+      "docs_tailadmin_laravel_main_database_migrations_0001_01_01_000000_create_users_table_down",
+      "docs_tailadmin_laravel_main_database_migrations_0001_01_01_000000_create_users_table_up"
+    ],
+    "103": [
+      "docs_tailadmin_laravel_main_database_migrations_0001_01_01_000001_create_cache_table",
+      "docs_tailadmin_laravel_main_database_migrations_0001_01_01_000001_create_cache_table_down",
+      "docs_tailadmin_laravel_main_database_migrations_0001_01_01_000001_create_cache_table_up"
+    ],
+    "104": [
+      "docs_tailadmin_laravel_main_database_migrations_0001_01_01_000002_create_jobs_table",
+      "docs_tailadmin_laravel_main_database_migrations_0001_01_01_000002_create_jobs_table_down",
+      "docs_tailadmin_laravel_main_database_migrations_0001_01_01_000002_create_jobs_table_up"
+    ],
+    "105": [
+      "app_actions_fortify_passwordvalidationrules",
+      "app_actions_fortify_passwordvalidationrules_passwordrules"
+    ],
+    "106": [
+      "docs_tailadmin_laravel_main_app_http_controllers_controller",
+      "docs_tailadmin_laravel_main_app_http_controllers_controller_controller"
+    ],
+    "107": [
+      "docs_tailadmin_laravel_main_resources_js_app",
+      "docs_tailadmin_laravel_main_resources_js_bootstrap"
+    ],
+    "108": [
+      "docs_tailadmin_laravel_main_resources_js_components_calendar_init",
+      "docs_tailadmin_laravel_main_resources_js_components_calendar_init_calendarinit"
+    ],
+    "109": [
+      "docs_tailadmin_laravel_main_resources_js_components_chart_chart_1",
+      "docs_tailadmin_laravel_main_resources_js_components_chart_chart_1_initchartone"
+    ],
+    "110": [
+      "docs_tailadmin_laravel_main_resources_js_components_chart_chart_13",
+      "docs_tailadmin_laravel_main_resources_js_components_chart_chart_13_initchartthirteen"
+    ],
+    "111": [
+      "docs_tailadmin_laravel_main_resources_js_components_chart_chart_2",
+      "docs_tailadmin_laravel_main_resources_js_components_chart_chart_2_initcharttwo"
+    ],
+    "112": [
+      "docs_tailadmin_laravel_main_resources_js_components_chart_chart_3",
+      "docs_tailadmin_laravel_main_resources_js_components_chart_chart_3_initchartthree"
+    ],
+    "113": [
+      "docs_tailadmin_laravel_main_resources_js_components_chart_chart_6",
+      "docs_tailadmin_laravel_main_resources_js_components_chart_chart_6_initchartsix"
+    ],
+    "114": [
+      "docs_tailadmin_laravel_main_resources_js_components_chart_chart_8",
+      "docs_tailadmin_laravel_main_resources_js_components_chart_chart_8_initcharteight"
+    ],
+    "115": [
+      "docs_tailadmin_laravel_main_resources_js_components_map",
+      "docs_tailadmin_laravel_main_resources_js_components_map_initmap"
+    ],
+    "116": [
+      "docs_tailadmin_laravel_main_resources_views_layouts_sidebar_blade",
+      "layouts_sidebar_widget"
+    ],
+    "117": [
+      "docs_tailadmin_laravel_main_tests_pest",
+      "docs_tailadmin_laravel_main_tests_pest_something"
+    ],
+    "118": [
+      "resources_js_app",
+      "resources_js_bootstrap"
+    ],
+    "119": [
+      "resources_views_modules_superadmin_llm_index_blade",
+      "superadmin_llm_form"
+    ],
+    "120": [
+      "vite_config",
+      "vite_config_manualchunks"
+    ],
+    "121": [
+      "bootstrap_app"
+    ],
+    "122": [
+      "config_app"
+    ],
+    "123": [
+      "config_cache"
+    ],
+    "124": [
+      "config_database"
+    ],
+    "125": [
+      "config_filesystems"
+    ],
+    "126": [
+      "config_logging"
+    ],
+    "127": [
+      "config_mail"
+    ],
+    "128": [
+      "config_permission"
+    ],
+    "129": [
+      "config_queue"
+    ],
+    "130": [
+      "config_services"
+    ],
+    "131": [
+      "config_session"
+    ],
+    "132": [
+      "docs_tailadmin_laravel_main_artisan"
+    ],
+    "133": [
+      "docs_tailadmin_laravel_main_bootstrap_app"
+    ],
+    "134": [
+      "docs_tailadmin_laravel_main_bootstrap_providers"
+    ],
+    "135": [
+      "docs_tailadmin_laravel_main_config_app"
+    ],
+    "136": [
+      "docs_tailadmin_laravel_main_config_auth"
+    ],
+    "137": [
+      "docs_tailadmin_laravel_main_config_cache"
+    ],
+    "138": [
+      "docs_tailadmin_laravel_main_config_database"
+    ],
+    "139": [
+      "docs_tailadmin_laravel_main_config_filesystems"
+    ],
+    "140": [
+      "docs_tailadmin_laravel_main_config_logging"
+    ],
+    "141": [
+      "docs_tailadmin_laravel_main_config_mail"
+    ],
+    "142": [
+      "docs_tailadmin_laravel_main_config_queue"
+    ],
+    "143": [
+      "docs_tailadmin_laravel_main_config_services"
+    ],
+    "144": [
+      "docs_tailadmin_laravel_main_config_session"
+    ],
+    "145": [
+      "docs_tailadmin_laravel_main_public_index"
+    ],
+    "146": [
+      "docs_tailadmin_laravel_main_resources_views_components_calender_area_blade"
+    ],
+    "147": [
+      "docs_tailadmin_laravel_main_resources_views_components_common_common_grid_shape_blade"
+    ],
+    "148": [
+      "docs_tailadmin_laravel_main_resources_views_components_common_component_card_blade"
+    ],
+    "149": [
+      "docs_tailadmin_laravel_main_resources_views_components_common_dropdown_menu_blade"
+    ],
+    "150": [
+      "docs_tailadmin_laravel_main_resources_views_components_common_page_breadcrumb_blade"
+    ],
+    "151": [
+      "docs_tailadmin_laravel_main_resources_views_components_common_preloader_blade"
+    ],
+    "152": [
+      "docs_tailadmin_laravel_main_resources_views_components_common_table_dropdown_blade"
+    ],
+    "153": [
+      "docs_tailadmin_laravel_main_resources_views_components_common_theme_toggle_blade"
+    ],
+    "154": [
+      "docs_tailadmin_laravel_main_resources_views_components_ecommerce_customer_demographic_blade"
+    ],
+    "155": [
+      "docs_tailadmin_laravel_main_resources_views_components_ecommerce_ecommerce_metrics_blade"
+    ],
+    "156": [
+      "docs_tailadmin_laravel_main_resources_views_components_ecommerce_monthly_sale_blade"
+    ],
+    "157": [
+      "docs_tailadmin_laravel_main_resources_views_components_ecommerce_monthly_target_blade"
+    ],
+    "158": [
+      "docs_tailadmin_laravel_main_resources_views_components_ecommerce_recent_orders_blade"
+    ],
+    "159": [
+      "docs_tailadmin_laravel_main_resources_views_components_ecommerce_statistics_chart_blade"
+    ],
+    "160": [
+      "docs_tailadmin_laravel_main_resources_views_components_form_date_picker_blade"
+    ],
+    "161": [
+      "docs_tailadmin_laravel_main_resources_views_components_form_form_elements_checkbox_component_blade"
+    ],
+    "162": [
+      "docs_tailadmin_laravel_main_resources_views_components_form_form_elements_default_inputs_blade"
+    ],
+    "163": [
+      "docs_tailadmin_laravel_main_resources_views_components_form_form_elements_dropzone_blade"
+    ],
+    "164": [
+      "docs_tailadmin_laravel_main_resources_views_components_form_form_elements_file_input_example_blade"
+    ],
+    "165": [
+      "docs_tailadmin_laravel_main_resources_views_components_form_form_elements_input_group_blade"
+    ],
+    "166": [
+      "docs_tailadmin_laravel_main_resources_views_components_form_form_elements_input_states_blade"
+    ],
+    "167": [
+      "docs_tailadmin_laravel_main_resources_views_components_form_form_elements_radio_buttons_blade"
+    ],
+    "168": [
+      "docs_tailadmin_laravel_main_resources_views_components_form_form_elements_select_inputs_blade"
+    ],
+    "169": [
+      "docs_tailadmin_laravel_main_resources_views_components_form_form_elements_text_area_inputs_blade"
+    ],
+    "170": [
+      "docs_tailadmin_laravel_main_resources_views_components_form_form_elements_toggle_switch_blade"
+    ],
+    "171": [
+      "docs_tailadmin_laravel_main_resources_views_components_form_input_radio_blade"
+    ],
+    "172": [
+      "docs_tailadmin_laravel_main_resources_views_components_form_select_multiple_select_blade"
+    ],
+    "173": [
+      "docs_tailadmin_laravel_main_resources_views_components_header_notification_dropdown_blade"
+    ],
+    "174": [
+      "docs_tailadmin_laravel_main_resources_views_components_header_user_dropdown_blade"
+    ],
+    "175": [
+      "docs_tailadmin_laravel_main_resources_views_components_profile_address_card_blade"
+    ],
+    "176": [
+      "docs_tailadmin_laravel_main_resources_views_components_profile_personal_info_card_blade"
+    ],
+    "177": [
+      "docs_tailadmin_laravel_main_resources_views_components_profile_profile_card_blade"
+    ],
+    "178": [
+      "docs_tailadmin_laravel_main_resources_views_components_tables_basic_tables_basic_tables_five_blade"
+    ],
+    "179": [
+      "docs_tailadmin_laravel_main_resources_views_components_tables_basic_tables_basic_tables_four_blade"
+    ],
+    "180": [
+      "docs_tailadmin_laravel_main_resources_views_components_tables_basic_tables_basic_tables_one_blade"
+    ],
+    "181": [
+      "docs_tailadmin_laravel_main_resources_views_components_tables_basic_tables_basic_tables_three_blade"
+    ],
+    "182": [
+      "docs_tailadmin_laravel_main_resources_views_components_tables_basic_tables_basic_tables_two_blade"
+    ],
+    "183": [
+      "docs_tailadmin_laravel_main_resources_views_components_ui_alert_blade"
+    ],
+    "184": [
+      "docs_tailadmin_laravel_main_resources_views_components_ui_avatar_blade"
+    ],
+    "185": [
+      "docs_tailadmin_laravel_main_resources_views_components_ui_badge_blade"
+    ],
+    "186": [
+      "docs_tailadmin_laravel_main_resources_views_components_ui_button_blade"
+    ],
+    "187": [
+      "docs_tailadmin_laravel_main_resources_views_components_ui_modal_blade"
+    ],
+    "188": [
+      "docs_tailadmin_laravel_main_resources_views_components_ui_youtube_embed_blade"
+    ],
+    "189": [
+      "docs_tailadmin_laravel_main_resources_views_layouts_app_header_blade"
+    ],
+    "190": [
+      "docs_tailadmin_laravel_main_resources_views_layouts_backdrop_blade"
+    ],
+    "191": [
+      "docs_tailadmin_laravel_main_resources_views_layouts_fullscreen_layout_blade"
+    ],
+    "192": [
+      "docs_tailadmin_laravel_main_resources_views_layouts_sidebar_widget_blade"
+    ],
+    "193": [
+      "docs_tailadmin_laravel_main_resources_views_pages_auth_signin_blade"
+    ],
+    "194": [
+      "docs_tailadmin_laravel_main_resources_views_pages_auth_signup_blade"
+    ],
+    "195": [
+      "docs_tailadmin_laravel_main_resources_views_pages_blank_blade"
+    ],
+    "196": [
+      "docs_tailadmin_laravel_main_resources_views_pages_calender_blade"
+    ],
+    "197": [
+      "docs_tailadmin_laravel_main_resources_views_pages_chart_bar_chart_blade"
+    ],
+    "198": [
+      "docs_tailadmin_laravel_main_resources_views_pages_chart_line_chart_blade"
+    ],
+    "199": [
+      "docs_tailadmin_laravel_main_resources_views_pages_dashboard_ecommerce_blade"
+    ],
+    "200": [
+      "docs_tailadmin_laravel_main_resources_views_pages_errors_error_404_blade"
+    ],
+    "201": [
+      "docs_tailadmin_laravel_main_resources_views_pages_form_form_elements_blade"
+    ],
+    "202": [
+      "docs_tailadmin_laravel_main_resources_views_pages_profile_blade"
+    ],
+    "203": [
+      "docs_tailadmin_laravel_main_resources_views_pages_tables_basic_tables_blade"
+    ],
+    "204": [
+      "docs_tailadmin_laravel_main_resources_views_pages_ui_elements_alerts_blade"
+    ],
+    "205": [
+      "docs_tailadmin_laravel_main_resources_views_pages_ui_elements_avatars_blade"
+    ],
+    "206": [
+      "docs_tailadmin_laravel_main_resources_views_pages_ui_elements_badges_blade"
+    ],
+    "207": [
+      "docs_tailadmin_laravel_main_resources_views_pages_ui_elements_buttons_blade"
+    ],
+    "208": [
+      "docs_tailadmin_laravel_main_resources_views_pages_ui_elements_images_blade"
+    ],
+    "209": [
+      "docs_tailadmin_laravel_main_resources_views_pages_ui_elements_videos_blade"
+    ],
+    "210": [
+      "docs_tailadmin_laravel_main_routes_web"
+    ],
+    "211": [
+      "docs_tailadmin_laravel_main_tests_feature_exampletest"
+    ],
+    "212": [
+      "docs_tailadmin_laravel_main_tests_unit_exampletest"
+    ],
+    "213": [
+      "docs_tailadmin_laravel_main_vite_config"
+    ],
+    "214": [
+      "public_index"
+    ],
+    "215": [
+      "resources_views_auth_login_blade"
+    ],
+    "216": [
+      "resources_views_layouts_app_auth_blade"
+    ],
+    "217": [
+      "resources_views_layouts_app_backend_blade"
+    ],
+    "218": [
+      "resources_views_modules_owner_dashboard_blade"
+    ],
+    "219": [
+      "resources_views_modules_owner_participants_create_blade"
+    ],
+    "220": [
+      "resources_views_modules_owner_participants_edit_blade"
+    ],
+    "221": [
+      "resources_views_modules_owner_participants_index_blade"
+    ],
+    "222": [
+      "resources_views_modules_owner_participants_show_blade"
+    ],
+    "223": [
+      "resources_views_modules_owner_quizzes_create_blade"
+    ],
+    "224": [
+      "resources_views_modules_owner_quizzes_edit_blade"
+    ],
+    "225": [
+      "resources_views_modules_owner_quizzes_index_blade"
+    ],
+    "226": [
+      "resources_views_modules_owner_quizzes_show_blade"
+    ],
+    "227": [
+      "resources_views_modules_owner_reports_index_blade"
+    ],
+    "228": [
+      "resources_views_modules_owner_reports_quiz_blade"
+    ],
+    "229": [
+      "resources_views_modules_owner_settings_index_blade"
+    ],
+    "230": [
+      "resources_views_modules_owner_tokens_index_blade"
+    ],
+    "231": [
+      "resources_views_modules_owner_tokens_simulate_blade"
+    ],
+    "232": [
+      "resources_views_modules_participant_dashboard_blade"
+    ],
+    "233": [
+      "resources_views_modules_participant_history_blade"
+    ],
+    "234": [
+      "resources_views_modules_participant_quiz_result_blade"
+    ],
+    "235": [
+      "resources_views_modules_participant_quiz_show_blade"
+    ],
+    "236": [
+      "resources_views_modules_participant_quiz_take_blade"
+    ],
+    "237": [
+      "resources_views_modules_profile_edit_blade"
+    ],
+    "238": [
+      "resources_views_modules_superadmin_dashboard_blade"
+    ],
+    "239": [
+      "resources_views_modules_superadmin_gateways_index_blade"
+    ],
+    "240": [
+      "resources_views_modules_superadmin_llm_form_blade"
+    ],
+    "241": [
+      "resources_views_modules_superadmin_logs_index_blade"
+    ],
+    "242": [
+      "resources_views_modules_superadmin_owners_index_blade"
+    ],
+    "243": [
+      "resources_views_modules_superadmin_owners_show_blade"
+    ],
+    "244": [
+      "resources_views_modules_superadmin_settings_index_blade"
+    ],
+    "245": [
+      "resources_views_modules_superadmin_token_packages_index_blade"
+    ],
+    "246": [
+      "resources_views_welcome_blade"
+    ],
+    "247": [
+      "routes_tenant"
+    ],
+    "248": [
+      "routes_web"
+    ]
+  },
+  "cohesion": {
+    "0": 0.0539906103286385,
+    "1": 0.07397959183673469,
+    "2": 0.0425531914893617,
+    "3": 0.043478260869565216,
+    "4": 0.08974358974358974,
+    "5": 0.07692307692307693,
+    "6": 0.0957983193277311,
+    "7": 0.058823529411764705,
+    "8": 0.1010752688172043,
+    "9": 0.08,
+    "10": 0.12857142857142856,
+    "11": 0.14210526315789473,
+    "12": 0.15789473684210525,
+    "13": 0.14705882352941177,
+    "14": 0.14705882352941177,
+    "15": 0.14705882352941177,
+    "16": 0.14705882352941177,
+    "17": 0.18333333333333332,
+    "18": 0.1523809523809524,
+    "19": 0.21904761904761905,
+    "20": 0.17582417582417584,
+    "21": 0.14285714285714285,
+    "22": 0.21794871794871795,
+    "23": 0.20512820512820512,
+    "24": 0.24242424242424243,
+    "25": 0.18181818181818182,
+    "26": 0.2,
+    "27": 0.2909090909090909,
+    "28": 0.2545454545454545,
+    "29": 0.18181818181818182,
+    "30": 0.5277777777777778,
+    "31": 0.2222222222222222,
+    "32": 0.42857142857142855,
+    "33": 0.3333333333333333,
+    "34": 0.2857142857142857,
+    "35": 0.2857142857142857,
+    "36": 0.5,
+    "37": 0.7,
+    "38": 0.4,
+    "39": 0.5,
+    "40": 0.4,
+    "41": 0.5,
+    "42": 0.5,
+    "43": 0.5,
+    "44": 0.5,
+    "45": 0.5,
+    "46": 0.5,
+    "47": 0.5,
+    "48": 0.5,
+    "49": 0.5,
+    "50": 0.5,
+    "51": 0.5,
+    "52": 0.5,
+    "53": 0.5,
+    "54": 0.5,
+    "55": 0.5,
+    "56": 0.5,
+    "57": 0.5,
+    "58": 0.5,
+    "59": 0.5,
+    "60": 0.5,
+    "61": 0.5,
+    "62": 0.5,
+    "63": 0.5,
+    "64": 0.5,
+    "65": 0.5,
+    "66": 0.5,
+    "67": 0.5,
+    "68": 0.5,
+    "69": 0.5,
+    "70": 0.5,
+    "71": 0.5,
+    "72": 0.5,
+    "73": 0.5,
+    "74": 0.5,
+    "75": 0.5,
+    "76": 0.6666666666666666,
+    "77": 0.6666666666666666,
+    "78": 0.6666666666666666,
+    "79": 0.6666666666666666,
+    "80": 0.6666666666666666,
+    "81": 0.6666666666666666,
+    "82": 0.6666666666666666,
+    "83": 0.6666666666666666,
+    "84": 0.6666666666666666,
+    "85": 0.6666666666666666,
+    "86": 0.6666666666666666,
+    "87": 0.6666666666666666,
+    "88": 0.6666666666666666,
+    "89": 0.6666666666666666,
+    "90": 0.6666666666666666,
+    "91": 0.6666666666666666,
+    "92": 0.6666666666666666,
+    "93": 0.6666666666666666,
+    "94": 0.6666666666666666,
+    "95": 0.6666666666666666,
+    "96": 0.6666666666666666,
+    "97": 0.6666666666666666,
+    "98": 0.6666666666666666,
+    "99": 0.6666666666666666,
+    "100": 0.6666666666666666,
+    "101": 0.6666666666666666,
+    "102": 0.6666666666666666,
+    "103": 0.6666666666666666,
+    "104": 0.6666666666666666,
+    "105": 1.0,
+    "106": 1.0,
+    "107": 1.0,
+    "108": 1.0,
+    "109": 1.0,
+    "110": 1.0,
+    "111": 1.0,
+    "112": 1.0,
+    "113": 1.0,
+    "114": 1.0,
+    "115": 1.0,
+    "116": 1.0,
+    "117": 1.0,
+    "118": 1.0,
+    "119": 1.0,
+    "120": 1.0,
+    "121": 1.0,
+    "122": 1.0,
+    "123": 1.0,
+    "124": 1.0,
+    "125": 1.0,
+    "126": 1.0,
+    "127": 1.0,
+    "128": 1.0,
+    "129": 1.0,
+    "130": 1.0,
+    "131": 1.0,
+    "132": 1.0,
+    "133": 1.0,
+    "134": 1.0,
+    "135": 1.0,
+    "136": 1.0,
+    "137": 1.0,
+    "138": 1.0,
+    "139": 1.0,
+    "140": 1.0,
+    "141": 1.0,
+    "142": 1.0,
+    "143": 1.0,
+    "144": 1.0,
+    "145": 1.0,
+    "146": 1.0,
+    "147": 1.0,
+    "148": 1.0,
+    "149": 1.0,
+    "150": 1.0,
+    "151": 1.0,
+    "152": 1.0,
+    "153": 1.0,
+    "154": 1.0,
+    "155": 1.0,
+    "156": 1.0,
+    "157": 1.0,
+    "158": 1.0,
+    "159": 1.0,
+    "160": 1.0,
+    "161": 1.0,
+    "162": 1.0,
+    "163": 1.0,
+    "164": 1.0,
+    "165": 1.0,
+    "166": 1.0,
+    "167": 1.0,
+    "168": 1.0,
+    "169": 1.0,
+    "170": 1.0,
+    "171": 1.0,
+    "172": 1.0,
+    "173": 1.0,
+    "174": 1.0,
+    "175": 1.0,
+    "176": 1.0,
+    "177": 1.0,
+    "178": 1.0,
+    "179": 1.0,
+    "180": 1.0,
+    "181": 1.0,
+    "182": 1.0,
+    "183": 1.0,
+    "184": 1.0,
+    "185": 1.0,
+    "186": 1.0,
+    "187": 1.0,
+    "188": 1.0,
+    "189": 1.0,
+    "190": 1.0,
+    "191": 1.0,
+    "192": 1.0,
+    "193": 1.0,
+    "194": 1.0,
+    "195": 1.0,
+    "196": 1.0,
+    "197": 1.0,
+    "198": 1.0,
+    "199": 1.0,
+    "200": 1.0,
+    "201": 1.0,
+    "202": 1.0,
+    "203": 1.0,
+    "204": 1.0,
+    "205": 1.0,
+    "206": 1.0,
+    "207": 1.0,
+    "208": 1.0,
+    "209": 1.0,
+    "210": 1.0,
+    "211": 1.0,
+    "212": 1.0,
+    "213": 1.0,
+    "214": 1.0,
+    "215": 1.0,
+    "216": 1.0,
+    "217": 1.0,
+    "218": 1.0,
+    "219": 1.0,
+    "220": 1.0,
+    "221": 1.0,
+    "222": 1.0,
+    "223": 1.0,
+    "224": 1.0,
+    "225": 1.0,
+    "226": 1.0,
+    "227": 1.0,
+    "228": 1.0,
+    "229": 1.0,
+    "230": 1.0,
+    "231": 1.0,
+    "232": 1.0,
+    "233": 1.0,
+    "234": 1.0,
+    "235": 1.0,
+    "236": 1.0,
+    "237": 1.0,
+    "238": 1.0,
+    "239": 1.0,
+    "240": 1.0,
+    "241": 1.0,
+    "242": 1.0,
+    "243": 1.0,
+    "244": 1.0,
+    "245": 1.0,
+    "246": 1.0,
+    "247": 1.0,
+    "248": 1.0
+  },
+  "gods": [
+    {
+      "id": "app_http_controllers_controller_controller",
+      "label": "Controller",
+      "degree": 41
+    },
+    {
+      "id": "app_models_central_owner_owner",
+      "label": "Owner",
+      "degree": 36
+    },
+    {
+      "id": "app_models_tenant_quiz_quiz",
+      "label": "Quiz",
+      "degree": 36
+    },
+    {
+      "id": "app_models_tenant_quizattempt_quizattempt",
+      "label": "QuizAttempt",
+      "degree": 30
+    },
+    {
+      "id": "app_models_central_llmprovider_llmprovider",
+      "label": "LlmProvider",
+      "degree": 28
+    },
+    {
+      "id": "app_models_central_activitylog_activitylog",
+      "label": "ActivityLog",
+      "degree": 27
+    },
+    {
+      "id": "app_models_central_tokenorder_tokenorder",
+      "label": "TokenOrder",
+      "degree": 26
+    },
+    {
+      "id": "app_models_central_paymentgatewayconfig_paymentgatewayconfig",
+      "label": "PaymentGatewayConfig",
+      "degree": 24
+    },
+    {
+      "id": "app_services_tokenservice_tokenservice",
+      "label": "TokenService",
+      "degree": 23
+    },
+    {
+      "id": "app_models_central_tokenpackage_tokenpackage",
+      "label": "TokenPackage",
+      "degree": 16
+    }
+  ],
+  "surprises": [
+    {
+      "source": "TokenServiceTest",
+      "target": "TestCase",
+      "source_files": [
+        "tests/Unit/TokenServiceTest.php",
+        "docs/tailadmin-laravel-main/tests/TestCase.php"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "inherits",
+      "why": "connects across different repos/directories; bridges separate communities"
+    },
+    {
+      "source": "DashboardController",
+      "target": "Controller",
+      "source_files": [
+        "docs/tailadmin-laravel-main/app/Http/Controllers/DashboardController.php",
+        "app/Http/Controllers/Controller.php"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "inherits",
+      "why": "connects across different repos/directories"
+    },
+    {
+      "source": "SidebarController",
+      "target": "Controller",
+      "source_files": [
+        "docs/tailadmin-laravel-main/app/Http/Controllers/SidebarController.php",
+        "app/Http/Controllers/Controller.php"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "inherits",
+      "why": "connects across different repos/directories"
+    },
+    {
+      "source": "ExampleTest",
+      "target": "TestCase",
+      "source_files": [
+        "tests/Feature/ExampleTest.php",
+        "docs/tailadmin-laravel-main/tests/TestCase.php"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "inherits",
+      "why": "connects across different repos/directories"
+    },
+    {
+      "source": "QuizAttemptTest",
+      "target": "TestCase",
+      "source_files": [
+        "tests/Feature/QuizAttemptTest.php",
+        "docs/tailadmin-laravel-main/tests/TestCase.php"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "inherits",
+      "why": "connects across different repos/directories"
+    }
+  ],
+  "tokens": {
+    "input": 0,
+    "output": 0
+  }
+}

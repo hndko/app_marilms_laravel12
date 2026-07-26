@@ -1,0 +1,1602 @@
+{
+  "app/Actions/Fortify/CreateNewUser.php": {
+    "mtime": 1783289688.8565304,
+    "ast_hash": "ba9cad307bc6c75a1de68fa96cac24d5",
+    "semantic_hash": "ba9cad307bc6c75a1de68fa96cac24d5"
+  },
+  "app/Actions/Fortify/PasswordValidationRules.php": {
+    "mtime": 1783289688.868672,
+    "ast_hash": "f41a57b965ab714464851bfe02530dba",
+    "semantic_hash": "f41a57b965ab714464851bfe02530dba"
+  },
+  "app/Actions/Fortify/ResetUserPassword.php": {
+    "mtime": 1783289688.8719263,
+    "ast_hash": "7e165bdfd825c517ada82ed2da1991ea",
+    "semantic_hash": "7e165bdfd825c517ada82ed2da1991ea"
+  },
+  "app/Actions/Fortify/UpdateUserPassword.php": {
+    "mtime": 1783289688.8758893,
+    "ast_hash": "ac0facc589d3f8f6521b16c85d9e4954",
+    "semantic_hash": "ac0facc589d3f8f6521b16c85d9e4954"
+  },
+  "app/Actions/Fortify/UpdateUserProfileInformation.php": {
+    "mtime": 1783289688.873591,
+    "ast_hash": "d41c530423a5482cfcbf0d5ab659e3d3",
+    "semantic_hash": "d41c530423a5482cfcbf0d5ab659e3d3"
+  },
+  "app/Console/Commands/AutoSubmitExpiredAttempts.php": {
+    "mtime": 1783290241.6969018,
+    "ast_hash": "354fdb59f4e95e0e25d18c859ee9d819",
+    "semantic_hash": "354fdb59f4e95e0e25d18c859ee9d819"
+  },
+  "app/Contracts/LlmProviderContract.php": {
+    "mtime": 1783418994.4850843,
+    "ast_hash": "dca12136448ba0044734ffb81c30b5e0",
+    "semantic_hash": "dca12136448ba0044734ffb81c30b5e0"
+  },
+  "app/Contracts/PaymentGatewayContract.php": {
+    "mtime": 1783351917.534904,
+    "ast_hash": "c5929e9e0388df10a6b2bdabb5367e7b",
+    "semantic_hash": "c5929e9e0388df10a6b2bdabb5367e7b"
+  },
+  "app/Contracts/WaGatewayContract.php": {
+    "mtime": 1783419663.9587598,
+    "ast_hash": "14eccf8d91c9b0b7933ade3bc7f539ce",
+    "semantic_hash": "14eccf8d91c9b0b7933ade3bc7f539ce"
+  },
+  "app/Http/Controllers/Auth/AuthController.php": {
+    "mtime": 1784964867.8568,
+    "ast_hash": "6cb579e392a35ddaec1fb7bf98dfc852",
+    "semantic_hash": "6cb579e392a35ddaec1fb7bf98dfc852"
+  },
+  "app/Http/Controllers/Controller.php": {
+    "mtime": 1773507240.0,
+    "ast_hash": "25a307335c0719bc9a91b3f7babd186d",
+    "semantic_hash": "25a307335c0719bc9a91b3f7babd186d"
+  },
+  "app/Http/Controllers/Modules/Owner/DashboardController.php": {
+    "mtime": 1784995928.3387609,
+    "ast_hash": "e35c6cb1589084474a7c18a5b0c35fef",
+    "semantic_hash": "e35c6cb1589084474a7c18a5b0c35fef"
+  },
+  "app/Http/Controllers/Modules/Owner/ParticipantController.php": {
+    "mtime": 1784989341.54891,
+    "ast_hash": "884acd6ffe1cc5938e615e61757aeb04",
+    "semantic_hash": "884acd6ffe1cc5938e615e61757aeb04"
+  },
+  "app/Http/Controllers/Modules/Owner/QuizController.php": {
+    "mtime": 1784997142.8900251,
+    "ast_hash": "cc76273bb1b2893094959f547dde1fe5",
+    "semantic_hash": "cc76273bb1b2893094959f547dde1fe5"
+  },
+  "app/Http/Controllers/Modules/Owner/ReportController.php": {
+    "mtime": 1784989373.8000817,
+    "ast_hash": "145429001f4a676a1d58bf93306b03a8",
+    "semantic_hash": "145429001f4a676a1d58bf93306b03a8"
+  },
+  "app/Http/Controllers/Modules/Owner/SettingsController.php": {
+    "mtime": 1784989383.2751162,
+    "ast_hash": "907b3fa031b2d65bc4525130af37d260",
+    "semantic_hash": "907b3fa031b2d65bc4525130af37d260"
+  },
+  "app/Http/Controllers/Modules/Owner/TokenController.php": {
+    "mtime": 1784989392.3459144,
+    "ast_hash": "5dc1643c0fdc62de456a74a073cbf8ae",
+    "semantic_hash": "5dc1643c0fdc62de456a74a073cbf8ae"
+  },
+  "app/Http/Controllers/Modules/Participant/DashboardController.php": {
+    "mtime": 1784990082.051161,
+    "ast_hash": "cadb8a6adc20615ba27a730bc3daffec",
+    "semantic_hash": "cadb8a6adc20615ba27a730bc3daffec"
+  },
+  "app/Http/Controllers/Modules/Participant/QuizController.php": {
+    "mtime": 1784989422.832199,
+    "ast_hash": "9f88ef27c431ceecd7331de780a146ca",
+    "semantic_hash": "9f88ef27c431ceecd7331de780a146ca"
+  },
+  "app/Http/Controllers/Modules/Participant/QuizForceSubmitController.php": {
+    "mtime": 1784989434.5846398,
+    "ast_hash": "f6a0b305950fcc451321b96b26dfcc57",
+    "semantic_hash": "f6a0b305950fcc451321b96b26dfcc57"
+  },
+  "app/Http/Controllers/Modules/ProfileController.php": {
+    "mtime": 1784995772.2830727,
+    "ast_hash": "64e85e1bf0bc0ccda87ad5cd254061db",
+    "semantic_hash": "64e85e1bf0bc0ccda87ad5cd254061db"
+  },
+  "app/Http/Controllers/Modules/SuperAdmin/DashboardController.php": {
+    "mtime": 1784989946.6440005,
+    "ast_hash": "e2e4a232721e76bde7d10c158b219bfe",
+    "semantic_hash": "e2e4a232721e76bde7d10c158b219bfe"
+  },
+  "app/Http/Controllers/Modules/SuperAdmin/GatewayController.php": {
+    "mtime": 1784989266.1604166,
+    "ast_hash": "9467a0b9672f410757e01838e038673b",
+    "semantic_hash": "9467a0b9672f410757e01838e038673b"
+  },
+  "app/Http/Controllers/Modules/SuperAdmin/LlmProviderController.php": {
+    "mtime": 1784989276.5612795,
+    "ast_hash": "6db53aa90dc011ac08ad844cafa963e1",
+    "semantic_hash": "6db53aa90dc011ac08ad844cafa963e1"
+  },
+  "app/Http/Controllers/Modules/SuperAdmin/LogController.php": {
+    "mtime": 1784989286.7922049,
+    "ast_hash": "ea62ba6d7b90a8e80da8ae2734146e87",
+    "semantic_hash": "ea62ba6d7b90a8e80da8ae2734146e87"
+  },
+  "app/Http/Controllers/Modules/SuperAdmin/OwnerController.php": {
+    "mtime": 1784989297.456941,
+    "ast_hash": "de781e6cbd2843d65406fc219e730c1b",
+    "semantic_hash": "de781e6cbd2843d65406fc219e730c1b"
+  },
+  "app/Http/Controllers/Modules/SuperAdmin/SettingsController.php": {
+    "mtime": 1784989308.1115975,
+    "ast_hash": "a8b7f77ac1b70c4df334fe3a46c2e9d9",
+    "semantic_hash": "a8b7f77ac1b70c4df334fe3a46c2e9d9"
+  },
+  "app/Http/Controllers/Modules/SuperAdmin/TokenPackageController.php": {
+    "mtime": 1784989319.3148293,
+    "ast_hash": "e0bc9b26fae46aff93834ff85a8ec536",
+    "semantic_hash": "e0bc9b26fae46aff93834ff85a8ec536"
+  },
+  "app/Http/Controllers/Webhook/PaymentWebhookController.php": {
+    "mtime": 1783352008.7135286,
+    "ast_hash": "afad62ebd695a954520dd3f768090b38",
+    "semantic_hash": "afad62ebd695a954520dd3f768090b38"
+  },
+  "app/Http/Middleware/SetTenantUrlDefaults.php": {
+    "mtime": 1784961627.1870465,
+    "ast_hash": "22717a6f4dc091538be94e3a6d7371f9",
+    "semantic_hash": "22717a6f4dc091538be94e3a6d7371f9"
+  },
+  "app/Jobs/GenerateQuizJob.php": {
+    "mtime": 1784997138.1682723,
+    "ast_hash": "3f7907c7fc955a1da67af5ffe1a62807",
+    "semantic_hash": "3f7907c7fc955a1da67af5ffe1a62807"
+  },
+  "app/Models/Central/ActivityLog.php": {
+    "mtime": 1783289810.6708908,
+    "ast_hash": "267b5b72ad7b584488ed02d513000bd4",
+    "semantic_hash": "267b5b72ad7b584488ed02d513000bd4"
+  },
+  "app/Models/Central/Domain.php": {
+    "mtime": 1783289762.2471359,
+    "ast_hash": "dffce55be4585a71ae02a7e3b5601408",
+    "semantic_hash": "dffce55be4585a71ae02a7e3b5601408"
+  },
+  "app/Models/Central/EmailGatewayConfig.php": {
+    "mtime": 1783289815.3718293,
+    "ast_hash": "71f445763b319b27d2400efd432771ad",
+    "semantic_hash": "71f445763b319b27d2400efd432771ad"
+  },
+  "app/Models/Central/LlmProvider.php": {
+    "mtime": 1783289797.6667836,
+    "ast_hash": "1aa18afd6e6a2ef56b251aea21585016",
+    "semantic_hash": "1aa18afd6e6a2ef56b251aea21585016"
+  },
+  "app/Models/Central/Owner.php": {
+    "mtime": 1783289764.2587705,
+    "ast_hash": "368300d90b633017dcbdd2285dca134d",
+    "semantic_hash": "368300d90b633017dcbdd2285dca134d"
+  },
+  "app/Models/Central/OwnerTokenBalance.php": {
+    "mtime": 1783289776.742681,
+    "ast_hash": "782610d3cdd3ddecdcc8ffee31fed634",
+    "semantic_hash": "782610d3cdd3ddecdcc8ffee31fed634"
+  },
+  "app/Models/Central/PaymentGatewayConfig.php": {
+    "mtime": 1783289802.635407,
+    "ast_hash": "4a221fca7983ab053c8625af843b01f0",
+    "semantic_hash": "4a221fca7983ab053c8625af843b01f0"
+  },
+  "app/Models/Central/SystemSetting.php": {
+    "mtime": 1783289806.6980917,
+    "ast_hash": "3366e6619644c2eb2e4cf88314761f68",
+    "semantic_hash": "3366e6619644c2eb2e4cf88314761f68"
+  },
+  "app/Models/Central/Tenant.php": {
+    "mtime": 1784960448.4838445,
+    "ast_hash": "4f8b099501795ded320f47b9d7641ea0",
+    "semantic_hash": "4f8b099501795ded320f47b9d7641ea0"
+  },
+  "app/Models/Central/TokenOrder.php": {
+    "mtime": 1783289792.3704803,
+    "ast_hash": "a99aed429dd78dc788288d12f494efd9",
+    "semantic_hash": "a99aed429dd78dc788288d12f494efd9"
+  },
+  "app/Models/Central/TokenPackage.php": {
+    "mtime": 1783289790.346283,
+    "ast_hash": "69add084ab213b146883480c89ded1ef",
+    "semantic_hash": "69add084ab213b146883480c89ded1ef"
+  },
+  "app/Models/Central/TokenTransaction.php": {
+    "mtime": 1783289781.1619382,
+    "ast_hash": "20d221777bbea8d3eeb7e6b14dbd93e9",
+    "semantic_hash": "20d221777bbea8d3eeb7e6b14dbd93e9"
+  },
+  "app/Models/Central/WhatsappGatewayConfig.php": {
+    "mtime": 1783289813.349004,
+    "ast_hash": "ebaeef904c72754b789dd4c8fa551570",
+    "semantic_hash": "ebaeef904c72754b789dd4c8fa551570"
+  },
+  "app/Models/Scopes/TenantScope.php": {
+    "mtime": 1784960459.885458,
+    "ast_hash": "7e7f7e9d42d8c31fe75828b374645551",
+    "semantic_hash": "7e7f7e9d42d8c31fe75828b374645551"
+  },
+  "app/Models/Tenant/NotificationLog.php": {
+    "mtime": 1784960594.2147694,
+    "ast_hash": "0f0e7884b2ed537b24dd2c17359a4cdb",
+    "semantic_hash": "0f0e7884b2ed537b24dd2c17359a4cdb"
+  },
+  "app/Models/Tenant/Question.php": {
+    "mtime": 1784960539.3927057,
+    "ast_hash": "c25db774f20ec85a0be7d4bb7297b224",
+    "semantic_hash": "c25db774f20ec85a0be7d4bb7297b224"
+  },
+  "app/Models/Tenant/QuestionOption.php": {
+    "mtime": 1784960550.3903306,
+    "ast_hash": "9207da91095b90d5dbe96fce23bc73b1",
+    "semantic_hash": "9207da91095b90d5dbe96fce23bc73b1"
+  },
+  "app/Models/Tenant/Quiz.php": {
+    "mtime": 1784960529.6744335,
+    "ast_hash": "9475391e39c102dea39b0d0bfce2308f",
+    "semantic_hash": "9475391e39c102dea39b0d0bfce2308f"
+  },
+  "app/Models/Tenant/QuizAnswer.php": {
+    "mtime": 1784960587.4031644,
+    "ast_hash": "2ecb31d7a9f99d63a79d31e4e94b877c",
+    "semantic_hash": "2ecb31d7a9f99d63a79d31e4e94b877c"
+  },
+  "app/Models/Tenant/QuizAttempt.php": {
+    "mtime": 1784960579.449127,
+    "ast_hash": "da5e70a505f7b5d3576b5a5e488ff58f",
+    "semantic_hash": "da5e70a505f7b5d3576b5a5e488ff58f"
+  },
+  "app/Models/Tenant/QuizParticipant.php": {
+    "mtime": 1784960556.628064,
+    "ast_hash": "4fcb19ae9895b4d38c084fc7b5845e5d",
+    "semantic_hash": "4fcb19ae9895b4d38c084fc7b5845e5d"
+  },
+  "app/Models/Tenant/User.php": {
+    "mtime": 1784960514.229544,
+    "ast_hash": "03326604fbd5f39935fb3d547edd27b3",
+    "semantic_hash": "03326604fbd5f39935fb3d547edd27b3"
+  },
+  "app/Models/User.php": {
+    "mtime": 1783289831.398609,
+    "ast_hash": "ba0634dc50669f1c8bf9f1accbd00482",
+    "semantic_hash": "ba0634dc50669f1c8bf9f1accbd00482"
+  },
+  "app/Providers/AppServiceProvider.php": {
+    "mtime": 1783421840.6048188,
+    "ast_hash": "d1dd71f86771732e45112463aa2722e6",
+    "semantic_hash": "d1dd71f86771732e45112463aa2722e6"
+  },
+  "app/Providers/FortifyServiceProvider.php": {
+    "mtime": 1784962311.7582853,
+    "ast_hash": "5fdc08da43896bcd18da2966f739a04a",
+    "semantic_hash": "5fdc08da43896bcd18da2966f739a04a"
+  },
+  "app/Providers/TenancyServiceProvider.php": {
+    "mtime": 1784960437.88,
+    "ast_hash": "99a939b40ec5e4e62a91961ede80eb20",
+    "semantic_hash": "99a939b40ec5e4e62a91961ede80eb20"
+  },
+  "app/Services/LlmProviders/CustomProvider.php": {
+    "mtime": 1784961948.9529245,
+    "ast_hash": "f591321c1eca6545f93104de243625dd",
+    "semantic_hash": "f591321c1eca6545f93104de243625dd"
+  },
+  "app/Services/LlmProviders/DeepSeekProvider.php": {
+    "mtime": 1784961943.5159729,
+    "ast_hash": "a50fe1408de087d738c24ad912a690be",
+    "semantic_hash": "a50fe1408de087d738c24ad912a690be"
+  },
+  "app/Services/LlmProviders/OpenRouterProvider.php": {
+    "mtime": 1784961940.1380558,
+    "ast_hash": "aa2d20f808ceba02866881cc4e38a45d",
+    "semantic_hash": "aa2d20f808ceba02866881cc4e38a45d"
+  },
+  "app/Services/LlmService.php": {
+    "mtime": 1783419059.660385,
+    "ast_hash": "120eba9e6824479acaa4bcad95c02f17",
+    "semantic_hash": "120eba9e6824479acaa4bcad95c02f17"
+  },
+  "app/Services/NotificationService.php": {
+    "mtime": 1783419711.5707333,
+    "ast_hash": "f7701ed96d92f73ad23c76b4d24999da",
+    "semantic_hash": "f7701ed96d92f73ad23c76b4d24999da"
+  },
+  "app/Services/PaymentGatewayManager.php": {
+    "mtime": 1783351980.5293152,
+    "ast_hash": "041afcb7b6cc6e964651fa55e9e59ea6",
+    "semantic_hash": "041afcb7b6cc6e964651fa55e9e59ea6"
+  },
+  "app/Services/PaymentGateways/DokuGateway.php": {
+    "mtime": 1783352071.5670402,
+    "ast_hash": "4a6b5b9e0dea0aca42ea521a1f0ad073",
+    "semantic_hash": "4a6b5b9e0dea0aca42ea521a1f0ad073"
+  },
+  "app/Services/PaymentGateways/DuitkuGateway.php": {
+    "mtime": 1783352073.7887168,
+    "ast_hash": "0159c53155e71ad0448d7aa9a941a717",
+    "semantic_hash": "0159c53155e71ad0448d7aa9a941a717"
+  },
+  "app/Services/PaymentGateways/IpaymuGateway.php": {
+    "mtime": 1783352068.8615685,
+    "ast_hash": "89813b9b2f74df8bf76213760456e0f8",
+    "semantic_hash": "89813b9b2f74df8bf76213760456e0f8"
+  },
+  "app/Services/PaymentGateways/MidtransGateway.php": {
+    "mtime": 1784964097.5535448,
+    "ast_hash": "46aab43628975a64d18da18f53a2a74e",
+    "semantic_hash": "46aab43628975a64d18da18f53a2a74e"
+  },
+  "app/Services/PaymentGateways/XenditGateway.php": {
+    "mtime": 1784964099.8427787,
+    "ast_hash": "d63ea6e771fd1d0091e92bf912927ec5",
+    "semantic_hash": "d63ea6e771fd1d0091e92bf912927ec5"
+  },
+  "app/Services/PromptBuilder.php": {
+    "mtime": 1783419080.9923978,
+    "ast_hash": "b735619a423cc455b35a268fa8c42005",
+    "semantic_hash": "b735619a423cc455b35a268fa8c42005"
+  },
+  "app/Services/TokenService.php": {
+    "mtime": 1784996990.8080897,
+    "ast_hash": "db9824dfc12af825c288aacb9e070ec3",
+    "semantic_hash": "db9824dfc12af825c288aacb9e070ec3"
+  },
+  "app/Services/WaGateways/FonnteDriver.php": {
+    "mtime": 1783419677.1522384,
+    "ast_hash": "4edcbf5332da5a387c9a8f1b00885511",
+    "semantic_hash": "4edcbf5332da5a387c9a8f1b00885511"
+  },
+  "app/Services/WaGateways/LogDriver.php": {
+    "mtime": 1783419691.9776318,
+    "ast_hash": "7edfebd46814e7e04157bbc08627c8d5",
+    "semantic_hash": "7edfebd46814e7e04157bbc08627c8d5"
+  },
+  "app/Services/WaGateways/WablastDriver.php": {
+    "mtime": 1783419685.782501,
+    "ast_hash": "eef708951b7bd735bbbd088cc5b5774f",
+    "semantic_hash": "eef708951b7bd735bbbd088cc5b5774f"
+  },
+  "artisan": {
+    "mtime": 1773507240.0,
+    "ast_hash": "e66bb13691f6184c762c196427d8e685",
+    "semantic_hash": "e66bb13691f6184c762c196427d8e685"
+  },
+  "bootstrap/app.php": {
+    "mtime": 1773507240.0,
+    "ast_hash": "d98cb8343b14d080523decff545f5fc8",
+    "semantic_hash": "d98cb8343b14d080523decff545f5fc8"
+  },
+  "bootstrap/providers.php": {
+    "mtime": 1783352380.1895926,
+    "ast_hash": "f1d729a1a5d001bbe67084c1b0b0544d",
+    "semantic_hash": "f1d729a1a5d001bbe67084c1b0b0544d"
+  },
+  "composer.json": {
+    "mtime": 1784989986.407603,
+    "ast_hash": "3a4481712f7baff496af2f4077ac704c",
+    "semantic_hash": "3a4481712f7baff496af2f4077ac704c"
+  },
+  "config/app.php": {
+    "mtime": 1784960808.5709994,
+    "ast_hash": "316c08ecc5ab5be78d2a90800e0a6cda",
+    "semantic_hash": "316c08ecc5ab5be78d2a90800e0a6cda"
+  },
+  "config/auth.php": {
+    "mtime": 1783289995.2435212,
+    "ast_hash": "95fab44c1c28a0bfa1aa539884ba50b9",
+    "semantic_hash": "95fab44c1c28a0bfa1aa539884ba50b9"
+  },
+  "config/cache.php": {
+    "mtime": 1773507240.0,
+    "ast_hash": "022fdf20e95ddb79949954243e367003",
+    "semantic_hash": "022fdf20e95ddb79949954243e367003"
+  },
+  "config/database.php": {
+    "mtime": 1773507240.0,
+    "ast_hash": "3cd69c7ecc842e4552e44eade546d91f",
+    "semantic_hash": "3cd69c7ecc842e4552e44eade546d91f"
+  },
+  "config/filesystems.php": {
+    "mtime": 1773507240.0,
+    "ast_hash": "bde1aa1027f0448f17348dbd93f3d7ea",
+    "semantic_hash": "bde1aa1027f0448f17348dbd93f3d7ea"
+  },
+  "config/fortify.php": {
+    "mtime": 1783420840.0847955,
+    "ast_hash": "41963a8496fc9f3e836c23892f926f48",
+    "semantic_hash": "41963a8496fc9f3e836c23892f926f48"
+  },
+  "config/logging.php": {
+    "mtime": 1773507240.0,
+    "ast_hash": "d8255a5c07d3da72c7c9363f0c44bddd",
+    "semantic_hash": "d8255a5c07d3da72c7c9363f0c44bddd"
+  },
+  "config/mail.php": {
+    "mtime": 1773507240.0,
+    "ast_hash": "18601a927b48d38337ba2077426a7d60",
+    "semantic_hash": "18601a927b48d38337ba2077426a7d60"
+  },
+  "config/permission.php": {
+    "mtime": 1783289687.5769515,
+    "ast_hash": "1de88e04b3348c5d6ef125f3d2168aed",
+    "semantic_hash": "1de88e04b3348c5d6ef125f3d2168aed"
+  },
+  "config/queue.php": {
+    "mtime": 1773507240.0,
+    "ast_hash": "f98ce92e7bf51db1fabaf8a30e12fc5a",
+    "semantic_hash": "f98ce92e7bf51db1fabaf8a30e12fc5a"
+  },
+  "config/services.php": {
+    "mtime": 1773507240.0,
+    "ast_hash": "534a1b7af7009c373ea4ebfa18823d57",
+    "semantic_hash": "534a1b7af7009c373ea4ebfa18823d57"
+  },
+  "config/session.php": {
+    "mtime": 1773507240.0,
+    "ast_hash": "6d9336e9ca1183588abbce7ff7a6f29a",
+    "semantic_hash": "6d9336e9ca1183588abbce7ff7a6f29a"
+  },
+  "config/tenancy.php": {
+    "mtime": 1784960418.7765484,
+    "ast_hash": "66595f60a5dfed50b007553f66a18b93",
+    "semantic_hash": "66595f60a5dfed50b007553f66a18b93"
+  },
+  "database/factories/UserFactory.php": {
+    "mtime": 1773507240.0,
+    "ast_hash": "1c9f381f9c2bc3027971a3bfdbe99164",
+    "semantic_hash": "1c9f381f9c2bc3027971a3bfdbe99164"
+  },
+  "database/migrations/0001_01_01_000000_create_users_table.php": {
+    "mtime": 1784961232.1286066,
+    "ast_hash": "33e45515535f92b1c02d465b7f13599c",
+    "semantic_hash": "33e45515535f92b1c02d465b7f13599c"
+  },
+  "database/migrations/0001_01_01_000001_create_cache_table.php": {
+    "mtime": 1773507240.0,
+    "ast_hash": "f3f38b41650112a6282c8dd1f635afb0",
+    "semantic_hash": "f3f38b41650112a6282c8dd1f635afb0"
+  },
+  "database/migrations/0001_01_01_000002_create_jobs_table.php": {
+    "mtime": 1773507240.0,
+    "ast_hash": "ead9cce2650b36345454f85e8c0214a0",
+    "semantic_hash": "ead9cce2650b36345454f85e8c0214a0"
+  },
+  "database/migrations/2019_09_15_000010_create_tenants_table.php": {
+    "mtime": 1783289899.807177,
+    "ast_hash": "a52a7dfad9acfd2e74716e0f4cd02192",
+    "semantic_hash": "a52a7dfad9acfd2e74716e0f4cd02192"
+  },
+  "database/migrations/2019_09_15_000020_create_domains_table.php": {
+    "mtime": 1783289681.57991,
+    "ast_hash": "d9fcd2e4f8a0a52cc446e13e10975b7f",
+    "semantic_hash": "d9fcd2e4f8a0a52cc446e13e10975b7f"
+  },
+  "database/migrations/2024_01_01_000001_create_owners_table.php": {
+    "mtime": 1783289902.9218743,
+    "ast_hash": "0d9481977aa7fd88f0975bb476479915",
+    "semantic_hash": "0d9481977aa7fd88f0975bb476479915"
+  },
+  "database/migrations/2024_01_01_000002_create_owner_token_balances_table.php": {
+    "mtime": 1783289907.425777,
+    "ast_hash": "4d3020185a2e81409fc70d9dd807699e",
+    "semantic_hash": "4d3020185a2e81409fc70d9dd807699e"
+  },
+  "database/migrations/2024_01_01_000003_create_token_transactions_table.php": {
+    "mtime": 1783289910.4771392,
+    "ast_hash": "8268b0d8f8712b0590787bce2f5ebfd8",
+    "semantic_hash": "8268b0d8f8712b0590787bce2f5ebfd8"
+  },
+  "database/migrations/2024_01_01_000004_create_token_packages_table.php": {
+    "mtime": 1783289915.8076367,
+    "ast_hash": "c8dc0803d521ab81ab14153d1a680c15",
+    "semantic_hash": "c8dc0803d521ab81ab14153d1a680c15"
+  },
+  "database/migrations/2024_01_01_000005_create_token_orders_table.php": {
+    "mtime": 1783289920.7104664,
+    "ast_hash": "ae06a3d6e5f2c79cfdbe6f46dc383122",
+    "semantic_hash": "ae06a3d6e5f2c79cfdbe6f46dc383122"
+  },
+  "database/migrations/2024_01_01_000006_create_llm_providers_table.php": {
+    "mtime": 1783289927.9428124,
+    "ast_hash": "575ae7e286bd115206202b9c32aa6143",
+    "semantic_hash": "575ae7e286bd115206202b9c32aa6143"
+  },
+  "database/migrations/2024_01_01_000007_create_gateway_configs_tables.php": {
+    "mtime": 1783289932.8906233,
+    "ast_hash": "970047f37300142662e0c817a086f5f7",
+    "semantic_hash": "970047f37300142662e0c817a086f5f7"
+  },
+  "database/migrations/2024_01_01_000008_create_system_settings_and_activity_logs_tables.php": {
+    "mtime": 1783289934.90871,
+    "ast_hash": "894e3051ff5678077f1f686afeed7705",
+    "semantic_hash": "894e3051ff5678077f1f686afeed7705"
+  },
+  "database/migrations/2026_07_05_221447_create_permission_tables.php": {
+    "mtime": 1783289687.685026,
+    "ast_hash": "c9b8b3ba6640c0bba30065bcc92387bf",
+    "semantic_hash": "c9b8b3ba6640c0bba30065bcc92387bf"
+  },
+  "database/migrations/2026_07_05_221449_add_two_factor_columns_to_users_table.php": {
+    "mtime": 1783289688.897928,
+    "ast_hash": "ce1ecf81af87ab19e6f83d204ed0f436",
+    "semantic_hash": "ce1ecf81af87ab19e6f83d204ed0f436"
+  },
+  "database/migrations/2026_07_05_221450_create_passkeys_table.php": {
+    "mtime": 1783289688.9095485,
+    "ast_hash": "713fca9f23c283d2f44bb971fa8edd3c",
+    "semantic_hash": "713fca9f23c283d2f44bb971fa8edd3c"
+  },
+  "database/migrations/2026_07_25_000001_modify_token_transactions_source_column.php": {
+    "mtime": 1784996980.3317854,
+    "ast_hash": "00fe421ff4aff68378679b3f649c3c56",
+    "semantic_hash": "00fe421ff4aff68378679b3f649c3c56"
+  },
+  "database/migrations/2026_07_25_100001_create_tenant_users_table.php": {
+    "mtime": 1784960469.9016402,
+    "ast_hash": "56d9099d9d91119173bf4d4c7e6028ad",
+    "semantic_hash": "56d9099d9d91119173bf4d4c7e6028ad"
+  },
+  "database/migrations/2026_07_25_100002_create_quizzes_tables.php": {
+    "mtime": 1784960481.652838,
+    "ast_hash": "073b6a69a4628d7792c50c5489840bff",
+    "semantic_hash": "073b6a69a4628d7792c50c5489840bff"
+  },
+  "database/migrations/2026_07_25_100003_create_quiz_attempts_tables.php": {
+    "mtime": 1784960495.0787833,
+    "ast_hash": "384c964d018da15fc3b3d198cabdc293",
+    "semantic_hash": "384c964d018da15fc3b3d198cabdc293"
+  },
+  "database/migrations/2026_07_25_100004_create_notification_logs_table.php": {
+    "mtime": 1784960502.2171588,
+    "ast_hash": "5f4f06ec818f7d5b7ef60566fb5452af",
+    "semantic_hash": "5f4f06ec818f7d5b7ef60566fb5452af"
+  },
+  "database/migrations/2026_07_25_100005_fix_sessions_user_id_column.php": {
+    "mtime": 1784961237.3551562,
+    "ast_hash": "aa0ff6c2dffe3d23c6f3ad9d29cece0c",
+    "semantic_hash": "aa0ff6c2dffe3d23c6f3ad9d29cece0c"
+  },
+  "database/migrations/2026_07_25_200000_add_dashboard_performance_indexes.php": {
+    "mtime": 1784989930.0199099,
+    "ast_hash": "98726a83e0ef8c5946fbb8a29dcffd43",
+    "semantic_hash": "98726a83e0ef8c5946fbb8a29dcffd43"
+  },
+  "database/seeders/DatabaseSeeder.php": {
+    "mtime": 1784964711.061602,
+    "ast_hash": "e9793937deb7ad24c2850e929b9d826e",
+    "semantic_hash": "e9793937deb7ad24c2850e929b9d826e"
+  },
+  "database/seeders/LlmProviderSeeder.php": {
+    "mtime": 1784960696.7959728,
+    "ast_hash": "6a9eba4dd5de80339c1fe046cd5374b8",
+    "semantic_hash": "6a9eba4dd5de80339c1fe046cd5374b8"
+  },
+  "database/seeders/RoleSeeder.php": {
+    "mtime": 1784960690.930478,
+    "ast_hash": "7b4961c1174646b32590de3762e45a33",
+    "semantic_hash": "7b4961c1174646b32590de3762e45a33"
+  },
+  "database/seeders/SystemSettingSeeder.php": {
+    "mtime": 1784960693.9324653,
+    "ast_hash": "bfd0e8c986a3798aed9c920c63322e12",
+    "semantic_hash": "bfd0e8c986a3798aed9c920c63322e12"
+  },
+  "database/seeders/TokenPackageSeeder.php": {
+    "mtime": 1784960695.368384,
+    "ast_hash": "7368397fcd66fb366b037f50f193f475",
+    "semantic_hash": "7368397fcd66fb366b037f50f193f475"
+  },
+  "database/seeders/UserSeeder.php": {
+    "mtime": 1784964861.4220529,
+    "ast_hash": "547de29620d8a6524b9239e6313da0ff",
+    "semantic_hash": "547de29620d8a6524b9239e6313da0ff"
+  },
+  "docs/tailadmin-laravel-main/app/Helpers/MenuHelper.php": {
+    "mtime": 1779508054.0,
+    "ast_hash": "4997bdd25a7badf24bf00bb55f97cb91",
+    "semantic_hash": "4997bdd25a7badf24bf00bb55f97cb91"
+  },
+  "docs/tailadmin-laravel-main/app/Http/Controllers/Controller.php": {
+    "mtime": 1779508054.0,
+    "ast_hash": "25a307335c0719bc9a91b3f7babd186d",
+    "semantic_hash": "25a307335c0719bc9a91b3f7babd186d"
+  },
+  "docs/tailadmin-laravel-main/app/Http/Controllers/DashboardController.php": {
+    "mtime": 1779508054.0,
+    "ast_hash": "96f499aa7694f52abc762f61c45a4a09",
+    "semantic_hash": "96f499aa7694f52abc762f61c45a4a09"
+  },
+  "docs/tailadmin-laravel-main/app/Http/Controllers/SidebarController.php": {
+    "mtime": 1779508054.0,
+    "ast_hash": "b00d99888d8cdb05debe679abcefa218",
+    "semantic_hash": "b00d99888d8cdb05debe679abcefa218"
+  },
+  "docs/tailadmin-laravel-main/app/Models/User.php": {
+    "mtime": 1779508054.0,
+    "ast_hash": "7e97fadb5151a214850c6566f879990e",
+    "semantic_hash": "7e97fadb5151a214850c6566f879990e"
+  },
+  "docs/tailadmin-laravel-main/app/Providers/AppServiceProvider.php": {
+    "mtime": 1779508054.0,
+    "ast_hash": "c0094f35cad6bba7636002a62186dae4",
+    "semantic_hash": "c0094f35cad6bba7636002a62186dae4"
+  },
+  "docs/tailadmin-laravel-main/app/View/Components/CalenderArea.php": {
+    "mtime": 1779508054.0,
+    "ast_hash": "98b51fda63e75ff607058b20eae1b827",
+    "semantic_hash": "98b51fda63e75ff607058b20eae1b827"
+  },
+  "docs/tailadmin-laravel-main/app/View/Components/common/CommonGridShape.php": {
+    "mtime": 1779508054.0,
+    "ast_hash": "1def0c28d8ba0b58f6f7babcfa146a04",
+    "semantic_hash": "1def0c28d8ba0b58f6f7babcfa146a04"
+  },
+  "docs/tailadmin-laravel-main/app/View/Components/common/ComponentCard.php": {
+    "mtime": 1779508054.0,
+    "ast_hash": "3267d48ce382b053aa9d4ab516ac5b61",
+    "semantic_hash": "3267d48ce382b053aa9d4ab516ac5b61"
+  },
+  "docs/tailadmin-laravel-main/app/View/Components/common/DropdownMenu.php": {
+    "mtime": 1779508054.0,
+    "ast_hash": "78a42976331b898e5fb3e54a8f83c326",
+    "semantic_hash": "78a42976331b898e5fb3e54a8f83c326"
+  },
+  "docs/tailadmin-laravel-main/app/View/Components/common/PageBreadcrumb.php": {
+    "mtime": 1779508054.0,
+    "ast_hash": "c577e717117ea56e8754cf7e11bbb3aa",
+    "semantic_hash": "c577e717117ea56e8754cf7e11bbb3aa"
+  },
+  "docs/tailadmin-laravel-main/app/View/Components/common/Preloader.php": {
+    "mtime": 1779508054.0,
+    "ast_hash": "950f6ec81b1e0f0d828976874fa5bb6e",
+    "semantic_hash": "950f6ec81b1e0f0d828976874fa5bb6e"
+  },
+  "docs/tailadmin-laravel-main/app/View/Components/common/TableDropdown.php": {
+    "mtime": 1779508054.0,
+    "ast_hash": "ec6905aa90001d0766d415637ec6ec62",
+    "semantic_hash": "ec6905aa90001d0766d415637ec6ec62"
+  },
+  "docs/tailadmin-laravel-main/app/View/Components/common/ThemeToggle.php": {
+    "mtime": 1779508054.0,
+    "ast_hash": "ce7f8aece7eec71c21791f26e1d4418f",
+    "semantic_hash": "ce7f8aece7eec71c21791f26e1d4418f"
+  },
+  "docs/tailadmin-laravel-main/app/View/Components/ecommerce/CustomerDemographic.php": {
+    "mtime": 1779508054.0,
+    "ast_hash": "9b1578a9b5312d1cedb1ce08ca20f038",
+    "semantic_hash": "9b1578a9b5312d1cedb1ce08ca20f038"
+  },
+  "docs/tailadmin-laravel-main/app/View/Components/ecommerce/EcommerceMetrics.php": {
+    "mtime": 1779508054.0,
+    "ast_hash": "5603a780c0381c9577ecf5911025bcb6",
+    "semantic_hash": "5603a780c0381c9577ecf5911025bcb6"
+  },
+  "docs/tailadmin-laravel-main/app/View/Components/ecommerce/MonthlySale.php": {
+    "mtime": 1779508054.0,
+    "ast_hash": "4c2021076904adc7544a2afd54e4c208",
+    "semantic_hash": "4c2021076904adc7544a2afd54e4c208"
+  },
+  "docs/tailadmin-laravel-main/app/View/Components/ecommerce/MonthlyTarget.php": {
+    "mtime": 1779508054.0,
+    "ast_hash": "f764112819a0ecc783844284cf952f60",
+    "semantic_hash": "f764112819a0ecc783844284cf952f60"
+  },
+  "docs/tailadmin-laravel-main/app/View/Components/ecommerce/RecentOrders.php": {
+    "mtime": 1779508054.0,
+    "ast_hash": "9b3bc8c3883222b5d4c748aa1da48193",
+    "semantic_hash": "9b3bc8c3883222b5d4c748aa1da48193"
+  },
+  "docs/tailadmin-laravel-main/app/View/Components/ecommerce/StatisticsChart.php": {
+    "mtime": 1779508054.0,
+    "ast_hash": "d13ed5b8fe88695d8054b0befa68c6ae",
+    "semantic_hash": "d13ed5b8fe88695d8054b0befa68c6ae"
+  },
+  "docs/tailadmin-laravel-main/app/View/Components/form/DatePicker.php": {
+    "mtime": 1779508054.0,
+    "ast_hash": "97f80ae7f004ac1c7083077b0fbb0840",
+    "semantic_hash": "97f80ae7f004ac1c7083077b0fbb0840"
+  },
+  "docs/tailadmin-laravel-main/app/View/Components/form/FormElements/CheckboxComponent.php": {
+    "mtime": 1779508054.0,
+    "ast_hash": "886d4cb27111e8aeb7817dbcfa07d559",
+    "semantic_hash": "886d4cb27111e8aeb7817dbcfa07d559"
+  },
+  "docs/tailadmin-laravel-main/app/View/Components/form/FormElements/DefaultInputs.php": {
+    "mtime": 1779508054.0,
+    "ast_hash": "4354cefce7da58db645bd77c26380ebc",
+    "semantic_hash": "4354cefce7da58db645bd77c26380ebc"
+  },
+  "docs/tailadmin-laravel-main/app/View/Components/form/FormElements/Dropzone.php": {
+    "mtime": 1779508054.0,
+    "ast_hash": "f9abcb726ca465283cc4094b06b975aa",
+    "semantic_hash": "f9abcb726ca465283cc4094b06b975aa"
+  },
+  "docs/tailadmin-laravel-main/app/View/Components/form/FormElements/FileInputExample.php": {
+    "mtime": 1779508054.0,
+    "ast_hash": "cb1bcc428108578937389d1572d14145",
+    "semantic_hash": "cb1bcc428108578937389d1572d14145"
+  },
+  "docs/tailadmin-laravel-main/app/View/Components/form/FormElements/InputGroup.php": {
+    "mtime": 1779508054.0,
+    "ast_hash": "7dee8f24ec8def7c9db60be4621a445e",
+    "semantic_hash": "7dee8f24ec8def7c9db60be4621a445e"
+  },
+  "docs/tailadmin-laravel-main/app/View/Components/form/FormElements/InputStates.php": {
+    "mtime": 1779508054.0,
+    "ast_hash": "0a3f81fece27d6288837e392141157a0",
+    "semantic_hash": "0a3f81fece27d6288837e392141157a0"
+  },
+  "docs/tailadmin-laravel-main/app/View/Components/form/FormElements/RadioButtons.php": {
+    "mtime": 1779508054.0,
+    "ast_hash": "f5fb64d24a9619b90ff8389dba80276d",
+    "semantic_hash": "f5fb64d24a9619b90ff8389dba80276d"
+  },
+  "docs/tailadmin-laravel-main/app/View/Components/form/FormElements/SelectInputs.php": {
+    "mtime": 1779508054.0,
+    "ast_hash": "87da3a71e3c78adcb9487f80fa05ccdd",
+    "semantic_hash": "87da3a71e3c78adcb9487f80fa05ccdd"
+  },
+  "docs/tailadmin-laravel-main/app/View/Components/form/FormElements/TextAreaInputs.php": {
+    "mtime": 1779508054.0,
+    "ast_hash": "b53aa0f2824127dd28da85ddcc9d091e",
+    "semantic_hash": "b53aa0f2824127dd28da85ddcc9d091e"
+  },
+  "docs/tailadmin-laravel-main/app/View/Components/form/FormElements/ToggleSwitch.php": {
+    "mtime": 1779508054.0,
+    "ast_hash": "0c0be7fbd556ed63396c34d122800dbe",
+    "semantic_hash": "0c0be7fbd556ed63396c34d122800dbe"
+  },
+  "docs/tailadmin-laravel-main/app/View/Components/form/input/Radio.php": {
+    "mtime": 1779508054.0,
+    "ast_hash": "7b04c7644f58aba5aec03d3784bb611f",
+    "semantic_hash": "7b04c7644f58aba5aec03d3784bb611f"
+  },
+  "docs/tailadmin-laravel-main/app/View/Components/form/select/MultipleSelect.php": {
+    "mtime": 1779508054.0,
+    "ast_hash": "4ad8d3ececfe39e08eaf50772a91429a",
+    "semantic_hash": "4ad8d3ececfe39e08eaf50772a91429a"
+  },
+  "docs/tailadmin-laravel-main/app/View/Components/header/NotificationDropdown.php": {
+    "mtime": 1779508054.0,
+    "ast_hash": "e21ff33885162b390b0473587da33c62",
+    "semantic_hash": "e21ff33885162b390b0473587da33c62"
+  },
+  "docs/tailadmin-laravel-main/app/View/Components/header/UserDropdown.php": {
+    "mtime": 1779508054.0,
+    "ast_hash": "4e00aecadfb3579a95b6d2c10501cdc6",
+    "semantic_hash": "4e00aecadfb3579a95b6d2c10501cdc6"
+  },
+  "docs/tailadmin-laravel-main/app/View/Components/profile/AddressCard.php": {
+    "mtime": 1779508054.0,
+    "ast_hash": "511b42f74d626a13bad7489c6a9a6b41",
+    "semantic_hash": "511b42f74d626a13bad7489c6a9a6b41"
+  },
+  "docs/tailadmin-laravel-main/app/View/Components/profile/PersonalInfoCard.php": {
+    "mtime": 1779508054.0,
+    "ast_hash": "5938932099da897823a0fc68cbf5f3ed",
+    "semantic_hash": "5938932099da897823a0fc68cbf5f3ed"
+  },
+  "docs/tailadmin-laravel-main/app/View/Components/profile/ProfileCard.php": {
+    "mtime": 1779508054.0,
+    "ast_hash": "f4f0bcc7819cd8b78e497931a83e0ab9",
+    "semantic_hash": "f4f0bcc7819cd8b78e497931a83e0ab9"
+  },
+  "docs/tailadmin-laravel-main/app/View/Components/tables/BasicTables/BasicTablesFive.php": {
+    "mtime": 1779508054.0,
+    "ast_hash": "ac5d374a44cf412ac4099e49c96fbb8f",
+    "semantic_hash": "ac5d374a44cf412ac4099e49c96fbb8f"
+  },
+  "docs/tailadmin-laravel-main/app/View/Components/tables/BasicTables/BasicTablesFour.php": {
+    "mtime": 1779508054.0,
+    "ast_hash": "8717ed6aee6d1cb84ccabde448fd41b4",
+    "semantic_hash": "8717ed6aee6d1cb84ccabde448fd41b4"
+  },
+  "docs/tailadmin-laravel-main/app/View/Components/tables/BasicTables/BasicTablesOne.php": {
+    "mtime": 1779508054.0,
+    "ast_hash": "e1536f28146d153130fc0a7b5ec6d867",
+    "semantic_hash": "e1536f28146d153130fc0a7b5ec6d867"
+  },
+  "docs/tailadmin-laravel-main/app/View/Components/tables/BasicTables/BasicTablesThree.php": {
+    "mtime": 1779508054.0,
+    "ast_hash": "95e425d414e01887db78f513be2df263",
+    "semantic_hash": "95e425d414e01887db78f513be2df263"
+  },
+  "docs/tailadmin-laravel-main/app/View/Components/tables/BasicTables/BasicTablesTwo.php": {
+    "mtime": 1779508054.0,
+    "ast_hash": "04626df2cc202f0fae0d1c40f75043c7",
+    "semantic_hash": "04626df2cc202f0fae0d1c40f75043c7"
+  },
+  "docs/tailadmin-laravel-main/app/View/Components/ui/Alert.php": {
+    "mtime": 1779508054.0,
+    "ast_hash": "9adb62096c4507e47a830a0d7a4cc433",
+    "semantic_hash": "9adb62096c4507e47a830a0d7a4cc433"
+  },
+  "docs/tailadmin-laravel-main/app/View/Components/ui/Avatar.php": {
+    "mtime": 1779508054.0,
+    "ast_hash": "4d51072e068e15296b83a1c6d829642a",
+    "semantic_hash": "4d51072e068e15296b83a1c6d829642a"
+  },
+  "docs/tailadmin-laravel-main/app/View/Components/ui/Badge.php": {
+    "mtime": 1779508054.0,
+    "ast_hash": "ddec6e2abb3156f89a509549ca21ddb8",
+    "semantic_hash": "ddec6e2abb3156f89a509549ca21ddb8"
+  },
+  "docs/tailadmin-laravel-main/app/View/Components/ui/Button.php": {
+    "mtime": 1779508054.0,
+    "ast_hash": "f6d325e105d7012c264faa2cb4766e31",
+    "semantic_hash": "f6d325e105d7012c264faa2cb4766e31"
+  },
+  "docs/tailadmin-laravel-main/app/View/Components/ui/Modal.php": {
+    "mtime": 1779508054.0,
+    "ast_hash": "e5adde4f5bb3b656db043131b5c623a9",
+    "semantic_hash": "e5adde4f5bb3b656db043131b5c623a9"
+  },
+  "docs/tailadmin-laravel-main/app/View/Components/ui/YoutubeEmbed.php": {
+    "mtime": 1779508054.0,
+    "ast_hash": "f9ef7c522e244480bbdd8e77b0d36eb7",
+    "semantic_hash": "f9ef7c522e244480bbdd8e77b0d36eb7"
+  },
+  "docs/tailadmin-laravel-main/artisan": {
+    "mtime": 1779508054.0,
+    "ast_hash": "e66bb13691f6184c762c196427d8e685",
+    "semantic_hash": "e66bb13691f6184c762c196427d8e685"
+  },
+  "docs/tailadmin-laravel-main/bootstrap/app.php": {
+    "mtime": 1779508054.0,
+    "ast_hash": "d98cb8343b14d080523decff545f5fc8",
+    "semantic_hash": "d98cb8343b14d080523decff545f5fc8"
+  },
+  "docs/tailadmin-laravel-main/bootstrap/providers.php": {
+    "mtime": 1779508054.0,
+    "ast_hash": "d18593472c5e35d8ab5add4240fc95f6",
+    "semantic_hash": "d18593472c5e35d8ab5add4240fc95f6"
+  },
+  "docs/tailadmin-laravel-main/composer.json": {
+    "mtime": 1779508054.0,
+    "ast_hash": "d1b1a77e1f49315b1418886bb81d4db8",
+    "semantic_hash": "d1b1a77e1f49315b1418886bb81d4db8"
+  },
+  "docs/tailadmin-laravel-main/config/app.php": {
+    "mtime": 1779508054.0,
+    "ast_hash": "276578ad68424be59d0998379ae7d4cb",
+    "semantic_hash": "276578ad68424be59d0998379ae7d4cb"
+  },
+  "docs/tailadmin-laravel-main/config/auth.php": {
+    "mtime": 1779508054.0,
+    "ast_hash": "74dec5ff7ad634dc226fd424f2414585",
+    "semantic_hash": "74dec5ff7ad634dc226fd424f2414585"
+  },
+  "docs/tailadmin-laravel-main/config/cache.php": {
+    "mtime": 1779508054.0,
+    "ast_hash": "52938e090edbc480544e085de0f4f276",
+    "semantic_hash": "52938e090edbc480544e085de0f4f276"
+  },
+  "docs/tailadmin-laravel-main/config/database.php": {
+    "mtime": 1779508054.0,
+    "ast_hash": "917a999a82c45b279cb5c18c9fe26180",
+    "semantic_hash": "917a999a82c45b279cb5c18c9fe26180"
+  },
+  "docs/tailadmin-laravel-main/config/filesystems.php": {
+    "mtime": 1779508054.0,
+    "ast_hash": "717e65d7bb8f32a4f298ea769891734a",
+    "semantic_hash": "717e65d7bb8f32a4f298ea769891734a"
+  },
+  "docs/tailadmin-laravel-main/config/logging.php": {
+    "mtime": 1779508054.0,
+    "ast_hash": "8c2daadb3f84863916297f91d5f864e6",
+    "semantic_hash": "8c2daadb3f84863916297f91d5f864e6"
+  },
+  "docs/tailadmin-laravel-main/config/mail.php": {
+    "mtime": 1779508054.0,
+    "ast_hash": "56b14578a660ef83c41fa599620bef6b",
+    "semantic_hash": "56b14578a660ef83c41fa599620bef6b"
+  },
+  "docs/tailadmin-laravel-main/config/queue.php": {
+    "mtime": 1779508054.0,
+    "ast_hash": "fa588a4871790fca01d6a90af9208d15",
+    "semantic_hash": "fa588a4871790fca01d6a90af9208d15"
+  },
+  "docs/tailadmin-laravel-main/config/services.php": {
+    "mtime": 1779508054.0,
+    "ast_hash": "57753d0f922030587fd9debe2db50a46",
+    "semantic_hash": "57753d0f922030587fd9debe2db50a46"
+  },
+  "docs/tailadmin-laravel-main/config/session.php": {
+    "mtime": 1779508054.0,
+    "ast_hash": "2ae417e81eee13089f9a23878557ca94",
+    "semantic_hash": "2ae417e81eee13089f9a23878557ca94"
+  },
+  "docs/tailadmin-laravel-main/database/factories/UserFactory.php": {
+    "mtime": 1779508054.0,
+    "ast_hash": "e863c5e59a1728c6fd033e87269acda7",
+    "semantic_hash": "e863c5e59a1728c6fd033e87269acda7"
+  },
+  "docs/tailadmin-laravel-main/database/migrations/0001_01_01_000000_create_users_table.php": {
+    "mtime": 1779508054.0,
+    "ast_hash": "138280095e9d19f2ba6fb830415602e2",
+    "semantic_hash": "138280095e9d19f2ba6fb830415602e2"
+  },
+  "docs/tailadmin-laravel-main/database/migrations/0001_01_01_000001_create_cache_table.php": {
+    "mtime": 1779508054.0,
+    "ast_hash": "6803c10a1aa695d40633ec8bea5576d5",
+    "semantic_hash": "6803c10a1aa695d40633ec8bea5576d5"
+  },
+  "docs/tailadmin-laravel-main/database/migrations/0001_01_01_000002_create_jobs_table.php": {
+    "mtime": 1779508054.0,
+    "ast_hash": "ead9cce2650b36345454f85e8c0214a0",
+    "semantic_hash": "ead9cce2650b36345454f85e8c0214a0"
+  },
+  "docs/tailadmin-laravel-main/database/seeders/DatabaseSeeder.php": {
+    "mtime": 1779508054.0,
+    "ast_hash": "203551b514520168139f67a8c8fb418f",
+    "semantic_hash": "203551b514520168139f67a8c8fb418f"
+  },
+  "docs/tailadmin-laravel-main/package.json": {
+    "mtime": 1779508054.0,
+    "ast_hash": "e2233932a36d3dc2b382474598ed513f",
+    "semantic_hash": "e2233932a36d3dc2b382474598ed513f"
+  },
+  "docs/tailadmin-laravel-main/public/index.php": {
+    "mtime": 1779508054.0,
+    "ast_hash": "d8eda274115af5fd2aaa8230af329ef7",
+    "semantic_hash": "d8eda274115af5fd2aaa8230af329ef7"
+  },
+  "docs/tailadmin-laravel-main/resources/js/app.js": {
+    "mtime": 1779508054.0,
+    "ast_hash": "b798160721eeae13f462c68b9c0bf998",
+    "semantic_hash": "b798160721eeae13f462c68b9c0bf998"
+  },
+  "docs/tailadmin-laravel-main/resources/js/bootstrap.js": {
+    "mtime": 1779508054.0,
+    "ast_hash": "78f909acc19aea4717eddca5a87c1ba3",
+    "semantic_hash": "78f909acc19aea4717eddca5a87c1ba3"
+  },
+  "docs/tailadmin-laravel-main/resources/js/components/calendar-init.js": {
+    "mtime": 1779508054.0,
+    "ast_hash": "363e52c32a4628ee1f78b0c5a25d05f8",
+    "semantic_hash": "363e52c32a4628ee1f78b0c5a25d05f8"
+  },
+  "docs/tailadmin-laravel-main/resources/js/components/chart/chart-1.js": {
+    "mtime": 1779508054.0,
+    "ast_hash": "f653375d78ca8cc34d36df084c13ac62",
+    "semantic_hash": "f653375d78ca8cc34d36df084c13ac62"
+  },
+  "docs/tailadmin-laravel-main/resources/js/components/chart/chart-13.js": {
+    "mtime": 1779508054.0,
+    "ast_hash": "8bb8d01f74c2364ff63d2b5d0b3a6c87",
+    "semantic_hash": "8bb8d01f74c2364ff63d2b5d0b3a6c87"
+  },
+  "docs/tailadmin-laravel-main/resources/js/components/chart/chart-2.js": {
+    "mtime": 1779508054.0,
+    "ast_hash": "c460bab5cdf00b2a728c5db079127c32",
+    "semantic_hash": "c460bab5cdf00b2a728c5db079127c32"
+  },
+  "docs/tailadmin-laravel-main/resources/js/components/chart/chart-3.js": {
+    "mtime": 1779508054.0,
+    "ast_hash": "7f098d9ad387590660f58168d6a51ab3",
+    "semantic_hash": "7f098d9ad387590660f58168d6a51ab3"
+  },
+  "docs/tailadmin-laravel-main/resources/js/components/chart/chart-6.js": {
+    "mtime": 1779508054.0,
+    "ast_hash": "cf1220fede6f6be9293be4546641672d",
+    "semantic_hash": "cf1220fede6f6be9293be4546641672d"
+  },
+  "docs/tailadmin-laravel-main/resources/js/components/chart/chart-8.js": {
+    "mtime": 1779508054.0,
+    "ast_hash": "4cb06e0e923299ecd18b51c9eb97f450",
+    "semantic_hash": "4cb06e0e923299ecd18b51c9eb97f450"
+  },
+  "docs/tailadmin-laravel-main/resources/js/components/map.js": {
+    "mtime": 1779508054.0,
+    "ast_hash": "226879c4909e8587e292417627c876da",
+    "semantic_hash": "226879c4909e8587e292417627c876da"
+  },
+  "docs/tailadmin-laravel-main/resources/views/components/calender-area.blade.php": {
+    "mtime": 1779508054.0,
+    "ast_hash": "cd245893f8809e1e028061de337b4731",
+    "semantic_hash": "cd245893f8809e1e028061de337b4731"
+  },
+  "docs/tailadmin-laravel-main/resources/views/components/common/common-grid-shape.blade.php": {
+    "mtime": 1779508054.0,
+    "ast_hash": "30b74f3b41c69ea663e882283f8cf51b",
+    "semantic_hash": "30b74f3b41c69ea663e882283f8cf51b"
+  },
+  "docs/tailadmin-laravel-main/resources/views/components/common/component-card.blade.php": {
+    "mtime": 1779508054.0,
+    "ast_hash": "108f7cb28a60d131dd7552f0a66eee76",
+    "semantic_hash": "108f7cb28a60d131dd7552f0a66eee76"
+  },
+  "docs/tailadmin-laravel-main/resources/views/components/common/dropdown-menu.blade.php": {
+    "mtime": 1779508054.0,
+    "ast_hash": "e96113a47cf299f6322ccacf6acf8df5",
+    "semantic_hash": "e96113a47cf299f6322ccacf6acf8df5"
+  },
+  "docs/tailadmin-laravel-main/resources/views/components/common/page-breadcrumb.blade.php": {
+    "mtime": 1779508054.0,
+    "ast_hash": "0d36eeaaadbaef7ac13a9529bdd15a70",
+    "semantic_hash": "0d36eeaaadbaef7ac13a9529bdd15a70"
+  },
+  "docs/tailadmin-laravel-main/resources/views/components/common/preloader.blade.php": {
+    "mtime": 1779508054.0,
+    "ast_hash": "8e704c1ef83f5d22eaed5c0bb4aae850",
+    "semantic_hash": "8e704c1ef83f5d22eaed5c0bb4aae850"
+  },
+  "docs/tailadmin-laravel-main/resources/views/components/common/table-dropdown.blade.php": {
+    "mtime": 1779508054.0,
+    "ast_hash": "c467324e817eb08ee9e3be29927841b1",
+    "semantic_hash": "c467324e817eb08ee9e3be29927841b1"
+  },
+  "docs/tailadmin-laravel-main/resources/views/components/common/theme-toggle.blade.php": {
+    "mtime": 1779508054.0,
+    "ast_hash": "0e204f598a4dcefab33a272d8ac3154b",
+    "semantic_hash": "0e204f598a4dcefab33a272d8ac3154b"
+  },
+  "docs/tailadmin-laravel-main/resources/views/components/ecommerce/customer-demographic.blade.php": {
+    "mtime": 1779508054.0,
+    "ast_hash": "104e4576e55fd10f1452f1cb00d1e07f",
+    "semantic_hash": "104e4576e55fd10f1452f1cb00d1e07f"
+  },
+  "docs/tailadmin-laravel-main/resources/views/components/ecommerce/ecommerce-metrics.blade.php": {
+    "mtime": 1779508054.0,
+    "ast_hash": "9f4f44259d117b732e9cacae69afcbc2",
+    "semantic_hash": "9f4f44259d117b732e9cacae69afcbc2"
+  },
+  "docs/tailadmin-laravel-main/resources/views/components/ecommerce/monthly-sale.blade.php": {
+    "mtime": 1779508054.0,
+    "ast_hash": "b5b0e00992c6861f0dde1b3c4a266f00",
+    "semantic_hash": "b5b0e00992c6861f0dde1b3c4a266f00"
+  },
+  "docs/tailadmin-laravel-main/resources/views/components/ecommerce/monthly-target.blade.php": {
+    "mtime": 1779508054.0,
+    "ast_hash": "6d65703ae114188056c868c98fff50dd",
+    "semantic_hash": "6d65703ae114188056c868c98fff50dd"
+  },
+  "docs/tailadmin-laravel-main/resources/views/components/ecommerce/recent-orders.blade.php": {
+    "mtime": 1779508054.0,
+    "ast_hash": "7cf4885686f2f675f0912814e1693834",
+    "semantic_hash": "7cf4885686f2f675f0912814e1693834"
+  },
+  "docs/tailadmin-laravel-main/resources/views/components/ecommerce/statistics-chart.blade.php": {
+    "mtime": 1779508054.0,
+    "ast_hash": "7366b0b0465c1982a4747d65c01cc31c",
+    "semantic_hash": "7366b0b0465c1982a4747d65c01cc31c"
+  },
+  "docs/tailadmin-laravel-main/resources/views/components/form/date-picker.blade.php": {
+    "mtime": 1779508054.0,
+    "ast_hash": "995189a8f6508dcb76e6ff21180e6268",
+    "semantic_hash": "995189a8f6508dcb76e6ff21180e6268"
+  },
+  "docs/tailadmin-laravel-main/resources/views/components/form/form-elements/checkbox-component.blade.php": {
+    "mtime": 1779508054.0,
+    "ast_hash": "9503575baa4c37321b59948967631c94",
+    "semantic_hash": "9503575baa4c37321b59948967631c94"
+  },
+  "docs/tailadmin-laravel-main/resources/views/components/form/form-elements/default-inputs.blade.php": {
+    "mtime": 1779508054.0,
+    "ast_hash": "696f61d55facb15d0ad53797b7bf6bee",
+    "semantic_hash": "696f61d55facb15d0ad53797b7bf6bee"
+  },
+  "docs/tailadmin-laravel-main/resources/views/components/form/form-elements/dropzone.blade.php": {
+    "mtime": 1779508054.0,
+    "ast_hash": "3db924db6d54ce5dc40d55f89afa36bf",
+    "semantic_hash": "3db924db6d54ce5dc40d55f89afa36bf"
+  },
+  "docs/tailadmin-laravel-main/resources/views/components/form/form-elements/file-input-example.blade.php": {
+    "mtime": 1779508054.0,
+    "ast_hash": "7ddad611e5914662868a4c6cc3ebe3b9",
+    "semantic_hash": "7ddad611e5914662868a4c6cc3ebe3b9"
+  },
+  "docs/tailadmin-laravel-main/resources/views/components/form/form-elements/input-group.blade.php": {
+    "mtime": 1779508054.0,
+    "ast_hash": "637a140d3f91cc1ccd35e743401b0109",
+    "semantic_hash": "637a140d3f91cc1ccd35e743401b0109"
+  },
+  "docs/tailadmin-laravel-main/resources/views/components/form/form-elements/input-states.blade.php": {
+    "mtime": 1779508054.0,
+    "ast_hash": "fe344fd5cdd7feb813b5a2fffcb25e3d",
+    "semantic_hash": "fe344fd5cdd7feb813b5a2fffcb25e3d"
+  },
+  "docs/tailadmin-laravel-main/resources/views/components/form/form-elements/radio-buttons.blade.php": {
+    "mtime": 1779508054.0,
+    "ast_hash": "2f22156333fafe5496762502c789b738",
+    "semantic_hash": "2f22156333fafe5496762502c789b738"
+  },
+  "docs/tailadmin-laravel-main/resources/views/components/form/form-elements/select-inputs.blade.php": {
+    "mtime": 1779508054.0,
+    "ast_hash": "d0c9ecb3ca5afdc07a93121473f92d49",
+    "semantic_hash": "d0c9ecb3ca5afdc07a93121473f92d49"
+  },
+  "docs/tailadmin-laravel-main/resources/views/components/form/form-elements/text-area-inputs.blade.php": {
+    "mtime": 1779508054.0,
+    "ast_hash": "6a710be84b328057a9376e2416fb0a77",
+    "semantic_hash": "6a710be84b328057a9376e2416fb0a77"
+  },
+  "docs/tailadmin-laravel-main/resources/views/components/form/form-elements/toggle-switch.blade.php": {
+    "mtime": 1779508054.0,
+    "ast_hash": "77407bfce763f6905b5efb893ac69807",
+    "semantic_hash": "77407bfce763f6905b5efb893ac69807"
+  },
+  "docs/tailadmin-laravel-main/resources/views/components/form/input/radio.blade.php": {
+    "mtime": 1779508054.0,
+    "ast_hash": "5a42d97388d1387580e2221522293b84",
+    "semantic_hash": "5a42d97388d1387580e2221522293b84"
+  },
+  "docs/tailadmin-laravel-main/resources/views/components/form/select/multiple-select.blade.php": {
+    "mtime": 1779508054.0,
+    "ast_hash": "3df8b28cb702f82512fe4da9343a1812",
+    "semantic_hash": "3df8b28cb702f82512fe4da9343a1812"
+  },
+  "docs/tailadmin-laravel-main/resources/views/components/header/notification-dropdown.blade.php": {
+    "mtime": 1779508054.0,
+    "ast_hash": "76963640c9c5040f0ae6fe5c0f014067",
+    "semantic_hash": "76963640c9c5040f0ae6fe5c0f014067"
+  },
+  "docs/tailadmin-laravel-main/resources/views/components/header/user-dropdown.blade.php": {
+    "mtime": 1779508054.0,
+    "ast_hash": "6fbef89b0b1c3cccc72befffc88aefda",
+    "semantic_hash": "6fbef89b0b1c3cccc72befffc88aefda"
+  },
+  "docs/tailadmin-laravel-main/resources/views/components/profile/address-card.blade.php": {
+    "mtime": 1779508054.0,
+    "ast_hash": "6cce1ef43ba4b26d6232700a6b175b0a",
+    "semantic_hash": "6cce1ef43ba4b26d6232700a6b175b0a"
+  },
+  "docs/tailadmin-laravel-main/resources/views/components/profile/personal-info-card.blade.php": {
+    "mtime": 1779508054.0,
+    "ast_hash": "6d731599d6a95957461352b120ddb9ad",
+    "semantic_hash": "6d731599d6a95957461352b120ddb9ad"
+  },
+  "docs/tailadmin-laravel-main/resources/views/components/profile/profile-card.blade.php": {
+    "mtime": 1779508054.0,
+    "ast_hash": "f19af2f7cfe2196717d91007ab5dcde7",
+    "semantic_hash": "f19af2f7cfe2196717d91007ab5dcde7"
+  },
+  "docs/tailadmin-laravel-main/resources/views/components/tables/basic-tables/basic-tables-five.blade.php": {
+    "mtime": 1779508054.0,
+    "ast_hash": "d8ddad3d7bda82331f7f03b4f990f8e7",
+    "semantic_hash": "d8ddad3d7bda82331f7f03b4f990f8e7"
+  },
+  "docs/tailadmin-laravel-main/resources/views/components/tables/basic-tables/basic-tables-four.blade.php": {
+    "mtime": 1779508054.0,
+    "ast_hash": "411a407898728d27cf00bae00939ec5e",
+    "semantic_hash": "411a407898728d27cf00bae00939ec5e"
+  },
+  "docs/tailadmin-laravel-main/resources/views/components/tables/basic-tables/basic-tables-one.blade.php": {
+    "mtime": 1779508054.0,
+    "ast_hash": "a2883120acff9a8ff1174dd08015d834",
+    "semantic_hash": "a2883120acff9a8ff1174dd08015d834"
+  },
+  "docs/tailadmin-laravel-main/resources/views/components/tables/basic-tables/basic-tables-three.blade.php": {
+    "mtime": 1779508054.0,
+    "ast_hash": "b414c1e45785f4e040b4e2863c33b298",
+    "semantic_hash": "b414c1e45785f4e040b4e2863c33b298"
+  },
+  "docs/tailadmin-laravel-main/resources/views/components/tables/basic-tables/basic-tables-two.blade.php": {
+    "mtime": 1779508054.0,
+    "ast_hash": "8d60dd62db1bbf07f116f8dc35bdf999",
+    "semantic_hash": "8d60dd62db1bbf07f116f8dc35bdf999"
+  },
+  "docs/tailadmin-laravel-main/resources/views/components/ui/alert.blade.php": {
+    "mtime": 1779508054.0,
+    "ast_hash": "dc85fe58e93cf80569b3960cb214dfda",
+    "semantic_hash": "dc85fe58e93cf80569b3960cb214dfda"
+  },
+  "docs/tailadmin-laravel-main/resources/views/components/ui/avatar.blade.php": {
+    "mtime": 1779508054.0,
+    "ast_hash": "2c6694aa80f3e32426a15d3451789b79",
+    "semantic_hash": "2c6694aa80f3e32426a15d3451789b79"
+  },
+  "docs/tailadmin-laravel-main/resources/views/components/ui/badge.blade.php": {
+    "mtime": 1779508054.0,
+    "ast_hash": "e2dfd5f896c3cab1ae0425dc22e8038d",
+    "semantic_hash": "e2dfd5f896c3cab1ae0425dc22e8038d"
+  },
+  "docs/tailadmin-laravel-main/resources/views/components/ui/button.blade.php": {
+    "mtime": 1779508054.0,
+    "ast_hash": "930236b3148fe92abae2dbb551c5bb76",
+    "semantic_hash": "930236b3148fe92abae2dbb551c5bb76"
+  },
+  "docs/tailadmin-laravel-main/resources/views/components/ui/modal.blade.php": {
+    "mtime": 1779508054.0,
+    "ast_hash": "2ed15920bee8a2ee94ab8f3552a7874f",
+    "semantic_hash": "2ed15920bee8a2ee94ab8f3552a7874f"
+  },
+  "docs/tailadmin-laravel-main/resources/views/components/ui/youtube-embed.blade.php": {
+    "mtime": 1779508054.0,
+    "ast_hash": "26f85485a8544fcbf26780632bab8eb6",
+    "semantic_hash": "26f85485a8544fcbf26780632bab8eb6"
+  },
+  "docs/tailadmin-laravel-main/resources/views/layouts/app-header.blade.php": {
+    "mtime": 1779508054.0,
+    "ast_hash": "21e89f6ce44a7d3bd7acdf2a8c6b99ba",
+    "semantic_hash": "21e89f6ce44a7d3bd7acdf2a8c6b99ba"
+  },
+  "docs/tailadmin-laravel-main/resources/views/layouts/app.blade.php": {
+    "mtime": 1779508054.0,
+    "ast_hash": "eaf495ce99c27651d7cf3c119191622e",
+    "semantic_hash": "eaf495ce99c27651d7cf3c119191622e"
+  },
+  "docs/tailadmin-laravel-main/resources/views/layouts/backdrop.blade.php": {
+    "mtime": 1779508054.0,
+    "ast_hash": "26d4a29303464356b1e2d0162c507238",
+    "semantic_hash": "26d4a29303464356b1e2d0162c507238"
+  },
+  "docs/tailadmin-laravel-main/resources/views/layouts/fullscreen-layout.blade.php": {
+    "mtime": 1779508054.0,
+    "ast_hash": "7f6d91a986de63a10083d2ac223ea0c8",
+    "semantic_hash": "7f6d91a986de63a10083d2ac223ea0c8"
+  },
+  "docs/tailadmin-laravel-main/resources/views/layouts/sidebar-widget.blade.php": {
+    "mtime": 1779508054.0,
+    "ast_hash": "13ef57de80e7707e252f021b0375269e",
+    "semantic_hash": "13ef57de80e7707e252f021b0375269e"
+  },
+  "docs/tailadmin-laravel-main/resources/views/layouts/sidebar.blade.php": {
+    "mtime": 1779508054.0,
+    "ast_hash": "6dd3e82b3e2068b24819ad229761096a",
+    "semantic_hash": "6dd3e82b3e2068b24819ad229761096a"
+  },
+  "docs/tailadmin-laravel-main/resources/views/pages/auth/signin.blade.php": {
+    "mtime": 1779508054.0,
+    "ast_hash": "8de983379dd34eddfc6d2a512cdd5eb8",
+    "semantic_hash": "8de983379dd34eddfc6d2a512cdd5eb8"
+  },
+  "docs/tailadmin-laravel-main/resources/views/pages/auth/signup.blade.php": {
+    "mtime": 1779508054.0,
+    "ast_hash": "d5a0fc6b127e9660b937523d0f6974bb",
+    "semantic_hash": "d5a0fc6b127e9660b937523d0f6974bb"
+  },
+  "docs/tailadmin-laravel-main/resources/views/pages/blank.blade.php": {
+    "mtime": 1779508054.0,
+    "ast_hash": "609ba7499e633b2023eb609111b5c455",
+    "semantic_hash": "609ba7499e633b2023eb609111b5c455"
+  },
+  "docs/tailadmin-laravel-main/resources/views/pages/calender.blade.php": {
+    "mtime": 1779508054.0,
+    "ast_hash": "9ea4db81e773dd09dc2ab7dede023c3c",
+    "semantic_hash": "9ea4db81e773dd09dc2ab7dede023c3c"
+  },
+  "docs/tailadmin-laravel-main/resources/views/pages/chart/bar-chart.blade.php": {
+    "mtime": 1779508054.0,
+    "ast_hash": "72985775a22e22a681b5fa363e319499",
+    "semantic_hash": "72985775a22e22a681b5fa363e319499"
+  },
+  "docs/tailadmin-laravel-main/resources/views/pages/chart/line-chart.blade.php": {
+    "mtime": 1779508054.0,
+    "ast_hash": "a1e430653779ecac601cecf0445761f5",
+    "semantic_hash": "a1e430653779ecac601cecf0445761f5"
+  },
+  "docs/tailadmin-laravel-main/resources/views/pages/dashboard/ecommerce.blade.php": {
+    "mtime": 1779508054.0,
+    "ast_hash": "97af01d473498765609080a640061bd8",
+    "semantic_hash": "97af01d473498765609080a640061bd8"
+  },
+  "docs/tailadmin-laravel-main/resources/views/pages/errors/error-404.blade.php": {
+    "mtime": 1779508054.0,
+    "ast_hash": "9fcda4be3d02ad53d8f8400271949701",
+    "semantic_hash": "9fcda4be3d02ad53d8f8400271949701"
+  },
+  "docs/tailadmin-laravel-main/resources/views/pages/form/form-elements.blade.php": {
+    "mtime": 1779508054.0,
+    "ast_hash": "903d98d1ad53d40500c9061648eb1e98",
+    "semantic_hash": "903d98d1ad53d40500c9061648eb1e98"
+  },
+  "docs/tailadmin-laravel-main/resources/views/pages/profile.blade.php": {
+    "mtime": 1779508054.0,
+    "ast_hash": "75b5389017e2479745103e725bfc3ba1",
+    "semantic_hash": "75b5389017e2479745103e725bfc3ba1"
+  },
+  "docs/tailadmin-laravel-main/resources/views/pages/tables/basic-tables.blade.php": {
+    "mtime": 1779508054.0,
+    "ast_hash": "5abee37724d0cd5ce52f1664c98bbfb0",
+    "semantic_hash": "5abee37724d0cd5ce52f1664c98bbfb0"
+  },
+  "docs/tailadmin-laravel-main/resources/views/pages/ui-elements/alerts.blade.php": {
+    "mtime": 1779508054.0,
+    "ast_hash": "e31604f089197af68069e0eed6671f5d",
+    "semantic_hash": "e31604f089197af68069e0eed6671f5d"
+  },
+  "docs/tailadmin-laravel-main/resources/views/pages/ui-elements/avatars.blade.php": {
+    "mtime": 1779508054.0,
+    "ast_hash": "7e742fe6f2469cbd0ff8a6a7378837c7",
+    "semantic_hash": "7e742fe6f2469cbd0ff8a6a7378837c7"
+  },
+  "docs/tailadmin-laravel-main/resources/views/pages/ui-elements/badges.blade.php": {
+    "mtime": 1779508054.0,
+    "ast_hash": "ecea9c093286003d5bfd7b519390a58f",
+    "semantic_hash": "ecea9c093286003d5bfd7b519390a58f"
+  },
+  "docs/tailadmin-laravel-main/resources/views/pages/ui-elements/buttons.blade.php": {
+    "mtime": 1779508054.0,
+    "ast_hash": "b4807faac95cc4b7f72897fa04bedb9f",
+    "semantic_hash": "b4807faac95cc4b7f72897fa04bedb9f"
+  },
+  "docs/tailadmin-laravel-main/resources/views/pages/ui-elements/images.blade.php": {
+    "mtime": 1779508054.0,
+    "ast_hash": "db17da681cc0aa191fbd78abbbdbd2f2",
+    "semantic_hash": "db17da681cc0aa191fbd78abbbdbd2f2"
+  },
+  "docs/tailadmin-laravel-main/resources/views/pages/ui-elements/videos.blade.php": {
+    "mtime": 1779508054.0,
+    "ast_hash": "e3f4c28270277c3d5acc638190dd01e7",
+    "semantic_hash": "e3f4c28270277c3d5acc638190dd01e7"
+  },
+  "docs/tailadmin-laravel-main/routes/console.php": {
+    "mtime": 1779508054.0,
+    "ast_hash": "3c6ce2e6d16444282b24a9aa63885563",
+    "semantic_hash": "3c6ce2e6d16444282b24a9aa63885563"
+  },
+  "docs/tailadmin-laravel-main/routes/web.php": {
+    "mtime": 1779508054.0,
+    "ast_hash": "69af557008ab9086119303f7d4337fb5",
+    "semantic_hash": "69af557008ab9086119303f7d4337fb5"
+  },
+  "docs/tailadmin-laravel-main/tests/Feature/ExampleTest.php": {
+    "mtime": 1779508054.0,
+    "ast_hash": "ae3435cba767f333cd40212d368cbc53",
+    "semantic_hash": "ae3435cba767f333cd40212d368cbc53"
+  },
+  "docs/tailadmin-laravel-main/tests/Pest.php": {
+    "mtime": 1779508054.0,
+    "ast_hash": "2ce3aadaa89db02a2dc0fd77c7629ac6",
+    "semantic_hash": "2ce3aadaa89db02a2dc0fd77c7629ac6"
+  },
+  "docs/tailadmin-laravel-main/tests/TestCase.php": {
+    "mtime": 1779508054.0,
+    "ast_hash": "7e567dc27e68d5b57bae16af07f68907",
+    "semantic_hash": "7e567dc27e68d5b57bae16af07f68907"
+  },
+  "docs/tailadmin-laravel-main/tests/Unit/ExampleTest.php": {
+    "mtime": 1779508054.0,
+    "ast_hash": "2bc41f1156dead26b2a3082f9634b041",
+    "semantic_hash": "2bc41f1156dead26b2a3082f9634b041"
+  },
+  "docs/tailadmin-laravel-main/vite.config.js": {
+    "mtime": 1779508054.0,
+    "ast_hash": "ba4996e1d8e73333d5c9195b824b4219",
+    "semantic_hash": "ba4996e1d8e73333d5c9195b824b4219"
+  },
+  "package.json": {
+    "mtime": 1784989984.2527125,
+    "ast_hash": "e6fb2ca025cdec774c9f1b6e522a41d5",
+    "semantic_hash": "e6fb2ca025cdec774c9f1b6e522a41d5"
+  },
+  "public/index.php": {
+    "mtime": 1773507240.0,
+    "ast_hash": "d8eda274115af5fd2aaa8230af329ef7",
+    "semantic_hash": "d8eda274115af5fd2aaa8230af329ef7"
+  },
+  "resources/js/app.js": {
+    "mtime": 1784988165.26606,
+    "ast_hash": "43afb5e5b06453be121d89ac174e0dad",
+    "semantic_hash": "43afb5e5b06453be121d89ac174e0dad"
+  },
+  "resources/js/bootstrap.js": {
+    "mtime": 1773507240.0,
+    "ast_hash": "78f909acc19aea4717eddca5a87c1ba3",
+    "semantic_hash": "78f909acc19aea4717eddca5a87c1ba3"
+  },
+  "resources/views/auth/login.blade.php": {
+    "mtime": 1784988950.6911027,
+    "ast_hash": "a6b0711e94aea31414a80f46bbc55736",
+    "semantic_hash": "a6b0711e94aea31414a80f46bbc55736"
+  },
+  "resources/views/layouts/app-auth.blade.php": {
+    "mtime": 1784991150.8900213,
+    "ast_hash": "7b68553b8d5067c1518b45c9b39d286f",
+    "semantic_hash": "7b68553b8d5067c1518b45c9b39d286f"
+  },
+  "resources/views/layouts/app-backend.blade.php": {
+    "mtime": 1784991147.9694397,
+    "ast_hash": "c69bd957b54d6662e1d7a359867452a9",
+    "semantic_hash": "c69bd957b54d6662e1d7a359867452a9"
+  },
+  "resources/views/modules/owner/dashboard.blade.php": {
+    "mtime": 1784995716.7377653,
+    "ast_hash": "7884e104fe4932f777a38ac58ae3e577",
+    "semantic_hash": "7884e104fe4932f777a38ac58ae3e577"
+  },
+  "resources/views/modules/owner/participants/create.blade.php": {
+    "mtime": 1784989530.425092,
+    "ast_hash": "7c89fc64f3c081e9cbee728925a629ce",
+    "semantic_hash": "7c89fc64f3c081e9cbee728925a629ce"
+  },
+  "resources/views/modules/owner/participants/edit.blade.php": {
+    "mtime": 1784989530.427095,
+    "ast_hash": "70eac3fd987e085414676dd65f9de5e3",
+    "semantic_hash": "70eac3fd987e085414676dd65f9de5e3"
+  },
+  "resources/views/modules/owner/participants/index.blade.php": {
+    "mtime": 1784989530.4416027,
+    "ast_hash": "c881fbebec5d5ed376021b4d9cf82fcf",
+    "semantic_hash": "c881fbebec5d5ed376021b4d9cf82fcf"
+  },
+  "resources/views/modules/owner/participants/show.blade.php": {
+    "mtime": 1784989530.4436023,
+    "ast_hash": "9fb6593a35686cc8bcf791f841f17424",
+    "semantic_hash": "9fb6593a35686cc8bcf791f841f17424"
+  },
+  "resources/views/modules/owner/quizzes/create.blade.php": {
+    "mtime": 1784997003.2872827,
+    "ast_hash": "999491f8e560d79cda70cbe956aa1d10",
+    "semantic_hash": "999491f8e560d79cda70cbe956aa1d10"
+  },
+  "resources/views/modules/owner/quizzes/edit.blade.php": {
+    "mtime": 1784996804.3126,
+    "ast_hash": "f805b351d574074181b1bcdc44d7ec26",
+    "semantic_hash": "f805b351d574074181b1bcdc44d7ec26"
+  },
+  "resources/views/modules/owner/quizzes/index.blade.php": {
+    "mtime": 1784996789.4775503,
+    "ast_hash": "814722ed6fc4ad68608e51a706d5af77",
+    "semantic_hash": "814722ed6fc4ad68608e51a706d5af77"
+  },
+  "resources/views/modules/owner/quizzes/show.blade.php": {
+    "mtime": 1784996809.0932531,
+    "ast_hash": "42781094c150963e84370d643cace4f8",
+    "semantic_hash": "42781094c150963e84370d643cace4f8"
+  },
+  "resources/views/modules/owner/reports/index.blade.php": {
+    "mtime": 1784989530.4626062,
+    "ast_hash": "d4760aaf3c86f27fd371dba4cd8cab98",
+    "semantic_hash": "d4760aaf3c86f27fd371dba4cd8cab98"
+  },
+  "resources/views/modules/owner/reports/quiz.blade.php": {
+    "mtime": 1784989530.4661295,
+    "ast_hash": "4fd8449c192127a1a6185f2ce4308ee2",
+    "semantic_hash": "4fd8449c192127a1a6185f2ce4308ee2"
+  },
+  "resources/views/modules/owner/settings/index.blade.php": {
+    "mtime": 1784989530.4691298,
+    "ast_hash": "5c9c033e18ee1cb1b00a5436f71001cd",
+    "semantic_hash": "5c9c033e18ee1cb1b00a5436f71001cd"
+  },
+  "resources/views/modules/owner/tokens/index.blade.php": {
+    "mtime": 1784996054.2166085,
+    "ast_hash": "9e8b5b47145921c3a350447474179a8a",
+    "semantic_hash": "9e8b5b47145921c3a350447474179a8a"
+  },
+  "resources/views/modules/owner/tokens/simulate.blade.php": {
+    "mtime": 1784996058.4376075,
+    "ast_hash": "cf1f43c0bf60eab7218e24f94d366e03",
+    "semantic_hash": "cf1f43c0bf60eab7218e24f94d366e03"
+  },
+  "resources/views/modules/participant/dashboard.blade.php": {
+    "mtime": 1784995721.5100906,
+    "ast_hash": "d9c0cc38044ea4494eb7245d601060b5",
+    "semantic_hash": "d9c0cc38044ea4494eb7245d601060b5"
+  },
+  "resources/views/modules/participant/history.blade.php": {
+    "mtime": 1784989530.4971292,
+    "ast_hash": "4a6bf59b5dd3f11262ef75ec3fa829d5",
+    "semantic_hash": "4a6bf59b5dd3f11262ef75ec3fa829d5"
+  },
+  "resources/views/modules/participant/quiz/result.blade.php": {
+    "mtime": 1784989530.5001295,
+    "ast_hash": "80169a84a98fcef68197ff019fefaf51",
+    "semantic_hash": "80169a84a98fcef68197ff019fefaf51"
+  },
+  "resources/views/modules/participant/quiz/show.blade.php": {
+    "mtime": 1784989530.5031335,
+    "ast_hash": "a5dcfa4193fdaaaf5e35ce6c5407c7d3",
+    "semantic_hash": "a5dcfa4193fdaaaf5e35ce6c5407c7d3"
+  },
+  "resources/views/modules/participant/quiz/take.blade.php": {
+    "mtime": 1784989530.5081396,
+    "ast_hash": "77a1da75da1ae8e1a654c58cdeb204ba",
+    "semantic_hash": "77a1da75da1ae8e1a654c58cdeb204ba"
+  },
+  "resources/views/modules/profile/edit.blade.php": {
+    "mtime": 1784995780.166804,
+    "ast_hash": "a7607f16cb06eccda6b7c110b722ef90",
+    "semantic_hash": "a7607f16cb06eccda6b7c110b722ef90"
+  },
+  "resources/views/modules/superadmin/dashboard.blade.php": {
+    "mtime": 1784995719.3634243,
+    "ast_hash": "fc803d799705ad8a54a18b75287d8f38",
+    "semantic_hash": "fc803d799705ad8a54a18b75287d8f38"
+  },
+  "resources/views/modules/superadmin/gateways/index.blade.php": {
+    "mtime": 1784989530.520187,
+    "ast_hash": "b94cd177ba3572bd41c3a148c4b25e44",
+    "semantic_hash": "b94cd177ba3572bd41c3a148c4b25e44"
+  },
+  "resources/views/modules/superadmin/llm/_form.blade.php": {
+    "mtime": 1784989530.5231872,
+    "ast_hash": "b80bed02f2f78a6ec21647ec4e5bca1a",
+    "semantic_hash": "b80bed02f2f78a6ec21647ec4e5bca1a"
+  },
+  "resources/views/modules/superadmin/llm/index.blade.php": {
+    "mtime": 1784989530.5261972,
+    "ast_hash": "5da7c64c7d0321b278293a7b9679819e",
+    "semantic_hash": "5da7c64c7d0321b278293a7b9679819e"
+  },
+  "resources/views/modules/superadmin/logs/index.blade.php": {
+    "mtime": 1784989530.5291967,
+    "ast_hash": "9efd31a5b1d352b1b8aec6cc8fd921d5",
+    "semantic_hash": "9efd31a5b1d352b1b8aec6cc8fd921d5"
+  },
+  "resources/views/modules/superadmin/owners/index.blade.php": {
+    "mtime": 1784989530.532197,
+    "ast_hash": "a93f057c3a79c7cb0828df26df65175f",
+    "semantic_hash": "a93f057c3a79c7cb0828df26df65175f"
+  },
+  "resources/views/modules/superadmin/owners/show.blade.php": {
+    "mtime": 1784989530.5361888,
+    "ast_hash": "716142752c993ca374420ccc274ae566",
+    "semantic_hash": "716142752c993ca374420ccc274ae566"
+  },
+  "resources/views/modules/superadmin/settings/index.blade.php": {
+    "mtime": 1784989530.5381901,
+    "ast_hash": "0369ed36f8ca0c29ff929a982b1b45d9",
+    "semantic_hash": "0369ed36f8ca0c29ff929a982b1b45d9"
+  },
+  "resources/views/modules/superadmin/token-packages/index.blade.php": {
+    "mtime": 1784989530.5419393,
+    "ast_hash": "577f93a1684781dcb306534ef360bad1",
+    "semantic_hash": "577f93a1684781dcb306534ef360bad1"
+  },
+  "resources/views/welcome.blade.php": {
+    "mtime": 1784971269.6303835,
+    "ast_hash": "f0f87b3f4790a48b071bb7fc900a6b6e",
+    "semantic_hash": "f0f87b3f4790a48b071bb7fc900a6b6e"
+  },
+  "routes/console.php": {
+    "mtime": 1783290253.396223,
+    "ast_hash": "8fc576a374de2cbf6fb3bddef57d5f99",
+    "semantic_hash": "8fc576a374de2cbf6fb3bddef57d5f99"
+  },
+  "routes/tenant.php": {
+    "mtime": 1784995848.6395473,
+    "ast_hash": "212931d7029d05d153f32c03a3e65a55",
+    "semantic_hash": "212931d7029d05d153f32c03a3e65a55"
+  },
+  "routes/web.php": {
+    "mtime": 1784995830.3984592,
+    "ast_hash": "878c6b8542010268cfc7e6711daf1208",
+    "semantic_hash": "878c6b8542010268cfc7e6711daf1208"
+  },
+  "tests/Feature/ExampleTest.php": {
+    "mtime": 1773507240.0,
+    "ast_hash": "0f4d91c9c5bbcd4e2f46cf885acb7fb6",
+    "semantic_hash": "0f4d91c9c5bbcd4e2f46cf885acb7fb6"
+  },
+  "tests/Feature/QuizAttemptTest.php": {
+    "mtime": 1783419876.3658793,
+    "ast_hash": "88f4baa562e2a0cba3a8ca2037479e97",
+    "semantic_hash": "88f4baa562e2a0cba3a8ca2037479e97"
+  },
+  "tests/TestCase.php": {
+    "mtime": 1773507240.0,
+    "ast_hash": "7e567dc27e68d5b57bae16af07f68907",
+    "semantic_hash": "7e567dc27e68d5b57bae16af07f68907"
+  },
+  "tests/Unit/ExampleTest.php": {
+    "mtime": 1773507240.0,
+    "ast_hash": "3f679e9508c834f0ad95943455fcd836",
+    "semantic_hash": "3f679e9508c834f0ad95943455fcd836"
+  },
+  "tests/Unit/LlmServiceTest.php": {
+    "mtime": 1783419951.5089667,
+    "ast_hash": "08bed18ea9c4a4a8aa1950f799b498ec",
+    "semantic_hash": "08bed18ea9c4a4a8aa1950f799b498ec"
+  },
+  "tests/Unit/TokenServiceTest.php": {
+    "mtime": 1783419868.7771168,
+    "ast_hash": "c652199b1fc0d168043f59b4dc1db1d2",
+    "semantic_hash": "c652199b1fc0d168043f59b4dc1db1d2"
+  },
+  "vite.config.js": {
+    "mtime": 1784988414.0200639,
+    "ast_hash": "137df04d865402ef2a30b54552ad7db7",
+    "semantic_hash": "137df04d865402ef2a30b54552ad7db7"
+  }
+}
