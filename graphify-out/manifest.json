@@ -230,14 +230,14 @@
     "semantic_hash": "0f0e7884b2ed537b24dd2c17359a4cdb"
   },
   "app/Models/Tenant/Question.php": {
-    "mtime": 1784960539.3927057,
-    "ast_hash": "c25db774f20ec85a0be7d4bb7297b224",
-    "semantic_hash": "c25db774f20ec85a0be7d4bb7297b224"
+    "mtime": 1785025142.0541668,
+    "ast_hash": "d3ccb61380a6dfd02dcab1390f628800",
+    "semantic_hash": ""
   },
   "app/Models/Tenant/QuestionOption.php": {
-    "mtime": 1784960550.3903306,
-    "ast_hash": "9207da91095b90d5dbe96fce23bc73b1",
-    "semantic_hash": "9207da91095b90d5dbe96fce23bc73b1"
+    "mtime": 1785025146.3957264,
+    "ast_hash": "aefbc32992ac922073a25a354bd2439f",
+    "semantic_hash": ""
   },
   "app/Models/Tenant/Quiz.php": {
     "mtime": 1784960529.6744335,
@@ -1598,5 +1598,700 @@
     "mtime": 1784988414.0200639,
     "ast_hash": "137df04d865402ef2a30b54552ad7db7",
     "semantic_hash": "137df04d865402ef2a30b54552ad7db7"
+  },
+  "database/migrations/2026_07_26_000002_add_sort_order_to_questions_and_options.php": {
+    "mtime": 1785025127.2467449,
+    "ast_hash": "55b5531964c92febf60d6c67102d0ee3",
+    "semantic_hash": ""
+  },
+  ".agents/rules/graphify.md": {
+    "mtime": 1785025031.7631547,
+    "ast_hash": "a0e4d192b9e2e17256124dbfc8e24e6a",
+    "semantic_hash": ""
+  },
+  ".agents/workflows/graphify.md": {
+    "mtime": 1785025031.7806327,
+    "ast_hash": "637776aa6f7496d069afe7520c845c8a",
+    "semantic_hash": ""
+  },
+  "GEMINI.md": {
+    "mtime": 1784989988.0085068,
+    "ast_hash": "2eb478b7587abeea70719b49c3e95cbe",
+    "semantic_hash": ""
+  },
+  "README.md": {
+    "mtime": 1784989989.9497502,
+    "ast_hash": "677e7f4a442f73ea127dcfb86b83248d",
+    "semantic_hash": ""
+  },
+  "docs/DEPLOYMENT.md": {
+    "mtime": 1784961176.0784957,
+    "ast_hash": "711b0c4f8023b540cddf4ee5cbab2982",
+    "semantic_hash": ""
+  },
+  "docs/PRD_LMS_AI_Laravel12.md": {
+    "mtime": 1783267428.2742338,
+    "ast_hash": "1b2e00e8c2c3f4d3546295b43cfba3a0",
+    "semantic_hash": ""
+  },
+  "docs/tailadmin-laravel-main/README.md": {
+    "mtime": 1779508054.0,
+    "ast_hash": "b60a4f5ffa4551593268c95a28ad3765",
+    "semantic_hash": ""
+  },
+  "docs/tailadmin-laravel-main/public/robots.txt": {
+    "mtime": 1779508054.0,
+    "ast_hash": "b6216d61c03e6ce0c9aea6ca7808f7ca",
+    "semantic_hash": ""
+  },
+  "public/robots.txt": {
+    "mtime": 1773507240.0,
+    "ast_hash": "b6216d61c03e6ce0c9aea6ca7808f7ca",
+    "semantic_hash": ""
+  },
+  "docs/tailadmin-laravel-main/public/images/ai/img-lg.png": {
+    "mtime": 1779508054.0,
+    "ast_hash": "29c51acdd34b193bd06ec5aa4a67a36f",
+    "semantic_hash": ""
+  },
+  "docs/tailadmin-laravel-main/public/images/ai/img-md-1.png": {
+    "mtime": 1779508054.0,
+    "ast_hash": "70d712f6cb9172f1e841cdd2eaa06bbe",
+    "semantic_hash": ""
+  },
+  "docs/tailadmin-laravel-main/public/images/ai/img-md-2.png": {
+    "mtime": 1779508054.0,
+    "ast_hash": "948a773fd88a7a53b869df47f59e1794",
+    "semantic_hash": ""
+  },
+  "docs/tailadmin-laravel-main/public/images/ai/video-thumb.png": {
+    "mtime": 1779508054.0,
+    "ast_hash": "21ece698c65fd19d9e4728d39e2af55f",
+    "semantic_hash": ""
+  },
+  "docs/tailadmin-laravel-main/public/images/brand/brand-01.svg": {
+    "mtime": 1779508054.0,
+    "ast_hash": "a4cb3cf12852fe1f6e62bea58f518eba",
+    "semantic_hash": ""
+  },
+  "docs/tailadmin-laravel-main/public/images/brand/brand-02.svg": {
+    "mtime": 1779508054.0,
+    "ast_hash": "49eaca99a929da0d90ca046e8ea0f4b4",
+    "semantic_hash": ""
+  },
+  "docs/tailadmin-laravel-main/public/images/brand/brand-03.svg": {
+    "mtime": 1779508054.0,
+    "ast_hash": "1286f1c7f079653f60cc1afdcee85a89",
+    "semantic_hash": ""
+  },
+  "docs/tailadmin-laravel-main/public/images/brand/brand-04.svg": {
+    "mtime": 1779508054.0,
+    "ast_hash": "9b30449323246c8af78fe6c7779063f0",
+    "semantic_hash": ""
+  },
+  "docs/tailadmin-laravel-main/public/images/brand/brand-05.svg": {
+    "mtime": 1779508054.0,
+    "ast_hash": "0cde74bfe97257fbd47ca46cd431b645",
+    "semantic_hash": ""
+  },
+  "docs/tailadmin-laravel-main/public/images/brand/brand-06.svg": {
+    "mtime": 1779508054.0,
+    "ast_hash": "e6828f825e355d36323763634dc1bd99",
+    "semantic_hash": ""
+  },
+  "docs/tailadmin-laravel-main/public/images/brand/brand-07.svg": {
+    "mtime": 1779508054.0,
+    "ast_hash": "b413e6f483a80e1f19b6b8f6879c53f0",
+    "semantic_hash": ""
+  },
+  "docs/tailadmin-laravel-main/public/images/brand/brand-08.svg": {
+    "mtime": 1779508054.0,
+    "ast_hash": "5e240f91367abd5d8be6bfcc980d6d69",
+    "semantic_hash": ""
+  },
+  "docs/tailadmin-laravel-main/public/images/brand/brand-09.svg": {
+    "mtime": 1779508054.0,
+    "ast_hash": "dbfe8b4e16c465c5ed56868596aedf4e",
+    "semantic_hash": ""
+  },
+  "docs/tailadmin-laravel-main/public/images/brand/brand-10.svg": {
+    "mtime": 1779508054.0,
+    "ast_hash": "926c727e70b53edf7151c0c931df21ef",
+    "semantic_hash": ""
+  },
+  "docs/tailadmin-laravel-main/public/images/brand/brand-11.svg": {
+    "mtime": 1779508054.0,
+    "ast_hash": "8fb2198ff2cc3cbb8ef26d41541eaf04",
+    "semantic_hash": ""
+  },
+  "docs/tailadmin-laravel-main/public/images/brand/brand-12.svg": {
+    "mtime": 1779508054.0,
+    "ast_hash": "ea2e5e8c87fc1fefff012e9aaa0e82fa",
+    "semantic_hash": ""
+  },
+  "docs/tailadmin-laravel-main/public/images/brand/brand-13.svg": {
+    "mtime": 1779508054.0,
+    "ast_hash": "fa955d6d60d3bd1cb2240b78f3267d6a",
+    "semantic_hash": ""
+  },
+  "docs/tailadmin-laravel-main/public/images/brand/brand-14.svg": {
+    "mtime": 1779508054.0,
+    "ast_hash": "31761fcb2bbc45d56e4ba4fa9370a336",
+    "semantic_hash": ""
+  },
+  "docs/tailadmin-laravel-main/public/images/brand/brand-15.svg": {
+    "mtime": 1779508054.0,
+    "ast_hash": "b06504ea738c0df9837b8a023b596fb2",
+    "semantic_hash": ""
+  },
+  "docs/tailadmin-laravel-main/public/images/cards/card-01.jpg": {
+    "mtime": 1779508054.0,
+    "ast_hash": "a7d11d658bcee9175257016e64881466",
+    "semantic_hash": ""
+  },
+  "docs/tailadmin-laravel-main/public/images/cards/card-01.png": {
+    "mtime": 1779508054.0,
+    "ast_hash": "ee47696c87624ce62373b81d5184e59b",
+    "semantic_hash": ""
+  },
+  "docs/tailadmin-laravel-main/public/images/cards/card-02.jpg": {
+    "mtime": 1779508054.0,
+    "ast_hash": "c77faa0b61fa7dc1b9d51351b947062e",
+    "semantic_hash": ""
+  },
+  "docs/tailadmin-laravel-main/public/images/cards/card-02.png": {
+    "mtime": 1779508054.0,
+    "ast_hash": "face0da1628cd00d16395f7d21c72e7b",
+    "semantic_hash": ""
+  },
+  "docs/tailadmin-laravel-main/public/images/cards/card-03.jpg": {
+    "mtime": 1779508054.0,
+    "ast_hash": "2fcec52652ce713f8cd96030ee6340f3",
+    "semantic_hash": ""
+  },
+  "docs/tailadmin-laravel-main/public/images/cards/card-03.png": {
+    "mtime": 1779508054.0,
+    "ast_hash": "baaed49fe163230fda9ef06e3981acd6",
+    "semantic_hash": ""
+  },
+  "docs/tailadmin-laravel-main/public/images/carousel/carousel-01.png": {
+    "mtime": 1779508054.0,
+    "ast_hash": "a3ea9c08b37fde85d68a1a4dee8692e8",
+    "semantic_hash": ""
+  },
+  "docs/tailadmin-laravel-main/public/images/carousel/carousel-02.png": {
+    "mtime": 1779508054.0,
+    "ast_hash": "9cd80a50c189ecef41e7541f00bbea49",
+    "semantic_hash": ""
+  },
+  "docs/tailadmin-laravel-main/public/images/carousel/carousel-03.png": {
+    "mtime": 1779508054.0,
+    "ast_hash": "dd315466d73b080ec8ee2893eaa2e11a",
+    "semantic_hash": ""
+  },
+  "docs/tailadmin-laravel-main/public/images/carousel/carousel-04.png": {
+    "mtime": 1779508054.0,
+    "ast_hash": "2b0d75d45045372a184632228d80362c",
+    "semantic_hash": ""
+  },
+  "docs/tailadmin-laravel-main/public/images/chat/chat.jpg": {
+    "mtime": 1779508054.0,
+    "ast_hash": "10a013b66ea9a4733570ac7ad5719dd0",
+    "semantic_hash": ""
+  },
+  "docs/tailadmin-laravel-main/public/images/country/country-01.svg": {
+    "mtime": 1779508054.0,
+    "ast_hash": "31ec706053ac8ae3edecbab25b085079",
+    "semantic_hash": ""
+  },
+  "docs/tailadmin-laravel-main/public/images/country/country-02.svg": {
+    "mtime": 1779508054.0,
+    "ast_hash": "e7d25e4692dbbf6b599f4fae547c0b12",
+    "semantic_hash": ""
+  },
+  "docs/tailadmin-laravel-main/public/images/country/country-03.svg": {
+    "mtime": 1779508054.0,
+    "ast_hash": "456255d3a5ef608fe68d7150625375d6",
+    "semantic_hash": ""
+  },
+  "docs/tailadmin-laravel-main/public/images/country/country-04.svg": {
+    "mtime": 1779508054.0,
+    "ast_hash": "b84af21f0b52fe7ac2d19f001f0cdce6",
+    "semantic_hash": ""
+  },
+  "docs/tailadmin-laravel-main/public/images/country/country-05.svg": {
+    "mtime": 1779508054.0,
+    "ast_hash": "6b742c1757eb8c0a8186988f74c77847",
+    "semantic_hash": ""
+  },
+  "docs/tailadmin-laravel-main/public/images/country/country-06.svg": {
+    "mtime": 1779508054.0,
+    "ast_hash": "99265c72058b9b2edee5825f64299e4f",
+    "semantic_hash": ""
+  },
+  "docs/tailadmin-laravel-main/public/images/country/country-07.svg": {
+    "mtime": 1779508054.0,
+    "ast_hash": "f3ca82cf7976af80a8f068ab773ac6cf",
+    "semantic_hash": ""
+  },
+  "docs/tailadmin-laravel-main/public/images/country/country-08.svg": {
+    "mtime": 1779508054.0,
+    "ast_hash": "22e77f4b0c6f43705130aaf7a951625b",
+    "semantic_hash": ""
+  },
+  "docs/tailadmin-laravel-main/public/images/error/404-dark.svg": {
+    "mtime": 1779508054.0,
+    "ast_hash": "fb9f1f25421a5013428ad1c8671206b8",
+    "semantic_hash": ""
+  },
+  "docs/tailadmin-laravel-main/public/images/error/404.svg": {
+    "mtime": 1779508054.0,
+    "ast_hash": "3d9db6ca82e16e2697d2abf54f0c0813",
+    "semantic_hash": ""
+  },
+  "docs/tailadmin-laravel-main/public/images/error/500-dark.svg": {
+    "mtime": 1779508054.0,
+    "ast_hash": "134222aa3a6cf8b3160f8dbf1b1f728e",
+    "semantic_hash": ""
+  },
+  "docs/tailadmin-laravel-main/public/images/error/500.svg": {
+    "mtime": 1779508054.0,
+    "ast_hash": "686a544b5e77449b9d0a65c1f5de41eb",
+    "semantic_hash": ""
+  },
+  "docs/tailadmin-laravel-main/public/images/error/503-dark.svg": {
+    "mtime": 1779508054.0,
+    "ast_hash": "6793e8ed5c368b84da04d0920816bad1",
+    "semantic_hash": ""
+  },
+  "docs/tailadmin-laravel-main/public/images/error/503.svg": {
+    "mtime": 1779508054.0,
+    "ast_hash": "8d65c1c308bf90e2e3011a1386c9fe9e",
+    "semantic_hash": ""
+  },
+  "docs/tailadmin-laravel-main/public/images/error/maintenance-dark.svg": {
+    "mtime": 1779508054.0,
+    "ast_hash": "a6bbc1b90bb022a7b0828f8b665be273",
+    "semantic_hash": ""
+  },
+  "docs/tailadmin-laravel-main/public/images/error/maintenance.svg": {
+    "mtime": 1779508054.0,
+    "ast_hash": "a4e5961e553c4b9f51611a8f8bf5008b",
+    "semantic_hash": ""
+  },
+  "docs/tailadmin-laravel-main/public/images/error/success-dark.svg": {
+    "mtime": 1779508054.0,
+    "ast_hash": "1baefc47c2b7f4aec6695cf22136607b",
+    "semantic_hash": ""
+  },
+  "docs/tailadmin-laravel-main/public/images/error/success.svg": {
+    "mtime": 1779508054.0,
+    "ast_hash": "82cd272f55ec3319e4a5e338db4bc2b5",
+    "semantic_hash": ""
+  },
+  "docs/tailadmin-laravel-main/public/images/grid-image/image-01.png": {
+    "mtime": 1779508054.0,
+    "ast_hash": "841f9238cf48b6a67d91401ff0c73bad",
+    "semantic_hash": ""
+  },
+  "docs/tailadmin-laravel-main/public/images/grid-image/image-02.png": {
+    "mtime": 1779508054.0,
+    "ast_hash": "7a4d7ce7934176f837d83d46bb836ecf",
+    "semantic_hash": ""
+  },
+  "docs/tailadmin-laravel-main/public/images/grid-image/image-03.png": {
+    "mtime": 1779508054.0,
+    "ast_hash": "8b1e750a068a429be2d7b9be4b96a870",
+    "semantic_hash": ""
+  },
+  "docs/tailadmin-laravel-main/public/images/grid-image/image-04.png": {
+    "mtime": 1779508054.0,
+    "ast_hash": "a155ccc938e0186bd383b823acfbb165",
+    "semantic_hash": ""
+  },
+  "docs/tailadmin-laravel-main/public/images/grid-image/image-05.png": {
+    "mtime": 1779508054.0,
+    "ast_hash": "3f3f420d94104f5a1c0882c0d64792c6",
+    "semantic_hash": ""
+  },
+  "docs/tailadmin-laravel-main/public/images/grid-image/image-06.png": {
+    "mtime": 1779508054.0,
+    "ast_hash": "fb1e6e664883a1f497591cd5889857b0",
+    "semantic_hash": ""
+  },
+  "docs/tailadmin-laravel-main/public/images/icons/file-image-dark.svg": {
+    "mtime": 1779508054.0,
+    "ast_hash": "0af3e8cd593bfe0dd96e23b297990cd9",
+    "semantic_hash": ""
+  },
+  "docs/tailadmin-laravel-main/public/images/icons/file-image.svg": {
+    "mtime": 1779508054.0,
+    "ast_hash": "17787df8a57e6bf285e76ba24890fc41",
+    "semantic_hash": ""
+  },
+  "docs/tailadmin-laravel-main/public/images/icons/file-pdf-dark.svg": {
+    "mtime": 1779508054.0,
+    "ast_hash": "b83183554a3315ad2e576f2e05eb9b48",
+    "semantic_hash": ""
+  },
+  "docs/tailadmin-laravel-main/public/images/icons/file-pdf.svg": {
+    "mtime": 1779508054.0,
+    "ast_hash": "bdb10fab86bfebf16d2a2b575e0a95fb",
+    "semantic_hash": ""
+  },
+  "docs/tailadmin-laravel-main/public/images/icons/file-video-dark.svg": {
+    "mtime": 1779508054.0,
+    "ast_hash": "117d5db9319a720430bb272829cac473",
+    "semantic_hash": ""
+  },
+  "docs/tailadmin-laravel-main/public/images/icons/file-video.svg": {
+    "mtime": 1779508054.0,
+    "ast_hash": "ee13d0e97a9c832495f307be7d2338ac",
+    "semantic_hash": ""
+  },
+  "docs/tailadmin-laravel-main/public/images/logistics/avatar-1.png": {
+    "mtime": 1779508054.0,
+    "ast_hash": "3d013a13c62d8191a8a9acc88798bad9",
+    "semantic_hash": ""
+  },
+  "docs/tailadmin-laravel-main/public/images/logistics/truck.png": {
+    "mtime": 1779508054.0,
+    "ast_hash": "2bc5f25298c5be3b8bceae518a6286ad",
+    "semantic_hash": ""
+  },
+  "docs/tailadmin-laravel-main/public/images/logo/auth-logo.svg": {
+    "mtime": 1779508054.0,
+    "ast_hash": "e7f3a79aa68506fa67955daf8e57b94f",
+    "semantic_hash": ""
+  },
+  "docs/tailadmin-laravel-main/public/images/logo/logo-dark.svg": {
+    "mtime": 1779508054.0,
+    "ast_hash": "266acc50ad382631f1fe486700be105c",
+    "semantic_hash": ""
+  },
+  "docs/tailadmin-laravel-main/public/images/logo/logo-icon.svg": {
+    "mtime": 1779508054.0,
+    "ast_hash": "12f40deac892380c962fdffa909bfd4b",
+    "semantic_hash": ""
+  },
+  "docs/tailadmin-laravel-main/public/images/logo/logo.svg": {
+    "mtime": 1779508054.0,
+    "ast_hash": "cf732232abd07b8f43f6db6b7b87cfc4",
+    "semantic_hash": ""
+  },
+  "docs/tailadmin-laravel-main/public/images/product/product-01.jpg": {
+    "mtime": 1779508054.0,
+    "ast_hash": "ef181841384ec80100e38d28bc0ef206",
+    "semantic_hash": ""
+  },
+  "docs/tailadmin-laravel-main/public/images/product/product-02.jpg": {
+    "mtime": 1779508054.0,
+    "ast_hash": "de24291672e147539e218a7232c43a9f",
+    "semantic_hash": ""
+  },
+  "docs/tailadmin-laravel-main/public/images/product/product-03.jpg": {
+    "mtime": 1779508054.0,
+    "ast_hash": "bc6e529d53e098612f46a5dfdd596181",
+    "semantic_hash": ""
+  },
+  "docs/tailadmin-laravel-main/public/images/product/product-04.jpg": {
+    "mtime": 1779508054.0,
+    "ast_hash": "4b99db9f11955dad1ea90e38d42390a4",
+    "semantic_hash": ""
+  },
+  "docs/tailadmin-laravel-main/public/images/product/product-05.jpg": {
+    "mtime": 1779508054.0,
+    "ast_hash": "5a7946f96b66a8a8fb6477e3d406d871",
+    "semantic_hash": ""
+  },
+  "docs/tailadmin-laravel-main/public/images/shape/grid-01.svg": {
+    "mtime": 1779508054.0,
+    "ast_hash": "313ba928ca4e41588ed456a74a9d0bbc",
+    "semantic_hash": ""
+  },
+  "docs/tailadmin-laravel-main/public/images/support/user-1.jpg": {
+    "mtime": 1779508054.0,
+    "ast_hash": "d80927387f53dc0e34a57beab6843a62",
+    "semantic_hash": ""
+  },
+  "docs/tailadmin-laravel-main/public/images/support/user-2.jpg": {
+    "mtime": 1779508054.0,
+    "ast_hash": "fd2d39999be25b3dce5fa6671073c54f",
+    "semantic_hash": ""
+  },
+  "docs/tailadmin-laravel-main/public/images/task/google-drive.svg": {
+    "mtime": 1779508054.0,
+    "ast_hash": "6928d023392734ac532954aed3d4e470",
+    "semantic_hash": ""
+  },
+  "docs/tailadmin-laravel-main/public/images/task/pdf.svg": {
+    "mtime": 1779508054.0,
+    "ast_hash": "f6b3f0b8ce55aab0cac66a5eb308f2e8",
+    "semantic_hash": ""
+  },
+  "docs/tailadmin-laravel-main/public/images/task/task.jpg": {
+    "mtime": 1779508054.0,
+    "ast_hash": "15edcd94b9b1efa764c24a9df8dec30c",
+    "semantic_hash": ""
+  },
+  "docs/tailadmin-laravel-main/public/images/task/task.png": {
+    "mtime": 1779508054.0,
+    "ast_hash": "47edf624c64ce4b59a252bec172c08f4",
+    "semantic_hash": ""
+  },
+  "docs/tailadmin-laravel-main/public/images/user/owner.jpg": {
+    "mtime": 1779508054.0,
+    "ast_hash": "a9cf641a2a64b8c535e9024e1761a7dd",
+    "semantic_hash": ""
+  },
+  "docs/tailadmin-laravel-main/public/images/user/owner.png": {
+    "mtime": 1779508054.0,
+    "ast_hash": "83bd6e1c8fc32d8e071797cd0ba670e0",
+    "semantic_hash": ""
+  },
+  "docs/tailadmin-laravel-main/public/images/user/owner.webp": {
+    "mtime": 1779508054.0,
+    "ast_hash": "affed0900073f98789d05a6c905e350a",
+    "semantic_hash": ""
+  },
+  "docs/tailadmin-laravel-main/public/images/user/user-01.jpg": {
+    "mtime": 1779508054.0,
+    "ast_hash": "c0a176438cae1ec177dcc1cbec565bca",
+    "semantic_hash": ""
+  },
+  "docs/tailadmin-laravel-main/public/images/user/user-02.jpg": {
+    "mtime": 1779508054.0,
+    "ast_hash": "3f173243574a8ee0f14a3de28bcc6c74",
+    "semantic_hash": ""
+  },
+  "docs/tailadmin-laravel-main/public/images/user/user-03.jpg": {
+    "mtime": 1779508054.0,
+    "ast_hash": "be2b8fa7277da12fd927869ba8062e1a",
+    "semantic_hash": ""
+  },
+  "docs/tailadmin-laravel-main/public/images/user/user-04.jpg": {
+    "mtime": 1779508054.0,
+    "ast_hash": "294502551e5945b446df5a82268fdfd6",
+    "semantic_hash": ""
+  },
+  "docs/tailadmin-laravel-main/public/images/user/user-05.jpg": {
+    "mtime": 1779508054.0,
+    "ast_hash": "93d4142b849bb5580192fd971ba88c6e",
+    "semantic_hash": ""
+  },
+  "docs/tailadmin-laravel-main/public/images/user/user-06.jpg": {
+    "mtime": 1779508054.0,
+    "ast_hash": "fa2876b594c3809a49a261fd36a50063",
+    "semantic_hash": ""
+  },
+  "docs/tailadmin-laravel-main/public/images/user/user-07.jpg": {
+    "mtime": 1779508054.0,
+    "ast_hash": "dbedb284b783dfb39a78e3140a8a8df8",
+    "semantic_hash": ""
+  },
+  "docs/tailadmin-laravel-main/public/images/user/user-08.jpg": {
+    "mtime": 1779508054.0,
+    "ast_hash": "503fa3b698f8869d9218791c7e245543",
+    "semantic_hash": ""
+  },
+  "docs/tailadmin-laravel-main/public/images/user/user-09.jpg": {
+    "mtime": 1779508054.0,
+    "ast_hash": "3001e2dac082064b52625e84ee4e2951",
+    "semantic_hash": ""
+  },
+  "docs/tailadmin-laravel-main/public/images/user/user-10.jpg": {
+    "mtime": 1779508054.0,
+    "ast_hash": "3a4649b8d8e9e05e8689de6f1bf6aa6a",
+    "semantic_hash": ""
+  },
+  "docs/tailadmin-laravel-main/public/images/user/user-11.jpg": {
+    "mtime": 1779508054.0,
+    "ast_hash": "136ebe7fd805f56ee6ff43e595a4d06a",
+    "semantic_hash": ""
+  },
+  "docs/tailadmin-laravel-main/public/images/user/user-12.jpg": {
+    "mtime": 1779508054.0,
+    "ast_hash": "41c17a2c143d01e677d108f27c813223",
+    "semantic_hash": ""
+  },
+  "docs/tailadmin-laravel-main/public/images/user/user-13.jpg": {
+    "mtime": 1779508054.0,
+    "ast_hash": "8d453433fbde583bedcbe9d3f334aa58",
+    "semantic_hash": ""
+  },
+  "docs/tailadmin-laravel-main/public/images/user/user-14.jpg": {
+    "mtime": 1779508054.0,
+    "ast_hash": "0512323e90376cb8cfc5a418792aa60f",
+    "semantic_hash": ""
+  },
+  "docs/tailadmin-laravel-main/public/images/user/user-15.jpg": {
+    "mtime": 1779508054.0,
+    "ast_hash": "3255880c018bbcda5829675adfc4f07a",
+    "semantic_hash": ""
+  },
+  "docs/tailadmin-laravel-main/public/images/user/user-16.jpg": {
+    "mtime": 1779508054.0,
+    "ast_hash": "b1011ee294560bdf974117adbfb3e093",
+    "semantic_hash": ""
+  },
+  "docs/tailadmin-laravel-main/public/images/user/user-17.jpg": {
+    "mtime": 1779508054.0,
+    "ast_hash": "33c920131e953939b5d5e3ae2127674c",
+    "semantic_hash": ""
+  },
+  "docs/tailadmin-laravel-main/public/images/user/user-18.jpg": {
+    "mtime": 1779508054.0,
+    "ast_hash": "09ca4334060855abb51ec82535e457e6",
+    "semantic_hash": ""
+  },
+  "docs/tailadmin-laravel-main/public/images/user/user-19.jpg": {
+    "mtime": 1779508054.0,
+    "ast_hash": "99271a2612b59617c29240f3cc9bf3d3",
+    "semantic_hash": ""
+  },
+  "docs/tailadmin-laravel-main/public/images/user/user-20.jpg": {
+    "mtime": 1779508054.0,
+    "ast_hash": "e425675ad7b17d1115cca76f1f7ab69f",
+    "semantic_hash": ""
+  },
+  "docs/tailadmin-laravel-main/public/images/user/user-21.jpg": {
+    "mtime": 1779508054.0,
+    "ast_hash": "4747a6451d61e948d2f9981d508d76b4",
+    "semantic_hash": ""
+  },
+  "docs/tailadmin-laravel-main/public/images/user/user-22.jpg": {
+    "mtime": 1779508054.0,
+    "ast_hash": "6d77f6658bbd87ed3ed164ce9c381429",
+    "semantic_hash": ""
+  },
+  "docs/tailadmin-laravel-main/public/images/user/user-23.jpg": {
+    "mtime": 1779508054.0,
+    "ast_hash": "70d8fb4e1605f4bf7460aeb18fc7b0f3",
+    "semantic_hash": ""
+  },
+  "docs/tailadmin-laravel-main/public/images/user/user-24.jpg": {
+    "mtime": 1779508054.0,
+    "ast_hash": "7c0026b3ec1337e286b08e13a0ca4c39",
+    "semantic_hash": ""
+  },
+  "docs/tailadmin-laravel-main/public/images/user/user-25.jpg": {
+    "mtime": 1779508054.0,
+    "ast_hash": "1734593dd74ad59ea076767265f2460e",
+    "semantic_hash": ""
+  },
+  "docs/tailadmin-laravel-main/public/images/user/user-26.jpg": {
+    "mtime": 1779508054.0,
+    "ast_hash": "8e7f55d14e0e42cd6d39ade4ddc4a74d",
+    "semantic_hash": ""
+  },
+  "docs/tailadmin-laravel-main/public/images/user/user-27.jpg": {
+    "mtime": 1779508054.0,
+    "ast_hash": "eace52d6ed4713375c5f39860c4a6c32",
+    "semantic_hash": ""
+  },
+  "docs/tailadmin-laravel-main/public/images/user/user-28.jpg": {
+    "mtime": 1779508054.0,
+    "ast_hash": "600608b3054f34ef59357911830d9a2f",
+    "semantic_hash": ""
+  },
+  "docs/tailadmin-laravel-main/public/images/user/user-29.jpg": {
+    "mtime": 1779508054.0,
+    "ast_hash": "9d78fe02695f7bea116ec49631a62f7a",
+    "semantic_hash": ""
+  },
+  "docs/tailadmin-laravel-main/public/images/user/user-30.jpg": {
+    "mtime": 1779508054.0,
+    "ast_hash": "65995eea6be11e6f6f0801bcd60433f0",
+    "semantic_hash": ""
+  },
+  "docs/tailadmin-laravel-main/public/images/user/user-31.jpg": {
+    "mtime": 1779508054.0,
+    "ast_hash": "d4d1e08d31840ecce1b502b023a3eec2",
+    "semantic_hash": ""
+  },
+  "docs/tailadmin-laravel-main/public/images/user/user-32.jpg": {
+    "mtime": 1779508054.0,
+    "ast_hash": "8734eb53a2301ad02f529e1d6b2376fb",
+    "semantic_hash": ""
+  },
+  "docs/tailadmin-laravel-main/public/images/user/user-33.jpg": {
+    "mtime": 1779508054.0,
+    "ast_hash": "74c02469542d9a64c90f886f574f8129",
+    "semantic_hash": ""
+  },
+  "docs/tailadmin-laravel-main/public/images/user/user-34.jpg": {
+    "mtime": 1779508054.0,
+    "ast_hash": "4ed2a14dec1aadb594dbd8d32b3f8b11",
+    "semantic_hash": ""
+  },
+  "docs/tailadmin-laravel-main/public/images/user/user-35.jpg": {
+    "mtime": 1779508054.0,
+    "ast_hash": "f3268701fe00afbc7d8efab9ef92d332",
+    "semantic_hash": ""
+  },
+  "docs/tailadmin-laravel-main/public/images/user/user-36.jpg": {
+    "mtime": 1779508054.0,
+    "ast_hash": "7bada2ad1bae39befdd422581d851c3d",
+    "semantic_hash": ""
+  },
+  "docs/tailadmin-laravel-main/public/images/user/user-37.jpg": {
+    "mtime": 1779508054.0,
+    "ast_hash": "5b3cca1e98cb9ab0cb070af153e1c573",
+    "semantic_hash": ""
+  },
+  "docs/tailadmin-laravel-main/public/images/video-thumb/thumb-16.png": {
+    "mtime": 1779508054.0,
+    "ast_hash": "2aa5526594d28fac0deb39b213d3932c",
+    "semantic_hash": ""
+  },
+  "docs/tailadmin-laravel-main/public/images/video-thumb/youtube-icon-84.svg": {
+    "mtime": 1779508054.0,
+    "ast_hash": "65dee06132dfa159cd2135cdf66300be",
+    "semantic_hash": ""
+  },
+  "docs/tailadmin-laravel-main/tailadmin-laravel.png": {
+    "mtime": 1779508054.0,
+    "ast_hash": "1f695693743d0f1466b4d2cb61851481",
+    "semantic_hash": ""
+  },
+  "public/favicon.png": {
+    "mtime": 1784962872.6326542,
+    "ast_hash": "a9b5e7a95cf0ed5e5a67365be0559469",
+    "semantic_hash": ""
+  },
+  "public/images/hero_lms_preview.jpg": {
+    "mtime": 1784971081.6816435,
+    "ast_hash": "5b2c3bf055a55b7ec16f6ecfea619a76",
+    "semantic_hash": ""
+  },
+  "public/images/logo.png": {
+    "mtime": 1784962872.6326542,
+    "ast_hash": "a9b5e7a95cf0ed5e5a67365be0559469",
+    "semantic_hash": ""
+  },
+  "public/images/logo/auth-logo.svg": {
+    "mtime": 1784990632.7153242,
+    "ast_hash": "6be393ca00a6ba5ecee3bd0582e377e8",
+    "semantic_hash": ""
+  },
+  "public/images/logo/logo-dark.svg": {
+    "mtime": 1784990626.8992536,
+    "ast_hash": "ccd195940f7b99ab03ab797ea9759d41",
+    "semantic_hash": ""
+  },
+  "public/images/logo/logo-icon.svg": {
+    "mtime": 1784990629.5413117,
+    "ast_hash": "f02487c99fbaa30fa66fef8bc6fdb21b",
+    "semantic_hash": ""
+  },
+  "public/images/logo/logo.svg": {
+    "mtime": 1784990624.118016,
+    "ast_hash": "9812164f1f54d92d4cf304f5f8c71dff",
+    "semantic_hash": ""
+  },
+  "public/images/shape/grid-01.svg": {
+    "mtime": 1779508054.0,
+    "ast_hash": "313ba928ca4e41588ed456a74a9d0bbc",
+    "semantic_hash": ""
   }
 }
