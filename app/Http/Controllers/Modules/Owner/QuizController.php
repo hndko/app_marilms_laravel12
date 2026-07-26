@@ -184,7 +184,7 @@ class QuizController extends Controller
             'max_attempts' => 'required|integer|min:1|max:10',
         ]);
 
-        DB::connection('tenant')->transaction(function () use ($request, $quiz) {
+        DB::transaction(function () use ($request, $quiz) {
             $quiz->update($request->only([
                 'title', 'category', 'description', 'time_limit', 'passing_score', 'status', 'max_attempts'
             ]));

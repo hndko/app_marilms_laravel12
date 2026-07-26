@@ -73,8 +73,8 @@ class GenerateQuizJob implements ShouldQueue
                 "Generate Kuis AI: " . ($this->params['topic'] ?? 'Topik Kuis') . " ({$questionCount} soal)"
             );
 
-            // 6. Save Quiz and Questions to Tenant Database
-            DB::connection('tenant')->transaction(function () use ($json) {
+            // 6. Save Quiz and Questions to Database
+            DB::transaction(function () use ($json) {
                 $quiz = Quiz::create([
                     'title' => $json['title'] ?? ($this->params['topic'] ?? 'Kuis Baru AI'),
                     'description' => $json['description'] ?? "Kuis evaluasi otomatis bertema " . ($this->params['topic'] ?? ''),
