@@ -15,6 +15,7 @@ class QuestionOption extends Model
         'is_correct',
         'explanation',
         'order',
+        'sort_order',
     ];
 
     protected function casts(): array
@@ -22,12 +23,21 @@ class QuestionOption extends Model
         return [
             'is_correct' => 'boolean',
             'order' => 'integer',
+            'sort_order' => 'integer',
         ];
     }
 
     protected static function booted(): void
     {
         static::addGlobalScope(new TenantScope());
+
+        static::saving(function (self $model) {
+            if (isset($model->order) && !isset($model->sort_order)) {
+                $model->sort_order = $model->order;
+            } elseif (isset($model->sort_order) && !isset($model->order)) {
+                $model->order = $model->sort_order;
+            }
+        });
 
         static::creating(function (self $model) {
             if (empty($model->tenant_id)) {
